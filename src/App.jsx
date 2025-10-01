@@ -1,0 +1,27 @@
+// App.jsx
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './composant/Header.jsx';
+import Footer from './composant/Footer.jsx';
+import Index from './page/index';
+import AboutPage from "./page/about";
+import Ressources from "./page/ressource.jsx";
+
+function App() {
+  return (
+    <Router>
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/a-propos" element={<AboutPage />} />
+          <Route path="/Nos-ressources" element={<Ressources />} />
+          {/* Ajoute d'autres routes ici si besoin */}
+        </Routes>
+      </main>
+      <Footer />
+    </Router>
+  );
+}
+
+export default App;
