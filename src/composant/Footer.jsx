@@ -466,36 +466,7 @@ const Footer = () => {
       <div className="footer-border">
         <div className="footer-container">
           <div className="footer-content">
-            <div className="newsletter-section">
-              <div className="newsletter-grid">
-                <div>
-                  <h3 className="newsletter-title">
-                    Reste connecté à ton <span className="gradient-orange">héritage</span>
-                  </h3>
-                  <p className="newsletter-text">
-                    Reçois chaque semaine des ressources exclusives, des insights culturels 
-                    et les dernières actualités de la communauté THE BLACK BOOK.
-                  </p>
-                </div>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <div className="newsletter-form">
-                    <input
-                      type="email"
-                      placeholder="Ton adresse email"
-                      className="newsletter-input"
-                    />
-                    <button className="newsletter-button">
-                      S'abonner
-                      <ArrowRight style={{ width: '1.2rem', height: '1.2rem' }} />
-                    </button>
-                  </div>
-                  <p className="newsletter-disclaimer">
-                    En t'inscrivant, tu acceptes de recevoir nos emails. Désabonne-toi à tout moment.
-                  </p>
-                </div>
-              </div>
-            </div>
+     
           </div>
         </div>
       </div>

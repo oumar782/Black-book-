@@ -7,6 +7,8 @@ import Index from './page/index';
 import AboutPage from "./page/about";
 import Ressources from "./page/ressource.jsx";
 import Event from "./page/evenement.jsx";
+import Shop from "./page/boutique.jsx";
+import Blog from "./page/blog.jsx";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/a-propos" element={<AboutPage />} />
           <Route path="/Nos-ressources" element={<Ressources />} />
           <Route path="/evenements" element={<Event />} />
+          <Route path="/boutique" element={<Shop />} />
+          <Route path="/Blog" element={<Blog />} />
           {/* Ajoute d'autres routes ici si besoin */}
         </Routes>
       </main>

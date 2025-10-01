@@ -9,8 +9,10 @@ const Header = () => {
     { name: 'À propos', href: '/a-propos', current: false },
     { name: 'Ressources', href: '/Nos-ressources', current: false },
     { name: 'Événements', href: '/evenements', current: false },
-    { name: 'Boutique', href: '/shop', current: false },
-    { name: 'Blog', href: '/blog', current: false },
+    { name: 'Boutique', href: '/boutique', current: false },
+    { name: 'Blog', href: '/Blog', current: false },
+    { name: 'Fracture', href: '/Blog', current: false },
+    { name: 'Contact', href: '/Blog', current: false },
   ];
 
   return (
@@ -361,11 +363,7 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Buttons */}
-          <div className="cta-buttons">
-            <button className="btn btn-outline">Se connecter</button>
-            <button className="btn btn-primary">S'abonner</button>
-          </div>
+         
 
           {/* Mobile Menu Toggle */}
           <button
