@@ -11,10 +11,9 @@ const Header = () => {
     { name: 'Événements', href: '/evenements', current: false },
     { name: 'Boutique', href: '/boutique', current: false },
     { name: 'Blog', href: '/Blog', current: false },
-    { name: 'Fracture', href: '/Blog', current: false },
-    { name: 'Contact', href: '/contact', current: false },
+    { name: 'Fracture', href: '/fracture', current: false },
+    { name: 'Contact', href: '/contact', current: false }
   ];
-
   return (
     <>
       <style jsx>{`

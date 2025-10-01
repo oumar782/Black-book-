@@ -10,6 +10,7 @@ import Event from "./page/evenement.jsx";
 import Shop from "./page/boutique.jsx";
 import Blog from "./page/blog.jsx";
 import Contact from "./page/contact.jsx";
+import Fracture from "./page/fracture.jsx";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/boutique" element={<Shop />} />
           <Route path="/Blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/fracture" element={<Fracture />} />
           {/* Ajoute d'autres routes ici si besoin */}
         </Routes>
       </main>
