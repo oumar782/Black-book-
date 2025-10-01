@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Calendar, Clock, MapPin, Users, Star, ArrowRight, Video, Coffee, BookOpen } from 'lucide-react';
 
-const EventsCalendar = () => {
+const AfroEventsCalendar = () => {
   const [activeTab, setActiveTab] = useState('À venir');
 
   const tabs = ['À venir', 'Passés', 'Mes événements'];
@@ -119,31 +119,31 @@ const EventsCalendar = () => {
 
   const getTypeColor = (type) => {
     switch (type) {
-      case 'Masterclass': return 'event-badge-masterclass';
-      case 'Atelier': return 'event-badge-atelier';
-      case 'Conférence': return 'event-badge-conference';
-      case 'Formation': return 'event-badge-formation';
-      case 'Discussion': return 'event-badge-discussion';
-      default: return 'event-badge-default';
+      case 'Masterclass': return 'afro-badge-masterclass';
+      case 'Atelier': return 'afro-badge-atelier';
+      case 'Conférence': return 'afro-badge-conference';
+      case 'Formation': return 'afro-badge-formation';
+      case 'Discussion': return 'afro-badge-discussion';
+      default: return 'afro-badge-default';
     }
   };
 
   const getLevelColor = (level) => {
     switch (level) {
-      case 'Débutant': return 'event-badge-debutant';
-      case 'Intermédiaire': return 'event-badge-intermediaire';
-      case 'Avancé': return 'event-badge-avance';
-      default: return 'event-badge-default';
+      case 'Débutant': return 'afro-badge-debutant';
+      case 'Intermédiaire': return 'afro-badge-intermediaire';
+      case 'Avancé': return 'afro-badge-avance';
+      default: return 'afro-badge-default';
     }
   };
 
   return (
-    <section className="elegant-events-section">
-      <div className="elegant-events-container">
+    <section className="afro-events-section">
+      <div className="afro-events-container">
         {/* Particules d'arrière-plan animées */}
-        <div className="animated-particles">
+        <div className="afro-animated-particles">
           {[...Array(15)].map((_, i) => (
-            <div key={i} className="particle" style={{
+            <div key={i} className="afro-particle" style={{
               '--delay': `${i * 0.5}s`,
               '--duration': `${15 + i * 2}s`,
               '--size': `${2 + i % 3}px`,
@@ -154,185 +154,185 @@ const EventsCalendar = () => {
         </div>
 
         {/* En-tête */}
-        <div className="elegant-events-header">
-          <h1 className="elegant-main-title">
-            <span className="title-word title-word-1">Événements</span>
-            <span className="title-word title-word-2">&</span>
-            <span className="title-word title-word-3">Ateliers</span>
+        <div className="afro-events-header">
+          <h1 className="afro-main-title">
+            <span className="afro-title-word afro-title-word-1">Événements</span>
+            <span className="afro-title-word afro-title-word-2">&</span>
+            <span className="afro-title-word afro-title-word-3">Ateliers</span>
           </h1>
-          <p className="elegant-subtitle">
+          <p className="afro-subtitle">
             Rejoins-nous pour des expériences enrichissantes qui connectent tradition et modernité. 
             Participe à des masterclasses, ateliers et discussions avec des experts passionnés.
           </p>
         </div>
 
         {/* Statistiques rapides */}
-        <div className="elegant-stats-grid">
+        <div className="afro-stats-grid">
           {[
             { number: "24", label: "Événements ce mois" },
             { number: "450+", label: "Participants actifs" },
             { number: "15", label: "Experts intervenants" },
             { number: "4.9", label: "Satisfaction moyenne" }
           ].map((stat, index) => (
-            <div key={index} className="elegant-stat-card" style={{ '--delay': `${index * 0.1}s` }}>
-              <div className="stat-number-wrapper">
-                <span className="elegant-stat-number">{stat.number}</span>
-                <div className="stat-glow"></div>
+            <div key={index} className="afro-stat-card" style={{ '--delay': `${index * 0.1}s` }}>
+              <div className="afro-stat-number-wrapper">
+                <span className="afro-stat-number">{stat.number}</span>
+                <div className="afro-stat-glow"></div>
               </div>
-              <div className="elegant-stat-label">{stat.label}</div>
+              <div className="afro-stat-label">{stat.label}</div>
             </div>
           ))}
         </div>
 
         {/* Onglets */}
-        <div className="elegant-tabs-container">
-          <div className="elegant-tabs-wrapper">
+        <div className="afro-tabs-container">
+          <div className="afro-tabs-wrapper">
             {tabs.map((tab, index) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`elegant-tab ${activeTab === tab ? 'elegant-tab-active' : 'elegant-tab-inactive'}`}
+                className={`afro-tab ${activeTab === tab ? 'afro-tab-active' : 'afro-tab-inactive'}`}
                 style={{ '--delay': `${index * 0.05}s` }}
               >
-                <span className="tab-content">{tab}</span>
-                <div className="tab-underline"></div>
+                <span className="afro-tab-content">{tab}</span>
+                <div className="afro-tab-underline"></div>
               </button>
             ))}
           </div>
         </div>
 
         {/* Grille des événements */}
-        <div className="elegant-events-grid">
+        <div className="afro-events-grid">
           {events.map((event, index) => (
             <div
               key={event.id}
-              className="elegant-event-card"
+              className="afro-event-card"
               style={{ '--delay': `${index * 0.1}s` }}
             >
               {/* Effet de bordure animée */}
-              <div className="card-border-glow"></div>
-              <div className="card-hover-effect"></div>
+              <div className="afro-card-border-glow"></div>
+              <div className="afro-card-hover-effect"></div>
               
-              <div className="elegant-card-content">
+              <div className="afro-card-content">
                 {/* En-tête avec badges */}
-                <div className="elegant-card-header">
-                  <div className="elegant-badges-container">
-                    <span className={`elegant-badge ${getTypeColor(event.type)}`}>
-                      <span className="badge-text">{event.type}</span>
-                      <div className="badge-glow"></div>
+                <div className="afro-card-header">
+                  <div className="afro-badges-container">
+                    <span className={`afro-badge ${getTypeColor(event.type)}`}>
+                      <span className="afro-badge-text">{event.type}</span>
+                      <div className="afro-badge-glow"></div>
                     </span>
-                    <span className={`elegant-badge ${getLevelColor(event.level)}`}>
-                      <span className="badge-text">{event.level}</span>
-                      <div className="badge-glow"></div>
+                    <span className={`afro-badge ${getLevelColor(event.level)}`}>
+                      <span className="afro-badge-text">{event.level}</span>
+                      <div className="afro-badge-glow"></div>
                     </span>
                     {event.featured && (
-                      <span className="elegant-badge-featured">
-                        <Star className="elegant-featured-icon" />
-                        <span className="badge-text">Featured</span>
-                        <div className="featured-sparkle"></div>
+                      <span className="afro-badge-featured">
+                        <Star className="afro-featured-icon" />
+                        <span className="afro-badge-text">Featured</span>
+                        <div className="afro-featured-sparkle"></div>
                       </span>
                     )}
                   </div>
-                  <div className="icon-container">
-                    <event.icon className="elegant-card-icon" />
-                    <div className="icon-orb"></div>
+                  <div className="afro-icon-container">
+                    <event.icon className="afro-card-icon" />
+                    <div className="afro-icon-orb"></div>
                   </div>
                 </div>
 
                 {/* Titre et description */}
-                <h3 className="elegant-card-title">
+                <h3 className="afro-card-title">
                   {event.title}
                 </h3>
-                <p className="elegant-card-description">
+                <p className="afro-card-description">
                   {event.description}
                 </p>
 
                 {/* Détails de l'événement */}
-                <div className="elegant-details-container">
-                  <div className="elegant-detail-row">
-                    <div className="detail-item">
-                      <Calendar className="elegant-detail-icon" />
-                      <span className="elegant-detail-date">{event.date}</span>
+                <div className="afro-details-container">
+                  <div className="afro-detail-row">
+                    <div className="afro-detail-item">
+                      <Calendar className="afro-detail-icon" />
+                      <span className="afro-detail-date">{event.date}</span>
                     </div>
-                    <div className="detail-item">
-                      <Clock className="elegant-detail-icon" />
-                      <span className="elegant-detail-time">{event.time}</span>
+                    <div className="afro-detail-item">
+                      <Clock className="afro-detail-icon" />
+                      <span className="afro-detail-time">{event.time}</span>
                     </div>
                   </div>
                   
-                  <div className="elegant-detail-row">
-                    <div className="detail-item">
-                      <MapPin className="elegant-detail-icon" />
-                      <span className="elegant-detail-format">{event.format}</span>
+                  <div className="afro-detail-row">
+                    <div className="afro-detail-item">
+                      <MapPin className="afro-detail-icon" />
+                      <span className="afro-detail-format">{event.format}</span>
                     </div>
-                    <div className="detail-item">
-                      <Users className="elegant-detail-icon" />
-                      <span className="elegant-detail-participants">
+                    <div className="afro-detail-item">
+                      <Users className="afro-detail-icon" />
+                      <span className="afro-detail-participants">
                         {event.participants}/{event.maxParticipants} participants
                       </span>
                     </div>
                   </div>
                   
-                  <div className="elegant-detail-footer">
-                    <div className="elegant-instructor">
-                      <span className="elegant-instructor-label">Animé par </span>
-                      <span className="elegant-instructor-name">{event.instructor}</span>
+                  <div className="afro-detail-footer">
+                    <div className="afro-instructor">
+                      <span className="afro-instructor-label">Animé par </span>
+                      <span className="afro-instructor-name">{event.instructor}</span>
                     </div>
-                    <div className="elegant-duration">
-                      <span className="elegant-duration-label">Durée: </span>
-                      <span className="elegant-duration-value">{event.duration}</span>
+                    <div className="afro-duration">
+                      <span className="afro-duration-label">Durée: </span>
+                      <span className="afro-duration-value">{event.duration}</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Barre de progression des inscriptions */}
-                <div className="elegant-progress-container">
-                  <div className="elegant-progress-labels">
+                <div className="afro-progress-container">
+                  <div className="afro-progress-labels">
                     <span>Places disponibles</span>
                     <span>{event.maxParticipants - event.participants} restantes</span>
                   </div>
-                  <div className="elegant-progress-bar">
+                  <div className="afro-progress-bar">
                     <div 
-                      className="elegant-progress-fill"
+                      className="afro-progress-fill"
                       style={{ width: `${(event.participants / event.maxParticipants) * 100}%` }}
                     >
-                      <div className="progress-shine"></div>
+                      <div className="afro-progress-shine"></div>
                     </div>
                   </div>
                 </div>
 
                 {/* Prix et CTA */}
-                <div className="elegant-card-footer">
-                  <div className="elegant-price">
+                <div className="afro-card-footer">
+                  <div className="afro-price">
                     {event.price === "Gratuit" ? (
-                      <span className="elegant-price-free">
-                        <span className="price-text">Gratuit</span>
-                        <div className="price-glow"></div>
+                      <span className="afro-price-free">
+                        <span className="afro-price-text">Gratuit</span>
+                        <div className="afro-price-glow"></div>
                       </span>
                     ) : event.price === "Premium" ? (
-                      <span className="elegant-price-premium">
-                        <span className="price-text">Inclus Premium</span>
-                        <div className="price-glow"></div>
+                      <span className="afro-price-premium">
+                        <span className="afro-price-text">Inclus Premium</span>
+                        <div className="afro-price-glow"></div>
                       </span>
                     ) : (
-                      <span className="elegant-price-paid">
-                        <span className="price-text">{event.price}</span>
-                        <div className="price-glow"></div>
+                      <span className="afro-price-paid">
+                        <span className="afro-price-text">{event.price}</span>
+                        <div className="afro-price-glow"></div>
                       </span>
                     )}
                   </div>
                   
                   <button 
-                    className={`elegant-register-btn ${event.participants >= event.maxParticipants ? 'elegant-register-disabled' : ''}`}
+                    className={`afro-register-btn ${event.participants >= event.maxParticipants ? 'afro-register-disabled' : ''}`}
                     disabled={event.participants >= event.maxParticipants}
                   >
-                    <span className="btn-text">
+                    <span className="afro-btn-text">
                       {event.participants >= event.maxParticipants ? 'Complet' : 'S\'inscrire'}
                     </span>
-                    <div className="btn-orb">
-                      <ArrowRight className="elegant-register-icon" />
+                    <div className="afro-btn-orb">
+                      <ArrowRight className="afro-register-icon" />
                     </div>
-                    <div className="btn-glow"></div>
+                    <div className="afro-btn-glow"></div>
                   </button>
                 </div>
               </div>
@@ -341,22 +341,22 @@ const EventsCalendar = () => {
         </div>
 
         {/* CTA pour voir plus d'événements */}
-        <div className="elegant-cta-container">
-          <p className="elegant-cta-text">
+        <div className="afro-cta-container">
+          <p className="afro-cta-text">
             Plus de 50 événements programmés dans les prochains mois !
           </p>
-          <button className="elegant-calendar-btn">
-            <span className="btn-content">Voir le calendrier complet</span>
-            <div className="btn-orb">
-              <ArrowRight className="elegant-calendar-icon" />
+          <button className="afro-calendar-btn">
+            <span className="afro-btn-content">Voir le calendrier complet</span>
+            <div className="afro-btn-orb">
+              <ArrowRight className="afro-calendar-icon" />
             </div>
-            <div className="btn-trail"></div>
+            <div className="afro-btn-trail"></div>
           </button>
         </div>
       </div>
 
       <style jsx>{`
-        .elegant-events-section {
+        .afro-events-section {
           padding: 6rem 0;
           background: 
             linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 30%, #2d1a0c 70%, #1a0f0a 100%);
@@ -367,7 +367,7 @@ const EventsCalendar = () => {
         }
 
         /* Particules animées */
-        .animated-particles {
+        .afro-animated-particles {
           position: absolute;
           top: 0;
           left: 0;
@@ -376,16 +376,16 @@ const EventsCalendar = () => {
           pointer-events: none;
         }
 
-        .particle {
+        .afro-particle {
           position: absolute;
-          background: linear-gradient(45deg, #ff8c00, #ff6b00, #ff4500);
+          background: linear-gradient(45deg, #5D4037, #6D4C41, #8D6E63);
           border-radius: 50%;
           opacity: 0;
-          animation: floatParticle var(--duration) ease-in-out var(--delay) infinite;
+          animation: afroFloatParticle var(--duration) ease-in-out var(--delay) infinite;
           filter: blur(1px);
         }
 
-        @keyframes floatParticle {
+        @keyframes afroFloatParticle {
           0%, 100% {
             transform: translate(0, 0) rotate(0deg);
             opacity: 0;
@@ -399,7 +399,7 @@ const EventsCalendar = () => {
           }
         }
 
-        .elegant-events-container {
+        .afro-events-container {
           max-width: 1200px;
           margin: 0 auto;
           padding: 0 1.5rem;
@@ -408,12 +408,12 @@ const EventsCalendar = () => {
         }
 
         /* En-tête avec animation de texte */
-        .elegant-events-header {
+        .afro-events-header {
           text-align: center;
           margin-bottom: 4rem;
         }
 
-        .elegant-main-title {
+        .afro-main-title {
           font-weight: 800;
           font-size: clamp(3rem, 6vw, 5rem);
           margin-bottom: 2rem;
@@ -424,32 +424,32 @@ const EventsCalendar = () => {
           gap: 0.5rem;
         }
 
-        .title-word {
-          background: linear-gradient(135deg, #ffffff 0%, #ff8c00 25%, #ff6b00 50%, #ff4500 75%, #ffffff 100%);
+        .afro-title-word {
+          background: linear-gradient(135deg, #ffffff 0%, #5D4037 25%, #6D4C41 50%, #8D6E63 75%, #ffffff 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
           background-size: 200% 100%;
-          animation: titleShimmer 6s ease-in-out infinite;
+          animation: afroTitleShimmer 6s ease-in-out infinite;
           position: relative;
         }
 
-        .title-word-1 { animation-delay: 0s; }
-        .title-word-2 { 
+        .afro-title-word-1 { animation-delay: 0s; }
+        .afro-title-word-2 { 
           font-size: 0.8em;
           animation-delay: 0.2s;
         }
-        .title-word-3 { 
+        .afro-title-word-3 { 
           animation-delay: 0.4s;
-          color: #ff8c00;
+          color: #5D4037;
         }
 
-        @keyframes titleShimmer {
+        @keyframes afroTitleShimmer {
           0%, 100% { background-position: -200% 0; }
           50% { background-position: 200% 0; }
         }
 
-        .elegant-subtitle {
+        .afro-subtitle {
           font-size: 1.25rem;
           color: rgba(255, 255, 255, 0.7);
           max-width: 48rem;
@@ -457,33 +457,33 @@ const EventsCalendar = () => {
           line-height: 1.6;
           font-weight: 300;
           letter-spacing: 0.5px;
-          animation: fadeInUp 1s ease-out 0.5s both;
+          animation: afroFadeInUp 1s ease-out 0.5s both;
         }
 
         /* Statistiques élégantes */
-        .elegant-stats-grid {
+        .afro-stats-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
           gap: 2rem;
           margin-bottom: 4rem;
         }
 
-        .elegant-stat-card {
+        .afro-stat-card {
           background: linear-gradient(145deg, 
             rgba(255, 255, 255, 0.05) 0%, 
             rgba(255, 255, 255, 0.02) 100%);
           backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 140, 0, 0.1);
+          border: 1px solid rgba(93, 64, 55, 0.1);
           border-radius: 2rem;
           padding: 2rem;
           text-align: center;
           position: relative;
           overflow: hidden;
-          animation: slideInUp 0.8s ease-out var(--delay) both;
+          animation: afroSlideInUp 0.8s ease-out var(--delay) both;
           transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .elegant-stat-card::before {
+        .afro-stat-card::before {
           content: '';
           position: absolute;
           top: 0;
@@ -492,34 +492,34 @@ const EventsCalendar = () => {
           height: 100%;
           background: linear-gradient(90deg, 
             transparent, 
-            rgba(255, 140, 0, 0.1), 
+            rgba(93, 64, 55, 0.1), 
             transparent);
           transition: left 0.6s ease;
         }
 
-        .elegant-stat-card:hover::before {
+        .afro-stat-card:hover::before {
           left: 100%;
         }
 
-        .elegant-stat-card:hover {
+        .afro-stat-card:hover {
           transform: translateY(-10px) scale(1.02);
-          border-color: rgba(255, 140, 0, 0.3);
+          border-color: rgba(93, 64, 55, 0.3);
           box-shadow: 
-            0 20px 40px rgba(255, 140, 0, 0.15),
-            0 0 80px rgba(255, 140, 0, 0.05);
+            0 20px 40px rgba(93, 64, 55, 0.15),
+            0 0 80px rgba(93, 64, 55, 0.05);
         }
 
-        .stat-number-wrapper {
+        .afro-stat-number-wrapper {
           position: relative;
           display: inline-block;
           margin-bottom: 0.5rem;
         }
 
-        .elegant-stat-number {
+        .afro-stat-number {
           font-family: 'Inter', sans-serif;
           font-weight: 800;
           font-size: 3rem;
-          background: linear-gradient(135deg, #ff8c00, #ff6b00, #ff4500);
+          background: linear-gradient(135deg, #5D4037, #6D4C41, #8D6E63);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -527,19 +527,19 @@ const EventsCalendar = () => {
           z-index: 2;
         }
 
-        .stat-glow {
+        .afro-stat-glow {
           position: absolute;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
           width: 120%;
           height: 120%;
-          background: radial-gradient(circle, rgba(255, 140, 0, 0.3) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(93, 64, 55, 0.3) 0%, transparent 70%);
           filter: blur(10px);
-          animation: pulseGlow 2s ease-in-out infinite;
+          animation: afroPulseGlow 2s ease-in-out infinite;
         }
 
-        .elegant-stat-label {
+        .afro-stat-label {
           font-size: 0.9rem;
           color: rgba(255, 255, 255, 0.6);
           font-weight: 300;
@@ -547,14 +547,14 @@ const EventsCalendar = () => {
         }
 
         /* Onglets sophistiqués */
-        .elegant-tabs-container {
+        .afro-tabs-container {
           display: flex;
           justify-content: center;
           margin-bottom: 4rem;
-          animation: fadeInUp 0.8s ease-out 0.3s both;
+          animation: afroFadeInUp 0.8s ease-out 0.3s both;
         }
 
-        .elegant-tabs-wrapper {
+        .afro-tabs-wrapper {
           display: inline-flex;
           background: rgba(255, 255, 255, 0.03);
           backdrop-filter: blur(20px);
@@ -564,7 +564,7 @@ const EventsCalendar = () => {
           position: relative;
         }
 
-        .elegant-tab {
+        .afro-tab {
           padding: 1rem 2rem;
           font-size: 0.9rem;
           font-weight: 500;
@@ -576,56 +576,56 @@ const EventsCalendar = () => {
           position: relative;
           overflow: hidden;
           transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          animation: slideInUp 0.6s ease-out var(--delay) both;
+          animation: afroSlideInUp 0.6s ease-out var(--delay) both;
         }
 
-        .tab-content {
+        .afro-tab-content {
           position: relative;
           z-index: 2;
           transition: all 0.3s ease;
         }
 
-        .tab-underline {
+        .afro-tab-underline {
           position: absolute;
           bottom: 0;
           left: 50%;
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #ff8c00, #ff6b00);
+          background: linear-gradient(90deg, #5D4037, #6D4C41);
           transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           transform: translateX(-50%);
         }
 
-        .elegant-tab:hover {
+        .afro-tab:hover {
           color: rgba(255, 255, 255, 0.9);
         }
 
-        .elegant-tab:hover .tab-underline {
+        .afro-tab:hover .afro-tab-underline {
           width: 80%;
         }
 
-        .elegant-tab-active {
+        .afro-tab-active {
           background: linear-gradient(135deg, 
-            rgba(255, 140, 0, 0.2), 
-            rgba(255, 107, 0, 0.1));
+            rgba(93, 64, 55, 0.2), 
+            rgba(109, 76, 65, 0.1));
           color: #ffffff;
           box-shadow: 
-            0 8px 25px rgba(255, 140, 0, 0.2),
+            0 8px 25px rgba(93, 64, 55, 0.2),
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
-        .elegant-tab-active .tab-underline {
+        .afro-tab-active .afro-tab-underline {
           width: 80%;
         }
 
         /* Cartes d'événements ultra-élégantes */
-        .elegant-events-grid {
+        .afro-events-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
           gap: 2.5rem;
         }
 
-        .elegant-event-card {
+        .afro-event-card {
           background: linear-gradient(145deg, 
             rgba(255, 255, 255, 0.05) 0%, 
             rgba(255, 255, 255, 0.02) 100%);
@@ -634,11 +634,11 @@ const EventsCalendar = () => {
           border-radius: 2rem;
           position: relative;
           overflow: hidden;
-          animation: cardFloatIn 0.8s ease-out var(--delay) both;
+          animation: afroCardFloatIn 0.8s ease-out var(--delay) both;
           transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .card-border-glow {
+        .afro-card-border-glow {
           position: absolute;
           top: 0;
           left: 0;
@@ -646,14 +646,14 @@ const EventsCalendar = () => {
           bottom: 0;
           border-radius: 2rem;
           background: linear-gradient(135deg, 
-            rgba(255, 140, 0, 0.1), 
-            rgba(255, 107, 0, 0.05), 
+            rgba(93, 64, 55, 0.1), 
+            rgba(109, 76, 65, 0.05), 
             transparent 30%);
           opacity: 0;
           transition: opacity 0.4s ease;
         }
 
-        .card-hover-effect {
+        .afro-card-hover-effect {
           position: absolute;
           top: 0;
           left: -100%;
@@ -661,48 +661,48 @@ const EventsCalendar = () => {
           height: 100%;
           background: linear-gradient(90deg, 
             transparent, 
-            rgba(255, 140, 0, 0.05), 
+            rgba(93, 64, 55, 0.05), 
             transparent);
           transition: left 0.6s ease;
         }
 
-        .elegant-event-card:hover {
+        .afro-event-card:hover {
           transform: translateY(-15px) scale(1.02);
-          border-color: rgba(255, 140, 0, 0.3);
+          border-color: rgba(93, 64, 55, 0.3);
           box-shadow: 
-            0 25px 50px rgba(255, 140, 0, 0.15),
-            0 0 100px rgba(255, 140, 0, 0.05);
+            0 25px 50px rgba(93, 64, 55, 0.15),
+            0 0 100px rgba(93, 64, 55, 0.05);
         }
 
-        .elegant-event-card:hover .card-border-glow {
+        .afro-event-card:hover .afro-card-border-glow {
           opacity: 1;
         }
 
-        .elegant-event-card:hover .card-hover-effect {
+        .afro-event-card:hover .afro-card-hover-effect {
           left: 100%;
         }
 
-        .elegant-card-content {
+        .afro-card-content {
           padding: 2rem;
           position: relative;
           z-index: 2;
         }
 
         /* En-tête de carte */
-        .elegant-card-header {
+        .afro-card-header {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
           margin-bottom: 1.5rem;
         }
 
-        .elegant-badges-container {
+        .afro-badges-container {
           display: flex;
           flex-wrap: wrap;
           gap: 0.75rem;
         }
 
-        .elegant-badge {
+        .afro-badge {
           padding: 0.5rem 1rem;
           font-size: 0.75rem;
           font-weight: 600;
@@ -714,12 +714,12 @@ const EventsCalendar = () => {
           transition: all 0.3s ease;
         }
 
-        .badge-text {
+        .afro-badge-text {
           position: relative;
           z-index: 2;
         }
 
-        .badge-glow {
+        .afro-badge-glow {
           position: absolute;
           top: 0;
           left: 0;
@@ -729,12 +729,12 @@ const EventsCalendar = () => {
           transition: opacity 0.3s ease;
         }
 
-        .elegant-badge:hover .badge-glow {
+        .afro-badge:hover .afro-badge-glow {
           opacity: 1;
         }
 
-        .elegant-badge-featured {
-          background: linear-gradient(135deg, #ff8c00, #ff6b00);
+        .afro-badge-featured {
+          background: linear-gradient(135deg, #5D4037, #6D4C41);
           color: white;
           padding: 0.5rem 1rem;
           font-size: 0.75rem;
@@ -745,10 +745,10 @@ const EventsCalendar = () => {
           gap: 0.5rem;
           position: relative;
           overflow: hidden;
-          animation: featuredPulse 2s ease-in-out infinite;
+          animation: afroFeaturedPulse 2s ease-in-out infinite;
         }
 
-        .featured-sparkle {
+        .afro-featured-sparkle {
           position: absolute;
           width: 20px;
           height: 20px;
@@ -756,45 +756,45 @@ const EventsCalendar = () => {
           border-radius: 50%;
           filter: blur(2px);
           opacity: 0;
-          animation: sparkleFlash 3s ease-in-out infinite;
+          animation: afroSparkleFlash 3s ease-in-out infinite;
         }
 
-        .elegant-featured-icon {
+        .afro-featured-icon {
           width: 0.875rem;
           height: 0.875rem;
         }
 
-        .icon-container {
+        .afro-icon-container {
           position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
-        .elegant-card-icon {
+        .afro-card-icon {
           width: 2rem;
           height: 2rem;
-          color: #ff8c00;
+          color: #5D4037;
           position: relative;
           z-index: 2;
           transition: all 0.3s ease;
         }
 
-        .icon-orb {
+        .afro-icon-orb {
           position: absolute;
           width: 3rem;
           height: 3rem;
-          background: radial-gradient(circle, rgba(255, 140, 0, 0.2) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(93, 64, 55, 0.2) 0%, transparent 70%);
           border-radius: 50%;
-          animation: orbRotate 4s linear infinite;
+          animation: afroOrbRotate 4s linear infinite;
         }
 
-        .elegant-event-card:hover .elegant-card-icon {
+        .afro-event-card:hover .afro-card-icon {
           transform: scale(1.1) rotate(5deg);
         }
 
         /* Titre et description */
-        .elegant-card-title {
+        .afro-card-title {
           font-family: 'Inter', sans-serif;
           font-weight: 700;
           font-size: 1.5rem;
@@ -802,20 +802,20 @@ const EventsCalendar = () => {
           margin-bottom: 1rem;
           line-height: 1.4;
           transition: all 0.3s ease;
-          background: linear-gradient(135deg, #ffffff 0%, #ff8c00 100%);
+          background: linear-gradient(135deg, #ffffff 0%, #5D4037 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
 
-        .elegant-event-card:hover .elegant-card-title {
-          background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 50%, #ff4500 100%);
+        .afro-event-card:hover .afro-card-title {
+          background: linear-gradient(135deg, #5D4037 0%, #6D4C41 50%, #8D6E63 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
 
-        .elegant-card-description {
+        .afro-card-description {
           color: rgba(255, 255, 255, 0.7);
           font-size: 0.95rem;
           line-height: 1.6;
@@ -824,49 +824,49 @@ const EventsCalendar = () => {
         }
 
         /* Détails */
-        .elegant-details-container {
+        .afro-details-container {
           margin-bottom: 2rem;
         }
 
-        .elegant-detail-row {
+        .afro-detail-row {
           display: flex;
           justify-content: space-between;
           margin-bottom: 1rem;
         }
 
-        .detail-item {
+        .afro-detail-item {
           display: flex;
           align-items: center;
           gap: 0.75rem;
           flex: 1;
         }
 
-        .elegant-detail-icon {
+        .afro-detail-icon {
           width: 1.25rem;
           height: 1.25rem;
-          color: #ff8c00;
+          color: #5D4037;
           transition: all 0.3s ease;
         }
 
-        .elegant-event-card:hover .elegant-detail-icon {
+        .afro-event-card:hover .afro-detail-icon {
           transform: scale(1.1);
-          color: #ff6b00;
+          color: #6D4C41;
         }
 
-        .elegant-detail-date,
-        .elegant-detail-time,
-        .elegant-detail-format,
-        .elegant-detail-participants {
+        .afro-detail-date,
+        .afro-detail-time,
+        .afro-detail-format,
+        .afro-detail-participants {
           font-size: 0.9rem;
           font-weight: 500;
         }
 
-        .elegant-detail-date { color: #ffffff; }
-        .elegant-detail-time { color: rgba(255, 255, 255, 0.8); }
-        .elegant-detail-format { color: rgba(255, 255, 255, 0.8); }
-        .elegant-detail-participants { color: rgba(255, 255, 255, 0.8); }
+        .afro-detail-date { color: #ffffff; }
+        .afro-detail-time { color: rgba(255, 255, 255, 0.8); }
+        .afro-detail-format { color: rgba(255, 255, 255, 0.8); }
+        .afro-detail-participants { color: rgba(255, 255, 255, 0.8); }
 
-        .elegant-detail-footer {
+        .afro-detail-footer {
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -875,32 +875,32 @@ const EventsCalendar = () => {
           border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .elegant-instructor-label,
-        .elegant-duration-label {
+        .afro-instructor-label,
+        .afro-duration-label {
           color: rgba(255, 255, 255, 0.6);
           font-size: 0.875rem;
         }
 
-        .elegant-instructor-name,
-        .elegant-duration-value {
+        .afro-instructor-name,
+        .afro-duration-value {
           color: #ffffff;
           font-weight: 600;
           font-size: 0.875rem;
         }
 
-        .elegant-instructor-name {
-          background: linear-gradient(135deg, #ff8c00, #ff6b00);
+        .afro-instructor-name {
+          background: linear-gradient(135deg, #5D4037, #6D4C41);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
 
         /* Barre de progression */
-        .elegant-progress-container {
+        .afro-progress-container {
           margin-bottom: 2rem;
         }
 
-        .elegant-progress-labels {
+        .afro-progress-labels {
           display: flex;
           justify-content: space-between;
           font-size: 0.8rem;
@@ -908,7 +908,7 @@ const EventsCalendar = () => {
           margin-bottom: 0.75rem;
         }
 
-        .elegant-progress-bar {
+        .afro-progress-bar {
           width: 100%;
           height: 0.5rem;
           background: rgba(255, 255, 255, 0.1);
@@ -917,15 +917,15 @@ const EventsCalendar = () => {
           position: relative;
         }
 
-        .elegant-progress-fill {
+        .afro-progress-fill {
           height: 100%;
-          background: linear-gradient(90deg, #ff8c00, #ff6b00, #ff4500);
+          background: linear-gradient(90deg, #5D4037, #6D4C41, #8D6E63);
           border-radius: 1rem;
           position: relative;
           transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .progress-shine {
+        .afro-progress-shine {
           position: absolute;
           top: 0;
           left: -100%;
@@ -935,47 +935,47 @@ const EventsCalendar = () => {
             transparent, 
             rgba(255, 255, 255, 0.4), 
             transparent);
-          animation: progressShine 2s ease-in-out infinite;
+          animation: afroProgressShine 2s ease-in-out infinite;
         }
 
         /* Pied de carte */
-        .elegant-card-footer {
+        .afro-card-footer {
           display: flex;
           justify-content: space-between;
           align-items: center;
         }
 
-        .elegant-price {
+        .afro-price {
           font-family: 'Inter', sans-serif;
           font-weight: 700;
           font-size: 1.25rem;
           position: relative;
         }
 
-        .elegant-price-free {
+        .afro-price-free {
           color: #10b981;
           position: relative;
         }
 
-        .elegant-price-premium {
-          background: linear-gradient(135deg, #ff8c00, #ff6b00);
+        .afro-price-premium {
+          background: linear-gradient(135deg, #5D4037, #6D4C41);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
           position: relative;
         }
 
-        .elegant-price-paid {
+        .afro-price-paid {
           color: #ffffff;
           position: relative;
         }
 
-        .price-text {
+        .afro-price-text {
           position: relative;
           z-index: 2;
         }
 
-        .price-glow {
+        .afro-price-glow {
           position: absolute;
           top: 50%;
           left: 50%;
@@ -985,11 +985,11 @@ const EventsCalendar = () => {
           background: radial-gradient(circle, currentColor 0%, transparent 70%);
           filter: blur(10px);
           opacity: 0.3;
-          animation: pricePulse 3s ease-in-out infinite;
+          animation: afroPricePulse 3s ease-in-out infinite;
         }
 
-        .elegant-register-btn {
-          background: linear-gradient(135deg, #ff8c00, #ff6b00, #ff4500);
+        .afro-register-btn {
+          background: linear-gradient(135deg, #5D4037, #6D4C41, #8D6E63);
           color: white;
           border: none;
           padding: 1rem 2rem;
@@ -1004,13 +1004,13 @@ const EventsCalendar = () => {
           transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .btn-text {
+        .afro-btn-text {
           position: relative;
           z-index: 2;
           transition: all 0.3s ease;
         }
 
-        .btn-orb {
+        .afro-btn-orb {
           width: 1.5rem;
           height: 1.5rem;
           background: rgba(255, 255, 255, 0.2);
@@ -1021,13 +1021,13 @@ const EventsCalendar = () => {
           transition: all 0.3s ease;
         }
 
-        .elegant-register-icon {
+        .afro-register-icon {
           width: 1rem;
           height: 1rem;
           transition: all 0.3s ease;
         }
 
-        .btn-glow {
+        .afro-btn-glow {
           position: absolute;
           top: 0;
           left: -100%;
@@ -1040,56 +1040,56 @@ const EventsCalendar = () => {
           transition: left 0.6s ease;
         }
 
-        .elegant-register-btn:hover {
+        .afro-register-btn:hover {
           transform: translateY(-3px) scale(1.05);
           box-shadow: 
-            0 15px 30px rgba(255, 140, 0, 0.4),
-            0 0 50px rgba(255, 140, 0, 0.2);
+            0 15px 30px rgba(93, 64, 55, 0.4),
+            0 0 50px rgba(93, 64, 55, 0.2);
         }
 
-        .elegant-register-btn:hover .btn-glow {
+        .afro-register-btn:hover .afro-btn-glow {
           left: 100%;
         }
 
-        .elegant-register-btn:hover .btn-orb {
+        .afro-register-btn:hover .afro-btn-orb {
           transform: scale(1.2);
           background: rgba(255, 255, 255, 0.3);
         }
 
-        .elegant-register-btn:hover .elegant-register-icon {
+        .afro-register-btn:hover .afro-register-icon {
           transform: translateX(3px);
         }
 
-        .elegant-register-disabled {
+        .afro-register-disabled {
           background: #6b7280;
           cursor: not-allowed;
           transform: none !important;
           box-shadow: none !important;
         }
 
-        .elegant-register-disabled:hover .btn-glow,
-        .elegant-register-disabled:hover .btn-orb {
+        .afro-register-disabled:hover .afro-btn-glow,
+        .afro-register-disabled:hover .afro-btn-orb {
           transform: none;
         }
 
         /* CTA */
-        .elegant-cta-container {
+        .afro-cta-container {
           text-align: center;
           margin-top: 5rem;
-          animation: fadeInUp 1s ease-out 0.8s both;
+          animation: afroFadeInUp 1s ease-out 0.8s both;
         }
 
-        .elegant-cta-text {
+        .afro-cta-text {
           color: rgba(255, 255, 255, 0.7);
           margin-bottom: 2rem;
           font-size: 1.25rem;
           font-weight: 300;
         }
 
-        .elegant-calendar-btn {
+        .afro-calendar-btn {
           background: transparent;
-          color: #ff8c00;
-          border: 1px solid rgba(255, 140, 0, 0.5);
+          color: #5D4037;
+          border: 1px solid rgba(93, 64, 55, 0.5);
           padding: 1.25rem 2.5rem;
           border-radius: 1.5rem;
           font-weight: 600;
@@ -1102,31 +1102,31 @@ const EventsCalendar = () => {
           transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .btn-content {
+        .afro-btn-content {
           position: relative;
           z-index: 2;
           transition: all 0.3s ease;
         }
 
-        .elegant-calendar-btn:hover {
-          background: rgba(255, 140, 0, 0.1);
-          border-color: #ff8c00;
+        .afro-calendar-btn:hover {
+          background: rgba(93, 64, 55, 0.1);
+          border-color: #5D4037;
           transform: translateY(-5px);
           box-shadow: 
-            0 20px 40px rgba(255, 140, 0, 0.3),
-            0 0 80px rgba(255, 140, 0, 0.1);
+            0 20px 40px rgba(93, 64, 55, 0.3),
+            0 0 80px rgba(93, 64, 55, 0.1);
         }
 
-        .elegant-calendar-btn:hover .btn-orb {
+        .afro-calendar-btn:hover .afro-btn-orb {
           transform: scale(1.2) rotate(90deg);
-          background: rgba(255, 140, 0, 0.3);
+          background: rgba(93, 64, 55, 0.3);
         }
 
-        .elegant-calendar-btn:hover .elegant-calendar-icon {
+        .afro-calendar-btn:hover .afro-calendar-icon {
           transform: translateX(5px);
         }
 
-        .btn-trail {
+        .afro-btn-trail {
           position: absolute;
           top: 0;
           left: -100%;
@@ -1134,75 +1134,75 @@ const EventsCalendar = () => {
           height: 100%;
           background: linear-gradient(90deg, 
             transparent, 
-            rgba(255, 140, 0, 0.2), 
+            rgba(93, 64, 55, 0.2), 
             transparent);
           transition: left 0.6s ease;
         }
 
-        .elegant-calendar-btn:hover .btn-trail {
+        .afro-calendar-btn:hover .afro-btn-trail {
           left: 100%;
         }
 
         /* Badge colors */
-        .event-badge-masterclass { 
-          background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(147, 51, 234, 0.1));
-          color: #d8b4fe;
+        .afro-badge-masterclass { 
+          background: linear-gradient(135deg, rgba(93, 64, 55, 0.2), rgba(93, 64, 55, 0.1));
+          color: #BCAAA4;
         }
-        .event-badge-masterclass .badge-glow {
-          background: radial-gradient(circle, rgba(147, 51, 234, 0.3) 0%, transparent 70%);
-        }
-
-        .event-badge-atelier { 
-          background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1));
-          color: #93c5fd;
-        }
-        .event-badge-atelier .badge-glow {
-          background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+        .afro-badge-masterclass .afro-badge-glow {
+          background: radial-gradient(circle, rgba(93, 64, 55, 0.3) 0%, transparent 70%);
         }
 
-        .event-badge-conference { 
-          background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1));
-          color: #86efac;
+        .afro-badge-atelier { 
+          background: linear-gradient(135deg, rgba(109, 76, 65, 0.2), rgba(109, 76, 65, 0.1));
+          color: #A1887F;
         }
-        .event-badge-conference .badge-glow {
-          background: radial-gradient(circle, rgba(34, 197, 94, 0.3) 0%, transparent 70%);
-        }
-
-        .event-badge-formation { 
-          background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.1));
-          color: #fca5a5;
-        }
-        .event-badge-formation .badge-glow {
-          background: radial-gradient(circle, rgba(239, 68, 68, 0.3) 0%, transparent 70%);
+        .afro-badge-atelier .afro-badge-glow {
+          background: radial-gradient(circle, rgba(109, 76, 65, 0.3) 0%, transparent 70%);
         }
 
-        .event-badge-discussion { 
-          background: linear-gradient(135deg, rgba(255, 140, 0, 0.2), rgba(255, 140, 0, 0.1));
-          color: #ff8c00;
+        .afro-badge-conference { 
+          background: linear-gradient(135deg, rgba(141, 110, 99, 0.2), rgba(141, 110, 99, 0.1));
+          color: #8D6E63;
         }
-        .event-badge-discussion .badge-glow {
-          background: radial-gradient(circle, rgba(255, 140, 0, 0.3) 0%, transparent 70%);
+        .afro-badge-conference .afro-badge-glow {
+          background: radial-gradient(circle, rgba(141, 110, 99, 0.3) 0%, transparent 70%);
         }
 
-        .event-badge-debutant { 
-          background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1));
-          color: #86efac;
+        .afro-badge-formation { 
+          background: linear-gradient(135deg, rgba(78, 52, 46, 0.2), rgba(78, 52, 46, 0.1));
+          color: #4E342E;
         }
-        .event-badge-intermediaire { 
-          background: linear-gradient(135deg, rgba(255, 140, 0, 0.2), rgba(255, 140, 0, 0.1));
-          color: #ff8c00;
+        .afro-badge-formation .afro-badge-glow {
+          background: radial-gradient(circle, rgba(78, 52, 46, 0.3) 0%, transparent 70%);
         }
-        .event-badge-avance { 
-          background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.1));
-          color: #fca5a5;
+
+        .afro-badge-discussion { 
+          background: linear-gradient(135deg, rgba(121, 85, 72, 0.2), rgba(121, 85, 72, 0.1));
+          color: #795548;
         }
-        .event-badge-default { 
+        .afro-badge-discussion .afro-badge-glow {
+          background: radial-gradient(circle, rgba(121, 85, 72, 0.3) 0%, transparent 70%);
+        }
+
+        .afro-badge-debutant { 
+          background: linear-gradient(135deg, rgba(141, 110, 99, 0.2), rgba(141, 110, 99, 0.1));
+          color: #8D6E63;
+        }
+        .afro-badge-intermediaire { 
+          background: linear-gradient(135deg, rgba(109, 76, 65, 0.2), rgba(109, 76, 65, 0.1));
+          color: #6D4C41;
+        }
+        .afro-badge-avance { 
+          background: linear-gradient(135deg, rgba(93, 64, 55, 0.2), rgba(93, 64, 55, 0.1));
+          color: #5D4037;
+        }
+        .afro-badge-default { 
           background: rgba(100, 100, 100, 0.2);
           color: #a0a0a0;
         }
 
         /* Animations principales */
-        @keyframes fadeInUp {
+        @keyframes afroFadeInUp {
           from {
             opacity: 0;
             transform: translateY(30px);
@@ -1213,7 +1213,7 @@ const EventsCalendar = () => {
           }
         }
 
-        @keyframes slideInUp {
+        @keyframes afroSlideInUp {
           from {
             opacity: 0;
             transform: translateY(50px) scale(0.95);
@@ -1224,7 +1224,7 @@ const EventsCalendar = () => {
           }
         }
 
-        @keyframes cardFloatIn {
+        @keyframes afroCardFloatIn {
           from {
             opacity: 0;
             transform: translateY(60px) rotateX(10deg);
@@ -1235,17 +1235,17 @@ const EventsCalendar = () => {
           }
         }
 
-        @keyframes pulseGlow {
+        @keyframes afroPulseGlow {
           0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
           50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
         }
 
-        @keyframes featuredPulse {
-          0%, 100% { box-shadow: 0 0 20px rgba(255, 140, 0, 0.3); }
-          50% { box-shadow: 0 0 30px rgba(255, 140, 0, 0.6); }
+        @keyframes afroFeaturedPulse {
+          0%, 100% { box-shadow: 0 0 20px rgba(93, 64, 55, 0.3); }
+          50% { box-shadow: 0 0 30px rgba(93, 64, 55, 0.6); }
         }
 
-        @keyframes sparkleFlash {
+        @keyframes afroSparkleFlash {
           0%, 100% { 
             opacity: 0; 
             transform: translate(0, 0) scale(0); 
@@ -1256,80 +1256,80 @@ const EventsCalendar = () => {
           }
         }
 
-        @keyframes orbRotate {
+        @keyframes afroOrbRotate {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
 
-        @keyframes progressShine {
+        @keyframes afroProgressShine {
           0% { left: -100%; }
           100% { left: 100%; }
         }
 
-        @keyframes pricePulse {
+        @keyframes afroPricePulse {
           0%, 100% { opacity: 0.2; }
           50% { opacity: 0.4; }
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-          .elegant-events-grid {
+          .afro-events-grid {
             grid-template-columns: 1fr;
           }
           
-          .elegant-stats-grid {
+          .afro-stats-grid {
             grid-template-columns: repeat(2, 1fr);
           }
           
-          .elegant-card-content {
+          .afro-card-content {
             padding: 1.5rem;
           }
           
-          .elegant-detail-row {
+          .afro-detail-row {
             flex-direction: column;
             gap: 1rem;
           }
           
-          .elegant-detail-footer {
+          .afro-detail-footer {
             flex-direction: column;
             align-items: flex-start;
             gap: 1rem;
           }
           
-          .elegant-card-footer {
+          .afro-card-footer {
             flex-direction: column;
             gap: 1.5rem;
             align-items: stretch;
           }
           
-          .elegant-register-btn {
+          .afro-register-btn {
             justify-content: center;
           }
 
-          .elegant-main-title {
+          .afro-main-title {
             flex-direction: column;
           }
         }
 
         @media (max-width: 480px) {
-          .elegant-events-container {
+          .afro-events-container {
             padding: 0 1rem;
           }
           
-          .elegant-stats-grid {
+          .afro-stats-grid {
             grid-template-columns: 1fr;
           }
           
-          .elegant-tabs-wrapper {
+          .afro-tabs-wrapper {
             flex-direction: column;
             width: 100%;
           }
           
-          .elegant-tab {
+          .afro-tab {
             text-align: center;
           }
 
-          .elegant-events-grid {
+          .afro-events-grid {
             grid-template-columns: 1fr;
           }
         }
@@ -1338,4 +1338,4 @@ const EventsCalendar = () => {
   );
 };
 
-export default EventsCalendar;
+export default AfroEventsCalendar;
