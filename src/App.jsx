@@ -9,6 +9,7 @@ import Ressources from "./page/ressource.jsx";
 import Event from "./page/evenement.jsx";
 import Shop from "./page/boutique.jsx";
 import Blog from "./page/blog.jsx";
+import Contact from "./page/contact.jsx";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/evenements" element={<Event />} />
           <Route path="/boutique" element={<Shop />} />
           <Route path="/Blog" element={<Blog />} />
+          <Route path="/contact" element={<Contact />} />
           {/* Ajoute d'autres routes ici si besoin */}
         </Routes>
       </main>
