@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import heroImage from '../../assets/hero-image.webp';
-import './Hero.css';
+import './hero.css';
 const Hero = () => {
   const [typedText, setTypedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);

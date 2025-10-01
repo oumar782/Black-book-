@@ -8,7 +8,7 @@ const Header = () => {
     { name: 'Accueil', href: '/', current: true },
     { name: 'À propos', href: '/a-propos', current: false },
     { name: 'Ressources', href: '/Nos-ressources', current: false },
-    { name: 'Événements', href: '/events', current: false },
+    { name: 'Événements', href: '/evenements', current: false },
     { name: 'Boutique', href: '/shop', current: false },
     { name: 'Blog', href: '/blog', current: false },
   ];

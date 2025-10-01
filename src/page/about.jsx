@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import culturalPattern from '../assets/cultural-pattern.webp';
-import './About.css';
+import './about.css';
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);

@@ -6,6 +6,7 @@ import Footer from './composant/Footer.jsx';
 import Index from './page/index';
 import AboutPage from "./page/about";
 import Ressources from "./page/ressource.jsx";
+import Event from "./page/evenement.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Index />} />
           <Route path="/a-propos" element={<AboutPage />} />
           <Route path="/Nos-ressources" element={<Ressources />} />
+          <Route path="/evenements" element={<Event />} />
           {/* Ajoute d'autres routes ici si besoin */}
         </Routes>
       </main>
