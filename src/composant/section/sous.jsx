@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
+import { Users, Zap, Crown, Check, Star, ArrowRight } from 'lucide-react';
 import './sous.css';
-const Subscription = () => {
+
+const SouscriptionPremium = () => {
   const [isAnnual, setIsAnnual] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -28,14 +30,14 @@ const Subscription = () => {
 
   const plans = [
     {
-      name: "Explorer",
+      name: "Explorateur",
       price: "Gratuit",
       annualPrice: "Gratuit",
       priceDetail: "Pour toujours",
       annualPriceDetail: "Pour toujours",
       description: "Parfait pour découvrir notre univers",
       popular: false,
-      color: "#6B7280",
+      color: "#8B7355",
       features: [
         "Accès à 50+ ressources gratuites",
         "Newsletter mensuelle",
@@ -52,9 +54,9 @@ const Subscription = () => {
       annualPriceDetail: "par mois",
       description: "L'essentiel pour approfondir tes connaissances",
       popular: true,
-      color: "#FF6B35",
+      color: "#D4AF37",
       features: [
-        "Tout du plan Explorer",
+        "Tout du plan Explorateur",
         "Accès complet à la bibliothèque",
         "Nouveaux contenus en priorité",
         "Ateliers en ligne mensuels",
@@ -70,7 +72,7 @@ const Subscription = () => {
       annualPriceDetail: "par mois",
       description: "Pour les leaders et créateurs de contenu",
       popular: false,
-      color: "#F59E0B",
+      color: "#C19A6B",
       features: [
         "Tout du plan Passionné",
         "Accès aux masterclasses exclusives",
@@ -102,149 +104,152 @@ const Subscription = () => {
 
   const getPlanIcon = (planName) => {
     switch (planName) {
-      case "Explorer":
-        return "👥";
+      case "Explorateur":
+        return <Users size={32} />;
       case "Passionné":
-        return "⚡";
+        return <Zap size={32} />;
       case "Ambassadeur":
-        return "👑";
+        return <Crown size={32} />;
       default:
-        return "⭐";
+        return <Star size={32} />;
     }
   };
 
   return (
-    <section ref={sectionRef} className="subscription-section">
-      <div className="subscription-container">
+    <section ref={sectionRef} className="souscription-premium-section">
+      <div className="souscription-premium-container">
         {/* En-tête */}
-        <div className={`section-header ${isVisible ? 'animate-fade-in-up' : ''}`}>
-          <div className="section-badge">
+        <div className={`souscription-header ${isVisible ? 'animate-fade-in-up' : ''}`}>
+          <div className="souscription-badge">
             Abonnements Premium
           </div>
-          <h2 className="section-title">
-            Choisis ton <span className="title-gradient">Parcours</span>
+          <h2 className="souscription-title">
+            Choisis ton <span className="souscription-title-gradient">Parcours</span>
           </h2>
-          <p className="section-description">
+          <p className="souscription-description">
             Accède à des ressources premium, participe à des événements exclusifs 
             et connecte-toi avec une communauté passionnée.
           </p>
           
           {/* Toggle annuel/mensuel */}
-          <div className="pricing-toggle">
-            <div className="toggle-container">
+          <div className="souscription-toggle">
+            <div className="souscription-toggle-container">
               <button 
-                className={`toggle-option ${!isAnnual ? 'active' : ''}`}
+                className={`souscription-toggle-option ${!isAnnual ? 'active' : ''}`}
                 onClick={() => setIsAnnual(false)}
               >
                 Mensuel
               </button>
               <button 
-                className={`toggle-option ${isAnnual ? 'active' : ''}`}
+                className={`souscription-toggle-option ${isAnnual ? 'active' : ''}`}
                 onClick={() => setIsAnnual(true)}
               >
-                Annuel <span className="discount-badge">-20%</span>
+                Annuel <span className="souscription-discount-badge">-20%</span>
               </button>
-              <div className={`toggle-slider ${isAnnual ? 'annual' : ''}`}></div>
+              <div className={`souscription-toggle-slider ${isAnnual ? 'annual' : ''}`}></div>
             </div>
           </div>
         </div>
 
         {/* Grille des plans */}
-        <div className="plans-grid">
+        <div className="souscription-plans-grid">
           {plans.map((plan, index) => (
             <div
               key={plan.name}
-              className={`plan-card ${plan.popular ? 'popular' : ''} ${isVisible ? 'animate-fade-in-up' : ''}`}
+              className={`souscription-plan-card ${plan.popular ? 'souscription-popular' : ''} ${isVisible ? 'animate-fade-in-up' : ''}`}
               style={{ 
                 animationDelay: `${index * 0.15}s`,
-                '--plan-color': plan.color
+                '--souscription-plan-color': plan.color
               }}
             >
               {/* Badge populaire */}
               {plan.popular && (
-                <div className="popular-badge">
-                  <div className="badge-content">
-                    ⭐ Plus populaire
+                <div className="souscription-popular-badge">
+                  <div className="souscription-badge-content">
+                    <Star size={14} />
+                    Plus populaire
                   </div>
-                  <div className="badge-tail"></div>
+                  <div className="souscription-badge-tail"></div>
                 </div>
               )}
 
               {/* Icône et titre */}
-              <div className="plan-header">
-                <div className={`plan-icon ${plan.popular ? 'popular-icon' : ''}`}>
-                  <span className="icon-emoji">{getPlanIcon(plan.name)}</span>
-                  <div className="icon-glow"></div>
+              <div className="souscription-plan-header">
+                <div className={`souscription-plan-icon ${plan.popular ? 'souscription-popular-icon' : ''}`}>
+                  {getPlanIcon(plan.name)}
+                  <div className="souscription-icon-glow"></div>
                 </div>
-                <h3 className="plan-name">{plan.name}</h3>
-                <p className="plan-description">{plan.description}</p>
+                <h3 className="souscription-plan-name">{plan.name}</h3>
+                <p className="souscription-plan-description">{plan.description}</p>
               </div>
 
               {/* Prix */}
-              <div className="plan-pricing">
-                <div className="price-container">
-                  <span className="price-amount">
+              <div className="souscription-plan-pricing">
+                <div className="souscription-price-container">
+                  <span className="souscription-price-amount">
                     {isAnnual ? plan.annualPrice : plan.price}
                   </span>
-                  <span className="price-detail">
+                  <span className="souscription-price-detail">
                     {isAnnual ? plan.annualPriceDetail : plan.priceDetail}
                   </span>
                 </div>
                 {isAnnual && plan.price !== "Gratuit" && (
-                  <div className="annual-savings">
+                  <div className="souscription-annual-savings">
                     Économisez {Math.round((1 - parseInt(plan.annualPrice) / parseInt(plan.price)) * 100)}%
                   </div>
                 )}
               </div>
 
               {/* Features */}
-              <div className="plan-features">
+              <div className="souscription-plan-features">
                 {plan.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="feature-item">
-                    <div className="feature-check">
-                      <div className="check-icon">✓</div>
+                  <div key={featureIndex} className="souscription-feature-item">
+                    <div className="souscription-feature-check">
+                      <Check size={14} />
                     </div>
-                    <span className="feature-text">{feature}</span>
+                    <span className="souscription-feature-text">{feature}</span>
                   </div>
                 ))}
               </div>
 
               {/* CTA */}
-              <button className={`plan-button ${plan.popular ? 'popular-button' : ''}`}>
-                {plan.name === 'Explorer' ? 'Commencer gratuitement' : 'Choisir ce plan'}
-                <span className="button-arrow">→</span>
+              <button className={`souscription-plan-button ${plan.popular ? 'souscription-popular-button' : ''}`}>
+                {plan.name === 'Explorateur' ? 'Commencer gratuitement' : 'Choisir ce plan'}
+                <ArrowRight size={18} className="souscription-button-arrow" />
               </button>
 
               {/* Effets visuels */}
-              <div className="card-glow"></div>
-              <div className="card-shine"></div>
+              <div className="souscription-card-glow"></div>
+              <div className="souscription-card-shine"></div>
             </div>
           ))}
         </div>
 
         {/* Témoignages */}
-        <div className={`testimonials-section ${isVisible ? 'animate-fade-in-up' : ''}`}>
-          <h3 className="testimonials-title">Ils nous font confiance</h3>
-          <div className="testimonials-grid">
+        <div className={`souscription-testimonials-section ${isVisible ? 'animate-fade-in-up' : ''}`}>
+          <h3 className="souscription-testimonials-title">Ils nous font confiance</h3>
+          <div className="souscription-testimonials-grid">
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index}
-                className="testimonial-card"
+                className="souscription-testimonial-card"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <div className="rating-stars">
+                <div className="souscription-rating-stars">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <div key={i} className="star">★</div>
+                    <div key={i} className="souscription-star">
+                      <Star size={16} fill="currentColor" />
+                    </div>
                   ))}
                 </div>
-                <p className="testimonial-comment">"{testimonial.comment}"</p>
-                <div className="testimonial-author">
-                  <div className="author-avatar">
+                <p className="souscription-testimonial-comment">"{testimonial.comment}"</p>
+                <div className="souscription-testimonial-author">
+                  <div className="souscription-author-avatar">
                     {testimonial.avatar}
                   </div>
-                  <div className="author-info">
-                    <div className="author-name">{testimonial.name}</div>
-                    <div className="author-role">{testimonial.role}</div>
+                  <div className="souscription-author-info">
+                    <div className="souscription-author-name">{testimonial.name}</div>
+                    <div className="souscription-author-role">{testimonial.role}</div>
                   </div>
                 </div>
               </div>
@@ -253,24 +258,24 @@ const Subscription = () => {
         </div>
 
         {/* FAQ rapide */}
-        <div className={`section-cta ${isVisible ? 'animate-fade-in-up' : ''}`}>
-          <p className="cta-text">
+        <div className={`souscription-section-cta ${isVisible ? 'animate-fade-in-up' : ''}`}>
+          <p className="souscription-cta-text">
             Des questions ? Nous avons les réponses.
           </p>
-          <button className="faq-button">
+          <button className="souscription-faq-button">
             Consulter la FAQ
           </button>
         </div>
       </div>
 
       {/* Éléments décoratifs */}
-      <div className="decorative-elements">
-        <div className="floating-orb orb-1"></div>
-        <div className="floating-orb orb-2"></div>
-        <div className="floating-orb orb-3"></div>
+      <div className="souscription-decorative-elements">
+        <div className="souscription-floating-orb souscription-orb-1"></div>
+        <div className="souscription-floating-orb souscription-orb-2"></div>
+        <div className="souscription-floating-orb souscription-orb-3"></div>
       </div>
     </section>
   );
 };
 
-export default Subscription;
+export default SouscriptionPremium;

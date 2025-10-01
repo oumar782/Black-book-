@@ -33,7 +33,7 @@ import economyImage from '../assets/books-collection.webp';
 import philosophyImage from '../assets/books-collection.webp';
 import './ressource.css';
 
-const ResourcesCatalog = () => {
+const RessourcesPremium = () => {
   const [activeCategory, setActiveCategory] = useState('Tous');
   const [activeTab, setActiveTab] = useState('Tous');
   const [searchQuery, setSearchQuery] = useState('');
@@ -66,20 +66,20 @@ const ResourcesCatalog = () => {
     'Tous': {
       name: 'Toutes les ressources',
       description: 'Explorez l\'ensemble de notre bibliothèque',
-      color: '#FF6B35',
+      color: '#8B7355',
       icon: Library
     },
     'Scientifiques': {
       name: 'Ressources Scientifiques',
       description: 'Contenu académique, recherche et études approfondies',
-      color: '#3B82F6',
+      color: '#7D5A3A',
       icon: GraduationCap,
       subcategories: ['Histoire', 'Économie', 'Anthropologie', 'Archéologie', 'Linguistique', 'Sciences Politiques']
     },
     'Non-Scientifiques': {
       name: 'Ressources Culturelles',
       description: 'Arts, traditions, spiritualité et expressions créatives',
-      color: '#8B5CF6',
+      color: '#5C4033',
       icon: Sparkles,
       subcategories: ['Culture', 'Art', 'Spiritualité', 'Littérature', 'Musique', 'Cinéma']
     }
@@ -100,8 +100,8 @@ const ResourcesCatalog = () => {
       price: "Gratuit",
       featured: true,
       image: historyImage,
-      levelColor: "#FF6B35",
-      priceColor: "#10B981",
+      levelColor: "#8B7355",
+      priceColor: "#7D5A3A",
       tags: ["Archéologie", "Commerce Transsaharien", "Structures Politiques"],
       author: "Dr. Ibrahim Traoré"
     },
@@ -119,8 +119,8 @@ const ResourcesCatalog = () => {
       price: "Premium",
       featured: false,
       image: cultureImage,
-      levelColor: "#10B981",
-      priceColor: "#FF6B35",
+      levelColor: "#7D5A3A",
+      priceColor: "#8B7355",
       tags: ["Tradition Orale", "Mythologie", "Sagesse Ancestrale"],
       author: "Mariam Kouyaté"
     },
@@ -138,8 +138,8 @@ const ResourcesCatalog = () => {
       price: "29€",
       featured: true,
       image: leadershipImage,
-      levelColor: "#EF4444",
-      priceColor: "#3B82F6",
+      levelColor: "#5C4033",
+      priceColor: "#8B7355",
       tags: ["Philosophie Managériale", "Études de Cas", "Psychologie Organisationnelle"],
       author: "Prof. Kwame Nkrumah"
     },
@@ -157,8 +157,8 @@ const ResourcesCatalog = () => {
       price: "Premium",
       featured: false,
       image: cultureImage,
-      levelColor: "#FF6B35",
-      priceColor: "#FF6B35",
+      levelColor: "#8B7355",
+      priceColor: "#8B7355",
       tags: ["Mouvements Artistiques", "Innovation", "Expression Culturelle"],
       author: "Aïssata Dembélé"
     },
@@ -176,8 +176,8 @@ const ResourcesCatalog = () => {
       price: "19€",
       featured: false,
       image: economyImage,
-      levelColor: "#EF4444",
-      priceColor: "#3B82F6",
+      levelColor: "#5C4033",
+      priceColor: "#8B7355",
       tags: ["Développement Durable", "Analyse Économique", "Innovation Sociale"],
       author: "Dr. Fatoumata Bâ"
     },
@@ -195,8 +195,8 @@ const ResourcesCatalog = () => {
       price: "Premium",
       featured: true,
       image: philosophyImage,
-      levelColor: "#EF4444",
-      priceColor: "#FF6B35",
+      levelColor: "#5C4033",
+      priceColor: "#8B7355",
       tags: ["Sagesse Traditionnelle", "Réflexion", "Éthique Moderne"],
       author: "Sékou Diarra"
     },
@@ -214,8 +214,8 @@ const ResourcesCatalog = () => {
       price: "39€",
       featured: false,
       image: booksImage,
-      levelColor: "#10B981",
-      priceColor: "#3B82F6",
+      levelColor: "#7D5A3A",
+      priceColor: "#8B7355",
       tags: ["Méthodologie", "Linguistique Appliquée", "Communication Académique"],
       author: "Dr. Nala Mbeki"
     },
@@ -233,8 +233,8 @@ const ResourcesCatalog = () => {
       price: "Premium",
       featured: false,
       image: cultureImage,
-      levelColor: "#FF6B35",
-      priceColor: "#FF6B35",
+      levelColor: "#8B7355",
+      priceColor: "#8B7355",
       tags: ["Symbolisme", "Spiritualité", "Expression Artistique"],
       author: "Youssef Camara"
     },
@@ -252,8 +252,8 @@ const ResourcesCatalog = () => {
       price: "24€",
       featured: true,
       image: historyImage,
-      levelColor: "#EF4444",
-      priceColor: "#3B82F6",
+      levelColor: "#5C4033",
+      priceColor: "#8B7355",
       tags: ["Recherche Archéologique", "Civilisations Anciennes", "Découvertes Scientifiques"],
       author: "Prof. Aminata Sow"
     },
@@ -271,8 +271,8 @@ const ResourcesCatalog = () => {
       price: "Premium",
       featured: false,
       image: cultureImage,
-      levelColor: "#FF6B35",
-      priceColor: "#FF6B35",
+      levelColor: "#8B7355",
+      priceColor: "#8B7355",
       tags: ["Tradition Musicale", "Innovation", "Patrimoine Culturel"],
       author: "Koffi Mensah"
     }
@@ -318,57 +318,57 @@ const ResourcesCatalog = () => {
   const stats = getCategoryStats();
 
   return (
-    <section ref={sectionRef} className="resources-catalog-section">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section ref={sectionRef} className="ressources-premium-section">
+      <div className="ressources-premium-container">
         {/* En-tête */}
-        <div className="text-center mb-16">
-          <div className="header-badge">
+        <div className="ressources-premium-header">
+          <div className="ressources-premium-header-badge">
             <Sparkles size={16} />
             <span>Bibliothèque Premium</span>
           </div>
-          <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl text-foreground mb-6">
-            Ressources <span className="text-gradient-orange">Africaines</span>
+          <h1 className="ressources-premium-title">
+            Ressources <span className="ressources-premium-title-gradient">Africaines</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="ressources-premium-description">
             Découvrez notre collection exclusive de ressources éducatives et culturelles 
             pour approfondir vos connaissances sur l'héritage africain.
           </p>
         </div>
 
         {/* Navigation par type de contenu */}
-        <div className="content-type-navigation">
-          <div className="navigation-header">
-            <h2 className="navigation-title">Explorer par Catégorie</h2>
-            <p className="navigation-subtitle">Choisissez votre domaine d'intérêt</p>
+        <div className="ressources-premium-content-type-navigation">
+          <div className="ressources-premium-navigation-header">
+            <h2 className="ressources-premium-navigation-title">Explorer par Catégorie</h2>
+            <p className="ressources-premium-navigation-subtitle">Choisissez votre domaine d'intérêt</p>
           </div>
-          <div className="tabs-container">
+          <div className="ressources-premium-tabs-container">
             {Object.entries(categoryStructure).map(([key, category]) => {
               const IconComponent = category.icon;
               return (
                 <button
                   key={key}
-                  className={`content-tab ${activeTab === key ? 'active' : ''}`}
+                  className={`ressources-premium-content-tab ${activeTab === key ? 'active' : ''}`}
                   onClick={() => {
                     setActiveTab(key);
                     setActiveCategory('Tous');
                   }}
-                  style={{ '--tab-color': category.color }}
+                  style={{ '--ressources-premium-tab-color': category.color }}
                 >
-                  <div className="tab-content">
-                    <div className="tab-icon">
+                  <div className="ressources-premium-tab-content">
+                    <div className="ressources-premium-tab-icon">
                       <IconComponent size={32} />
                     </div>
-                    <div className="tab-text">
-                      <span className="tab-name">{category.name}</span>
-                      <span className="tab-description">{category.description}</span>
+                    <div className="ressources-premium-tab-text">
+                      <span className="ressources-premium-tab-name">{category.name}</span>
+                      <span className="ressources-premium-tab-description">{category.description}</span>
                     </div>
-                    <div className="tab-count">
+                    <div className="ressources-premium-tab-count">
                       {key === 'Tous' && stats.total}
                       {key === 'Scientifiques' && stats.scientific}
                       {key === 'Non-Scientifiques' && stats.cultural}
                     </div>
                   </div>
-                  <div className="tab-indicator"></div>
+                  <div className="ressources-premium-tab-indicator"></div>
                 </button>
               );
             })}
@@ -376,27 +376,27 @@ const ResourcesCatalog = () => {
         </div>
 
         {/* Barre de recherche avancée */}
-        <div className={`search-section ${isVisible ? 'animate-fade-in-up' : ''}`}>
-          <div className="search-container">
-            <div className="search-header">
-              <h3 className="search-title">Recherche Avancée</h3>
-              <p className="search-subtitle">
+        <div className={`ressources-premium-search-section ${isVisible ? 'animate-fade-in-up' : ''}`}>
+          <div className="ressources-premium-search-container">
+            <div className="ressources-premium-search-header">
+              <h3 className="ressources-premium-search-title">Recherche Avancée</h3>
+              <p className="ressources-premium-search-subtitle">
                 Trouvez précisément ce que vous cherchez dans notre collection
               </p>
             </div>
-            <div className="search-input-group">
-              <div className="search-input-wrapper">
-                <Search className="search-icon" size={20} />
+            <div className="ressources-premium-search-input-group">
+              <div className="ressources-premium-search-input-wrapper">
+                <Search className="ressources-premium-search-icon" size={20} />
                 <input
                   type="text"
                   placeholder="Rechercher par titre, description, auteur ou tags..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="search-input"
+                  className="ressources-premium-search-input"
                 />
                 {searchQuery && (
                   <button 
-                    className="clear-search"
+                    className="ressources-premium-clear-search"
                     onClick={() => setSearchQuery('')}
                     title="Effacer la recherche"
                   >
@@ -408,23 +408,23 @@ const ResourcesCatalog = () => {
           </div>
 
           {/* Filtres par sous-catégorie */}
-          <div className="category-filters-section">
-            <div className="filters-header">
-              <div className="filters-label-wrapper">
+          <div className="ressources-premium-category-filters-section">
+            <div className="ressources-premium-filters-header">
+              <div className="ressources-premium-filters-label-wrapper">
                 <Filter size={16} />
-                <span className="filters-label">Filtrer par domaine :</span>
+                <span className="ressources-premium-filters-label">Filtrer par domaine :</span>
               </div>
-              <span className="active-category">
+              <span className="ressources-premium-active-category">
                 {activeCategory === 'Tous' ? 'Tous les domaines' : activeCategory}
               </span>
             </div>
-            <div className="filters-grid">
+            <div className="ressources-premium-filters-grid">
               <button
-                className={`category-filter ${activeCategory === 'Tous' ? 'active' : ''}`}
+                className={`ressources-premium-category-filter ${activeCategory === 'Tous' ? 'active' : ''}`}
                 onClick={() => setActiveCategory('Tous')}
               >
-                <span className="filter-text">Tous les domaines</span>
-                <span className="filter-count">
+                <span className="ressources-premium-filter-text">Tous les domaines</span>
+                <span className="ressources-premium-filter-count">
                   {activeTab === 'Tous' ? resources.length : 
                    resources.filter(r => r.subcategory === activeTab).length}
                 </span>
@@ -436,11 +436,11 @@ const ResourcesCatalog = () => {
                 return (
                   <button
                     key={subcategory}
-                    className={`category-filter ${activeCategory === subcategory ? 'active' : ''}`}
+                    className={`ressources-premium-category-filter ${activeCategory === subcategory ? 'active' : ''}`}
                     onClick={() => setActiveCategory(subcategory)}
                   >
-                    <span className="filter-text">{subcategory}</span>
-                    <span className="filter-count">{count}</span>
+                    <span className="ressources-premium-filter-text">{subcategory}</span>
+                    <span className="ressources-premium-filter-count">{count}</span>
                   </button>
                 );
               })}
@@ -449,69 +449,69 @@ const ResourcesCatalog = () => {
         </div>
 
         {/* Statistiques en temps réel */}
-        <div className={`live-stats ${isVisible ? 'animate-fade-in-up' : ''}`}>
-          <div className="stats-grid">
-            <div className="stat-card">
-              <div className="stat-icon">
+        <div className={`ressources-premium-live-stats ${isVisible ? 'animate-fade-in-up' : ''}`}>
+          <div className="ressources-premium-stats-grid">
+            <div className="ressources-premium-stat-card">
+              <div className="ressources-premium-stat-icon">
                 <Library size={24} />
               </div>
-              <div className="stat-content">
-                <div className="stat-value">{stats.total}+</div>
-                <div className="stat-label">Ressources Total</div>
+              <div className="ressources-premium-stat-content">
+                <div className="ressources-premium-stat-value">{stats.total}+</div>
+                <div className="ressources-premium-stat-label">Ressources Total</div>
               </div>
             </div>
-            <div className="stat-card">
-              <div className="stat-icon">
+            <div className="ressources-premium-stat-card">
+              <div className="ressources-premium-stat-icon">
                 <Download size={24} />
               </div>
-              <div className="stat-content">
-                <div className="stat-value">15K+</div>
-                <div className="stat-label">Téléchargements</div>
+              <div className="ressources-premium-stat-content">
+                <div className="ressources-premium-stat-value">15K+</div>
+                <div className="ressources-premium-stat-label">Téléchargements</div>
               </div>
             </div>
-            <div className="stat-card">
-              <div className="stat-icon">
+            <div className="ressources-premium-stat-card">
+              <div className="ressources-premium-stat-icon">
                 <TrendingUp size={24} />
               </div>
-              <div className="stat-content">
-                <div className="stat-value">{stats.categories}</div>
-                <div className="stat-label">Domaines d'Expertise</div>
+              <div className="ressources-premium-stat-content">
+                <div className="ressources-premium-stat-value">{stats.categories}</div>
+                <div className="ressources-premium-stat-label">Domaines d'Expertise</div>
               </div>
             </div>
-            <div className="stat-card">
-              <div className="stat-icon">
+            <div className="ressources-premium-stat-card">
+              <div className="ressources-premium-stat-icon">
                 <Award size={24} />
               </div>
-              <div className="stat-content">
-                <div className="stat-value">4.8/5</div>
-                <div className="stat-label">Satisfaction</div>
+              <div className="ressources-premium-stat-content">
+                <div className="ressources-premium-stat-value">4.8/5</div>
+                <div className="ressources-premium-stat-label">Satisfaction</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Résultats de recherche */}
-        <div className="results-section">
-          <div className="results-header">
-            <div className="results-info">
-              <span className="results-count">{filteredResources.length}</span>
-              <span className="results-text">
+        <div className="ressources-premium-results-section">
+          <div className="ressources-premium-results-header">
+            <div className="ressources-premium-results-info">
+              <span className="ressources-premium-results-count">{filteredResources.length}</span>
+              <span className="ressources-premium-results-text">
                 {filteredResources.length === 1 ? 'ressource trouvée' : 'ressources trouvées'}
               </span>
               {activeCategory !== 'Tous' && (
-                <span className="active-filter-tag">
+                <span className="ressources-premium-active-filter-tag">
                   dans <strong>{activeCategory}</strong>
                 </span>
               )}
               {searchQuery && (
-                <span className="search-query-tag">
+                <span className="ressources-premium-search-query-tag">
                   pour "<strong>{searchQuery}</strong>"
                 </span>
               )}
             </div>
-            <div className="results-sort">
-              <span className="sort-label">Trier par :</span>
-              <select className="sort-select">
+            <div className="ressources-premium-results-sort">
+              <span className="ressources-premium-sort-label">Trier par :</span>
+              <select className="ressources-premium-sort-select">
                 <option>Plus populaire</option>
                 <option>Plus récent</option>
                 <option>Note élevée</option>
@@ -522,37 +522,37 @@ const ResourcesCatalog = () => {
 
           {/* Grille des ressources */}
           {filteredResources.length > 0 ? (
-            <div className="resources-grid">
+            <div className="ressources-premium-resources-grid">
               {filteredResources.map((resource, index) => (
                 <div
                   key={resource.id}
-                  className={`resource-card ${isVisible ? 'animate-fade-in-up' : ''}`}
+                  className={`ressources-premium-resource-card ${isVisible ? 'animate-fade-in-up' : ''}`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="card-inner">
+                  <div className="ressources-premium-card-inner">
                     {/* En-tête de la carte avec image */}
-                    <div className="card-header">
-                      <div className="card-image">
+                    <div className="ressources-premium-card-header">
+                      <div className="ressources-premium-card-image">
                         <img
                           src={resource.image}
                           alt={resource.title}
-                          className="resource-image"
+                          className="ressources-premium-resource-image"
                           onError={(e) => {
                             e.target.src = booksImage; // Image de fallback
                           }}
                         />
-                        <div className="image-overlay"></div>
+                        <div className="ressources-premium-image-overlay"></div>
                         
                         {/* Badges contextuels */}
-                        <div className="card-badges">
+                        <div className="ressources-premium-card-badges">
                           <div 
-                            className="level-badge"
+                            className="ressources-premium-level-badge"
                             style={{ backgroundColor: resource.levelColor }}
                           >
                             {resource.level}
                           </div>
                           {resource.featured && (
-                            <div className="featured-badge">
+                            <div className="ressources-premium-featured-badge">
                               <Star size={14} />
                               Recommandé
                             </div>
@@ -560,57 +560,57 @@ const ResourcesCatalog = () => {
                         </div>
 
                         {/* Métadonnées overlay */}
-                        <div className="resource-meta-overlay">
-                          <div className="type-info">
+                        <div className="ressources-premium-resource-meta-overlay">
+                          <div className="ressources-premium-type-info">
                             {getTypeIcon(resource.type)}
-                            <span className="type-name">{resource.type}</span>
+                            <span className="ressources-premium-type-name">{resource.type}</span>
                           </div>
-                          <div className="duration-info">
+                          <div className="ressources-premium-duration-info">
                             <Clock size={14} />
-                            <span className="duration-text">{resource.duration}</span>
+                            <span className="ressources-premium-duration-text">{resource.duration}</span>
                           </div>
                         </div>
                       </div>
                     </div>
 
                     {/* Corps de la carte */}
-                    <div className="card-body">
-                      <div className="card-category">
-                        <span className="category-tag">{resource.category}</span>
-                        <div className="rating-display">
+                    <div className="ressources-premium-card-body">
+                      <div className="ressources-premium-card-category">
+                        <span className="ressources-premium-category-tag">{resource.category}</span>
+                        <div className="ressources-premium-rating-display">
                           <Star size={14} fill="currentColor" />
-                          <span className="rating-value">{resource.rating}</span>
+                          <span className="ressources-premium-rating-value">{resource.rating}</span>
                         </div>
                       </div>
 
-                      <h3 className="resource-title">{resource.title}</h3>
-                      <p className="resource-description">{resource.description}</p>
+                      <h3 className="ressources-premium-resource-title">{resource.title}</h3>
+                      <p className="ressources-premium-resource-description">{resource.description}</p>
 
                       {/* Auteur */}
-                      <div className="author-info">
+                      <div className="ressources-premium-author-info">
                         <User size={14} />
-                        <span className="author-label">Par </span>
-                        <span className="author-name">{resource.author}</span>
+                        <span className="ressources-premium-author-label">Par </span>
+                        <span className="ressources-premium-author-name">{resource.author}</span>
                       </div>
 
                       {/* Tags */}
-                      <div className="resource-tags">
+                      <div className="ressources-premium-resource-tags">
                         {resource.tags.map((tag, tagIndex) => (
-                          <span key={tagIndex} className="resource-tag">
+                          <span key={tagIndex} className="ressources-premium-resource-tag">
                             #{tag}
                           </span>
                         ))}
                       </div>
 
                       {/* Métriques */}
-                      <div className="resource-metrics">
-                        <div className="metric downloads">
+                      <div className="ressources-premium-resource-metrics">
+                        <div className="ressources-premium-metric ressources-premium-downloads">
                           <Download size={14} />
-                          <span className="metric-value">{resource.downloads.toLocaleString()}</span>
-                          <span className="metric-label">téléchargements</span>
+                          <span className="ressources-premium-metric-value">{resource.downloads.toLocaleString()}</span>
+                          <span className="ressources-premium-metric-label">téléchargements</span>
                         </div>
                         <div 
-                          className={`price-tag ${resource.price.toLowerCase()}`}
+                          className={`ressources-premium-price-tag ${resource.price.toLowerCase()}`}
                           style={{ backgroundColor: resource.priceColor }}
                         >
                           {resource.price}
@@ -619,38 +619,38 @@ const ResourcesCatalog = () => {
                     </div>
 
                     {/* Actions */}
-                    <div className="card-actions">
-                      <button className="primary-action">
-                        <span className="action-text">Accéder au contenu</span>
+                    <div className="ressources-premium-card-actions">
+                      <button className="ressources-premium-primary-action">
+                        <span className="ressources-premium-action-text">Accéder au contenu</span>
                         <ArrowRight size={16} />
                       </button>
-                      <button className="secondary-action" title="Aperçu">
+                      <button className="ressources-premium-secondary-action" title="Aperçu">
                         <Eye size={16} />
                       </button>
                     </div>
                   </div>
 
                   {/* Effets visuels */}
-                  <div className="card-hover-effect"></div>
-                  <div className="card-glow-effect"></div>
+                  <div className="ressources-premium-card-hover-effect"></div>
+                  <div className="ressources-premium-card-glow-effect"></div>
                 </div>
               ))}
             </div>
           ) : (
             /* État aucun résultat */
-            <div className="no-results-state">
-              <div className="no-results-content">
-                <div className="no-results-icon">
+            <div className="ressources-premium-no-results-state">
+              <div className="ressources-premium-no-results-content">
+                <div className="ressources-premium-no-results-icon">
                   <Search size={48} />
                 </div>
-                <h3 className="no-results-title">Aucune ressource correspondante</h3>
-                <p className="no-results-description">
+                <h3 className="ressources-premium-no-results-title">Aucune ressource correspondante</h3>
+                <p className="ressources-premium-no-results-description">
                   Nous n'avons trouvé aucun résultat pour votre recherche. 
                   Essayez d'ajuster vos critères ou explorez une autre catégorie.
                 </p>
-                <div className="no-results-actions">
+                <div className="ressources-premium-no-results-actions">
                   <button 
-                    className="reset-filters-btn"
+                    className="ressources-premium-reset-filters-btn"
                     onClick={() => {
                       setSearchQuery('');
                       setActiveCategory('Tous');
@@ -659,7 +659,7 @@ const ResourcesCatalog = () => {
                     Réinitialiser les filtres
                   </button>
                   <button 
-                    className="browse-all-btn"
+                    className="ressources-premium-browse-all-btn"
                     onClick={() => setActiveTab('Tous')}
                   >
                     Parcourir toute la bibliothèque
@@ -672,13 +672,13 @@ const ResourcesCatalog = () => {
 
         {/* Chargement de plus de contenu */}
         {filteredResources.length > 0 && (
-          <div className={`load-more-section ${isVisible ? 'animate-fade-in-up' : ''}`}>
-            <div className="load-more-content">
-              <p className="load-more-text">
+          <div className={`ressources-premium-load-more-section ${isVisible ? 'animate-fade-in-up' : ''}`}>
+            <div className="ressources-premium-load-more-content">
+              <p className="ressources-premium-load-more-text">
                 Vous avez vu {filteredResources.length} ressources sur {stats.total}+ disponibles
               </p>
-              <button className="load-more-button">
-                <span className="button-text">Charger plus de ressources</span>
+              <button className="ressources-premium-load-more-button">
+                <span className="ressources-premium-button-text">Charger plus de ressources</span>
                 <ChevronDown size={16} />
               </button>
             </div>
@@ -687,13 +687,13 @@ const ResourcesCatalog = () => {
       </div>
 
       {/* Éléments décoratifs */}
-      <div className="decorative-background">
-        <div className="floating-orb orb-1"></div>
-        <div className="floating-orb orb-2"></div>
-        <div className="floating-orb orb-3"></div>
+      <div className="ressources-premium-decorative-background">
+        <div className="ressources-premium-floating-orb ressources-premium-orb-1"></div>
+        <div className="ressources-premium-floating-orb ressources-premium-orb-2"></div>
+        <div className="ressources-premium-floating-orb ressources-premium-orb-3"></div>
       </div>
     </section>
   );
 };
 
-export default ResourcesCatalog;
+export default RessourcesPremium;

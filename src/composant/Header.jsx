@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../assets/black.webp';
 
-const Header = () => {
+const HeaderPremium = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
@@ -14,24 +14,25 @@ const Header = () => {
     { name: 'Fracture', href: '/fracture', current: false },
     { name: 'Contact', href: '/contact', current: false }
   ];
+
   return (
     <>
       <style jsx>{`
-        .header {
+        .header-premium {
           position: fixed;
           top: 0;
           left: 0;
           right: 0;
           z-index: 50;
-          background: rgba(0, 0, 0, 0.92);
+          background: rgba(26, 18, 11, 0.95);
           backdrop-filter: blur(20px) saturate(180%);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid rgba(139, 115, 85, 0.1);
           box-shadow: 
             0 4px 30px rgba(0, 0, 0, 0.4),
             0 1px 0 rgba(255, 255, 255, 0.02) inset;
         }
 
-        .nav-container {
+        .header-premium-nav-container {
           max-width: 1200px;
           margin: 0 auto;
           padding: 0 24px;
@@ -41,14 +42,14 @@ const Header = () => {
           height: 80px;
         }
 
-        .logo-container {
+        .header-premium-logo-container {
           display: flex;
           align-items: center;
           gap: 14px;
           cursor: pointer;
         }
 
-        .logo-wrapper {
+        .header-premium-logo-wrapper {
           position: relative;
           width: 52px;
           height: 52px;
@@ -57,22 +58,22 @@ const Header = () => {
           justify-content: center;
         }
 
-        .logo-background {
+        .header-premium-logo-background {
           position: absolute;
           top: 0;
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, #ff6b00 0%, #ff9d00 50%, #ff6b00 100%);
+          background: linear-gradient(135deg, #8B7355 0%, #A9927D 50%, #8B7355 100%);
           border-radius: 16px;
           opacity: 0;
           transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
           box-shadow: 
-            0 0 0 1px rgba(255, 107, 0, 0.1),
-            0 4px 20px rgba(255, 107, 0, 0.2);
+            0 0 0 1px rgba(139, 115, 85, 0.1),
+            0 4px 20px rgba(139, 115, 85, 0.2);
         }
 
-        .logo-img {
+        .header-premium-logo-img {
           width: 44px;
           height: 44px;
           border-radius: 12px;
@@ -81,23 +82,23 @@ const Header = () => {
           z-index: 2;
           filter: 
             brightness(1.1)
-            drop-shadow(0 2px 8px rgba(255, 107, 0, 0.3));
+            drop-shadow(0 2px 8px rgba(139, 115, 85, 0.3));
           object-fit: cover;
         }
 
-        .logo-container:hover .logo-background {
+        .header-premium-logo-container:hover .header-premium-logo-background {
           opacity: 1;
           transform: scale(1.1) rotate(5deg);
         }
 
-        .logo-container:hover .logo-img {
+        .header-premium-logo-container:hover .header-premium-logo-img {
           transform: scale(1.05) rotate(-5deg);
           filter: 
             brightness(1.2)
-            drop-shadow(0 4px 16px rgba(255, 107, 0, 0.5));
+            drop-shadow(0 4px 16px rgba(139, 115, 85, 0.5));
         }
 
-        .logo-text {
+        .header-premium-logo-text {
           font-family: 'Playfair Display', serif;
           font-weight: 800;
           font-size: 1.5rem;
@@ -107,27 +108,27 @@ const Header = () => {
           letter-spacing: -0.5px;
         }
 
-        .logo-text span:first-child {
+        .header-premium-logo-text span:first-child {
           color: #e0e0e0;
           opacity: 0.9;
           font-weight: 700;
         }
 
-        .logo-text span:last-child {
-          background: linear-gradient(135deg, #ffffff 0%, #ff9d00 50%, #ff6b00 100%);
+        .header-premium-logo-text span:last-child {
+          background: linear-gradient(135deg, #ffffff 0%, #A9927D 50%, #8B7355 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
           font-weight: 900;
-          text-shadow: 0 2px 4px rgba(255, 107, 0, 0.2);
+          text-shadow: 0 2px 4px rgba(139, 115, 85, 0.2);
         }
 
-        .nav-desktop {
+        .header-premium-nav-desktop {
           display: flex;
           gap: 28px;
         }
 
-        .nav-link {
+        .header-premium-nav-link {
           position: relative;
           padding: 10px 0;
           font-size: 0.95rem;
@@ -138,13 +139,13 @@ const Header = () => {
           letter-spacing: 0.2px;
         }
 
-        .nav-link:hover,
-        .nav-link.active {
+        .header-premium-nav-link:hover,
+        .header-premium-nav-link.active {
           color: white;
           transform: translateY(-1px);
         }
 
-        .nav-link::before {
+        .header-premium-nav-link::before {
           content: '';
           position: absolute;
           bottom: -2px;
@@ -152,23 +153,23 @@ const Header = () => {
           transform: translateX(-50%);
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #ff6b00, #ff9d00, #ff6b00);
+          background: linear-gradient(90deg, #8B7355, #A9927D, #8B7355);
           border-radius: 2px;
           transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 0 10px rgba(255, 107, 0, 0.4);
+          box-shadow: 0 0 10px rgba(139, 115, 85, 0.4);
         }
 
-        .nav-link:hover::before,
-        .nav-link.active::before {
+        .header-premium-nav-link:hover::before,
+        .header-premium-nav-link.active::before {
           width: 100%;
         }
 
-        .cta-buttons {
+        .header-premium-cta-buttons {
           display: flex;
           gap: 16px;
         }
 
-        .btn {
+        .header-premium-btn {
           padding: 10px 24px;
           border-radius: 12px;
           font-size: 0.9rem;
@@ -181,7 +182,7 @@ const Header = () => {
           overflow: hidden;
         }
 
-        .btn::before {
+        .header-premium-btn::before {
           content: '';
           position: absolute;
           top: 0;
@@ -192,43 +193,43 @@ const Header = () => {
           transition: left 0.6s ease;
         }
 
-        .btn:hover::before {
+        .header-premium-btn:hover::before {
           left: 100%;
         }
 
-        .btn-outline {
+        .header-premium-btn-outline {
           background: rgba(255, 255, 255, 0.05);
           color: white;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(139, 115, 85, 0.3);
           backdrop-filter: blur(10px);
         }
 
-        .btn-outline:hover {
-          background: rgba(255, 255, 255, 0.08);
-          border-color: rgba(255, 255, 255, 0.2);
+        .header-premium-btn-outline:hover {
+          background: rgba(139, 115, 85, 0.1);
+          border-color: rgba(139, 115, 85, 0.5);
           transform: translateY(-2px);
           box-shadow: 
             0 8px 25px rgba(0, 0, 0, 0.3),
-            0 0 0 1px rgba(255, 255, 255, 0.05);
+            0 0 0 1px rgba(139, 115, 85, 0.1);
         }
 
-        .btn-primary {
-          background: linear-gradient(135deg, #ff6b00 0%, #ff9d00 100%);
+        .header-premium-btn-primary {
+          background: linear-gradient(135deg, #7D5A3A 0%, #8B7355 100%);
           color: white;
           box-shadow: 
-            0 4px 20px rgba(255, 107, 0, 0.3),
-            0 0 0 1px rgba(255, 107, 0, 0.1);
+            0 4px 20px rgba(125, 90, 58, 0.3),
+            0 0 0 1px rgba(125, 90, 58, 0.1);
         }
 
-        .btn-primary:hover {
+        .header-premium-btn-primary:hover {
           transform: translateY(-2px);
           box-shadow: 
-            0 8px 30px rgba(255, 107, 0, 0.5),
-            0 0 0 1px rgba(255, 107, 0, 0.2);
-          background: linear-gradient(135deg, #ff7b1a 0%, #ffad33 100%);
+            0 8px 30px rgba(125, 90, 58, 0.5),
+            0 0 0 1px rgba(125, 90, 58, 0.2);
+          background: linear-gradient(135deg, #8B7355 0%, #A9927D 100%);
         }
 
-        .menu-toggle {
+        .header-premium-menu-toggle {
           display: none;
           background: none;
           border: none;
@@ -241,29 +242,29 @@ const Header = () => {
           backdrop-filter: blur(10px);
         }
 
-        .menu-toggle:hover {
-          background: rgba(255, 255, 255, 0.05);
+        .header-premium-menu-toggle:hover {
+          background: rgba(139, 115, 85, 0.1);
           transform: scale(1.1);
         }
 
-        .mobile-menu {
+        .header-premium-mobile-menu {
           position: absolute;
           top: 84px;
           left: 20px;
           right: 20px;
-          background: rgba(8, 8, 8, 0.98);
+          background: rgba(26, 18, 11, 0.98);
           backdrop-filter: blur(25px) saturate(180%);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(139, 115, 85, 0.2);
           border-radius: 20px;
           padding: 24px;
           box-shadow: 
             0 20px 60px rgba(0, 0, 0, 0.6),
-            0 0 0 1px rgba(255, 255, 255, 0.03);
-          animation: slideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            0 0 0 1px rgba(139, 115, 85, 0.1);
+          animation: header-premium-slideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
           z-index: 49;
         }
 
-        .mobile-menu-item {
+        .header-premium-mobile-menu-item {
           display: block;
           padding: 16px 20px;
           font-size: 1.1rem;
@@ -275,44 +276,44 @@ const Header = () => {
           border: 1px solid transparent;
         }
 
-        .mobile-menu-item:hover,
-        .mobile-menu-item.active {
+        .header-premium-mobile-menu-item:hover,
+        .header-premium-mobile-menu-item.active {
           color: white;
-          background: linear-gradient(135deg, rgba(255, 107, 0, 0.15), rgba(255, 157, 0, 0.1));
-          border-color: rgba(255, 107, 0, 0.2);
+          background: linear-gradient(135deg, rgba(139, 115, 85, 0.15), rgba(169, 146, 125, 0.1));
+          border-color: rgba(139, 115, 85, 0.3);
           transform: translateX(8px);
-          box-shadow: 0 4px 15px rgba(255, 107, 0, 0.2);
+          box-shadow: 0 4px 15px rgba(139, 115, 85, 0.2);
         }
 
-        .mobile-menu-footer {
+        .header-premium-mobile-menu-footer {
           margin-top: 24px;
           padding-top: 24px;
-          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          border-top: 1px solid rgba(139, 115, 85, 0.2);
           display: flex;
           flex-direction: column;
           gap: 12px;
         }
 
         @media (max-width: 768px) {
-          .nav-desktop,
-          .cta-buttons {
+          .header-premium-nav-desktop,
+          .header-premium-cta-buttons {
             display: none;
           }
 
-          .menu-toggle {
+          .header-premium-menu-toggle {
             display: block;
           }
 
-          .nav-container {
+          .header-premium-nav-container {
             padding: 0 20px;
           }
 
-          .logo-text span:first-child {
+          .header-premium-logo-text span:first-child {
             display: none;
           }
         }
 
-        @keyframes slideDown {
+        @keyframes header-premium-slideDown {
           from {
             opacity: 0;
             transform: translateY(-20px) scale(0.95);
@@ -324,37 +325,93 @@ const Header = () => {
         }
 
         /* Animation de pulse subtile pour le logo */
-        @keyframes logoPulse {
+        @keyframes header-premium-logoPulse {
           0%, 100% { transform: scale(1); }
           50% { transform: scale(1.02); }
         }
 
-        .logo-wrapper:hover .logo-img {
-          animation: logoPulse 2s ease-in-out infinite;
+        .header-premium-logo-wrapper:hover .header-premium-logo-img {
+          animation: header-premium-logoPulse 2s ease-in-out infinite;
+        }
+
+        /* Animation pour le menu mobile */
+        @keyframes header-premium-slideIn {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .header-premium-animate-slideIn {
+          animation: header-premium-slideIn 0.3s ease-out forwards;
+        }
+
+        /* Effet glow sur les boutons */
+        .header-premium-shadow-glow {
+          box-shadow: 0 0 15px rgba(139, 115, 85, 0.6);
+        }
+
+        /* Effet glow au hover */
+        .header-premium-group:hover .header-premium-group-hover-animate-glow-pulse {
+          animation: header-premium-glowPulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes header-premium-glowPulse {
+          0% {
+            box-shadow: 0 0 0 rgba(139, 115, 85, 0.5);
+          }
+          50% {
+            box-shadow: 0 0 20px rgba(139, 115, 85, 0.8);
+          }
+          100% {
+            box-shadow: 0 0 0 rgba(139, 115, 85, 0.5);
+          }
+        }
+
+        /* Style pour les liens actifs */
+        .header-premium-nav-link-active::after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: #8B7355;
+          border-radius: 1px;
+          transform: scaleX(0);
+          transition: transform 0.3s ease;
+        }
+
+        .header-premium-nav-link-active:hover::after {
+          transform: scaleX(1);
         }
       `}</style>
 
-      <header className="header">
-        <div className="nav-container">
+      <header className="header-premium">
+        <div className="header-premium-nav-container">
           {/* Logo amélioré */}
-          <div className="logo-container" onClick={() => window.location.href = '/'}>
-            <div className="logo-wrapper">
-              <div className="logo-background"></div>
-              <img src={logo} alt="The Black Book" className="logo-img" />
+          <div className="header-premium-logo-container" onClick={() => window.location.href = '/'}>
+            <div className="header-premium-logo-wrapper">
+              <div className="header-premium-logo-background"></div>
+              <img src={logo} alt="The Black Book" className="header-premium-logo-img" />
             </div>
-            <div className="logo-text">
+            <div className="header-premium-logo-text">
               <span>THE</span>&nbsp;
               <span>BLACK BOOK</span>
             </div>
           </div>
 
           {/* Navigation Desktop */}
-          <nav className="nav-desktop">
+          <nav className="header-premium-nav-desktop">
             {navigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className={`nav-link ${item.current ? 'active' : ''}`}
+                className={`header-premium-nav-link ${item.current ? 'active' : ''}`}
                 aria-current={item.current ? 'page' : undefined}
               >
                 {item.name}
@@ -362,11 +419,9 @@ const Header = () => {
             ))}
           </nav>
 
-         
-
           {/* Mobile Menu Toggle */}
           <button
-            className="menu-toggle"
+            className="header-premium-menu-toggle"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-expanded={isMenuOpen}
             aria-label="Menu principal"
@@ -377,26 +432,19 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="mobile-menu" id="mobile-menu">
+          <div className="header-premium-mobile-menu" id="header-premium-mobile-menu">
             {navigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className={`mobile-menu-item ${item.current ? 'active' : ''}`}
+                className={`header-premium-mobile-menu-item ${item.current ? 'active' : ''}`}
                 onClick={() => setIsMenuOpen(false)}
                 aria-current={item.current ? 'page' : undefined}
               >
                 {item.name}
               </a>
             ))}
-            <div className="mobile-menu-footer">
-              <button className="btn btn-outline" onClick={() => setIsMenuOpen(false)}>
-                Se connecter
-              </button>
-              <button className="btn btn-primary" onClick={() => setIsMenuOpen(false)}>
-                S'abonner
-              </button>
-            </div>
+           
           </div>
         )}
       </header>
@@ -404,4 +452,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderPremium;

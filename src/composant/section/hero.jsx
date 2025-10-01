@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import heroImage from '../../assets/hero-image.webp';
 import './hero.css';
-const Hero = () => {
+
+const HeroPremium = () => {
   const [typedText, setTypedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -48,85 +49,85 @@ const Hero = () => {
   ];
 
   return (
-    <section className="hero-section">
-      <div className="hero-background">
+    <section className="hero-premium-section">
+      <div className="hero-premium-background">
         <img
           src={heroImage}
           alt="Femme africaine lisant, symbole d'éducation et de culture"
-          className="hero-image"
+          className="hero-premium-image"
         />
-        <div className="hero-overlay"></div>
-        <div className="hero-gradient"></div>
+        <div className="hero-premium-overlay"></div>
+        <div className="hero-premium-gradient"></div>
       </div>
 
-      <div className="hero-content">
-        <div className="hero-grid">
-          <div className="hero-text-content">
-            <div className="hero-badge">
-              <span>✨ Plateforme éducative & culturelle</span>
+      <div className="hero-premium-content">
+        <div className="hero-premium-grid">
+          <div className="hero-premium-text-content">
+            <div className="hero-premium-badge">
+              <span>📚 Plateforme éducative & culturelle</span>
             </div>
 
-            <div className="hero-title-section">
-              <h1 className="hero-title">
-                <span className="hero-title-main">Reconnecte-toi</span>
+            <div className="hero-premium-title-section">
+              <h1 className="hero-premium-title">
+                <span className="hero-premium-title-main">Reconnecte-toi</span>
                 <br />
-                <span className="hero-title-typed">
+                <span className="hero-premium-title-typed">
                   {typedText}
-                  <span className="typing-cursor">|</span>
+                  <span className="hero-premium-typing-cursor">|</span>
                 </span>
               </h1>
               
-              <p className="hero-description">
+              <p className="hero-premium-description">
                 Découvre une bibliothèque de ressources premium, participe à des événements inspirants 
                 et connecte-toi avec une communauté passionnée par la culture africaine.
               </p>
             </div>
 
-            <div className="hero-actions">
-              <button className="btn btn-primary">
+            <div className="hero-premium-actions">
+              <button className="hero-premium-btn hero-premium-btn-primary">
                 Découvrir les ressources
-                <span className="btn-arrow">→</span>
+                <span className="hero-premium-btn-arrow">→</span>
               </button>
               
-              <button className="btn btn-secondary">
+              <button className="hero-premium-btn hero-premium-btn-secondary">
                 Regarder la démo
               </button>
             </div>
 
-            <div className="hero-stats">
+            <div className="hero-premium-stats">
               {stats.map((stat, index) => (
-                <div key={index} className="stat-item">
-                  <div className="stat-icon">
-                    <div className="stat-icon-inner"></div>
+                <div key={index} className="hero-premium-stat-item">
+                  <div className="hero-premium-stat-icon">
+                    <div className="hero-premium-stat-icon-inner"></div>
                   </div>
-                  <div className="stat-value">{stat.value}</div>
-                  <div className="stat-label">{stat.label}</div>
+                  <div className="hero-premium-stat-value">{stat.value}</div>
+                  <div className="hero-premium-stat-label">{stat.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="hero-visual">
-            <div className="visual-container">
-              <div className="floating-circle circle-1"></div>
-              <div className="floating-circle circle-2"></div>
-              <div className="floating-circle circle-3"></div>
-              <div className="pulse-ring ring-1"></div>
-              <div className="pulse-ring ring-2"></div>
-              <div className="pulse-ring ring-3"></div>
+          <div className="hero-premium-visual">
+            <div className="hero-premium-visual-container">
+              <div className="hero-premium-floating-circle hero-premium-circle-1"></div>
+              <div className="hero-premium-floating-circle hero-premium-circle-2"></div>
+              <div className="hero-premium-floating-circle hero-premium-circle-3"></div>
+              <div className="hero-premium-pulse-ring hero-premium-ring-1"></div>
+              <div className="hero-premium-pulse-ring hero-premium-ring-2"></div>
+              <div className="hero-premium-pulse-ring hero-premium-ring-3"></div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="scroll-indicator">
-        <span className="scroll-text">Découvrir</span>
-        <div className="scroll-arrow">
-          <div className="scroll-dot"></div>
+      <div className="hero-premium-scroll-indicator">
+        <span className="hero-premium-scroll-text">Découvrir</span>
+        <div className="hero-premium-scroll-arrow">
+          <div className="hero-premium-scroll-dot"></div>
         </div>
       </div>
     </section>
   );
 };
 
-export default Hero;
+export default HeroPremium;
