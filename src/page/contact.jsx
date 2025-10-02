@@ -383,7 +383,7 @@ const PremiumContactPage = () => {
           position: absolute;
           width: 3px;
           height: 3px;
-          background: linear-gradient(45deg, #FF6A00, #FF8C00);
+          background: linear-gradient(45deg,#8B7355 0%, #A9927D 100%);
           border-radius: 50%;
           animation: floatParticleContact linear infinite;
           opacity: 0.3;
@@ -411,7 +411,7 @@ const PremiumContactPage = () => {
           position: fixed;
           width: 16px;
           height: 16px;
-          background: radial-gradient(circle, #FF6A00, transparent);
+          background: radial-gradient(circle, #8B7355, transparent);
           border-radius: 50%;
           pointer-events: none;
           z-index: 9999;
@@ -457,23 +457,24 @@ const PremiumContactPage = () => {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: linear-gradient(135deg, rgba(255, 106, 0, 0.2), rgba(255, 140, 0, 0.1));
+          background: linear-gradient(135deg,#8B7355 0%, #A9927D 100%);
           border: 1px solid rgba(255, 106, 0, 0.3);
           padding: 0.5rem 1.5rem;
           border-radius: 50px;
           margin-bottom: 2rem;
           backdrop-filter: blur(10px);
           animation: slideInDown 0.8s ease-out;
+          color:rgb(6, 6, 6);
         }
 
         .badge-icon-contact {
           width: 1rem;
           height: 1rem;
-          color: #FF6A00;
+          color:rgb(14, 13, 13);
         }
 
         .contact-header-badge span {
-          color: #FF8C00;
+          color:rgb(14, 13, 13);
           font-weight: 600;
           font-size: 0.875rem;
         }
@@ -494,7 +495,7 @@ const PremiumContactPage = () => {
         }
 
         .contact-title-accent {
-          background: linear-gradient(135deg, #FF6A00 0%, #FF8C00 50%, #FFA500 100%);
+          background: linear-gradient(135deg, #8B7355 0%, #A9927D 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -511,7 +512,7 @@ const PremiumContactPage = () => {
         .contact-underline-animation {
           width: 100px;
           height: 4px;
-          background: linear-gradient(90deg, transparent, #FF6A00, transparent);
+          background: linear-gradient(90deg, transparent, #8B7355, transparent);
           border-radius: 2px;
           animation: underlinePulse 2s ease-in-out infinite;
         }
@@ -571,11 +572,11 @@ const PremiumContactPage = () => {
         .info-sparkle {
           width: 1rem;
           height: 1rem;
-          color: #FFD700;
+          color: #8B7355;
         }
 
         .info-header-badge span {
-          color: #FFD700;
+          color: #8B7355;
           font-weight: 600;
           font-size: 0.875rem;
         }
@@ -589,7 +590,7 @@ const PremiumContactPage = () => {
         }
 
         .info-title-accent {
-          background: linear-gradient(135deg, #FF6A00, #FF8C00);
+          background: linear-gradient(135deg,#8B7355 0%, #A9927D 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -643,7 +644,7 @@ const PremiumContactPage = () => {
         .info-icon {
           width: 1.5rem;
           height: 1.5rem;
-          color: #FF6A00;
+          color: #8B7355;
         }
 
         .info-content h3 {
@@ -654,7 +655,7 @@ const PremiumContactPage = () => {
         }
 
         .info-detail {
-          color: #FF8C00;
+          color: #8B7355;
           font-weight: 600;
           margin-bottom: 0.25rem;
         }
@@ -693,7 +694,7 @@ const PremiumContactPage = () => {
         .stat-number {
           font-size: 1.5rem;
           font-weight: 700;
-          color: #FF6A00;
+          color: #8B7355;
           margin-bottom: 0.25rem;
         }
 
@@ -732,11 +733,11 @@ const PremiumContactPage = () => {
         .form-badge-icon {
           width: 1rem;
           height: 1rem;
-          color: #FF6A00;
+          color: #8B7355;
         }
 
         .form-badge span {
-          color: #FF6A00;
+          color: #8B7355;
           font-weight: 600;
           font-size: 0.875rem;
         }
@@ -750,7 +751,7 @@ const PremiumContactPage = () => {
         }
 
         .form-title-accent {
-          background: linear-gradient(135deg, #FF6A00, #FF8C00);
+          background: linear-gradient(135deg,#8B7355 0%, #A9927D 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -813,7 +814,7 @@ const PremiumContactPage = () => {
 
         .premium-input:focus, .premium-textarea:focus {
           outline: none;
-          border-color: #FF6A00;
+          border-color: #8B7355;
           background: rgba(255, 106, 0, 0.03);
         }
 
@@ -828,7 +829,7 @@ const PremiumContactPage = () => {
           left: 50%;
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #FF6A00, #FF8C00);
+          background: linear-gradient(90deg,#8B7355 0%, #A9927D 100%);
           transition: all 0.3s ease;
           transform: translateX(-50%);
           z-index: 2;
@@ -843,12 +844,12 @@ const PremiumContactPage = () => {
         }
 
         .premium-input:focus ~ .input-icon {
-          color: #FF6A00;
+          color: #8B7355;
         }
 
         .premium-submit-btn {
           position: relative;
-          background: linear-gradient(135deg, #FF6A00, #FF8C00);
+          background: linear-gradient(135deg,#8B7355 0%, #A9927D 100%);
           border: none;
           padding: 1.25rem 2rem;
           border-radius: 12px;

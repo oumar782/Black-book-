@@ -412,7 +412,7 @@ const Footer = () => {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          color: #ff6b00;
+          color: #8B7355;
           font-size: 0.875rem;
           background: rgba(255, 107, 0, 0.1);
           padding: 0.5rem 1rem;

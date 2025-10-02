@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Search, Calendar, Clock, User, ArrowRight, Tag, Heart, MessageCircle, Sparkles, Crown, Zap, BookOpen, Eye } from 'lucide-react';
 
-const PremiumBlogList = () => {
+const AfroBlogList = () => {
   const [activeCategory, setActiveCategory] = useState('Tous');
   const [searchQuery, setSearchQuery] = useState('');
   const [hoveredArticle, setHoveredArticle] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,12 +18,19 @@ const PremiumBlogList = () => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('resize', checkMobile);
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', checkMobile);
     };
   }, []);
 
@@ -147,11 +155,11 @@ const PremiumBlogList = () => {
   };
 
   return (
-    <div className="premium-blog-container">
+    <div className="afro-blog-container">
       {/* Effet de particules animées */}
-      <div className="blog-particles-background">
+      <div className="afro-blog-particles-background">
         {[...Array(15)].map((_, i) => (
-          <div key={i} className="blog-particle" style={{
+          <div key={i} className="afro-blog-particle" style={{
             left: `${Math.random() * 100}%`,
             animationDelay: `${Math.random() * 15}s`,
             animationDuration: `${12 + Math.random() * 8}s`
@@ -159,33 +167,35 @@ const PremiumBlogList = () => {
         ))}
       </div>
 
-      {/* Curseur personnalisé */}
-      <div 
-        className="blog-custom-cursor"
-        style={{
-          left: `${mousePosition.x}px`,
-          top: `${mousePosition.y}px`,
-        }}
-      />
+      {/* Curseur personnalisé - seulement sur desktop */}
+      {!isMobile && (
+        <div 
+          className="afro-blog-custom-cursor"
+          style={{
+            left: `${mousePosition.x}px`,
+            top: `${mousePosition.y}px`,
+          }}
+        />
+      )}
 
-      <section className="premium-blog-section">
-        <div className="premium-blog-content">
+      <section className="afro-blog-section">
+        <div className="afro-blog-content">
           {/* En-tête hero */}
-          <div className="blog-hero-section">
-            <div className="hero-background-glow" />
-            <div className="premium-blog-header">
-              <div className="blog-header-badge">
-                <BookOpen className="badge-icon-blog" />
+          <div className="afro-blog-hero-section">
+            <div className="afro-hero-background-glow" />
+            <div className="afro-blog-header">
+              <div className="afro-blog-header-badge">
+                <BookOpen className="afro-badge-icon-blog" />
                 <span>Savoir & Connaissance</span>
               </div>
-              <h1 className="blog-main-title">
-                <span className="blog-title-gradient">Blog &</span>
-                <span className="blog-title-accent">Actualités</span>
+              <h1 className="afro-blog-main-title">
+                <span className="afro-blog-title-gradient">Blog &</span>
+                <span className="afro-blog-title-accent">Actualités</span>
               </h1>
-              <div className="blog-title-underline">
-                <div className="blog-underline-animation" />
+              <div className="afro-blog-title-underline">
+                <div className="afro-blog-underline-animation" />
               </div>
-              <p className="blog-subtitle">
+              <p className="afro-blog-subtitle">
                 Explorez nos articles, analyses et réflexions sur l'héritage africain, 
                 la culture contemporaine et les enjeux qui façonnent notre avenir commun.
               </p>
@@ -193,39 +203,39 @@ const PremiumBlogList = () => {
           </div>
 
           {/* Barre de recherche et filtres premium */}
-          <div className={`premium-blog-search-section ${isScrolled ? 'scrolled' : ''}`}>
-            <div className="blog-search-glass">
-              <div className="blog-search-content">
+          <div className={`afro-blog-search-section ${isScrolled ? 'afro-scrolled' : ''}`}>
+            <div className="afro-blog-search-glass">
+              <div className="afro-blog-search-content">
                 {/* Recherche avancée */}
-                <div className="blog-search-wrapper">
-                  <div className="search-input-container">
-                    <Search className="blog-search-icon" />
+                <div className="afro-blog-search-wrapper">
+                  <div className="afro-search-input-container">
+                    <Search className="afro-blog-search-icon" />
                     <input
                       placeholder="Rechercher un article, un auteur, un tag..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="premium-blog-search-input"
+                      className="afro-blog-search-input"
                     />
-                    <div className="search-underline-blog" />
+                    <div className="afro-search-underline-blog" />
                   </div>
                 </div>
 
                 {/* Filtres par catégorie avec animations */}
-                <div className="premium-blog-filters">
-                  <div className="blog-filters-header">
-                    <Zap className="filter-sparkle-blog" />
+                <div className="afro-blog-filters">
+                  <div className="afro-blog-filters-header">
+                    <Zap className="afro-filter-sparkle-blog" />
                     <span>Explorer par thème</span>
                   </div>
-                  <div className="blog-filters-grid">
+                  <div className="afro-blog-filters-grid">
                     {categories.map((category, index) => (
                       <button
                         key={category}
-                        className={`blog-filter-btn ${activeCategory === category ? 'active' : ''}`}
+                        className={`afro-blog-filter-btn ${activeCategory === category ? 'afro-active' : ''}`}
                         onClick={() => setActiveCategory(category)}
                         style={{ animationDelay: `${index * 0.08}s` }}
                       >
-                        <span className="filter-text">{category}</span>
-                        <div className="filter-glow" />
+                        <span className="afro-filter-text">{category}</span>
+                        <div className="afro-filter-glow" />
                       </button>
                     ))}
                   </div>
@@ -236,111 +246,111 @@ const PremiumBlogList = () => {
 
           {/* Article featured avec design premium */}
           {filteredArticles.length > 0 && filteredArticles[0].featured && (
-            <div className="premium-featured-article">
-              <div className="featured-article-card">
-                <div className="featured-grid">
+            <div className="afro-featured-article">
+              <div className="afro-featured-article-card">
+                <div className="afro-featured-grid">
                   {/* Image featured */}
-                  <div className="featured-image-section">
-                    <div className="featured-image-container">
-                      <div className="featured-image-glow" />
-                      <div className="featured-image-content">
-                        <div className="featured-icon-orb">
-                          <BookOpen className="featured-main-icon" />
+                  <div className="afro-featured-image-section">
+                    <div className="afro-featured-image-container">
+                      <div className="afro-featured-image-glow" />
+                      <div className="afro-featured-image-content">
+                        <div className="afro-featured-icon-orb">
+                          <BookOpen className="afro-featured-main-icon" />
                         </div>
-                        <div className="featured-image-label">Article à la une</div>
+                        <div className="afro-featured-image-label">Article à la une</div>
                       </div>
                       
                       {/* Badge featured */}
-                      <div className="featured-badge-premium">
-                        <Crown className="featured-badge-icon" />
+                      <div className="afro-featured-badge-premium">
+                        <Crown className="afro-featured-badge-icon" />
                         <span>ARTICLE EXCEPTIONNEL</span>
                       </div>
 
                       {/* Overlay interactif */}
-                      <div className="featured-overlay">
-                        <button className="featured-read-btn">
+                      <div className="afro-featured-overlay">
+                        <button className="afro-featured-read-btn">
                           <span>Lire l'article</span>
-                          <ArrowRight className="read-arrow-icon" />
+                          <ArrowRight className="afro-read-arrow-icon" />
                         </button>
                       </div>
                     </div>
                   </div>
 
                   {/* Contenu featured */}
-                  <div className="featured-content-section">
-                    <div className="featured-meta">
-                      <div className="featured-category-tag">
+                  <div className="afro-featured-content-section">
+                    <div className="afro-featured-meta">
+                      <div className="afro-featured-category-tag">
                         {filteredArticles[0].category}
                       </div>
-                      <div className="featured-date">
-                        <Calendar className="meta-icon" />
+                      <div className="afro-featured-date">
+                        <Calendar className="afro-meta-icon" />
                         {formatDate(filteredArticles[0].publishedDate)}
                       </div>
                     </div>
 
-                    <h2 className="featured-title">
+                    <h2 className="afro-featured-title">
                       {filteredArticles[0].title}
                     </h2>
 
-                    <p className="featured-excerpt">
+                    <p className="afro-featured-excerpt">
                       {filteredArticles[0].excerpt}
                     </p>
 
-                    <div className="featured-author-section">
-                      <div className="author-avatar">
-                        <User className="avatar-icon" />
+                    <div className="afro-featured-author-section">
+                      <div className="afro-author-avatar">
+                        <User className="afro-avatar-icon" />
                       </div>
-                      <div className="author-info">
-                        <div className="author-name">{filteredArticles[0].author}</div>
-                        <div className="reading-time">
-                          <Clock className="meta-icon" />
+                      <div className="afro-author-info">
+                        <div className="afro-author-name">{filteredArticles[0].author}</div>
+                        <div className="afro-reading-time">
+                          <Clock className="afro-meta-icon" />
                           {filteredArticles[0].readTime} de lecture
                         </div>
                       </div>
                     </div>
 
                     {/* Tags featured */}
-                    <div className="featured-tags">
+                    <div className="afro-featured-tags">
                       {filteredArticles[0].tags.map((tag, index) => (
-                        <span key={tag} className="featured-tag" style={{ animationDelay: `${index * 0.1}s` }}>
+                        <span key={tag} className="afro-featured-tag" style={{ animationDelay: `${index * 0.1}s` }}>
                           #{tag}
                         </span>
                       ))}
                     </div>
 
                     {/* Stats et CTA */}
-                    <div className="featured-actions">
-                      <div className="article-stats">
-                        <div className="stat-item">
-                          <Heart className="stat-icon" />
+                    <div className="afro-featured-actions">
+                      <div className="afro-article-stats">
+                        <div className="afro-stat-item">
+                          <Heart className="afro-stat-icon" />
                           <span>{filteredArticles[0].likes}</span>
                         </div>
-                        <div className="stat-item">
-                          <MessageCircle className="stat-icon" />
+                        <div className="afro-stat-item">
+                          <MessageCircle className="afro-stat-icon" />
                           <span>{filteredArticles[0].comments}</span>
                         </div>
-                        <div className="stat-item">
-                          <Eye className="stat-icon" />
+                        <div className="afro-stat-item">
+                          <Eye className="afro-stat-icon" />
                           <span>{filteredArticles[0].views}</span>
                         </div>
                       </div>
 
-                      <button className="premium-read-button">
+                      <button className="afro-premium-read-button">
                         <span>Lire l'article</span>
-                        <div className="button-sparkle-group">
-                          <Sparkles className="button-sparkle-icon" />
+                        <div className="afro-button-sparkle-group">
+                          <Sparkles className="afro-button-sparkle-icon" />
                         </div>
-                        <div className="button-wave-effect" />
+                        <div className="afro-button-wave-effect" />
                       </button>
                     </div>
                   </div>
 
                   {/* Bordure animée */}
-                  <div className="featured-card-border">
-                    <div className="border-top-featured" />
-                    <div className="border-right-featured" />
-                    <div className="border-bottom-featured" />
-                    <div className="border-left-featured" />
+                  <div className="afro-featured-card-border">
+                    <div className="afro-border-top-featured" />
+                    <div className="afro-border-right-featured" />
+                    <div className="afro-border-bottom-featured" />
+                    <div className="afro-border-left-featured" />
                   </div>
                 </div>
               </div>
@@ -348,47 +358,47 @@ const PremiumBlogList = () => {
           )}
 
           {/* Grille des articles premium */}
-          <div className="premium-articles-grid">
+          <div className="afro-articles-grid">
             {filteredArticles.slice(filteredArticles[0]?.featured ? 1 : 0).map((article, index) => (
               <article
                 key={article.id}
-                className="premium-article-card"
+                className="afro-article-card"
                 style={{ animationDelay: `${index * 0.15}s` }}
                 onMouseEnter={() => setHoveredArticle(article.id)}
                 onMouseLeave={() => setHoveredArticle(null)}
               >
-                <div className="article-card-inner">
+                <div className="afro-article-card-inner">
                   {/* Image de l'article */}
-                  <div className="article-image-section">
-                    <div className="article-image-container">
-                      <div className="article-image-glow" />
-                      <div className="article-image-content">
-                        <div className="article-icon-wrapper">
-                          <Tag className="article-tag-icon" />
+                  <div className="afro-article-image-section">
+                    <div className="afro-article-image-container">
+                      <div className="afro-article-image-glow" />
+                      <div className="afro-article-image-content">
+                        <div className="afro-article-icon-wrapper">
+                          <Tag className="afro-article-tag-icon" />
                         </div>
-                        <div className="article-image-label">Illustration</div>
+                        <div className="afro-article-image-label">Illustration</div>
                       </div>
 
                       {/* Badges */}
-                      <div className="article-badges">
+                      <div className="afro-article-badges">
                         {article.featured && (
-                          <div className="article-badge-premium featured-badge">
-                            <Sparkles className="badge-sparkle" />
+                          <div className="afro-article-badge-premium afro-featured-badge">
+                            <Sparkles className="afro-badge-sparkle" />
                             <span>FEATURED</span>
                           </div>
                         )}
-                        <div className="article-badge-premium category-badge">
+                        <div className="afro-article-badge-premium afro-category-badge">
                           {article.category}
                         </div>
                       </div>
 
                       {/* Overlay au hover */}
-                      <div className={`article-image-overlay ${hoveredArticle === article.id ? 'active' : ''}`}>
-                        <div className="overlay-actions">
-                          <button className="article-like-btn">
-                            <Heart className="action-icon" />
+                      <div className={`afro-article-image-overlay ${hoveredArticle === article.id ? 'afro-active' : ''}`}>
+                        <div className="afro-overlay-actions">
+                          <button className="afro-article-like-btn">
+                            <Heart className="afro-action-icon" />
                           </button>
-                          <button className="article-quick-view">
+                          <button className="afro-article-quick-view">
                             <span>Lire rapidement</span>
                           </button>
                         </div>
@@ -397,72 +407,72 @@ const PremiumBlogList = () => {
                   </div>
 
                   {/* Contenu de l'article */}
-                  <div className="premium-article-content">
+                  <div className="afro-article-content">
                     {/* Métadonnées */}
-                    <div className="article-meta-premium">
-                      <div className="meta-date">
-                        <Calendar className="meta-icon-small" />
+                    <div className="afro-article-meta">
+                      <div className="afro-meta-date">
+                        <Calendar className="afro-meta-icon-small" />
                         {formatDate(article.publishedDate)}
                       </div>
-                      <div className="meta-stats">
-                        <div className="meta-stat">
-                          <Heart className="meta-icon-small" />
+                      <div className="afro-meta-stats">
+                        <div className="afro-meta-stat">
+                          <Heart className="afro-meta-icon-small" />
                           {article.likes}
                         </div>
-                        <div className="meta-stat">
-                          <MessageCircle className="meta-icon-small" />
+                        <div className="afro-meta-stat">
+                          <MessageCircle className="afro-meta-icon-small" />
                           {article.comments}
                         </div>
                       </div>
                     </div>
 
                     {/* Titre */}
-                    <h3 className="article-title-premium">
+                    <h3 className="afro-article-title">
                       {article.title}
                     </h3>
 
                     {/* Extrait */}
-                    <p className="article-excerpt-premium">
+                    <p className="afro-article-excerpt">
                       {article.excerpt}
                     </p>
 
                     {/* Auteur et temps de lecture */}
-                    <div className="article-author-premium">
-                      <div className="author-mini">
-                        <User className="author-mini-icon" />
+                    <div className="afro-article-author">
+                      <div className="afro-author-mini">
+                        <User className="afro-author-mini-icon" />
                         <span>{article.author}</span>
                       </div>
-                      <div className="read-time-mini">
-                        <Clock className="read-time-icon" />
+                      <div className="afro-read-time-mini">
+                        <Clock className="afro-read-time-icon" />
                         <span>{article.readTime}</span>
                       </div>
                     </div>
 
                     {/* Tags */}
-                    <div className="article-tags-premium">
+                    <div className="afro-article-tags">
                       {article.tags.slice(0, 2).map((tag, tagIndex) => (
-                        <span key={tag} className="article-tag" style={{ animationDelay: `${tagIndex * 0.05}s` }}>
+                        <span key={tag} className="afro-article-tag" style={{ animationDelay: `${tagIndex * 0.05}s` }}>
                           #{tag}
                         </span>
                       ))}
                     </div>
 
                     {/* Actions */}
-                    <div className="article-actions-premium">
-                      <button className="premium-read-more">
+                    <div className="afro-article-actions">
+                      <button className="afro-premium-read-more">
                         <span>Lire l'article</span>
-                        <ArrowRight className="read-more-arrow" />
-                        <div className="read-more-glow" />
+                        <ArrowRight className="afro-read-more-arrow" />
+                        <div className="afro-read-more-glow" />
                       </button>
                     </div>
                   </div>
 
                   {/* Effet de bordure animée */}
-                  <div className="article-card-border">
-                    <div className="article-border-top" />
-                    <div className="article-border-right" />
-                    <div className="article-border-bottom" />
-                    <div className="article-border-left" />
+                  <div className="afro-article-card-border">
+                    <div className="afro-article-border-top" />
+                    <div className="afro-article-border-right" />
+                    <div className="afro-article-border-bottom" />
+                    <div className="afro-article-border-left" />
                   </div>
                 </div>
               </article>
@@ -470,45 +480,45 @@ const PremiumBlogList = () => {
           </div>
 
           {/* Newsletter premium */}
-          <div className="premium-newsletter-section">
-            <div className="newsletter-glass">
-              <div className="newsletter-content">
-                <div className="newsletter-header">
-                  <div className="newsletter-badge">
-                    <Sparkles className="newsletter-sparkle" />
+          <div className="afro-newsletter-section">
+            <div className="afro-newsletter-glass">
+              <div className="afro-newsletter-content">
+                <div className="afro-newsletter-header">
+                  <div className="afro-newsletter-badge">
+                    <Sparkles className="afro-newsletter-sparkle" />
                     <span>Restez informé</span>
                   </div>
-                  <h3 className="newsletter-title">
+                  <h3 className="afro-newsletter-title">
                     Ne ratez aucun article !
                   </h3>
-                  <p className="newsletter-text">
+                  <p className="afro-newsletter-text">
                     Inscrivez-vous à notre newsletter pour recevoir nos derniers articles, 
                     analyses et réflexions directement dans votre boîte mail.
                   </p>
                 </div>
 
-                <div className="newsletter-form">
-                  <div className="email-input-wrapper">
+                <div className="afro-newsletter-form">
+                  <div className="afro-email-input-wrapper">
                     <input 
                       placeholder="Votre adresse email" 
-                      className="premium-email-input"
+                      className="afro-email-input"
                     />
-                    <div className="input-underline" />
+                    <div className="afro-input-underline" />
                   </div>
-                  <button className="premium-subscribe-btn">
+                  <button className="afro-premium-subscribe-btn">
                     <span>S'abonner</span>
-                    <div className="subscribe-sparkle">
-                      <ArrowRight className="subscribe-arrow" />
+                    <div className="afro-subscribe-sparkle">
+                      <ArrowRight className="afro-subscribe-arrow" />
                     </div>
-                    <div className="subscribe-glow" />
+                    <div className="afro-subscribe-glow" />
                   </button>
                 </div>
               </div>
               
-              <div className="newsletter-decoration">
-                <div className="newsletter-orb orb-1" />
-                <div className="newsletter-orb orb-2" />
-                <div className="newsletter-orb orb-3" />
+              <div className="afro-newsletter-decoration">
+                <div className="afro-newsletter-orb afro-orb-1" />
+                <div className="afro-newsletter-orb afro-orb-2" />
+                <div className="afro-newsletter-orb afro-orb-3" />
               </div>
             </div>
           </div>
@@ -516,22 +526,22 @@ const PremiumBlogList = () => {
       </section>
 
       <style jsx>{`
-        .premium-blog-container {
+        .afro-blog-container {
           position: relative;
           min-height: 100vh;
-          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #1e0f00 50%, #1a1a1a 75%, #0a0a0a 100%);
+          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #2a1810 50%, #1a1a1a 75%, #0a0a0a 100%);
           background-size: 400% 400%;
-          animation: gradientShift 20s ease infinite;
+          animation: afroGradientShift 20s ease infinite;
           overflow-x: hidden;
         }
 
-        @keyframes gradientShift {
+        @keyframes afroGradientShift {
           0%, 100% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
         }
 
         /* Particules animées */
-        .blog-particles-background {
+        .afro-blog-particles-background {
           position: fixed;
           top: 0;
           left: 0;
@@ -541,17 +551,17 @@ const PremiumBlogList = () => {
           z-index: 1;
         }
 
-        .blog-particle {
+        .afro-blog-particle {
           position: absolute;
           width: 3px;
           height: 3px;
-          background: linear-gradient(45deg, #FF6A00, #FF8C00);
+          background: linear-gradient(45deg, #8B7355 0%, #A9927D 100%););
           border-radius: 50%;
-          animation: floatParticleBlog linear infinite;
+          animation: afroFloatParticleBlog linear infinite;
           opacity: 0.4;
         }
 
-        @keyframes floatParticleBlog {
+        @keyframes afroFloatParticleBlog {
           0% {
             transform: translateY(100vh) rotate(0deg);
             opacity: 0;
@@ -569,11 +579,11 @@ const PremiumBlogList = () => {
         }
 
         /* Curseur personnalisé */
-        .blog-custom-cursor {
+        .afro-blog-custom-cursor {
           position: fixed;
           width: 18px;
           height: 18px;
-          background: radial-gradient(circle, #FF6A00, transparent);
+          background: radial-gradient(circle,#8B7355 0%, #A9927D 100%);, transparent);
           border-radius: 50%;
           pointer-events: none;
           z-index: 9999;
@@ -582,153 +592,168 @@ const PremiumBlogList = () => {
           transition: transform 0.1s ease;
         }
 
-        .premium-blog-section {
+        .afro-blog-section {
           position: relative;
           z-index: 2;
         }
 
-        .premium-blog-content {
+        .afro-blog-content {
           max-width: 1400px;
           margin: 0 auto;
-          padding: 0 2rem;
+          padding: 0 1rem;
+          width: 100%;
+          box-sizing: border-box;
         }
 
         /* Hero Section */
-        .blog-hero-section {
+        .afro-blog-hero-section {
           position: relative;
-          padding: 6rem 0 4rem;
+          padding: 4rem 0 3rem;
           text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 60vh;
         }
 
-        .hero-background-glow {
+        .afro-hero-background-glow {
           position: absolute;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 600px;
-          height: 600px;
-          background: radial-gradient(ellipse at center, rgba(255, 106, 0, 0.15) 0%, transparent 70%);
+          width: min(600px, 90vw);
+          height: min(600px, 90vw);
+          background: radial-gradient(ellipse at center, rgba(139, 69, 19, 0.15) 0%, transparent 70%);
           opacity: 0.6;
         }
 
-        .premium-blog-header {
+        .afro-blog-header {
           position: relative;
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 0 1rem;
         }
 
-        .blog-header-badge {
+        .afro-blog-header-badge {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: linear-gradient(135deg, rgba(255, 106, 0, 0.2), rgba(255, 140, 0, 0.1));
-          border: 1px solid rgba(255, 106, 0, 0.3);
+          background: linear-gradient(135deg, rgba(139, 69, 19, 0.2), rgba(116, 40, 5, 0.1));
+          border: 1px solid rgba(139, 69, 19, 0.3);
           padding: 0.5rem 1.5rem;
           border-radius: 50px;
           margin-bottom: 2rem;
           backdrop-filter: blur(10px);
-          animation: slideInDown 0.8s ease-out;
+          animation: afroSlideInDown 0.8s ease-out;
         }
 
-        .badge-icon-blog {
+        .afro-badge-icon-blog {
           width: 1rem;
           height: 1rem;
-          color: #FF6A00;
+          color: #8B7355 ;
         }
 
-        .blog-header-badge span {
-          color: #FF8C00;
+        .afro-blog-header-badge span {
+          color: #8B7355;
           font-weight: 600;
           font-size: 0.875rem;
         }
 
-        .blog-main-title {
+        .afro-blog-main-title {
           font-family: 'Inter', sans-serif;
           font-weight: 800;
-          font-size: 4rem;
+          font-size: clamp(2.5rem, 8vw, 4rem);
           margin-bottom: 1rem;
-          animation: fadeInUp 0.8s ease-out 0.2s both;
+          animation: afroFadeInUp 0.8s ease-out 0.2s both;
+          line-height: 1.1;
+          text-align: center;
         }
 
-        .blog-title-gradient {
+        .afro-blog-title-gradient {
           background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
 
-        .blog-title-accent {
-          background: linear-gradient(135deg, #FF6A00 0%, #FF8C00 50%, #FFA500 100%);
+        .afro-blog-title-accent {
+          background: linear-gradient(135deg,#8B7355 0%, #A9927D 100%););
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          margin-left: 1rem;
+          margin-left: 0.5rem;
         }
 
-        .blog-title-underline {
+        .afro-blog-title-underline {
           display: flex;
           justify-content: center;
           margin-bottom: 2rem;
-          animation: fadeInUp 0.8s ease-out 0.4s both;
+          animation: afroFadeInUp 0.8s ease-out 0.4s both;
         }
 
-        .blog-underline-animation {
+        .afro-blog-underline-animation {
           width: 120px;
           height: 4px;
-          background: linear-gradient(90deg, transparent, #FF6A00, transparent);
+          background: linear-gradient(90deg, transparent, #8B7355, transparent);
           border-radius: 2px;
-          animation: underlinePulse 2s ease-in-out infinite;
+          animation: afroUnderlinePulse 2s ease-in-out infinite;
         }
 
-        @keyframes underlinePulse {
+        @keyframes afroUnderlinePulse {
           0%, 100% { transform: scaleX(1); opacity: 1; }
           50% { transform: scaleX(1.3); opacity: 0.8; }
         }
 
-        .blog-subtitle {
-          font-size: 1.25rem;
+        .afro-blog-subtitle {
+          font-size: clamp(1rem, 3vw, 1.25rem);
           color: #94a3b8;
           max-width: 600px;
           margin: 0 auto;
           line-height: 1.6;
-          animation: fadeInUp 0.8s ease-out 0.6s both;
+          animation: afroFadeInUp 0.8s ease-out 0.6s both;
+          text-align: center;
         }
 
         /* Section recherche */
-        .premium-blog-search-section {
-          margin-bottom: 4rem;
+        .afro-blog-search-section {
+          margin-bottom: 3rem;
           transition: all 0.3s ease;
+          padding: 0 1rem;
         }
 
-        .premium-blog-search-section.scrolled {
+        .afro-blog-search-section.afro-scrolled {
           transform: translateY(-10px);
         }
 
-        .blog-search-glass {
+        .afro-blog-search-glass {
           background: rgba(255, 255, 255, 0.02);
           backdrop-filter: blur(20px);
           border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 24px;
-          padding: 2.5rem;
+          padding: clamp(1.5rem, 4vw, 2.5rem);
           box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+          max-width: 1200px;
+          margin: 0 auto;
         }
 
-        .blog-search-content {
+        .afro-blog-search-content {
           display: flex;
           flex-direction: column;
           gap: 2rem;
         }
 
-        .blog-search-wrapper {
+        .afro-blog-search-wrapper {
           display: flex;
           justify-content: center;
         }
 
-        .search-input-container {
+        .afro-search-input-container {
           position: relative;
           max-width: 500px;
           width: 100%;
         }
 
-        .blog-search-icon {
+        .afro-blog-search-icon {
           position: absolute;
           left: 1.5rem;
           top: 50%;
@@ -739,73 +764,74 @@ const PremiumBlogList = () => {
           transition: color 0.3s ease;
         }
 
-        .premium-blog-search-input {
+        .afro-blog-search-input {
           width: 100%;
-          padding: 1.25rem 1.5rem 1.25rem 4rem;
+          padding: 1rem 1rem 1rem 3.5rem;
           background: rgba(255, 255, 255, 0.05);
           border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 16px;
           color: white;
-          font-size: 1.125rem;
+          font-size: 1rem;
           transition: all 0.3s ease;
+          box-sizing: border-box;
         }
 
-        .premium-blog-search-input:focus {
+        .afro-blog-search-input:focus {
           outline: none;
-          border-color: #FF6A00;
-          background: rgba(255, 106, 0, 0.05);
+          border-color: #8B7355;
+          background: rgba(139, 69, 19, 0.05);
         }
 
-        .premium-blog-search-input::placeholder {
+        .afro-blog-search-input::placeholder {
           color: #64748b;
         }
 
-        .search-underline-blog {
+        .afro-search-underline-blog {
           position: absolute;
           bottom: 0;
           left: 50%;
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #FF6A00, #FF8C00);
+          background: linear-gradient(90deg, #8B7355, #A9927D );
           transition: all 0.3s ease;
           transform: translateX(-50%);
         }
 
-        .premium-blog-search-input:focus ~ .search-underline-blog {
+        .afro-blog-search-input:focus ~ .afro-search-underline-blog {
           width: 100%;
         }
 
         /* Filtres */
-        .premium-blog-filters {
+        .afro-blog-filters {
           text-align: center;
         }
 
-        .blog-filters-header {
+        .afro-blog-filters-header {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
           margin-bottom: 1.5rem;
           color: #94a3b8;
           font-weight: 600;
-          font-size: 1.125rem;
+          font-size: clamp(1rem, 2vw, 1.125rem);
         }
 
-        .filter-sparkle-blog {
+        .afro-filter-sparkle-blog {
           width: 1.25rem;
           height: 1.25rem;
-          color: #FF6A00;
+          color: #8B7355;
         }
 
-        .blog-filters-grid {
+        .afro-blog-filters-grid {
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
-          gap: 0.75rem;
+          gap: 0.5rem;
         }
 
-        .blog-filter-btn {
+        .afro-blog-filter-btn {
           position: relative;
-          padding: 0.75rem 1.5rem;
+          padding: 0.6rem 1.2rem;
           background: rgba(255, 255, 255, 0.05);
           border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 12px;
@@ -813,43 +839,45 @@ const PremiumBlogList = () => {
           cursor: pointer;
           transition: all 0.3s ease;
           overflow: hidden;
-          animation: slideInUp 0.6s ease-out both;
+          animation: afroSlideInUp 0.6s ease-out both;
+          font-size: 0.875rem;
         }
 
-        .blog-filter-btn:hover {
-          background: rgba(255, 106, 0, 0.1);
-          border-color: rgba(255, 106, 0, 0.3);
-          color: #FF8C00;
+        .afro-blog-filter-btn:hover {
+          background: rgba(139, 69, 19, 0.1);
+          border-color: rgba(139, 69, 19, 0.3);
+          color: #8B7355;
           transform: translateY(-2px);
         }
 
-        .blog-filter-btn.active {
-          background: linear-gradient(135deg, rgba(255, 106, 0, 0.2), rgba(255, 140, 0, 0.1));
-          border-color: #FF6A00;
-          color: #FF8C00;
-          box-shadow: 0 8px 25px rgba(255, 106, 0, 0.3);
+        .afro-blog-filter-btn.afro-active {
+          background: linear-gradient(135deg, rgba(139, 69, 19, 0.2), rgba(160, 82, 45, 0.1));
+          border-color: #8B7355;
+          color: #8B7355;
+          box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
         }
 
-        .filter-glow {
+        .afro-filter-glow {
           position: absolute;
           top: 0;
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 106, 0, 0.3), transparent);
+          background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.3), transparent);
           transition: left 0.5s ease;
         }
 
-        .blog-filter-btn.active .filter-glow {
+        .afro-blog-filter-btn.afro-active .afro-filter-glow {
           left: 100%;
         }
 
         /* Article featured */
-        .premium-featured-article {
-          margin-bottom: 4rem;
+        .afro-featured-article {
+          margin-bottom: 3rem;
+          padding: 0 1rem;
         }
 
-        .featured-article-card {
+        .afro-featured-article-card {
           position: relative;
           background: rgba(255, 255, 255, 0.02);
           backdrop-filter: blur(20px);
@@ -857,42 +885,45 @@ const PremiumBlogList = () => {
           border-radius: 24px;
           overflow: hidden;
           transition: all 0.4s ease;
+          max-width: 1200px;
+          margin: 0 auto;
         }
 
-        .featured-article-card:hover {
+        .afro-featured-article-card:hover {
           transform: translateY(-5px);
-          border-color: rgba(255, 106, 0, 0.3);
-          box-shadow: 0 25px 50px -12px rgba(255, 106, 0, 0.25);
+          border-color: rgba(139, 69, 19, 0.3);
+          box-shadow: 0 25px 50px -12px rgba(139, 69, 19, 0.25);
         }
 
-        .featured-grid {
+        .afro-featured-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
           gap: 0;
         }
 
-        .featured-image-section {
+        .afro-featured-image-section {
           position: relative;
           overflow: hidden;
+          min-height: 300px;
         }
 
-        .featured-image-container {
+        .afro-featured-image-container {
           position: relative;
           height: 100%;
-          min-height: 400px;
-          background: linear-gradient(135deg, rgba(255, 106, 0, 0.15), rgba(255, 140, 0, 0.1));
+          min-height: 300px;
+          background: linear-gradient(135deg, rgba(139, 69, 19, 0.15), rgba(160, 82, 45, 0.1));
         }
 
-        .featured-image-glow {
+        .afro-featured-image-glow {
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background: radial-gradient(circle at center, rgba(255, 106, 0, 0.2), transparent 70%);
+          background: radial-gradient(circle at center, rgba(139, 69, 19, 0.2), transparent 70%);
         }
 
-        .featured-image-content {
+        .afro-featured-image-content {
           position: absolute;
           top: 50%;
           left: 50%;
@@ -901,41 +932,41 @@ const PremiumBlogList = () => {
           z-index: 2;
         }
 
-        .featured-icon-orb {
-          width: 100px;
-          height: 100px;
-          background: radial-gradient(circle, rgba(255, 106, 0, 0.3), transparent);
-          border: 2px solid rgba(255, 106, 0, 0.4);
+        .afro-featured-icon-orb {
+          width: 80px;
+          height: 80px;
+          background: radial-gradient(circle, rgba(139, 69, 19, 0.3), transparent);
+          border: 2px solid rgba(139, 69, 19, 0.4);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin: 0 auto 1.5rem;
+          margin: 0 auto 1rem;
           backdrop-filter: blur(10px);
-          animation: orbPulse 3s ease-in-out infinite;
+          animation: afroOrbPulse 3s ease-in-out infinite;
         }
 
-        @keyframes orbPulse {
-          0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 106, 0, 0.4); }
-          50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(255, 106, 0, 0.6); }
+        @keyframes afroOrbPulse {
+          0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(139, 69, 19, 0.4); }
+          50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(139, 69, 19, 0.6); }
         }
 
-        .featured-main-icon {
-          width: 2.5rem;
-          height: 2.5rem;
-          color: #FF6A00;
+        .afro-featured-main-icon {
+          width: 2rem;
+          height: 2rem;
+          color: #8B7355;
         }
 
-        .featured-image-label {
+        .afro-featured-image-label {
           color: #94a3b8;
           font-size: 0.875rem;
         }
 
-        .featured-badge-premium {
+        .afro-featured-badge-premium {
           position: absolute;
-          top: 1.5rem;
-          left: 1.5rem;
-          background: linear-gradient(135deg, #FF6A00, #FF8C00);
+          top: 1rem;
+          left: 1rem;
+          background: linear-gradient(135deg, #8B7355, #8B7355);
           color: white;
           padding: 0.5rem 1rem;
           border-radius: 8px;
@@ -945,26 +976,26 @@ const PremiumBlogList = () => {
           align-items: center;
           gap: 0.5rem;
           backdrop-filter: blur(10px);
-          animation: badgeFloat 2s ease-in-out infinite;
+          animation: afroBadgeFloat 2s ease-in-out infinite;
         }
 
-        @keyframes badgeFloat {
+        @keyframes afroBadgeFloat {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-5px); }
         }
 
-        .featured-badge-icon {
+        .afro-featured-badge-icon {
           width: 0.875rem;
           height: 0.875rem;
         }
 
-        .featured-overlay {
+        .afro-featured-overlay {
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, rgba(255, 106, 0, 0.9), rgba(255, 140, 0, 0.8));
+          background: linear-gradient(135deg, #8B7355 0%, #A9927D 100%);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -972,14 +1003,14 @@ const PremiumBlogList = () => {
           transition: all 0.3s ease;
         }
 
-        .featured-image-container:hover .featured-overlay {
+        .afro-featured-image-container:hover .afro-featured-overlay {
           opacity: 1;
         }
 
-        .featured-read-btn {
+        .afro-featured-read-btn {
           background: white;
           border: none;
-          padding: 1rem 2rem;
+          padding: 0.8rem 1.5rem;
           border-radius: 12px;
           color: #1a1a1a;
           font-weight: 600;
@@ -990,40 +1021,41 @@ const PremiumBlogList = () => {
           transition: all 0.3s ease;
         }
 
-        .featured-read-btn:hover {
+        .afro-featured-read-btn:hover {
           transform: translateY(-2px);
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
-        .read-arrow-icon {
+        .afro-read-arrow-icon {
           width: 1.25rem;
           height: 1.25rem;
         }
 
-        .featured-content-section {
-          padding: 2.5rem;
+        .afro-featured-content-section {
+          padding: 2rem;
           display: flex;
           flex-direction: column;
           justify-content: center;
         }
 
-        .featured-meta {
+        .afro-featured-meta {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
           gap: 1rem;
           margin-bottom: 1.5rem;
         }
 
-        .featured-category-tag {
-          background: rgba(255, 106, 0, 0.1);
-          color: #FF6A00;
+        .afro-featured-category-tag {
+          background: rgba(139, 69, 19, 0.1);
+          color: #8B7355;
           padding: 0.5rem 1rem;
           border-radius: 8px;
           font-size: 0.875rem;
           font-weight: 600;
         }
 
-        .featured-date {
+        .afro-featured-date {
           display: flex;
           align-items: center;
           gap: 0.5rem;
@@ -1031,63 +1063,64 @@ const PremiumBlogList = () => {
           font-size: 0.875rem;
         }
 
-        .meta-icon {
+        .afro-meta-icon {
           width: 1rem;
           height: 1rem;
         }
 
-        .featured-title {
+        .afro-featured-title {
           font-family: 'Inter', sans-serif;
           font-weight: 700;
-          font-size: 2rem;
+          font-size: clamp(1.5rem, 4vw, 2rem);
           line-height: 1.2;
           color: white;
           margin-bottom: 1rem;
         }
 
-        .featured-excerpt {
+        .afro-featured-excerpt {
           color: #94a3b8;
-          font-size: 1.125rem;
+          font-size: clamp(1rem, 2vw, 1.125rem);
           line-height: 1.6;
           margin-bottom: 2rem;
         }
 
-        .featured-author-section {
+        .afro-featured-author-section {
           display: flex;
           align-items: center;
           gap: 1rem;
           margin-bottom: 2rem;
         }
 
-        .author-avatar {
+        .afro-author-avatar {
           width: 3rem;
           height: 3rem;
-          background: rgba(255, 106, 0, 0.1);
-          border: 2px solid rgba(255, 106, 0, 0.3);
+          background: rgba(139, 69, 19, 0.1);
+          border: 2px solid rgba(139, 69, 19, 0.3);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
+          flex-shrink: 0;
         }
 
-        .avatar-icon {
+        .afro-avatar-icon {
           width: 1.5rem;
           height: 1.5rem;
-          color: #FF6A00;
+          color: #8B7355;
         }
 
-        .author-info {
+        .afro-author-info {
           display: flex;
           flex-direction: column;
         }
 
-        .author-name {
+        .afro-author-name {
           font-weight: 600;
           color: white;
           margin-bottom: 0.25rem;
         }
 
-        .reading-time {
+        .afro-reading-time {
           display: flex;
           align-items: center;
           gap: 0.5rem;
@@ -1095,35 +1128,36 @@ const PremiumBlogList = () => {
           font-size: 0.875rem;
         }
 
-        .featured-tags {
+        .afro-featured-tags {
           display: flex;
           flex-wrap: wrap;
           gap: 0.5rem;
           margin-bottom: 2rem;
         }
 
-        .featured-tag {
+        .afro-featured-tag {
           background: rgba(255, 255, 255, 0.05);
-          color: #FF8C00;
+          color: #8B7355;
           padding: 0.25rem 0.75rem;
           border-radius: 6px;
           font-size: 0.75rem;
           font-weight: 500;
-          animation: fadeInUp 0.6s ease-out both;
+          animation: afroFadeInUp 0.6s ease-out both;
         }
 
-        .featured-actions {
+        .afro-featured-actions {
           display: flex;
-          justify-content: space-between;
-          align-items: center;
+          flex-direction: column;
+          gap: 1.5rem;
+          align-items: flex-start;
         }
 
-        .article-stats {
+        .afro-article-stats {
           display: flex;
           gap: 1.5rem;
         }
 
-        .stat-item {
+        .afro-stat-item {
           display: flex;
           align-items: center;
           gap: 0.5rem;
@@ -1131,14 +1165,14 @@ const PremiumBlogList = () => {
           font-size: 0.875rem;
         }
 
-        .stat-icon {
+        .afro-stat-icon {
           width: 1rem;
           height: 1rem;
         }
 
-        .premium-read-button {
+        .afro-premium-read-button {
           position: relative;
-          background: linear-gradient(135deg, #FF6A00, #FF8C00);
+          background: linear-gradient(135deg,#8B7355 0%, #A9927D 100%);
           border: none;
           padding: 1rem 2rem;
           border-radius: 12px;
@@ -1150,24 +1184,27 @@ const PremiumBlogList = () => {
           gap: 0.5rem;
           overflow: hidden;
           transition: all 0.3s ease;
+          width: 100%;
+          justify-content: center;
+          max-width: 200px;
         }
 
-        .premium-read-button:hover {
+        .afro-premium-read-button:hover {
           transform: translateY(-2px);
-          box-shadow: 0 15px 30px rgba(255, 106, 0, 0.4);
+          box-shadow: 0 15px 30px rgba(139, 69, 19, 0.4);
         }
 
-        .button-sparkle-group {
+        .afro-button-sparkle-group {
           display: flex;
           align-items: center;
         }
 
-        .button-sparkle-icon {
+        .afro-button-sparkle-icon {
           width: 1.25rem;
           height: 1.25rem;
         }
 
-        .button-wave-effect {
+        .afro-button-wave-effect {
           position: absolute;
           top: 0;
           left: -100%;
@@ -1177,11 +1214,11 @@ const PremiumBlogList = () => {
           transition: left 0.5s ease;
         }
 
-        .premium-read-button:hover .button-wave-effect {
+        .afro-premium-read-button:hover .afro-button-wave-effect {
           left: 100%;
         }
 
-        .featured-card-border {
+        .afro-featured-card-border {
           position: absolute;
           top: 0;
           left: 0;
@@ -1190,86 +1227,31 @@ const PremiumBlogList = () => {
           pointer-events: none;
         }
 
-        .featured-card-border div {
+        .afro-featured-card-border div {
           position: absolute;
-          background: linear-gradient(90deg, #FF6A00, #FF8C00, #FF6A00);
+          background: linear-gradient(90deg,#8B7355 0%, #A9927D 100%);
           opacity: 0;
           transition: all 0.3s ease;
         }
 
-        .border-top-featured {
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          transform: scaleX(0);
-          transform-origin: left;
-        }
-
-        .border-right-featured {
-          top: 0;
-          right: 0;
-          width: 2px;
-          height: 100%;
-          transform: scaleY(0);
-          transform-origin: top;
-        }
-
-        .border-bottom-featured {
-          bottom: 0;
-          right: 0;
-          width: 100%;
-          height: 2px;
-          transform: scaleX(0);
-          transform-origin: right;
-        }
-
-        .border-left-featured {
-          bottom: 0;
-          left: 0;
-          width: 2px;
-          height: 100%;
-          transform: scaleY(0);
-          transform-origin: bottom;
-        }
-
-        .featured-article-card:hover .border-top-featured {
-          transform: scaleX(1);
-          opacity: 1;
-          transition-delay: 0s;
-        }
-
-        .featured-article-card:hover .border-right-featured {
-          transform: scaleY(1);
-          opacity: 1;
-          transition-delay: 0.15s;
-        }
-
-        .featured-article-card:hover .border-bottom-featured {
-          transform: scaleX(1);
-          opacity: 1;
-          transition-delay: 0.3s;
-        }
-
-        .featured-article-card:hover .border-left-featured {
-          transform: scaleY(1);
-          opacity: 1;
-          transition-delay: 0.45s;
-        }
-
         /* Grille des articles */
-        .premium-articles-grid {
+        .afro-articles-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-          gap: 2rem;
-          margin-bottom: 4rem;
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+          gap: 1.5rem;
+          margin-bottom: 3rem;
+          padding: 0 1rem;
+          max-width: 1400px;
+          margin-left: auto;
+          margin-right: auto;
         }
 
-        .premium-article-card {
-          animation: fadeInUp 0.6s ease-out both;
+        .afro-article-card {
+          animation: afroFadeInUp 0.6s ease-out both;
+          display: flex;
         }
 
-        .article-card-inner {
+        .afro-article-card-inner {
           position: relative;
           background: rgba(255, 255, 255, 0.02);
           backdrop-filter: blur(20px);
@@ -1278,37 +1260,41 @@ const PremiumBlogList = () => {
           overflow: hidden;
           transition: all 0.4s ease;
           height: 100%;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
         }
 
-        .premium-article-card:hover .article-card-inner {
+        .afro-article-card:hover .afro-article-card-inner {
           transform: translateY(-8px);
-          border-color: rgba(255, 106, 0, 0.3);
-          box-shadow: 0 20px 40px rgba(255, 106, 0, 0.2);
+          border-color: rgba(139, 69, 19, 0.3);
+          box-shadow: 0 20px 40px rgba(139, 69, 19, 0.2);
         }
 
-        .article-image-section {
+        .afro-article-image-section {
           position: relative;
           height: 200px;
           overflow: hidden;
+          flex-shrink: 0;
         }
 
-        .article-image-container {
+        .afro-article-image-container {
           position: relative;
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, rgba(255, 106, 0, 0.1), rgba(255, 140, 0, 0.05));
+          background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(160, 82, 45, 0.05));
         }
 
-        .article-image-glow {
+        .afro-article-image-glow {
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background: radial-gradient(circle at center, rgba(255, 106, 0, 0.15), transparent 70%);
+          background: radial-gradient(circle at center, rgba(139, 69, 19, 0.15), transparent 70%);
         }
 
-        .article-image-content {
+        .afro-article-image-content {
           position: absolute;
           top: 50%;
           left: 50%;
@@ -1317,11 +1303,11 @@ const PremiumBlogList = () => {
           z-index: 2;
         }
 
-        .article-icon-wrapper {
+        .afro-article-icon-wrapper {
           width: 60px;
           height: 60px;
-          background: rgba(255, 106, 0, 0.2);
-          border: 2px solid rgba(255, 106, 0, 0.3);
+          background: rgba(139, 69, 19, 0.2);
+          border: 2px solid rgba(139, 69, 19, 0.3);
           border-radius: 16px;
           display: flex;
           align-items: center;
@@ -1330,18 +1316,18 @@ const PremiumBlogList = () => {
           backdrop-filter: blur(10px);
         }
 
-        .article-tag-icon {
+        .afro-article-tag-icon {
           width: 1.5rem;
           height: 1.5rem;
-          color: #FF6A00;
+          color: #8B7355;
         }
 
-        .article-image-label {
+        .afro-article-image-label {
           color: #94a3b8;
           font-size: 0.75rem;
         }
 
-        .article-badges {
+        .afro-article-badges {
           position: absolute;
           top: 1rem;
           left: 1rem;
@@ -1350,7 +1336,7 @@ const PremiumBlogList = () => {
           gap: 0.5rem;
         }
 
-        .article-badge-premium {
+        .afro-article-badge-premium {
           padding: 0.375rem 0.75rem;
           border-radius: 6px;
           font-size: 0.7rem;
@@ -1362,28 +1348,28 @@ const PremiumBlogList = () => {
           backdrop-filter: blur(10px);
         }
 
-        .featured-badge {
-          background: linear-gradient(135deg, #FF6A00, #FF8C00);
-          animation: badgePulse 2s ease-in-out infinite;
+        .afro-featured-badge {
+          background: linear-gradient(135deg #8B7355 0%, #A9927D 100%);
+          animation: afroBadgePulse 2s ease-in-out infinite;
         }
 
-        .category-badge {
-          background: rgba(255, 106, 0, 0.3);
-          border: 1px solid rgba(255, 106, 0, 0.5);
+        .afro-category-badge {
+          background: rgba(139, 69, 19, 0.3);
+          border: 1px solid rgba(139, 69, 19, 0.5);
         }
 
-        .badge-sparkle {
+        .afro-badge-sparkle {
           width: 0.625rem;
           height: 0.625rem;
         }
 
-        .article-image-overlay {
+        .afro-article-image-overlay {
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, rgba(255, 106, 0, 0.9), rgba(255, 140, 0, 0.8));
+          background: linear-gradient(135deg,#8B7355 0%, #A9927D 100%);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1391,16 +1377,16 @@ const PremiumBlogList = () => {
           transition: all 0.3s ease;
         }
 
-        .article-image-overlay.active {
+        .afro-article-image-overlay.afro-active {
           opacity: 1;
         }
 
-        .overlay-actions {
+        .afro-overlay-actions {
           display: flex;
           gap: 1rem;
         }
 
-        .article-like-btn {
+        .afro-article-like-btn {
           width: 2.5rem;
           height: 2.5rem;
           background: rgba(255, 255, 255, 0.9);
@@ -1413,18 +1399,18 @@ const PremiumBlogList = () => {
           transition: all 0.3s ease;
         }
 
-        .article-like-btn:hover {
+        .afro-article-like-btn:hover {
           background: white;
           transform: scale(1.1);
         }
 
-        .action-icon {
+        .afro-action-icon {
           width: 1.125rem;
           height: 1.125rem;
           color: #374151;
         }
 
-        .article-quick-view {
+        .afro-article-quick-view {
           background: white;
           border: none;
           padding: 0.75rem 1.25rem;
@@ -1435,26 +1421,26 @@ const PremiumBlogList = () => {
           transition: all 0.3s ease;
         }
 
-        .article-quick-view:hover {
+        .afro-article-quick-view:hover {
           transform: translateY(-2px);
           box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .premium-article-content {
+        .afro-article-content {
           padding: 1.5rem;
           display: flex;
           flex-direction: column;
-          height: calc(100% - 200px);
+          flex-grow: 1;
         }
 
-        .article-meta-premium {
+        .afro-article-meta {
           display: flex;
           justify-content: space-between;
           align-items: center;
           margin-bottom: 1rem;
         }
 
-        .meta-date {
+        .afro-meta-date {
           display: flex;
           align-items: center;
           gap: 0.5rem;
@@ -1462,17 +1448,17 @@ const PremiumBlogList = () => {
           font-size: 0.75rem;
         }
 
-        .meta-icon-small {
+        .afro-meta-icon-small {
           width: 0.875rem;
           height: 0.875rem;
         }
 
-        .meta-stats {
+        .afro-meta-stats {
           display: flex;
           gap: 0.75rem;
         }
 
-        .meta-stat {
+        .afro-meta-stat {
           display: flex;
           align-items: center;
           gap: 0.25rem;
@@ -1480,7 +1466,7 @@ const PremiumBlogList = () => {
           font-size: 0.75rem;
         }
 
-        .article-title-premium {
+        .afro-article-title {
           font-family: 'Inter', sans-serif;
           font-weight: 700;
           font-size: 1.25rem;
@@ -1493,7 +1479,7 @@ const PremiumBlogList = () => {
           overflow: hidden;
         }
 
-        .article-excerpt-premium {
+        .afro-article-excerpt {
           color: #94a3b8;
           font-size: 0.875rem;
           line-height: 1.5;
@@ -1505,14 +1491,14 @@ const PremiumBlogList = () => {
           flex-grow: 1;
         }
 
-        .article-author-premium {
+        .afro-article-author {
           display: flex;
           justify-content: space-between;
           align-items: center;
           margin-bottom: 1rem;
         }
 
-        .author-mini, .read-time-mini {
+        .afro-author-mini, .afro-read-time-mini {
           display: flex;
           align-items: center;
           gap: 0.5rem;
@@ -1520,39 +1506,39 @@ const PremiumBlogList = () => {
           font-size: 0.75rem;
         }
 
-        .author-mini-icon, .read-time-icon {
+        .afro-author-mini-icon, .afro-read-time-icon {
           width: 0.75rem;
           height: 0.75rem;
         }
 
-        .article-tags-premium {
+        .afro-article-tags {
           display: flex;
           flex-wrap: wrap;
           gap: 0.375rem;
           margin-bottom: 1.5rem;
         }
 
-        .article-tag {
+        .afro-article-tag {
           background: rgba(255, 255, 255, 0.05);
-          color: #FF8C00;
+          color: #8B7355;
           padding: 0.25rem 0.5rem;
           border-radius: 4px;
           font-size: 0.7rem;
           font-weight: 500;
-          animation: fadeInUp 0.4s ease-out both;
+          animation: afroFadeInUp 0.4s ease-out both;
         }
 
-        .article-actions-premium {
+        .afro-article-actions {
           margin-top: auto;
         }
 
-        .premium-read-more {
+        .afro-premium-read-more {
           position: relative;
           background: transparent;
-          border: 1px solid rgba(255, 106, 0, 0.3);
+          border: 1px solid rgba(139, 69, 19, 0.3);
           padding: 0.75rem 1.5rem;
           border-radius: 8px;
-          color: #FF8C00;
+          color: #8B7355;
           font-weight: 600;
           cursor: pointer;
           display: flex;
@@ -1564,37 +1550,37 @@ const PremiumBlogList = () => {
           justify-content: center;
         }
 
-        .premium-read-more:hover {
-          background: rgba(255, 106, 0, 0.1);
-          border-color: #FF6A00;
+        .afro-premium-read-more:hover {
+          background: rgba(139, 69, 19, 0.1);
+          border-color: #8B7355;
           transform: translateY(-2px);
         }
 
-        .read-more-arrow {
+        .afro-read-more-arrow {
           width: 1rem;
           height: 1rem;
           transition: transform 0.3s ease;
         }
 
-        .premium-read-more:hover .read-more-arrow {
+        .afro-premium-read-more:hover .afro-read-more-arrow {
           transform: translateX(3px);
         }
 
-        .read-more-glow {
+        .afro-read-more-glow {
           position: absolute;
           top: 0;
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 106, 0, 0.2), transparent);
+          background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.2), transparent);
           transition: left 0.5s ease;
         }
 
-        .premium-read-more:hover .read-more-glow {
+        .afro-premium-read-more:hover .afro-read-more-glow {
           left: 100%;
         }
 
-        .article-card-border {
+        .afro-article-card-border {
           position: absolute;
           top: 0;
           left: 0;
@@ -1603,95 +1589,31 @@ const PremiumBlogList = () => {
           pointer-events: none;
         }
 
-        .article-card-border div {
-          position: absolute;
-          background: linear-gradient(90deg, #FF6A00, #FF8C00, #FF6A00);
-          opacity: 0;
-          transition: all 0.3s ease;
-        }
-
-        .article-border-top {
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 1px;
-          transform: scaleX(0);
-          transform-origin: left;
-        }
-
-        .article-border-right {
-          top: 0;
-          right: 0;
-          width: 1px;
-          height: 100%;
-          transform: scaleY(0);
-          transform-origin: top;
-        }
-
-        .article-border-bottom {
-          bottom: 0;
-          right: 0;
-          width: 100%;
-          height: 1px;
-          transform: scaleX(0);
-          transform-origin: right;
-        }
-
-        .article-border-left {
-          bottom: 0;
-          left: 0;
-          width: 1px;
-          height: 100%;
-          transform: scaleY(0);
-          transform-origin: bottom;
-        }
-
-        .premium-article-card:hover .article-border-top {
-          transform: scaleX(1);
-          opacity: 1;
-          transition-delay: 0s;
-        }
-
-        .premium-article-card:hover .article-border-right {
-          transform: scaleY(1);
-          opacity: 1;
-          transition-delay: 0.1s;
-        }
-
-        .premium-article-card:hover .article-border-bottom {
-          transform: scaleX(1);
-          opacity: 1;
-          transition-delay: 0.2s;
-        }
-
-        .premium-article-card:hover .article-border-left {
-          transform: scaleY(1);
-          opacity: 1;
-          transition-delay: 0.3s;
-        }
-
         /* Newsletter */
-        .premium-newsletter-section {
-          margin-bottom: 4rem;
+        .afro-newsletter-section {
+          margin-bottom: 3rem;
+          padding: 0 1rem;
         }
 
-        .newsletter-glass {
+        .afro-newsletter-glass {
           position: relative;
           background: rgba(255, 255, 255, 0.02);
           backdrop-filter: blur(20px);
           border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 24px;
-          padding: 3rem;
+          padding: clamp(2rem, 4vw, 3rem);
           overflow: hidden;
+          max-width: 800px;
+          margin: 0 auto;
         }
 
-        .newsletter-content {
+        .afro-newsletter-content {
           position: relative;
           z-index: 2;
           text-align: center;
         }
 
-        .newsletter-badge {
+        .afro-newsletter-badge {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
@@ -1701,46 +1623,47 @@ const PremiumBlogList = () => {
           margin-bottom: 1rem;
         }
 
-        .newsletter-sparkle {
+        .afro-newsletter-sparkle {
           width: 1rem;
           height: 1rem;
-          color: #FFD700;
+          color: #CD853F;
         }
 
-        .newsletter-badge span {
-          color: #FFD700;
+        .afro-newsletter-badge span {
+          color: #CD853F;
           font-weight: 600;
           font-size: 0.875rem;
         }
 
-        .newsletter-title {
-          font-size: 2rem;
+        .afro-newsletter-title {
+          font-size: clamp(1.5rem, 4vw, 2rem);
           font-weight: 700;
           color: white;
           margin-bottom: 1rem;
         }
 
-        .newsletter-text {
+        .afro-newsletter-text {
           color: #94a3b8;
-          font-size: 1.125rem;
+          font-size: clamp(1rem, 2vw, 1.125rem);
           max-width: 500px;
           margin: 0 auto 2rem;
           line-height: 1.6;
         }
 
-        .newsletter-form {
+        .afro-newsletter-form {
           display: flex;
+          flex-direction: column;
           gap: 1rem;
           max-width: 400px;
           margin: 0 auto;
         }
 
-        .email-input-wrapper {
+        .afro-email-input-wrapper {
           position: relative;
-          flex: 1;
+          width: 100%;
         }
 
-        .premium-email-input {
+        .afro-email-input {
           width: 100%;
           padding: 1rem 1.5rem;
           background: rgba(255, 255, 255, 0.05);
@@ -1749,36 +1672,37 @@ const PremiumBlogList = () => {
           color: white;
           font-size: 1rem;
           transition: all 0.3s ease;
+          box-sizing: border-box;
         }
 
-        .premium-email-input:focus {
+        .afro-email-input:focus {
           outline: none;
-          border-color: #FF6A00;
-          background: rgba(255, 106, 0, 0.05);
+          border-color: #8B4513;
+          background: rgba(139, 69, 19, 0.05);
         }
 
-        .premium-email-input::placeholder {
+        .afro-email-input::placeholder {
           color: #64748b;
         }
 
-        .input-underline {
+        .afro-input-underline {
           position: absolute;
           bottom: 0;
           left: 50%;
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #FF6A00, #FF8C00);
+          background: linear-gradient(90deg,#8B7355 0%, #A9927D 100%);
           transition: all 0.3s ease;
           transform: translateX(-50%);
         }
 
-        .premium-email-input:focus ~ .input-underline {
+        .afro-email-input:focus ~ .afro-input-underline {
           width: 100%;
         }
 
-        .premium-subscribe-btn {
+        .afro-premium-subscribe-btn {
           position: relative;
-          background: linear-gradient(135deg, #FF6A00, #FF8C00);
+          background: linear-gradient(135deg#8B7355 0%, #A9927D 100%);
           border: none;
           padding: 1rem 1.5rem;
           border-radius: 12px;
@@ -1790,24 +1714,25 @@ const PremiumBlogList = () => {
           gap: 0.5rem;
           overflow: hidden;
           transition: all 0.3s ease;
+          justify-content: center;
         }
 
-        .premium-subscribe-btn:hover {
+        .afro-premium-subscribe-btn:hover {
           transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(255, 106, 0, 0.4);
+          box-shadow: 0 10px 25px rgba(139, 69, 19, 0.4);
         }
 
-        .subscribe-sparkle {
+        .afro-subscribe-sparkle {
           display: flex;
           align-items: center;
         }
 
-        .subscribe-arrow {
+        .afro-subscribe-arrow {
           width: 1.25rem;
           height: 1.25rem;
         }
 
-        .subscribe-glow {
+        .afro-subscribe-glow {
           position: absolute;
           top: 0;
           left: -100%;
@@ -1817,11 +1742,11 @@ const PremiumBlogList = () => {
           transition: left 0.5s ease;
         }
 
-        .premium-subscribe-btn:hover .subscribe-glow {
+        .afro-premium-subscribe-btn:hover .afro-subscribe-glow {
           left: 100%;
         }
 
-        .newsletter-decoration {
+        .afro-newsletter-decoration {
           position: absolute;
           top: 0;
           left: 0;
@@ -1830,48 +1755,48 @@ const PremiumBlogList = () => {
           pointer-events: none;
         }
 
-        .newsletter-orb {
+        .afro-newsletter-orb {
           position: absolute;
           border-radius: 50%;
           filter: blur(30px);
           opacity: 0.4;
         }
 
-        .orb-1 {
+        .afro-orb-1 {
           width: 80px;
           height: 80px;
-          background: #FF6A00;
+          background: #8B7355;
           top: 20%;
           left: 10%;
-          animation: floatOrbNews 5s ease-in-out infinite;
+          animation: afroFloatOrbNews 5s ease-in-out infinite;
         }
 
-        .orb-2 {
+        .afro-orb-2 {
           width: 120px;
           height: 120px;
-          background: #FF8C00;
+          background: #8B7355;
           top: 60%;
           right: 15%;
-          animation: floatOrbNews 7s ease-in-out infinite reverse;
+          animation: afroFloatOrbNews 7s ease-in-out infinite reverse;
         }
 
-        .orb-3 {
+        .afro-orb-3 {
           width: 60px;
           height: 60px;
-          background: #FFA500;
+          background: #8B7355;
           bottom: 30%;
           left: 20%;
-          animation: floatOrbNews 9s ease-in-out infinite;
+          animation: afroFloatOrbNews 9s ease-in-out infinite;
         }
 
-        @keyframes floatOrbNews {
+        @keyframes afroFloatOrbNews {
           0%, 100% { transform: translateY(0) rotate(0deg); }
           33% { transform: translateY(-15px) rotate(120deg); }
           66% { transform: translateY(8px) rotate(240deg); }
         }
 
         /* Animations globales */
-        @keyframes fadeInUp {
+        @keyframes afroFadeInUp {
           from {
             opacity: 0;
             transform: translateY(30px);
@@ -1882,7 +1807,7 @@ const PremiumBlogList = () => {
           }
         }
 
-        @keyframes slideInDown {
+        @keyframes afroSlideInDown {
           from {
             opacity: 0;
             transform: translateY(-30px);
@@ -1893,7 +1818,7 @@ const PremiumBlogList = () => {
           }
         }
 
-        @keyframes slideInUp {
+        @keyframes afroSlideInUp {
           from {
             opacity: 0;
             transform: translateY(30px);
@@ -1904,30 +1829,113 @@ const PremiumBlogList = () => {
           }
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-          .blog-main-title {
-            font-size: 2.5rem;
+        @keyframes afroBadgePulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+        }
+
+        /* Responsive Design - Points de rupture optimisés */
+        @media (min-width: 640px) {
+          .afro-blog-content {
+            padding: 0 1.5rem;
           }
 
-          .featured-grid {
-            grid-template-columns: 1fr;
+          .afro-articles-grid {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
           }
 
-          .premium-articles-grid {
-            grid-template-columns: 1fr;
+          .afro-featured-actions {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
           }
 
-          .newsletter-form {
-            flex-direction: column;
+          .afro-premium-read-button {
+            width: auto;
           }
 
-          .blog-search-glass {
-            padding: 1.5rem;
+          .afro-newsletter-form {
+            flex-direction: row;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .afro-blog-content {
+            padding: 0 2rem;
           }
 
-          .featured-content-section {
-            padding: 1.5rem;
+          .afro-blog-hero-section {
+            padding: 6rem 0 4rem;
+            min-height: 70vh;
+          }
+
+          .afro-featured-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .afro-featured-image-section {
+            min-height: 400px;
+          }
+
+          .afro-featured-image-container {
+            min-height: 400px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .afro-blog-content {
+            padding: 0 2rem;
+          }
+
+          .afro-articles-grid {
+            gap: 2rem;
+          }
+
+          .afro-featured-content-section {
+            padding: 2.5rem;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .afro-blog-content {
+            padding: 0 2rem;
+          }
+        }
+
+        /* Optimisations pour très grands écrans */
+        @media (min-width: 1536px) {
+          .afro-blog-content {
+            max-width: 1400px;
+          }
+        }
+
+        /* Support tactile amélioré */
+        @media (hover: none) {
+          .afro-article-card:hover .afro-article-card-inner {
+            transform: none;
+          }
+
+          .afro-featured-article-card:hover {
+            transform: none;
+          }
+
+          .afro-blog-filter-btn:hover {
+            transform: none;
+          }
+
+          .afro-premium-read-more:hover,
+          .afro-premium-read-button:hover,
+          .afro-premium-subscribe-btn:hover {
+            transform: none;
+          }
+        }
+
+        /* Réduire les animations pour les préférences de réduction de mouvement */
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
           }
         }
       `}</style>
@@ -1935,4 +1943,4 @@ const PremiumBlogList = () => {
   );
 };
 
-export default PremiumBlogList;
+export default AfroBlogList;
