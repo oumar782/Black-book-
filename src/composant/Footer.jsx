@@ -1,5 +1,5 @@
-import { Mail, Instagram, Twitter, Youtube, Facebook, ArrowRight } from 'lucide-react';
-import logo from '../assets/black.webp'; // Assure-toi d'importer le logo
+import { Mail, Instagram, Twitter, Youtube, Facebook, ArrowRight, Heart, Shield, CheckCircle } from 'lucide-react';
+import logo from '../assets/black.webp';
 
 const Footer = () => {
   const footerLinks = {
@@ -52,15 +52,54 @@ const Footer = () => {
     <footer className="footer">
       <style jsx>{`
         .footer {
-          background-color: #000;
-          border-top: 1px solid rgba(115, 115, 115, 0.3);
+          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #2d1a0c 50%, #1a1a1a 75%, #0a0a0a 100%);
+          border-top: 1px solid rgba(139, 115, 85, 0.3);
           width: 100%;
           margin: 0;
           padding: 0;
+          position: relative;
+          overflow: hidden;
+        }
+
+        /* Effets de particules */
+        .footer-particles {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+        }
+
+        .footer-particle {
+          position: absolute;
+          width: 3px;
+          height: 3px;
+          background: linear-gradient(45deg, #8B7355, #A9927D);
+          border-radius: 50%;
+          animation: footerFloat linear infinite;
+          opacity: 0.4;
+        }
+
+        @keyframes footerFloat {
+          0% {
+            transform: translateY(100vh) rotate(0deg);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.4;
+          }
+          90% {
+            opacity: 0.4;
+          }
+          100% {
+            transform: translateY(-100px) rotate(360deg);
+            opacity: 0;
+          }
         }
 
         .footer-border {
-          border-bottom: 1px solid rgba(115, 115, 115, 0.3);
+          border-bottom: 1px solid rgba(139, 115, 85, 0.2);
           width: 100%;
         }
 
@@ -69,28 +108,34 @@ const Footer = () => {
           max-width: 100%;
           margin: 0;
           padding: 0;
+          position: relative;
+          z-index: 2;
         }
 
         .footer-content {
-          max-width: 1200px;
+          max-width: 1400px;
           margin: 0 auto;
-          padding: 0 24px;
+          padding: 0 1rem;
+          width: 100%;
+          box-sizing: border-box;
         }
 
         @media (min-width: 1024px) {
           .footer-content {
-            padding: 0 32px;
+            padding: 0 2rem;
           }
         }
 
+        /* Newsletter Section Premium */
         .newsletter-section {
-          padding: 5rem 0;
+          padding: 4rem 0;
           width: 100%;
+          position: relative;
         }
 
         .newsletter-grid {
           display: grid;
-          gap: 3rem;
+          gap: 2rem;
           align-items: center;
         }
 
@@ -101,17 +146,45 @@ const Footer = () => {
           }
         }
 
+        .newsletter-content {
+          position: relative;
+        }
+
+        .newsletter-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: linear-gradient(135deg, rgba(139, 115, 85, 0.2), rgba(160, 130, 100, 0.1));
+          border: 1px solid rgba(139, 115, 85, 0.3);
+          padding: 0.5rem 1.25rem;
+          border-radius: 50px;
+          margin-bottom: 1.5rem;
+          backdrop-filter: blur(10px);
+        }
+
+        .newsletter-badge-icon {
+          width: 1rem;
+          height: 1rem;
+          color: #8B7355;
+        }
+
+        .newsletter-badge span {
+          color: #8B7355;
+          font-weight: 600;
+          font-size: 0.875rem;
+        }
+
         .newsletter-title {
           font-family: 'Inter', sans-serif;
           font-weight: 700;
-          font-size: 2.25rem;
+          font-size: clamp(1.75rem, 4vw, 2.5rem);
           color: #f5f5f5;
-          margin-bottom: 1.5rem;
+          margin-bottom: 1rem;
           line-height: 1.2;
         }
 
-        .gradient-orange {
-          background: linear-gradient(135deg, #ff6b00 0%, #ff9d00 50%, #ff6b00 100%);
+        .gradient-marron {
+          background: linear-gradient(135deg, #8B7355 0%, #A9927D 50%, #8B7355 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -119,8 +192,14 @@ const Footer = () => {
 
         .newsletter-text {
           color: #a3a3a3;
-          font-size: 1.125rem;
-          line-height: 1.75;
+          font-size: clamp(1rem, 2vw, 1.125rem);
+          line-height: 1.6;
+          max-width: 500px;
+          margin-bottom: 2rem;
+        }
+
+        .newsletter-form-container {
+          position: relative;
           max-width: 500px;
         }
 
@@ -128,7 +207,7 @@ const Footer = () => {
           display: flex;
           flex-direction: column;
           gap: 1rem;
-          max-width: 500px;
+          width: 100%;
         }
 
         @media (min-width: 640px) {
@@ -137,10 +216,15 @@ const Footer = () => {
           }
         }
 
-        .newsletter-input {
+        .newsletter-input-wrapper {
+          position: relative;
           flex: 1;
-          background-color: rgba(115, 115, 115, 0.1);
-          border: 1px solid rgba(115, 115, 115, 0.3);
+        }
+
+        .newsletter-input {
+          width: 100%;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(139, 115, 85, 0.3);
           color: #f5f5f5;
           padding: 1rem 1.5rem;
           border-radius: 12px;
@@ -155,13 +239,28 @@ const Footer = () => {
 
         .newsletter-input:focus {
           outline: none;
-          border-color: #ff6b00;
-          box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
-          background-color: rgba(115, 115, 115, 0.15);
+          border-color: #8B7355;
+          box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
+          background: rgba(139, 115, 85, 0.05);
+        }
+
+        .newsletter-underline {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0;
+          height: 2px;
+          background: linear-gradient(90deg, #8B7355, #A9927D);
+          transition: all 0.3s ease;
+          transform: translateX(-50%);
+        }
+
+        .newsletter-input:focus ~ .newsletter-underline {
+          width: 100%;
         }
 
         .newsletter-button {
-          background: linear-gradient(135deg, #ff6b00 0%, #ff9d00 100%);
+          background: linear-gradient(135deg, #8B7355, #A9927D);
           color: white;
           border: none;
           padding: 1rem 2rem;
@@ -172,9 +271,10 @@ const Footer = () => {
           align-items: center;
           gap: 0.5rem;
           transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 4px 20px rgba(255, 107, 0, 0.3);
+          box-shadow: 0 4px 20px rgba(139, 115, 85, 0.3);
           position: relative;
           overflow: hidden;
+          white-space: nowrap;
         }
 
         .newsletter-button::before {
@@ -194,17 +294,52 @@ const Footer = () => {
 
         .newsletter-button:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 30px rgba(255, 107, 0, 0.5);
+          box-shadow: 0 8px 30px rgba(139, 115, 85, 0.5);
         }
 
         .newsletter-disclaimer {
           font-size: 0.75rem;
           color: #737373;
           max-width: 500px;
+          margin-top: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
         }
 
+        .newsletter-visual {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .newsletter-orb {
+          width: 200px;
+          height: 200px;
+          background: radial-gradient(circle, rgba(139, 115, 85, 0.2), transparent);
+          border: 2px solid rgba(139, 115, 85, 0.3);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          animation: newsletterOrbGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes newsletterOrbGlow {
+          0%, 100% { box-shadow: 0 0 30px rgba(139, 115, 85, 0.3); }
+          50% { box-shadow: 0 0 50px rgba(139, 115, 85, 0.5); }
+        }
+
+        .newsletter-icon {
+          width: 3rem;
+          height: 3rem;
+          color: #8B7355;
+        }
+
+        /* Main Footer Content */
         .main-footer {
-          padding: 5rem 0;
+          padding: 4rem 0;
           width: 100%;
         }
 
@@ -247,11 +382,11 @@ const Footer = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, #ff6b00 0%, #ff9d00 50%, #ff6b00 100%);
+          background: linear-gradient(135deg, #8B7355 0%, #A9927D 50%, #8B7355 100%);
           border-radius: 16px;
           opacity: 0.8;
           transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 4px 20px rgba(255, 107, 0, 0.3);
+          box-shadow: 0 4px 20px rgba(139, 115, 85, 0.3);
         }
 
         .logo-img {
@@ -261,7 +396,7 @@ const Footer = () => {
           transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
           position: relative;
           z-index: 2;
-          filter: brightness(1.1) drop-shadow(0 2px 8px rgba(255, 107, 0, 0.3));
+          filter: brightness(1.1) drop-shadow(0 2px 8px rgba(139, 115, 85, 0.3));
           object-fit: cover;
         }
 
@@ -277,11 +412,12 @@ const Footer = () => {
         .logo-text {
           font-family: 'Playfair Display', serif;
           font-weight: 800;
-          font-size: 1.75rem;
+          font-size: clamp(1.5rem, 3vw, 1.75rem);
           color: white;
           display: flex;
           align-items: center;
           letter-spacing: -0.5px;
+          flex-wrap: wrap;
         }
 
         .logo-text-main {
@@ -292,21 +428,22 @@ const Footer = () => {
 
         .brand-description {
           color: #a3a3a3;
-          line-height: 1.75;
-          font-size: 1.05rem;
+          line-height: 1.6;
+          font-size: clamp(0.95rem, 2vw, 1.05rem);
           max-width: 400px;
         }
 
         .social-links {
           display: flex;
           gap: 0.75rem;
+          flex-wrap: wrap;
         }
 
         .social-link {
           width: 3rem;
           height: 3rem;
-          background-color: rgba(115, 115, 115, 0.1);
-          border: 1px solid rgba(115, 115, 115, 0.2);
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(139, 115, 85, 0.2);
           border-radius: 12px;
           display: flex;
           align-items: center;
@@ -316,10 +453,10 @@ const Footer = () => {
         }
 
         .social-link:hover {
-          background-color: rgba(255, 107, 0, 0.1);
-          border-color: rgba(255, 107, 0, 0.3);
+          background: rgba(139, 115, 85, 0.1);
+          border-color: rgba(139, 115, 85, 0.4);
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(255, 107, 0, 0.2);
+          box-shadow: 0 8px 20px rgba(139, 115, 85, 0.2);
         }
 
         .social-icon {
@@ -330,7 +467,7 @@ const Footer = () => {
         }
 
         .social-link:hover .social-icon {
-          color: #ff6b00;
+          color: #8B7355;
           transform: scale(1.1);
         }
 
@@ -358,6 +495,7 @@ const Footer = () => {
           transition: all 0.3s ease;
           padding: 0.5rem 0;
           position: relative;
+          display: inline-block;
         }
 
         .links-list a::before {
@@ -367,12 +505,12 @@ const Footer = () => {
           left: 0;
           width: 0;
           height: 1px;
-          background: linear-gradient(90deg, #ff6b00, #ff9d00);
+          background: linear-gradient(90deg, #8B7355, #A9927D);
           transition: width 0.3s ease;
         }
 
         .links-list a:hover {
-          color: #ff6b00;
+          color: #8B7355;
           transform: translateX(5px);
         }
 
@@ -380,9 +518,10 @@ const Footer = () => {
           width: 20px;
         }
 
+        /* Bottom Bar */
         .bottom-bar {
-          border-top: 1px solid rgba(115, 115, 115, 0.3);
-          padding: 2.5rem 0;
+          border-top: 1px solid rgba(139, 115, 85, 0.2);
+          padding: 2rem 0;
           width: 100%;
         }
 
@@ -408,16 +547,24 @@ const Footer = () => {
           font-size: 0.875rem;
         }
 
+        .bottom-right {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
         .status {
           display: flex;
           align-items: center;
           gap: 0.5rem;
           color: #8B7355;
           font-size: 0.875rem;
-          background: rgba(255, 107, 0, 0.1);
+          background: rgba(139, 115, 85, 0.1);
           padding: 0.5rem 1rem;
           border-radius: 20px;
-          border: 1px solid rgba(255, 107, 0, 0.2);
+          border: 1px solid rgba(139, 115, 85, 0.2);
         }
 
         .status-dot {
@@ -448,7 +595,7 @@ const Footer = () => {
         }
 
         .heart {
-          color: #ff6b00;
+          color: #8B7355;
           animation: heartbeat 1.5s ease-in-out infinite;
         }
 
@@ -460,13 +607,134 @@ const Footer = () => {
             transform: scale(1.1);
           }
         }
+
+        /* Responsive optimisations */
+        @media (max-width: 768px) {
+          .newsletter-section {
+            padding: 3rem 0;
+          }
+          
+          .main-footer {
+            padding: 3rem 0;
+          }
+          
+          .footer-grid {
+            gap: 2rem;
+          }
+          
+          .brand-logo {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+          }
+          
+          .logo-text {
+            justify-content: center;
+          }
+          
+          .social-links {
+            justify-content: center;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .footer-content {
+            padding: 0 0.75rem;
+          }
+          
+          .newsletter-title {
+            font-size: 1.5rem;
+          }
+          
+          .newsletter-text {
+            font-size: 0.95rem;
+          }
+          
+          .newsletter-button {
+            padding: 0.875rem 1.5rem;
+          }
+          
+          .bottom-right {
+            flex-direction: column;
+            gap: 1rem;
+          }
+        }
+
+        /* Support tactile */
+        @media (hover: none) {
+          .newsletter-button:hover,
+          .social-link:hover,
+          .brand-logo:hover .logo-background,
+          .brand-logo:hover .logo-img,
+          .links-list a:hover {
+            transform: none;
+          }
+        }
       `}</style>
+
+      {/* Effets de particules */}
+      <div className="footer-particles">
+        {[...Array(15)].map((_, i) => (
+          <div key={i} className="footer-particle" style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 15}s`,
+            animationDuration: `${12 + Math.random() * 8}s`
+          }} />
+        ))}
+      </div>
 
       {/* Newsletter Section */}
       <div className="footer-border">
         <div className="footer-container">
           <div className="footer-content">
-     
+            <div className="newsletter-section">
+              <div className="newsletter-grid">
+                <div className="newsletter-content">
+                  <div className="newsletter-badge">
+                    <Mail className="newsletter-badge-icon" />
+                    <span>Restez informé</span>
+                  </div>
+                  
+                  <h2 className="newsletter-title">
+                    Rejoignez notre <span className="gradient-marron">communauté</span>
+                  </h2>
+                  
+                  <p className="newsletter-text">
+                    Recevez les dernières actualités, événements exclusifs et ressources 
+                    premium directement dans votre boîte mail.
+                  </p>
+
+                  <div className="newsletter-form-container">
+                    <form className="newsletter-form">
+                      <div className="newsletter-input-wrapper">
+                        <input
+                          type="email"
+                          placeholder="Votre adresse email"
+                          className="newsletter-input"
+                          required
+                        />
+                        <div className="newsletter-underline"></div>
+                      </div>
+                      <button type="submit" className="newsletter-button">
+                        <span>S'abonner</span>
+                        <ArrowRight size={18} />
+                      </button>
+                    </form>
+                    
+                    <p className="newsletter-disclaimer">
+                      <Shield size={14} />
+                      Nous respectons votre vie privée. Désabonnez-vous à tout moment.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="newsletter-visual">
+                  <div className="newsletter-orb">
+                    <Mail className="newsletter-icon" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -485,7 +753,7 @@ const Footer = () => {
                   </div>
                   <div className="logo-text">
                     <span className="logo-text-main">THE</span>{' '}
-                    <span className="gradient-orange">BLACK BOOK</span>
+                    <span className="gradient-marron">BLACK BOOK</span>
                   </div>
                 </div>
                 
@@ -540,9 +808,9 @@ const Footer = () => {
                   © 2024 THE BLACK BOOK. Tous droits réservés.
                 </div>
                 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', fontSize: '0.875rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                <div className="bottom-right">
                   <span className="made-with-love">
-                    Made with <span className="heart">❤️</span> for the African diaspora
+                    Fait avec <span className="heart">❤️</span> pour la diaspora africaine
                   </span>
                   <div className="status">
                     <div className="status-dot"></div>

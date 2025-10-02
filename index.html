@@ -1,13 +1,58 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
+    <!-- Encodage -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- Favicon / Logo -->
+    <link rel="icon" type="image/webp" href="/src/assets/black.webp" />
+
+    <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>book</title>
+
+    <!-- SEO -->
+    <title>The Black-Book | Révéler la Beauté de notre Héritage Africain</title>
+    <meta name="description" content="THE BLACK BOOK célèbre et transmet notre héritage africain à travers des ressources éducatives, événements culturels et communauté bienveillante." />
+    <meta name="keywords" content="Black Book, héritage africain, culture africaine, traditions, arts, histoire, éducation, événements culturels" />
+    <meta name="author" content="The Black-Book" />
+
+    <!-- Réseaux sociaux (Open Graph pour Facebook, LinkedIn) -->
+    <meta property="og:title" content="The Black-Book | Révéler la Beauté de notre Héritage Africain" />
+    <meta property="og:description" content="Une plateforme unique pour célébrer, partager et transmettre la richesse de l’héritage africain." />
+    <meta property="og:image" content="/src/assets/black.webp" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tonsite.com" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Black-Book" />
+    <meta name="twitter:description" content="Célébrer la richesse et la diversité de l’héritage africain." />
+    <meta name="twitter:image" content="/src/assets/black.webp" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Logo + Titre -->
+      <header style="text-align:center; padding: 20px;">
+        <img src="/src/assets/black.webp" alt="Logo The Black-Book" width="120" height="120" />
+        <h1>Révéler la Beauté de notre Héritage</h1>
+      </header>
+
+      <!-- Texte SEO-friendly -->
+      <main style="max-width:800px; margin:0 auto; padding:20px; font-family:Arial, sans-serif;">
+        <p>
+          <strong>THE BLACK BOOK</strong> est né d'une conviction profonde : notre héritage africain mérite d'être célébré, partagé et transmis aux générations futures.
+        </p>
+        <p>
+          Nous croyons que la connaissance de nos racines est un pilier fondamental pour construire un avenir épanoui et fier. C'est pourquoi nous avons créé cette plateforme unique qui rassemble
+          <em>ressources éducatives, événements culturels et communauté bienveillante</em>.
+        </p>
+        <p>
+          Chaque jour, nous travaillons pour rendre accessible la richesse de nos cultures, depuis les royaumes anciens jusqu'aux innovations contemporaines, en passant par les arts, la philosophie et les traditions orales qui font notre fierté.
+        </p>
+      </main>
+    </div>
+
+    <!-- Script React -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

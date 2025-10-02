@@ -64,7 +64,7 @@ const HeroPremium = () => {
         <div className="hero-premium-grid">
           <div className="hero-premium-text-content">
             <div className="hero-premium-badge">
-              <span>📚 Plateforme éducative & culturelle</span>
+              <span> Plateforme éducative & culturelle</span>
             </div>
 
             <div className="hero-premium-title-section">
@@ -120,12 +120,7 @@ const HeroPremium = () => {
         </div>
       </div>
 
-      <div className="hero-premium-scroll-indicator">
-        <span className="hero-premium-scroll-text">Découvrir</span>
-        <div className="hero-premium-scroll-arrow">
-          <div className="hero-premium-scroll-dot"></div>
-        </div>
-      </div>
+    
     </section>
   );
 };
