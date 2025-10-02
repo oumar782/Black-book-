@@ -810,7 +810,7 @@ const Footer = () => {
                 
                 <div className="bottom-right">
                   <span className="made-with-love">
-                    Fait avec <span className="heart">❤️</span> pour la diaspora africaine
+                    Fait avec <span className="heart"></span> pour la diaspora africaine
                   </span>
                   <div className="status">
                     <div className="status-dot"></div>
