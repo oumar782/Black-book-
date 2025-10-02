@@ -13,7 +13,6 @@ function Index() {
       <Hero />
       <Vedette />
       <Sous />
-      <Footer />
     </>
   )
 }
