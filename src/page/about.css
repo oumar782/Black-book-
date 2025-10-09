@@ -1,16 +1,16 @@
 /* Variables CSS uniques */
 :root {
-  --about-premium-deep-brown: #1A120B;
-  --about-premium-dark-brown: #3C2A21;
-  --about-premium-medium-brown: #5C4033;
-  --about-premium-light-brown: #8B7355;
-  --about-premium-lighter-brown: #A9927D;
-  --about-premium-accent-brown: #7D5A3A;
+  --about-premium-deep-brown: #000000;
+  --about-premium-dark-brown: #000000;
+  --about-premium-medium-brown: #000000;
+  --about-premium-light-brown: #000000;
+  --about-premium-lighter-brown: #000000;
+  --about-premium-accent-brown: #C2410C;
   --about-premium-foreground: #FFFFFF;
   --about-premium-muted: rgba(255, 255, 255, 0.7);
-  --about-premium-border: rgba(139, 115, 85, 0.2);
-  --about-premium-card: rgba(60, 42, 33, 0.6);
-  --about-premium-glow: 0 0 30px rgba(139, 115, 85, 0.3);
+  --about-premium-border: rgba(194, 65, 12, 0.2);
+  --about-premium-card: rgba(0, 0, 0, 0.6);
+  --about-premium-glow: 0 0 30px rgba(194, 65, 12, 0.3);
   --about-premium-luxury-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   --about-premium-smooth-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --about-premium-bounce-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -25,7 +25,7 @@
 .about-premium-section {
   position: relative;
   padding: 4rem 0;
-  background: linear-gradient(to bottom, var(--about-premium-deep-brown), var(--about-premium-dark-brown));
+  background: #000000;
   overflow: hidden;
   width: 100%;
 }
@@ -58,9 +58,9 @@
 .about-premium-content-badge {
   display: inline-block;
   padding: 0.5rem 1.25rem;
-  background: rgba(139, 115, 85, 0.1);
-  color: var(--about-premium-light-brown);
-  border: 1px solid rgba(139, 115, 85, 0.3);
+  background: rgba(194, 65, 12, 0.1);
+  color: var(--about-premium-accent-brown);
+  border: 1px solid rgba(194, 65, 12, 0.3);
   border-radius: 2rem;
   font-size: 0.8rem;
   font-weight: 600;
@@ -95,7 +95,7 @@
 }
 
 .about-premium-title-gradient {
-  background: linear-gradient(135deg, var(--about-premium-light-brown), var(--about-premium-lighter-brown));
+  background: linear-gradient(135deg, var(--about-premium-accent-brown), #9A3412);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -165,9 +165,9 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(139, 115, 85, 0.1) 0%,
+    rgba(194, 65, 12, 0.1) 0%,
     transparent 50%,
-    rgba(26, 18, 11, 0.4) 100%
+    rgba(0, 0, 0, 0.4) 100%
   );
 }
 
@@ -180,7 +180,7 @@
 .about-premium-floating-element {
   position: absolute;
   border-radius: 50%;
-  background: var(--about-premium-light-brown);
+  background: var(--about-premium-accent-brown);
   opacity: 0.1;
   filter: blur(20px);
   animation: about-premium-float 6s ease-in-out infinite;
@@ -528,7 +528,7 @@
 .about-premium-background-pattern {
   position: absolute;
   opacity: 0.02;
-  background: var(--about-premium-light-brown);
+  background: var(--about-premium-accent-brown);
   border-radius: 50%;
 }
 
@@ -551,7 +551,7 @@
 .about-premium-background-orb {
   position: absolute;
   border-radius: 50%;
-  background: var(--about-premium-light-brown);
+  background: var(--about-premium-accent-brown);
   opacity: 0.05;
   filter: blur(25px);
   animation: about-premium-float 8s ease-in-out infinite;

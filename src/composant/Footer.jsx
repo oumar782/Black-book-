@@ -1,4 +1,4 @@
-import { Mail, Instagram, Twitter, Youtube, Facebook, ArrowRight, Heart, Shield, CheckCircle } from 'lucide-react';
+import { Mail, Instagram, Twitter, Youtube, Facebook, ArrowRight, Shield } from 'lucide-react';
 import logo from '../assets/black.webp';
 
 const Footer = () => {
@@ -52,8 +52,8 @@ const Footer = () => {
     <footer className="footer">
       <style jsx>{`
         .footer {
-          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #2d1a0c 50%, #1a1a1a 75%, #0a0a0a 100%);
-          border-top: 1px solid rgba(139, 115, 85, 0.3);
+          background: #000000;
+          border-top: 1px solid rgba(194, 65, 12, 0.3);
           width: 100%;
           margin: 0;
           padding: 0;
@@ -75,7 +75,7 @@ const Footer = () => {
           position: absolute;
           width: 3px;
           height: 3px;
-          background: linear-gradient(45deg, #8B7355, #A9927D);
+          background: linear-gradient(45deg, #C2410C, #9A3412);
           border-radius: 50%;
           animation: footerFloat linear infinite;
           opacity: 0.4;
@@ -99,7 +99,7 @@ const Footer = () => {
         }
 
         .footer-border {
-          border-bottom: 1px solid rgba(139, 115, 85, 0.2);
+          border-bottom: 1px solid rgba(194, 65, 12, 0.2);
           width: 100%;
         }
 
@@ -154,8 +154,8 @@ const Footer = () => {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: linear-gradient(135deg, rgba(139, 115, 85, 0.2), rgba(160, 130, 100, 0.1));
-          border: 1px solid rgba(139, 115, 85, 0.3);
+          background: linear-gradient(135deg, rgba(194, 65, 12, 0.2), rgba(154, 52, 18, 0.1));
+          border: 1px solid rgba(194, 65, 12, 0.3);
           padding: 0.5rem 1.25rem;
           border-radius: 50px;
           margin-bottom: 1.5rem;
@@ -165,11 +165,11 @@ const Footer = () => {
         .newsletter-badge-icon {
           width: 1rem;
           height: 1rem;
-          color: #8B7355;
+          color: #C2410C;
         }
 
         .newsletter-badge span {
-          color: #8B7355;
+          color: #C2410C;
           font-weight: 600;
           font-size: 0.875rem;
         }
@@ -184,7 +184,7 @@ const Footer = () => {
         }
 
         .gradient-marron {
-          background: linear-gradient(135deg, #8B7355 0%, #A9927D 50%, #8B7355 100%);
+          background: linear-gradient(135deg, #C2410C 0%, #9A3412 50%, #C2410C 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -224,7 +224,7 @@ const Footer = () => {
         .newsletter-input {
           width: 100%;
           background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(139, 115, 85, 0.3);
+          border: 1px solid rgba(194, 65, 12, 0.3);
           color: #f5f5f5;
           padding: 1rem 1.5rem;
           border-radius: 12px;
@@ -239,9 +239,9 @@ const Footer = () => {
 
         .newsletter-input:focus {
           outline: none;
-          border-color: #8B7355;
-          box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
-          background: rgba(139, 115, 85, 0.05);
+          border-color: #C2410C;
+          box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.1);
+          background: rgba(194, 65, 12, 0.05);
         }
 
         .newsletter-underline {
@@ -250,7 +250,7 @@ const Footer = () => {
           left: 50%;
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #8B7355, #A9927D);
+          background: linear-gradient(90deg, #C2410C, #9A3412);
           transition: all 0.3s ease;
           transform: translateX(-50%);
         }
@@ -260,7 +260,7 @@ const Footer = () => {
         }
 
         .newsletter-button {
-          background: linear-gradient(135deg, #8B7355, #A9927D);
+          background: linear-gradient(135deg, #C2410C, #9A3412);
           color: white;
           border: none;
           padding: 1rem 2rem;
@@ -271,7 +271,7 @@ const Footer = () => {
           align-items: center;
           gap: 0.5rem;
           transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 4px 20px rgba(139, 115, 85, 0.3);
+          box-shadow: 0 4px 20px rgba(194, 65, 12, 0.3);
           position: relative;
           overflow: hidden;
           white-space: nowrap;
@@ -294,7 +294,7 @@ const Footer = () => {
 
         .newsletter-button:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 30px rgba(139, 115, 85, 0.5);
+          box-shadow: 0 8px 30px rgba(194, 65, 12, 0.5);
         }
 
         .newsletter-disclaimer {
@@ -317,8 +317,8 @@ const Footer = () => {
         .newsletter-orb {
           width: 200px;
           height: 200px;
-          background: radial-gradient(circle, rgba(139, 115, 85, 0.2), transparent);
-          border: 2px solid rgba(139, 115, 85, 0.3);
+          background: radial-gradient(circle, rgba(194, 65, 12, 0.2), transparent);
+          border: 2px solid rgba(194, 65, 12, 0.3);
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -327,14 +327,14 @@ const Footer = () => {
         }
 
         @keyframes newsletterOrbGlow {
-          0%, 100% { box-shadow: 0 0 30px rgba(139, 115, 85, 0.3); }
-          50% { box-shadow: 0 0 50px rgba(139, 115, 85, 0.5); }
+          0%, 100% { box-shadow: 0 0 30px rgba(194, 65, 12, 0.3); }
+          50% { box-shadow: 0 0 50px rgba(194, 65, 12, 0.5); }
         }
 
         .newsletter-icon {
           width: 3rem;
           height: 3rem;
-          color: #8B7355;
+          color: #C2410C;
         }
 
         /* Main Footer Content */
@@ -382,11 +382,11 @@ const Footer = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, #8B7355 0%, #A9927D 50%, #8B7355 100%);
+          background: linear-gradient(135deg, #C2410C 0%, #9A3412 50%, #C2410C 100%);
           border-radius: 16px;
           opacity: 0.8;
           transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 4px 20px rgba(139, 115, 85, 0.3);
+          box-shadow: 0 4px 20px rgba(194, 65, 12, 0.3);
         }
 
         .logo-img {
@@ -396,7 +396,7 @@ const Footer = () => {
           transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
           position: relative;
           z-index: 2;
-          filter: brightness(1.1) drop-shadow(0 2px 8px rgba(139, 115, 85, 0.3));
+          filter: brightness(1.1) drop-shadow(0 2px 8px rgba(194, 65, 12, 0.3));
           object-fit: cover;
         }
 
@@ -443,7 +443,7 @@ const Footer = () => {
           width: 3rem;
           height: 3rem;
           background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(139, 115, 85, 0.2);
+          border: 1px solid rgba(194, 65, 12, 0.2);
           border-radius: 12px;
           display: flex;
           align-items: center;
@@ -453,10 +453,10 @@ const Footer = () => {
         }
 
         .social-link:hover {
-          background: rgba(139, 115, 85, 0.1);
-          border-color: rgba(139, 115, 85, 0.4);
+          background: rgba(194, 65, 12, 0.1);
+          border-color: rgba(194, 65, 12, 0.4);
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(139, 115, 85, 0.2);
+          box-shadow: 0 8px 20px rgba(194, 65, 12, 0.2);
         }
 
         .social-icon {
@@ -467,7 +467,7 @@ const Footer = () => {
         }
 
         .social-link:hover .social-icon {
-          color: #8B7355;
+          color: #C2410C;
           transform: scale(1.1);
         }
 
@@ -505,12 +505,12 @@ const Footer = () => {
           left: 0;
           width: 0;
           height: 1px;
-          background: linear-gradient(90deg, #8B7355, #A9927D);
+          background: linear-gradient(90deg, #C2410C, #9A3412);
           transition: width 0.3s ease;
         }
 
         .links-list a:hover {
-          color: #8B7355;
+          color: #C2410C;
           transform: translateX(5px);
         }
 
@@ -520,7 +520,7 @@ const Footer = () => {
 
         /* Bottom Bar */
         .bottom-bar {
-          border-top: 1px solid rgba(139, 115, 85, 0.2);
+          border-top: 1px solid rgba(194, 65, 12, 0.2);
           padding: 2rem 0;
           width: 100%;
         }
@@ -559,12 +559,12 @@ const Footer = () => {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          color: #8B7355;
+          color: #C2410C;
           font-size: 0.875rem;
-          background: rgba(139, 115, 85, 0.1);
+          background: rgba(194, 65, 12, 0.1);
           padding: 0.5rem 1rem;
           border-radius: 20px;
-          border: 1px solid rgba(139, 115, 85, 0.2);
+          border: 1px solid rgba(194, 65, 12, 0.2);
         }
 
         .status-dot {
@@ -595,7 +595,7 @@ const Footer = () => {
         }
 
         .heart {
-          color: #8B7355;
+          color: #C2410C;
           animation: heartbeat 1.5s ease-in-out infinite;
         }
 
@@ -805,12 +805,12 @@ const Footer = () => {
             <div className="bottom-bar">
               <div className="bottom-content">
                 <div className="copyright">
-                  © 2024 THE BLACK BOOK. Tous droits réservés.
+                  © 2025 THE BLACK BOOK. Tous droits réservés.
                 </div>
                 
                 <div className="bottom-right">
                   <span className="made-with-love">
-                    Fait avec <span className="heart"></span> pour la diaspora africaine
+                    Fait avec <span className="heart">❤</span> pour la diaspora africaine
                   </span>
                   <div className="status">
                     <div className="status-dot"></div>

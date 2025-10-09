@@ -359,7 +359,7 @@ const AfroEventsCalendar = () => {
         .afro-events-section {
           padding: 6rem 0;
           background: 
-            linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 30%, #2d1a0c 70%, #1a0f0a 100%);
+            linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 30%, #1a0f0a 70%, #0a0a0a 100%);
           min-height: 100vh;
           position: relative;
           overflow: hidden;
@@ -378,7 +378,7 @@ const AfroEventsCalendar = () => {
 
         .afro-particle {
           position: absolute;
-          background: linear-gradient(45deg, #5D4037, #6D4C41, #8D6E63);
+          background: linear-gradient(45deg, #f59e0b, #d97706, #f59e0b);
           border-radius: 50%;
           opacity: 0;
           animation: afroFloatParticle var(--duration) ease-in-out var(--delay) infinite;
@@ -425,7 +425,7 @@ const AfroEventsCalendar = () => {
         }
 
         .afro-title-word {
-          background: linear-gradient(135deg, #ffffff 0%, #5D4037 25%, #6D4C41 50%, #8D6E63 75%, #ffffff 100%);
+          background: linear-gradient(135deg, #ffffff 0%, #f59e0b 25%, #d97706 50%, #f59e0b 75%, #ffffff 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -441,7 +441,7 @@ const AfroEventsCalendar = () => {
         }
         .afro-title-word-3 { 
           animation-delay: 0.4s;
-          color: #5D4037;
+          color: #f59e0b;
         }
 
         @keyframes afroTitleShimmer {
@@ -473,7 +473,7 @@ const AfroEventsCalendar = () => {
             rgba(255, 255, 255, 0.05) 0%, 
             rgba(255, 255, 255, 0.02) 100%);
           backdrop-filter: blur(20px);
-          border: 1px solid rgba(93, 64, 55, 0.1);
+          border: 1px solid rgba(245, 158, 11, 0.1);
           border-radius: 2rem;
           padding: 2rem;
           text-align: center;
@@ -492,7 +492,7 @@ const AfroEventsCalendar = () => {
           height: 100%;
           background: linear-gradient(90deg, 
             transparent, 
-            rgba(93, 64, 55, 0.1), 
+            rgba(245, 158, 11, 0.1), 
             transparent);
           transition: left 0.6s ease;
         }
@@ -503,10 +503,10 @@ const AfroEventsCalendar = () => {
 
         .afro-stat-card:hover {
           transform: translateY(-10px) scale(1.02);
-          border-color: rgba(93, 64, 55, 0.3);
+          border-color: rgba(245, 158, 11, 0.3);
           box-shadow: 
-            0 20px 40px rgba(93, 64, 55, 0.15),
-            0 0 80px rgba(93, 64, 55, 0.05);
+            0 20px 40px rgba(245, 158, 11, 0.15),
+            0 0 80px rgba(245, 158, 11, 0.05);
         }
 
         .afro-stat-number-wrapper {
@@ -519,7 +519,7 @@ const AfroEventsCalendar = () => {
           font-family: 'Inter', sans-serif;
           font-weight: 800;
           font-size: 3rem;
-          background: linear-gradient(135deg, #5D4037, #6D4C41, #8D6E63);
+          background: linear-gradient(135deg, #f59e0b, #d97706, #f59e0b);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -534,7 +534,7 @@ const AfroEventsCalendar = () => {
           transform: translate(-50%, -50%);
           width: 120%;
           height: 120%;
-          background: radial-gradient(circle, rgba(93, 64, 55, 0.3) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(245, 158, 11, 0.3) 0%, transparent 70%);
           filter: blur(10px);
           animation: afroPulseGlow 2s ease-in-out infinite;
         }
@@ -591,7 +591,7 @@ const AfroEventsCalendar = () => {
           left: 50%;
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #5D4037, #6D4C41);
+          background: linear-gradient(90deg, #f59e0b, #d97706);
           transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           transform: translateX(-50%);
         }
@@ -606,11 +606,11 @@ const AfroEventsCalendar = () => {
 
         .afro-tab-active {
           background: linear-gradient(135deg, 
-            rgba(93, 64, 55, 0.2), 
-            rgba(109, 76, 65, 0.1));
+            rgba(245, 158, 11, 0.2), 
+            rgba(217, 119, 6, 0.1));
           color: #ffffff;
           box-shadow: 
-            0 8px 25px rgba(93, 64, 55, 0.2),
+            0 8px 25px rgba(245, 158, 11, 0.2),
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
@@ -646,8 +646,8 @@ const AfroEventsCalendar = () => {
           bottom: 0;
           border-radius: 2rem;
           background: linear-gradient(135deg, 
-            rgba(93, 64, 55, 0.1), 
-            rgba(109, 76, 65, 0.05), 
+            rgba(245, 158, 11, 0.1), 
+            rgba(217, 119, 6, 0.05), 
             transparent 30%);
           opacity: 0;
           transition: opacity 0.4s ease;
@@ -661,17 +661,17 @@ const AfroEventsCalendar = () => {
           height: 100%;
           background: linear-gradient(90deg, 
             transparent, 
-            rgba(93, 64, 55, 0.05), 
+            rgba(245, 158, 11, 0.05), 
             transparent);
           transition: left 0.6s ease;
         }
 
         .afro-event-card:hover {
           transform: translateY(-15px) scale(1.02);
-          border-color: rgba(93, 64, 55, 0.3);
+          border-color: rgba(245, 158, 11, 0.3);
           box-shadow: 
-            0 25px 50px rgba(93, 64, 55, 0.15),
-            0 0 100px rgba(93, 64, 55, 0.05);
+            0 25px 50px rgba(245, 158, 11, 0.15),
+            0 0 100px rgba(245, 158, 11, 0.05);
         }
 
         .afro-event-card:hover .afro-card-border-glow {
@@ -734,7 +734,7 @@ const AfroEventsCalendar = () => {
         }
 
         .afro-badge-featured {
-          background: linear-gradient(135deg, #5D4037, #6D4C41);
+          background: linear-gradient(135deg, #f59e0b, #d97706);
           color: white;
           padding: 0.5rem 1rem;
           font-size: 0.75rem;
@@ -774,7 +774,7 @@ const AfroEventsCalendar = () => {
         .afro-card-icon {
           width: 2rem;
           height: 2rem;
-          color: #5D4037;
+          color: #f59e0b;
           position: relative;
           z-index: 2;
           transition: all 0.3s ease;
@@ -784,7 +784,7 @@ const AfroEventsCalendar = () => {
           position: absolute;
           width: 3rem;
           height: 3rem;
-          background: radial-gradient(circle, rgba(93, 64, 55, 0.2) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, transparent 70%);
           border-radius: 50%;
           animation: afroOrbRotate 4s linear infinite;
         }
@@ -802,14 +802,14 @@ const AfroEventsCalendar = () => {
           margin-bottom: 1rem;
           line-height: 1.4;
           transition: all 0.3s ease;
-          background: linear-gradient(135deg, #ffffff 0%, #5D4037 100%);
+          background: linear-gradient(135deg, #ffffff 0%, #f59e0b 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
 
         .afro-event-card:hover .afro-card-title {
-          background: linear-gradient(135deg, #5D4037 0%, #6D4C41 50%, #8D6E63 100%);
+          background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #f59e0b 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -844,13 +844,13 @@ const AfroEventsCalendar = () => {
         .afro-detail-icon {
           width: 1.25rem;
           height: 1.25rem;
-          color: #5D4037;
+          color: #f59e0b;
           transition: all 0.3s ease;
         }
 
         .afro-event-card:hover .afro-detail-icon {
           transform: scale(1.1);
-          color: #6D4C41;
+          color: #d97706;
         }
 
         .afro-detail-date,
@@ -889,7 +889,7 @@ const AfroEventsCalendar = () => {
         }
 
         .afro-instructor-name {
-          background: linear-gradient(135deg, #5D4037, #6D4C41);
+          background: linear-gradient(135deg, #f59e0b, #d97706);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -919,7 +919,7 @@ const AfroEventsCalendar = () => {
 
         .afro-progress-fill {
           height: 100%;
-          background: linear-gradient(90deg, #5D4037, #6D4C41, #8D6E63);
+          background: linear-gradient(90deg, #f59e0b, #d97706, #f59e0b);
           border-radius: 1rem;
           position: relative;
           transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -958,7 +958,7 @@ const AfroEventsCalendar = () => {
         }
 
         .afro-price-premium {
-          background: linear-gradient(135deg, #5D4037, #6D4C41);
+          background: linear-gradient(135deg, #f59e0b, #d97706);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -989,7 +989,7 @@ const AfroEventsCalendar = () => {
         }
 
         .afro-register-btn {
-          background: linear-gradient(135deg, #5D4037, #6D4C41, #8D6E63);
+          background: linear-gradient(135deg, #f59e0b, #d97706, #f59e0b);
           color: white;
           border: none;
           padding: 1rem 2rem;
@@ -1043,8 +1043,8 @@ const AfroEventsCalendar = () => {
         .afro-register-btn:hover {
           transform: translateY(-3px) scale(1.05);
           box-shadow: 
-            0 15px 30px rgba(93, 64, 55, 0.4),
-            0 0 50px rgba(93, 64, 55, 0.2);
+            0 15px 30px rgba(245, 158, 11, 0.4),
+            0 0 50px rgba(245, 158, 11, 0.2);
         }
 
         .afro-register-btn:hover .afro-btn-glow {
@@ -1088,8 +1088,8 @@ const AfroEventsCalendar = () => {
 
         .afro-calendar-btn {
           background: transparent;
-          color: #5D4037;
-          border: 1px solid rgba(93, 64, 55, 0.5);
+          color: #f59e0b;
+          border: 1px solid rgba(245, 158, 11, 0.5);
           padding: 1.25rem 2.5rem;
           border-radius: 1.5rem;
           font-weight: 600;
@@ -1109,17 +1109,17 @@ const AfroEventsCalendar = () => {
         }
 
         .afro-calendar-btn:hover {
-          background: rgba(93, 64, 55, 0.1);
-          border-color: #5D4037;
+          background: rgba(245, 158, 11, 0.1);
+          border-color: #f59e0b;
           transform: translateY(-5px);
           box-shadow: 
-            0 20px 40px rgba(93, 64, 55, 0.3),
-            0 0 80px rgba(93, 64, 55, 0.1);
+            0 20px 40px rgba(245, 158, 11, 0.3),
+            0 0 80px rgba(245, 158, 11, 0.1);
         }
 
         .afro-calendar-btn:hover .afro-btn-orb {
           transform: scale(1.2) rotate(90deg);
-          background: rgba(93, 64, 55, 0.3);
+          background: rgba(245, 158, 11, 0.3);
         }
 
         .afro-calendar-btn:hover .afro-calendar-icon {
@@ -1134,7 +1134,7 @@ const AfroEventsCalendar = () => {
           height: 100%;
           background: linear-gradient(90deg, 
             transparent, 
-            rgba(93, 64, 55, 0.2), 
+            rgba(245, 158, 11, 0.2), 
             transparent);
           transition: left 0.6s ease;
         }
@@ -1145,56 +1145,56 @@ const AfroEventsCalendar = () => {
 
         /* Badge colors */
         .afro-badge-masterclass { 
-          background: linear-gradient(135deg, rgba(93, 64, 55, 0.2), rgba(93, 64, 55, 0.1));
-          color: #BCAAA4;
+          background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.1));
+          color: #f59e0b;
         }
         .afro-badge-masterclass .afro-badge-glow {
-          background: radial-gradient(circle, rgba(93, 64, 55, 0.3) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(245, 158, 11, 0.3) 0%, transparent 70%);
         }
 
         .afro-badge-atelier { 
-          background: linear-gradient(135deg, rgba(109, 76, 65, 0.2), rgba(109, 76, 65, 0.1));
-          color: #A1887F;
+          background: linear-gradient(135deg, rgba(217, 119, 6, 0.2), rgba(217, 119, 6, 0.1));
+          color: #d97706;
         }
         .afro-badge-atelier .afro-badge-glow {
-          background: radial-gradient(circle, rgba(109, 76, 65, 0.3) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(217, 119, 6, 0.3) 0%, transparent 70%);
         }
 
         .afro-badge-conference { 
-          background: linear-gradient(135deg, rgba(141, 110, 99, 0.2), rgba(141, 110, 99, 0.1));
-          color: #8D6E63;
+          background: linear-gradient(135deg, rgba(217, 119, 6, 0.2), rgba(217, 119, 6, 0.1));
+          color: #d97706;
         }
         .afro-badge-conference .afro-badge-glow {
-          background: radial-gradient(circle, rgba(141, 110, 99, 0.3) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(217, 119, 6, 0.3) 0%, transparent 70%);
         }
 
         .afro-badge-formation { 
-          background: linear-gradient(135deg, rgba(78, 52, 46, 0.2), rgba(78, 52, 46, 0.1));
-          color: #4E342E;
+          background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.1));
+          color: #f59e0b;
         }
         .afro-badge-formation .afro-badge-glow {
-          background: radial-gradient(circle, rgba(78, 52, 46, 0.3) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(245, 158, 11, 0.3) 0%, transparent 70%);
         }
 
         .afro-badge-discussion { 
-          background: linear-gradient(135deg, rgba(121, 85, 72, 0.2), rgba(121, 85, 72, 0.1));
-          color: #795548;
+          background: linear-gradient(135deg, rgba(217, 119, 6, 0.2), rgba(217, 119, 6, 0.1));
+          color: #d97706;
         }
         .afro-badge-discussion .afro-badge-glow {
-          background: radial-gradient(circle, rgba(121, 85, 72, 0.3) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(217, 119, 6, 0.3) 0%, transparent 70%);
         }
 
         .afro-badge-debutant { 
-          background: linear-gradient(135deg, rgba(141, 110, 99, 0.2), rgba(141, 110, 99, 0.1));
-          color: #8D6E63;
+          background: linear-gradient(135deg, rgba(217, 119, 6, 0.2), rgba(217, 119, 6, 0.1));
+          color: #d97706;
         }
         .afro-badge-intermediaire { 
-          background: linear-gradient(135deg, rgba(109, 76, 65, 0.2), rgba(109, 76, 65, 0.1));
-          color: #6D4C41;
+          background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.1));
+          color: #f59e0b;
         }
         .afro-badge-avance { 
-          background: linear-gradient(135deg, rgba(93, 64, 55, 0.2), rgba(93, 64, 55, 0.1));
-          color: #5D4037;
+          background: linear-gradient(135deg, rgba(217, 119, 6, 0.2), rgba(217, 119, 6, 0.1));
+          color: #d97706;
         }
         .afro-badge-default { 
           background: rgba(100, 100, 100, 0.2);
@@ -1241,8 +1241,8 @@ const AfroEventsCalendar = () => {
         }
 
         @keyframes afroFeaturedPulse {
-          0%, 100% { box-shadow: 0 0 20px rgba(93, 64, 55, 0.3); }
-          50% { box-shadow: 0 0 30px rgba(93, 64, 55, 0.6); }
+          0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
+          50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.6); }
         }
 
         @keyframes afroSparkleFlash {
