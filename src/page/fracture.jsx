@@ -145,7 +145,7 @@ const PremiumDenonciationPage = () => {
 
   const urgencyLevels = {
     low: { label: 'Faible', color: '#10B981' },
-    medium: { label: 'Moyenne', color: '#F59E0B' },
+    medium: { label: 'Moyenne', color: '#C2410C' },
     high: { label: 'Élevée', color: '#EF4444' }
   };
 
@@ -160,7 +160,7 @@ const PremiumDenonciationPage = () => {
     const colors = {
       comportement_public: '#3B82F6',
       education: '#8B5CF6',
-      integration: '#F59E0B',
+      integration: '#C2410C',
       economique: '#EF4444',
       social: '#EC4899',
       sante: '#10B981'
@@ -569,16 +569,11 @@ const PremiumDenonciationPage = () => {
         .premium-denonciation-container {
           position: relative;
           min-height: 100vh;
-          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #1a0f00 50%, #1a1a1a 75%, #0a0a0a 100%);
+          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #9A3412 50%, #1a1a1a 75%, #0a0a0a 100%);
           background-size: 400% 400%;
           animation: gradientShift 20s ease infinite;
           overflow-x: hidden;
           padding: 2rem 0;
-        }
-
-        @keyframes gradientShift {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
         }
 
         /* Particules animées */
@@ -596,7 +591,7 @@ const PremiumDenonciationPage = () => {
           position: absolute;
           width: 3px;
           height: 3px;
-          background: linear-gradient(45deg,#8B7355 0%, #A9927D 100%);
+          background: linear-gradient(45deg, #C2410C 0%, #9A3412 100%);
           border-radius: 50%;
           animation: floatParticleDenonciation linear infinite;
           opacity: 0.3;
@@ -624,7 +619,7 @@ const PremiumDenonciationPage = () => {
           position: fixed;
           width: 16px;
           height: 16px;
-          background: radial-gradient(circle, #8B7355, transparent);
+          background: radial-gradient(circle, #C2410C, transparent);
           border-radius: 50%;
           pointer-events: none;
           z-index: 9999;
@@ -658,7 +653,7 @@ const PremiumDenonciationPage = () => {
           transform: translate(-50%, -50%);
           width: 500px;
           height: 500px;
-          background: radial-gradient(ellipse at center, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+          background: radial-gradient(ellipse at center, rgba(194, 65, 12, 0.1) 0%, transparent 70%);
           opacity: 0.6;
         }
 
@@ -670,24 +665,24 @@ const PremiumDenonciationPage = () => {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: linear-gradient(135deg, #8B7355 0%, #A9927D 100%);
-          border: 1px solid rgba(245, 158, 11, 0.3);
+          background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+          border: 1px solid rgba(194, 65, 12, 0.3);
           padding: 0.5rem 1.5rem;
           border-radius: 50px;
           margin-bottom: 2rem;
           backdrop-filter: blur(10px);
           animation: slideInDown 0.8s ease-out;
-          color:rgb(30, 5, 5);
+          color: white;
         }
 
         .badge-icon-denonciation {
           width: 1rem;
           height: 1rem;
-          color:rgb(6, 5, 4);
+          color: white;
         }
 
         .denonciation-header-badge span {
-          color:rgb(17, 15, 12);
+          color: white;
           font-weight: 600;
           font-size: 0.875rem;
         }
@@ -708,7 +703,7 @@ const PremiumDenonciationPage = () => {
         }
 
         .denonciation-title-accent {
-          background: linear-gradient(135deg,#8B7355 0%, #A9927D 100%);
+          background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -724,7 +719,7 @@ const PremiumDenonciationPage = () => {
         .denonciation-underline-animation {
           width: 120px;
           height: 4px;
-          background: linear-gradient(90deg, transparent, #8B7355, transparent);
+          background: linear-gradient(90deg, transparent, #C2410C, transparent);
           border-radius: 2px;
           animation: underlinePulse 2s ease-in-out infinite;
         }
@@ -786,7 +781,7 @@ const PremiumDenonciationPage = () => {
         .stat-number {
           font-size: 2rem;
           font-weight: 800;
-          color: #8B7355;
+          color: #C2410C;
           margin-bottom: 0.5rem;
         }
 
@@ -829,7 +824,7 @@ const PremiumDenonciationPage = () => {
 
         .search-input:focus {
           outline: none;
-          border-color: #8B7355;
+          border-color: #C2410C;
         }
 
         .category-filters {
@@ -872,9 +867,9 @@ const PremiumDenonciationPage = () => {
         }
 
         .problem-card:hover {
-          border-color: rgba(245, 158, 11, 0.3);
+          border-color: rgba(194, 65, 12, 0.3);
           transform: translateY(-2px);
-          box-shadow: 0 10px 30px rgba(245, 158, 11, 0.1);
+          box-shadow: 0 10px 30px rgba(194, 65, 12, 0.1);
         }
 
         .problem-card-header {
@@ -913,8 +908,8 @@ const PremiumDenonciationPage = () => {
         }
 
         .urgency-medium {
-          background: rgba(245, 158, 11, 0.2);
-          border: 1px solid rgba(245, 158, 11, 0.4);
+          background: rgba(194, 65, 12, 0.2);
+          border: 1px solid rgba(194, 65, 12, 0.4);
         }
 
         .urgency-low {
@@ -998,9 +993,9 @@ const PremiumDenonciationPage = () => {
         }
 
         .action-btn:hover {
-          background: rgba(245, 158, 11, 0.1);
-          color: #F59E0B;
-          border-color: rgba(245, 158, 11, 0.3);
+          background: rgba(194, 65, 12, 0.1);
+          color: #C2410C;
+          border-color: rgba(194, 65, 12, 0.3);
         }
 
         .action-icon {
@@ -1012,17 +1007,17 @@ const PremiumDenonciationPage = () => {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          background: rgba(245, 158, 11, 0.1);
-          border: 1px solid rgba(245, 158, 11, 0.3);
+          background: rgba(194, 65, 12, 0.1);
+          border: 1px solid rgba(194, 65, 12, 0.3);
           border-radius: 8px;
           padding: 0.5rem 1rem;
-          color: #F59E0B;
+          color: #C2410C;
           cursor: pointer;
           transition: all 0.3s ease;
         }
 
         .view-details-btn:hover {
-          background: rgba(245, 158, 11, 0.2);
+          background: rgba(194, 65, 12, 0.2);
           transform: translateY(-1px);
         }
 
@@ -1037,7 +1032,7 @@ const PremiumDenonciationPage = () => {
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.05), transparent);
+          background: linear-gradient(90deg, transparent, rgba(194, 65, 12, 0.05), transparent);
           transition: left 0.6s ease;
         }
 
@@ -1087,7 +1082,7 @@ const PremiumDenonciationPage = () => {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: rgba(245, 158, 11, 0.1);
+          background: rgba(194, 65, 12, 0.1);
           padding: 0.5rem 1rem;
           border-radius: 50px;
           margin-bottom: 1rem;
@@ -1096,11 +1091,11 @@ const PremiumDenonciationPage = () => {
         .form-badge-icon {
           width: 1rem;
           height: 1rem;
-          color: #F59E0B;
+          color: #C2410C;
         }
 
         .form-badge span {
-          color: #F59E0B;
+          color: #C2410C;
           font-weight: 600;
           font-size: 0.875rem;
         }
@@ -1114,7 +1109,7 @@ const PremiumDenonciationPage = () => {
         }
 
         .form-title-accent {
-          background: linear-gradient(135deg, #F59E0B, #D97706);
+          background: linear-gradient(135deg, #C2410C, #9A3412);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -1157,8 +1152,8 @@ const PremiumDenonciationPage = () => {
 
         .premium-input:focus, .premium-select:focus, .premium-textarea:focus {
           outline: none;
-          border-color: #F59E0B;
-          background: rgba(245, 158, 11, 0.03);
+          border-color: #C2410C;
+          background: rgba(194, 65, 12, 0.03);
         }
 
         .premium-textarea {
@@ -1232,8 +1227,8 @@ const PremiumDenonciationPage = () => {
         .form-info {
           display: flex;
           gap: 1rem;
-          background: rgba(245, 158, 11, 0.05);
-          border: 1px solid rgba(245, 158, 11, 0.2);
+          background: rgba(194, 65, 12, 0.05);
+          border: 1px solid rgba(194, 65, 12, 0.2);
           border-radius: 12px;
           padding: 1.5rem;
         }
@@ -1241,7 +1236,7 @@ const PremiumDenonciationPage = () => {
         .info-icon {
           width: 1.5rem;
           height: 1.5rem;
-          color: #F59E0B;
+          color: #C2410C;
           flex-shrink: 0;
           margin-top: 0.25rem;
         }
@@ -1263,7 +1258,7 @@ const PremiumDenonciationPage = () => {
         /* Bouton d'envoi */
         .premium-submit-btn {
           position: relative;
-          background: linear-gradient(135deg, #F59E0B, #D97706);
+          background: linear-gradient(135deg, #C2410C, #9A3412);
           border: none;
           padding: 1rem 2rem;
           border-radius: 12px;
@@ -1280,7 +1275,7 @@ const PremiumDenonciationPage = () => {
 
         .premium-submit-btn:hover:not(.submitting) {
           transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+          box-shadow: 0 10px 25px rgba(194, 65, 12, 0.4);
         }
 
         .premium-submit-btn.submitting {
@@ -1414,15 +1409,15 @@ const PremiumDenonciationPage = () => {
         }
 
         .advanced-stat:hover {
-          border-color: rgba(245, 158, 11, 0.3);
+          border-color: rgba(194, 65, 12, 0.3);
           transform: translateY(-2px);
         }
 
         .stat-icon-wrapper {
           width: 50px;
           height: 50px;
-          background: rgba(245, 158, 11, 0.1);
-          border: 1px solid rgba(245, 158, 11, 0.3);
+          background: rgba(194, 65, 12, 0.1);
+          border: 1px solid rgba(194, 65, 12, 0.3);
           border-radius: 12px;
           display: flex;
           align-items: center;
@@ -1432,7 +1427,7 @@ const PremiumDenonciationPage = () => {
         .stat-icon {
           width: 1.5rem;
           height: 1.5rem;
-          color: #F59E0B;
+          color: #C2410C;
         }
 
         .stat-content {
@@ -1442,7 +1437,7 @@ const PremiumDenonciationPage = () => {
         .stat-number {
           font-size: 1.5rem;
           font-weight: 800;
-          color: #F59E0B;
+          color: #C2410C;
           margin-bottom: 0.25rem;
         }
 
