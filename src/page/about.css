@@ -5,12 +5,12 @@
   --about-premium-medium-brown: #000000;
   --about-premium-light-brown: #000000;
   --about-premium-lighter-brown: #000000;
-  --about-premium-accent-brown: #C2410C;
+  --about-premium-accent-brown: #ff6b35;
   --about-premium-foreground: #FFFFFF;
   --about-premium-muted: rgba(255, 255, 255, 0.7);
-  --about-premium-border: rgba(194, 65, 12, 0.2);
+  --about-premium-border: rgba(255, 107, 53, 0.2);
   --about-premium-card: rgba(0, 0, 0, 0.6);
-  --about-premium-glow: 0 0 30px rgba(194, 65, 12, 0.3);
+  --about-premium-glow: 0 0 30px rgba(255, 107, 53, 0.3);
   --about-premium-luxury-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   --about-premium-smooth-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --about-premium-bounce-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -58,9 +58,9 @@
 .about-premium-content-badge {
   display: inline-block;
   padding: 0.5rem 1.25rem;
-  background: rgba(194, 65, 12, 0.1);
+  background: rgba(255, 107, 53, 0.1);
   color: var(--about-premium-accent-brown);
-  border: 1px solid rgba(194, 65, 12, 0.3);
+  border: 1px solid rgba(255, 107, 53, 0.3);
   border-radius: 2rem;
   font-size: 0.8rem;
   font-weight: 600;
@@ -95,7 +95,7 @@
 }
 
 .about-premium-title-gradient {
-  background: linear-gradient(135deg, var(--about-premium-accent-brown), #9A3412);
+  background: linear-gradient(135deg, var(--about-premium-accent-brown), #ff8e53);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -165,7 +165,7 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(194, 65, 12, 0.1) 0%,
+    rgba(255, 107, 53, 0.1) 0%,
     transparent 50%,
     rgba(0, 0, 0, 0.4) 100%
   );

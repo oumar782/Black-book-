@@ -64,13 +64,13 @@ const HeaderPremium = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, #8B7355 0%, #A9927D 50%, #8B7355 100%);
+          background: linear-gradient(135deg, #ff6b35 0%, #ff8e53 50%, #ff6b35 100%);
           border-radius: 16px;
           opacity: 0;
           transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
           box-shadow: 
-            0 0 0 1px rgba(139, 115, 85, 0.1),
-            0 4px 20px rgba(139, 115, 85, 0.2);
+            0 0 0 1px rgba(255, 107, 53, 0.1),
+            0 4px 20px rgba(255, 107, 53, 0.2);
         }
 
         .header-premium-logo-img {
@@ -82,7 +82,7 @@ const HeaderPremium = () => {
           z-index: 2;
           filter: 
             brightness(1.1)
-            drop-shadow(0 2px 8px rgba(139, 115, 85, 0.3));
+            drop-shadow(0 2px 8px rgba(255, 107, 53, 0.3));
           object-fit: cover;
         }
 
@@ -95,7 +95,7 @@ const HeaderPremium = () => {
           transform: scale(1.05) rotate(-5deg);
           filter: 
             brightness(1.2)
-            drop-shadow(0 4px 16px rgba(139, 115, 85, 0.5));
+            drop-shadow(0 4px 16px rgba(255, 107, 53, 0.5));
         }
 
         .header-premium-logo-text {
@@ -115,12 +115,12 @@ const HeaderPremium = () => {
         }
 
         .header-premium-logo-text span:last-child {
-          background: linear-gradient(135deg, #ffffff 0%, #A9927D 50%, #8B7355 100%);
+          background: linear-gradient(135deg, #ffffff 0%, #ff8e53 50%, #ff6b35 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
           font-weight: 900;
-          text-shadow: 0 2px 4px rgba(139, 115, 85, 0.2);
+          text-shadow: 0 2px 4px rgba(255, 107, 53, 0.2);
         }
 
         .header-premium-nav-desktop {
@@ -153,10 +153,10 @@ const HeaderPremium = () => {
           transform: translateX(-50%);
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #8B7355, #A9927D, #8B7355);
+          background: linear-gradient(90deg, #ff6b35, #ff8e53, #ff6b35);
           border-radius: 2px;
           transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 0 10px rgba(139, 115, 85, 0.4);
+          box-shadow: 0 0 10px rgba(255, 107, 53, 0.4);
         }
 
         .header-premium-nav-link:hover::before,
@@ -200,33 +200,33 @@ const HeaderPremium = () => {
         .header-premium-btn-outline {
           background: rgba(255, 255, 255, 0.05);
           color: white;
-          border: 1px solid rgba(139, 115, 85, 0.3);
+          border: 1px solid rgba(255, 107, 53, 0.3);
           backdrop-filter: blur(10px);
         }
 
         .header-premium-btn-outline:hover {
-          background: rgba(139, 115, 85, 0.1);
-          border-color: rgba(139, 115, 85, 0.5);
+          background: rgba(255, 107, 53, 0.1);
+          border-color: rgba(255, 107, 53, 0.5);
           transform: translateY(-2px);
           box-shadow: 
             0 8px 25px rgba(0, 0, 0, 0.3),
-            0 0 0 1px rgba(139, 115, 85, 0.1);
+            0 0 0 1px rgba(255, 107, 53, 0.1);
         }
 
         .header-premium-btn-primary {
-          background: linear-gradient(135deg, #7D5A3A 0%, #8B7355 100%);
+          background: linear-gradient(135deg, #ff6b35 0%, #ff8e53 100%);
           color: white;
           box-shadow: 
-            0 4px 20px rgba(125, 90, 58, 0.3),
-            0 0 0 1px rgba(125, 90, 58, 0.1);
+            0 4px 20px rgba(255, 107, 53, 0.3),
+            0 0 0 1px rgba(255, 107, 53, 0.1);
         }
 
         .header-premium-btn-primary:hover {
           transform: translateY(-2px);
           box-shadow: 
-            0 8px 30px rgba(125, 90, 58, 0.5),
-            0 0 0 1px rgba(125, 90, 58, 0.2);
-          background: linear-gradient(135deg, #8B7355 0%, #A9927D 100%);
+            0 8px 30px rgba(255, 107, 53, 0.5),
+            0 0 0 1px rgba(255, 107, 53, 0.2);
+          background: linear-gradient(135deg, #ff6b35 0%, #ff8e53 100%);
         }
 
         .header-premium-menu-toggle {
@@ -243,7 +243,7 @@ const HeaderPremium = () => {
         }
 
         .header-premium-menu-toggle:hover {
-          background: rgba(139, 115, 85, 0.1);
+          background: rgba(255, 107, 53, 0.1);
           transform: scale(1.1);
         }
 
@@ -254,12 +254,12 @@ const HeaderPremium = () => {
           right: 20px;
           background: rgba(26, 18, 11, 0.98);
           backdrop-filter: blur(25px) saturate(180%);
-          border: 1px solid rgba(139, 115, 85, 0.2);
+          border: 1px solid rgba(255, 107, 53, 0.2);
           border-radius: 20px;
           padding: 24px;
           box-shadow: 
             0 20px 60px rgba(0, 0, 0, 0.6),
-            0 0 0 1px rgba(139, 115, 85, 0.1);
+            0 0 0 1px rgba(255, 107, 53, 0.1);
           animation: header-premium-slideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
           z-index: 49;
         }
@@ -279,16 +279,16 @@ const HeaderPremium = () => {
         .header-premium-mobile-menu-item:hover,
         .header-premium-mobile-menu-item.active {
           color: white;
-          background: linear-gradient(135deg, rgba(139, 115, 85, 0.15), rgba(169, 146, 125, 0.1));
-          border-color: rgba(139, 115, 85, 0.3);
+          background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(255, 142, 83, 0.1));
+          border-color: rgba(255, 107, 53, 0.3);
           transform: translateX(8px);
-          box-shadow: 0 4px 15px rgba(139, 115, 85, 0.2);
+          box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
         }
 
         .header-premium-mobile-menu-footer {
           margin-top: 24px;
           padding-top: 24px;
-          border-top: 1px solid rgba(139, 115, 85, 0.2);
+          border-top: 1px solid rgba(255, 107, 53, 0.2);
           display: flex;
           flex-direction: column;
           gap: 12px;
@@ -352,7 +352,7 @@ const HeaderPremium = () => {
 
         /* Effet glow sur les boutons */
         .header-premium-shadow-glow {
-          box-shadow: 0 0 15px rgba(139, 115, 85, 0.6);
+          box-shadow: 0 0 15px rgba(255, 107, 53, 0.6);
         }
 
         /* Effet glow au hover */
@@ -362,13 +362,13 @@ const HeaderPremium = () => {
 
         @keyframes header-premium-glowPulse {
           0% {
-            box-shadow: 0 0 0 rgba(139, 115, 85, 0.5);
+            box-shadow: 0 0 0 rgba(255, 107, 53, 0.5);
           }
           50% {
-            box-shadow: 0 0 20px rgba(139, 115, 85, 0.8);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
           }
           100% {
-            box-shadow: 0 0 0 rgba(139, 115, 85, 0.5);
+            box-shadow: 0 0 0 rgba(255, 107, 53, 0.5);
           }
         }
 
@@ -380,7 +380,7 @@ const HeaderPremium = () => {
           left: 0;
           width: 100%;
           height: 2px;
-          background: #8B7355;
+          background: #ff6b35;
           border-radius: 1px;
           transform: scaleX(0);
           transition: transform 0.3s ease;

@@ -1,16 +1,16 @@
-/* Variables CSS uniques - Palette terre battue */
+/* Variables CSS uniques - Palette orange */
 :root {
   --hero-premium-deep-brown: #000000;
   --hero-premium-dark-brown: #000000;
   --hero-premium-medium-brown: #000000;
   --hero-premium-light-brown: #000000;
   --hero-premium-lighter-brown: #000000;
-  --hero-premium-accent-brown: #C2410C;
+  --hero-premium-accent-brown: #ff6b35;
   --hero-premium-foreground: #FFFFFF;
   --hero-premium-muted: rgba(255, 255, 255, 0.7);
-  --hero-premium-border: rgba(194, 65, 12, 0.3);
+  --hero-premium-border: rgba(255, 107, 53, 0.3);
   --hero-premium-card: rgba(0, 0, 0, 0.6);
-  --hero-premium-glow: 0 0 20px rgba(194, 65, 12, 0.4);
+  --hero-premium-glow: 0 0 20px rgba(255, 107, 53, 0.4);
   --hero-premium-smooth-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --hero-premium-bounce-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -37,7 +37,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(135deg, black 0%, black 50%,black  100%);
+  background: linear-gradient(135deg, black 0%, black 50%, black 100%);
 }
 
 /* Arrière-plan */
@@ -53,15 +53,17 @@ body {
   object-fit: cover;
   object-position: center;
   animation: hero-premium-zoomIn 20s ease-in-out infinite alternate;
-  mix-blend-mode: overlay;
+  opacity: 1;
+  filter: none;
 }
+
 .hero-premium-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.95) 0%,
-    rgba(0, 0, 0, 0.85) 50%,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
     transparent 100%
   );
 }
@@ -71,9 +73,9 @@ body {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.8) 0%,
     transparent 40%,
-    rgba(0, 0, 0, 0.7) 100%
+    rgba(0, 0, 0, 0.4) 100%
   );
 }
 
@@ -113,7 +115,7 @@ body {
   display: inline-flex;
   align-items: center;
   padding: 0.5rem 1rem;
-  background: rgba(194, 65, 12, 0.2);
+  background: rgba(255, 107, 53, 0.2);
   border: 1px solid var(--hero-premium-border);
   border-radius: 2rem;
   backdrop-filter: blur(10px);
@@ -146,7 +148,7 @@ body {
 }
 
 .hero-premium-title-typed {
-  background: linear-gradient(135deg, var(--hero-premium-accent-brown), #9A3412);
+  background: linear-gradient(135deg, var(--hero-premium-accent-brown), #ff8e53);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -208,11 +210,11 @@ body {
 .hero-premium-btn-primary {
   background: var(--hero-premium-accent-brown);
   color: white;
-  box-shadow: 0 4px 14px 0 rgba(194, 65, 12, 0.4);
+  box-shadow: 0 4px 14px 0 rgba(255, 107, 53, 0.4);
 }
 
 .hero-premium-btn-primary:hover {
-  background: #9A3412;
+  background: #ff8e53;
   transform: translateY(-2px);
   box-shadow: var(--hero-premium-glow);
 }
@@ -233,7 +235,7 @@ body {
 }
 
 .hero-premium-btn-secondary:hover {
-  background: rgba(194, 65, 12, 0.1);
+  background: rgba(255, 107, 53, 0.1);
   transform: translateY(-2px);
 }
 
@@ -264,7 +266,7 @@ body {
 .hero-premium-stat-icon-inner {
   width: 3rem;
   height: 3rem;
-  background: rgba(194, 65, 12, 0.2);
+  background: rgba(255, 107, 53, 0.2);
   border-radius: 0.75rem;
   display: flex;
   align-items: center;
@@ -335,7 +337,7 @@ body {
   height: 120px;
   top: 90px;
   left: 90px;
-  background: rgba(194, 65, 12, 0.1);
+  background: rgba(255, 107, 53, 0.1);
   animation-delay: 1s;
 }
 
@@ -344,7 +346,7 @@ body {
   height: 80px;
   top: 110px;
   left: 110px;
-  background: rgba(194, 65, 12, 0.2);
+  background: rgba(255, 107, 53, 0.2);
   animation-delay: 2s;
 }
 

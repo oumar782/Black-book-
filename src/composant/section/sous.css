@@ -4,13 +4,13 @@
   --souscription-dark-brown: #000000;
   --souscription-medium-brown: #000000;
   --souscription-light-brown: #000000;
-  --souscription-gold: #C2410C;
-  --souscription-light-gold: #9A3412;
+  --souscription-gold: #ff6b35;
+  --souscription-light-gold: #ff8e53;
   --souscription-foreground: #FFFFFF;
   --souscription-muted: rgba(255, 255, 255, 0.7);
-  --souscription-border: rgba(194, 65, 12, 0.2);
+  --souscription-border: rgba(255, 107, 53, 0.2);
   --souscription-card: rgba(0, 0, 0, 0.6);
-  --souscription-glow: 0 0 30px rgba(194, 65, 12, 0.3);
+  --souscription-glow: 0 0 30px rgba(255, 107, 53, 0.3);
   --souscription-luxury-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   --souscription-smooth-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --souscription-bounce-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -47,9 +47,9 @@
 .souscription-badge {
   display: inline-block;
   padding: 0.5rem 1.5rem;
-  background: rgba(194, 65, 12, 0.1);
+  background: rgba(255, 107, 53, 0.1);
   color: var(--souscription-gold);
-  border: 1px solid rgba(194, 65, 12, 0.3);
+  border: 1px solid rgba(255, 107, 53, 0.3);
   border-radius: 2rem;
   font-size: 0.875rem;
   font-weight: 600;
@@ -139,7 +139,7 @@
   background: var(--souscription-gold);
   border-radius: 0.5rem;
   transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  box-shadow: 0 4px 14px rgba(194, 65, 12, 0.4);
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.4);
 }
 
 .souscription-toggle-slider.annual {
@@ -207,7 +207,7 @@
   font-size: 0.75rem;
   font-weight: 600;
   white-space: nowrap;
-  box-shadow: 0 4px 14px rgba(194, 65, 12, 0.4);
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.4);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -237,7 +237,7 @@
   height: 5rem;
   margin: 0 auto 1rem;
   border-radius: 1.25rem;
-  background: rgba(194, 65, 12, 0.1);
+  background: rgba(255, 107, 53, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -349,9 +349,9 @@
 .souscription-plan-button {
   width: 100%;
   padding: 1rem 2rem;
-  background: rgba(194, 65, 12, 0.1);
+  background: rgba(255, 107, 53, 0.1);
   color: white;
-  border: 1px solid rgba(194, 65, 12, 0.3);
+  border: 1px solid rgba(255, 107, 53, 0.3);
   border-radius: 0.75rem;
   font-weight: 600;
   cursor: pointer;
@@ -368,14 +368,14 @@
   background: var(--souscription-plan-color);
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(194, 65, 12, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
 }
 
 .souscription-popular-button {
   background: var(--souscription-gold);
   color: #FFFFFF;
   border-color: var(--souscription-gold);
-  box-shadow: 0 4px 14px rgba(194, 65, 12, 0.4);
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.4);
 }
 
 .souscription-popular-button:hover {
@@ -484,7 +484,7 @@
 
 .souscription-star {
   color: var(--souscription-gold);
-  filter: drop-shadow(0 0 4px rgba(194, 65, 12, 0.6));
+  filter: drop-shadow(0 0 4px rgba(255, 107, 53, 0.6));
 }
 
 .souscription-testimonial-comment {
@@ -543,7 +543,7 @@
   padding: 0.75rem 2rem;
   background: transparent;
   color: white;
-  border: 1px solid rgba(194, 65, 12, 0.3);
+  border: 1px solid rgba(255, 107, 53, 0.3);
   border-radius: 0.75rem;
   font-weight: 600;
   cursor: pointer;
@@ -551,7 +551,7 @@
 }
 
 .souscription-faq-button:hover {
-  background: rgba(194, 65, 12, 0.1);
+  background: rgba(255, 107, 53, 0.1);
   transform: translateY(-2px);
 }
 

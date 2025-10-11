@@ -356,17 +356,14 @@ const PremiumContactPage = () => {
         .premium-contact-container {
           position: relative;
           min-height: 100vh;
-          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #1e0f00 50%, #1a1a1a 75%, #0a0a0a 100%);
+          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #ff6b35 50%, #1a1a1a 75%, #0a0a0a 100%);
           background-size: 400% 400%;
           animation: gradientShift 20s ease infinite;
           overflow-x: hidden;
           padding: 2rem 0;
         }
 
-        @keyframes gradientShift {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
+     
 
         /* Particules animées */
         .contact-particles-background {
@@ -383,7 +380,7 @@ const PremiumContactPage = () => {
           position: absolute;
           width: 3px;
           height: 3px;
-          background: linear-gradient(45deg, #9A3412 0%, #9A3412 100%);
+          background: linear-gradient(45deg, #ff6b35 0%, #e55a2b 100%);
           border-radius: 50%;
           animation: floatParticleContact linear infinite;
           opacity: 0.3;
@@ -411,7 +408,7 @@ const PremiumContactPage = () => {
           position: fixed;
           width: 16px;
           height: 16px;
-          background: radial-gradient(circle, #9A3412, transparent);
+          background: radial-gradient(circle, #ff6b35, transparent);
           border-radius: 50%;
           pointer-events: none;
           z-index: 9999;
@@ -445,7 +442,7 @@ const PremiumContactPage = () => {
           transform: translate(-50%, -50%);
           width: 500px;
           height: 500px;
-          background: radial-gradient(ellipse at center, rgba(154, 52, 18, 0.1) 0%, transparent 70%);
+          background: radial-gradient(ellipse at center, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
           opacity: 0.6;
         }
 
@@ -457,24 +454,24 @@ const PremiumContactPage = () => {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: linear-gradient(135deg, #9A3412 0%, #9A3412 100%);
-          border: 1px solid rgba(154, 52, 18, 0.3);
+          background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
+          border: 1px solid rgba(255, 107, 53, 0.3);
           padding: 0.5rem 1.5rem;
           border-radius: 50px;
           margin-bottom: 2rem;
           backdrop-filter: blur(10px);
           animation: slideInDown 0.8s ease-out;
-          color:rgb(6, 6, 6);
+          color: white;
         }
 
         .badge-icon-contact {
           width: 1rem;
           height: 1rem;
-          color:rgb(14, 13, 13);
+          color: white;
         }
 
         .contact-header-badge span {
-          color:rgb(14, 13, 13);
+          color: white;
           font-weight: 600;
           font-size: 0.875rem;
         }
@@ -495,7 +492,7 @@ const PremiumContactPage = () => {
         }
 
         .contact-title-accent {
-          background: linear-gradient(135deg, #9A3412 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -512,7 +509,7 @@ const PremiumContactPage = () => {
         .contact-underline-animation {
           width: 100px;
           height: 4px;
-          background: linear-gradient(90deg, transparent, #9A3412, transparent);
+          background: linear-gradient(90deg, transparent, #ff6b35, transparent);
           border-radius: 2px;
           animation: underlinePulse 2s ease-in-out infinite;
         }
@@ -572,11 +569,11 @@ const PremiumContactPage = () => {
         .info-sparkle {
           width: 1rem;
           height: 1rem;
-          color: #9A3412;
+          color: #ff6b35;
         }
 
         .info-header-badge span {
-          color: #9A3412;
+          color: #ff6b35;
           font-weight: 600;
           font-size: 0.875rem;
         }
@@ -590,7 +587,7 @@ const PremiumContactPage = () => {
         }
 
         .info-title-accent {
-          background: linear-gradient(135deg, #9A3412 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -620,9 +617,9 @@ const PremiumContactPage = () => {
         }
 
         .contact-info-card:hover {
-          border-color: rgba(154, 52, 18, 0.3);
+          border-color: rgba(255, 107, 53, 0.3);
           transform: translateY(-2px);
-          box-shadow: 0 10px 30px rgba(154, 52, 18, 0.1);
+          box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
         }
 
         .info-icon-wrapper {
@@ -632,8 +629,8 @@ const PremiumContactPage = () => {
         .info-icon-orb {
           width: 50px;
           height: 50px;
-          background: radial-gradient(circle, rgba(154, 52, 18, 0.2), transparent);
-          border: 1px solid rgba(154, 52, 18, 0.3);
+          background: radial-gradient(circle, rgba(255, 107, 53, 0.2), transparent);
+          border: 1px solid rgba(255, 107, 53, 0.3);
           border-radius: 12px;
           display: flex;
           align-items: center;
@@ -644,7 +641,7 @@ const PremiumContactPage = () => {
         .info-icon {
           width: 1.5rem;
           height: 1.5rem;
-          color: #9A3412;
+          color: #ff6b35;
         }
 
         .info-content h3 {
@@ -655,7 +652,7 @@ const PremiumContactPage = () => {
         }
 
         .info-detail {
-          color: #9A3412;
+          color: #ff6b35;
           font-weight: 600;
           margin-bottom: 0.25rem;
         }
@@ -671,7 +668,7 @@ const PremiumContactPage = () => {
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(154, 52, 18, 0.05), transparent);
+          background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.05), transparent);
           transition: left 0.6s ease;
         }
 
@@ -694,7 +691,7 @@ const PremiumContactPage = () => {
         .stat-number {
           font-size: 1.5rem;
           font-weight: 700;
-          color: #9A3412;
+          color: #ff6b35;
           margin-bottom: 0.25rem;
         }
 
@@ -724,7 +721,7 @@ const PremiumContactPage = () => {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: rgba(154, 52, 18, 0.1);
+          background: rgba(255, 107, 53, 0.1);
           padding: 0.5rem 1rem;
           border-radius: 50px;
           margin-bottom: 1rem;
@@ -733,11 +730,11 @@ const PremiumContactPage = () => {
         .form-badge-icon {
           width: 1rem;
           height: 1rem;
-          color: #9A3412;
+          color: #ff6b35;
         }
 
         .form-badge span {
-          color: #9A3412;
+          color: #ff6b35;
           font-weight: 600;
           font-size: 0.875rem;
         }
@@ -751,7 +748,7 @@ const PremiumContactPage = () => {
         }
 
         .form-title-accent {
-          background: linear-gradient(135deg, #9A3412 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -814,8 +811,8 @@ const PremiumContactPage = () => {
 
         .premium-input:focus, .premium-textarea:focus {
           outline: none;
-          border-color: #9A3412;
-          background: rgba(154, 52, 18, 0.03);
+          border-color: #ff6b35;
+          background: rgba(255, 107, 53, 0.03);
         }
 
         .premium-input:focus + .input-underline,
@@ -829,7 +826,7 @@ const PremiumContactPage = () => {
           left: 50%;
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #9A3412 0%, #9A3412 100%);
+          background: linear-gradient(90deg, #ff6b35 0%, #e55a2b 100%);
           transition: all 0.3s ease;
           transform: translateX(-50%);
           z-index: 2;
@@ -844,12 +841,12 @@ const PremiumContactPage = () => {
         }
 
         .premium-input:focus ~ .input-icon {
-          color: #9A3412;
+          color: #ff6b35;
         }
 
         .premium-submit-btn {
           position: relative;
-          background: linear-gradient(135deg, #9A3412 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
           border: none;
           padding: 1.25rem 2rem;
           border-radius: 12px;
@@ -868,7 +865,7 @@ const PremiumContactPage = () => {
 
         .premium-submit-btn:hover:not(.submitting) {
           transform: translateY(-2px);
-          box-shadow: 0 15px 30px rgba(154, 52, 18, 0.4);
+          box-shadow: 0 15px 30px rgba(255, 107, 53, 0.4);
         }
 
         .premium-submit-btn.submitting {
@@ -1052,7 +1049,7 @@ const PremiumContactPage = () => {
         }
 
         .faq-item:hover {
-          border-color: rgba(154, 52, 18, 0.3);
+          border-color: rgba(255, 107, 53, 0.3);
           transform: translateY(-2px);
         }
 

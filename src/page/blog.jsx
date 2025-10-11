@@ -529,13 +529,13 @@ const AfroBlogList = () => {
         .afro-blog-container {
           position: relative;
           min-height: 100vh;
-          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #9A3412 50%, #1a1a1a 75%, #0a0a0a 100%);
+          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #ff6b35 50%, #1a1a1a 75%, #0a0a0a 100%);
           background-size: 400% 400%;
           animation: afroGradientShift 20s ease infinite;
           overflow-x: hidden;
         }
 
-       
+   
 
         /* Particules animées */
         .afro-blog-particles-background {
@@ -552,7 +552,7 @@ const AfroBlogList = () => {
           position: absolute;
           width: 3px;
           height: 3px;
-          background: linear-gradient(45deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(45deg, #ff6b35 0%, #e55a2b 100%);
           border-radius: 50%;
           animation: afroFloatParticleBlog linear infinite;
           opacity: 0.4;
@@ -580,7 +580,7 @@ const AfroBlogList = () => {
           position: fixed;
           width: 18px;
           height: 18px;
-          background: radial-gradient(circle, #C2410C 0%, transparent);
+          background: radial-gradient(circle, #ff6b35 0%, transparent);
           border-radius: 50%;
           pointer-events: none;
           z-index: 9999;
@@ -620,7 +620,7 @@ const AfroBlogList = () => {
           transform: translate(-50%, -50%);
           width: min(600px, 90vw);
           height: min(600px, 90vw);
-          background: radial-gradient(ellipse at center, rgba(194, 65, 12, 0.15) 0%, transparent 70%);
+          background: radial-gradient(ellipse at center, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
           opacity: 0.6;
         }
 
@@ -635,8 +635,8 @@ const AfroBlogList = () => {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: linear-gradient(135deg, rgba(194, 65, 12, 0.2), rgba(154, 52, 18, 0.1));
-          border: 1px solid rgba(194, 65, 12, 0.3);
+          background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(229, 90, 43, 0.1));
+          border: 1px solid rgba(255, 107, 53, 0.3);
           padding: 0.5rem 1.5rem;
           border-radius: 50px;
           margin-bottom: 2rem;
@@ -647,11 +647,11 @@ const AfroBlogList = () => {
         .afro-badge-icon-blog {
           width: 1rem;
           height: 1rem;
-          color: #C2410C;
+          color: #ff6b35;
         }
 
         .afro-blog-header-badge span {
-          color: #C2410C;
+          color: #ff6b35;
           font-weight: 600;
           font-size: 0.875rem;
         }
@@ -674,7 +674,7 @@ const AfroBlogList = () => {
         }
 
         .afro-blog-title-accent {
-          background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -691,7 +691,7 @@ const AfroBlogList = () => {
         .afro-blog-underline-animation {
           width: 120px;
           height: 4px;
-          background: linear-gradient(90deg, transparent, #C2410C, transparent);
+          background: linear-gradient(90deg, transparent, #ff6b35, transparent);
           border-radius: 2px;
           animation: afroUnderlinePulse 2s ease-in-out infinite;
         }
@@ -775,8 +775,8 @@ const AfroBlogList = () => {
 
         .afro-blog-search-input:focus {
           outline: none;
-          border-color: #C2410C;
-          background: rgba(194, 65, 12, 0.05);
+          border-color: #ff6b35;
+          background: rgba(255, 107, 53, 0.05);
         }
 
         .afro-blog-search-input::placeholder {
@@ -789,7 +789,7 @@ const AfroBlogList = () => {
           left: 50%;
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #C2410C, #9A3412);
+          background: linear-gradient(90deg, #ff6b35, #e55a2b);
           transition: all 0.3s ease;
           transform: translateX(-50%);
         }
@@ -816,7 +816,7 @@ const AfroBlogList = () => {
         .afro-filter-sparkle-blog {
           width: 1.25rem;
           height: 1.25rem;
-          color: #C2410C;
+          color: #ff6b35;
         }
 
         .afro-blog-filters-grid {
@@ -841,17 +841,17 @@ const AfroBlogList = () => {
         }
 
         .afro-blog-filter-btn:hover {
-          background: rgba(194, 65, 12, 0.1);
-          border-color: rgba(194, 65, 12, 0.3);
-          color: #C2410C;
+          background: rgba(255, 107, 53, 0.1);
+          border-color: rgba(255, 107, 53, 0.3);
+          color: #ff6b35;
           transform: translateY(-2px);
         }
 
         .afro-blog-filter-btn.afro-active {
-          background: linear-gradient(135deg, rgba(194, 65, 12, 0.2), rgba(154, 52, 18, 0.1));
-          border-color: #C2410C;
-          color: #C2410C;
-          box-shadow: 0 8px 25px rgba(194, 65, 12, 0.3);
+          background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(229, 90, 43, 0.1));
+          border-color: #ff6b35;
+          color: #ff6b35;
+          box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
         }
 
         .afro-filter-glow {
@@ -860,7 +860,7 @@ const AfroBlogList = () => {
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(194, 65, 12, 0.3), transparent);
+          background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.3), transparent);
           transition: left 0.5s ease;
         }
 
@@ -888,8 +888,8 @@ const AfroBlogList = () => {
 
         .afro-featured-article-card:hover {
           transform: translateY(-5px);
-          border-color: rgba(194, 65, 12, 0.3);
-          box-shadow: 0 25px 50px -12px rgba(194, 65, 12, 0.25);
+          border-color: rgba(255, 107, 53, 0.3);
+          box-shadow: 0 25px 50px -12px rgba(255, 107, 53, 0.25);
         }
 
         .afro-featured-grid {
@@ -908,7 +908,7 @@ const AfroBlogList = () => {
           position: relative;
           height: 100%;
           min-height: 300px;
-          background: linear-gradient(135deg, rgba(194, 65, 12, 0.15), rgba(154, 52, 18, 0.1));
+          background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(229, 90, 43, 0.1));
         }
 
         .afro-featured-image-glow {
@@ -917,7 +917,7 @@ const AfroBlogList = () => {
           left: 0;
           width: 100%;
           height: 100%;
-          background: radial-gradient(circle at center, rgba(194, 65, 12, 0.2), transparent 70%);
+          background: radial-gradient(circle at center, rgba(255, 107, 53, 0.2), transparent 70%);
         }
 
         .afro-featured-image-content {
@@ -932,8 +932,8 @@ const AfroBlogList = () => {
         .afro-featured-icon-orb {
           width: 80px;
           height: 80px;
-          background: radial-gradient(circle, rgba(194, 65, 12, 0.3), transparent);
-          border: 2px solid rgba(194, 65, 12, 0.4);
+          background: radial-gradient(circle, rgba(255, 107, 53, 0.3), transparent);
+          border: 2px solid rgba(255, 107, 53, 0.4);
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -944,14 +944,14 @@ const AfroBlogList = () => {
         }
 
         @keyframes afroOrbPulse {
-          0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(194, 65, 12, 0.4); }
-          50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(194, 65, 12, 0.6); }
+          0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 107, 53, 0.4); }
+          50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(255, 107, 53, 0.6); }
         }
 
         .afro-featured-main-icon {
           width: 2rem;
           height: 2rem;
-          color: #C2410C;
+          color: #ff6b35;
         }
 
         .afro-featured-image-label {
@@ -963,7 +963,7 @@ const AfroBlogList = () => {
           position: absolute;
           top: 1rem;
           left: 1rem;
-          background: linear-gradient(135deg, #C2410C, #9A3412);
+          background: linear-gradient(135deg, #ff6b35, #e55a2b);
           color: white;
           padding: 0.5rem 1rem;
           border-radius: 8px;
@@ -992,7 +992,7 @@ const AfroBlogList = () => {
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1044,8 +1044,8 @@ const AfroBlogList = () => {
         }
 
         .afro-featured-category-tag {
-          background: rgba(194, 65, 12, 0.1);
-          color: #C2410C;
+          background: rgba(255, 107, 53, 0.1);
+          color: #ff6b35;
           padding: 0.5rem 1rem;
           border-radius: 8px;
           font-size: 0.875rem;
@@ -1091,8 +1091,8 @@ const AfroBlogList = () => {
         .afro-author-avatar {
           width: 3rem;
           height: 3rem;
-          background: rgba(194, 65, 12, 0.1);
-          border: 2px solid rgba(194, 65, 12, 0.3);
+          background: rgba(255, 107, 53, 0.1);
+          border: 2px solid rgba(255, 107, 53, 0.3);
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -1103,7 +1103,7 @@ const AfroBlogList = () => {
         .afro-avatar-icon {
           width: 1.5rem;
           height: 1.5rem;
-          color: #C2410C;
+          color: #ff6b35;
         }
 
         .afro-author-info {
@@ -1134,7 +1134,7 @@ const AfroBlogList = () => {
 
         .afro-featured-tag {
           background: rgba(255, 255, 255, 0.05);
-          color: #C2410C;
+          color: #ff6b35;
           padding: 0.25rem 0.75rem;
           border-radius: 6px;
           font-size: 0.75rem;
@@ -1169,7 +1169,7 @@ const AfroBlogList = () => {
 
         .afro-premium-read-button {
           position: relative;
-          background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
           border: none;
           padding: 1rem 2rem;
           border-radius: 12px;
@@ -1188,7 +1188,7 @@ const AfroBlogList = () => {
 
         .afro-premium-read-button:hover {
           transform: translateY(-2px);
-          box-shadow: 0 15px 30px rgba(194, 65, 12, 0.4);
+          box-shadow: 0 15px 30px rgba(255, 107, 53, 0.4);
         }
 
         .afro-button-sparkle-group {
@@ -1226,7 +1226,7 @@ const AfroBlogList = () => {
 
         .afro-featured-card-border div {
           position: absolute;
-          background: linear-gradient(90deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(90deg, #ff6b35 0%, #e55a2b 100%);
           opacity: 0;
           transition: all 0.3s ease;
         }
@@ -1264,8 +1264,8 @@ const AfroBlogList = () => {
 
         .afro-article-card:hover .afro-article-card-inner {
           transform: translateY(-8px);
-          border-color: rgba(194, 65, 12, 0.3);
-          box-shadow: 0 20px 40px rgba(194, 65, 12, 0.2);
+          border-color: rgba(255, 107, 53, 0.3);
+          box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
         }
 
         .afro-article-image-section {
@@ -1279,7 +1279,7 @@ const AfroBlogList = () => {
           position: relative;
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, rgba(194, 65, 12, 0.1), rgba(154, 52, 18, 0.05));
+          background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(229, 90, 43, 0.05));
         }
 
         .afro-article-image-glow {
@@ -1288,7 +1288,7 @@ const AfroBlogList = () => {
           left: 0;
           width: 100%;
           height: 100%;
-          background: radial-gradient(circle at center, rgba(194, 65, 12, 0.15), transparent 70%);
+          background: radial-gradient(circle at center, rgba(255, 107, 53, 0.15), transparent 70%);
         }
 
         .afro-article-image-content {
@@ -1303,8 +1303,8 @@ const AfroBlogList = () => {
         .afro-article-icon-wrapper {
           width: 60px;
           height: 60px;
-          background: rgba(194, 65, 12, 0.2);
-          border: 2px solid rgba(194, 65, 12, 0.3);
+          background: rgba(255, 107, 53, 0.2);
+          border: 2px solid rgba(255, 107, 53, 0.3);
           border-radius: 16px;
           display: flex;
           align-items: center;
@@ -1316,7 +1316,7 @@ const AfroBlogList = () => {
         .afro-article-tag-icon {
           width: 1.5rem;
           height: 1.5rem;
-          color: #C2410C;
+          color: #ff6b35;
         }
 
         .afro-article-image-label {
@@ -1346,13 +1346,13 @@ const AfroBlogList = () => {
         }
 
         .afro-featured-badge {
-          background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
           animation: afroBadgePulse 2s ease-in-out infinite;
         }
 
         .afro-category-badge {
-          background: rgba(194, 65, 12, 0.3);
-          border: 1px solid rgba(194, 65, 12, 0.5);
+          background: rgba(255, 107, 53, 0.3);
+          border: 1px solid rgba(255, 107, 53, 0.5);
         }
 
         .afro-badge-sparkle {
@@ -1366,7 +1366,7 @@ const AfroBlogList = () => {
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1517,7 +1517,7 @@ const AfroBlogList = () => {
 
         .afro-article-tag {
           background: rgba(255, 255, 255, 0.05);
-          color: #C2410C;
+          color: #ff6b35;
           padding: 0.25rem 0.5rem;
           border-radius: 4px;
           font-size: 0.7rem;
@@ -1532,10 +1532,10 @@ const AfroBlogList = () => {
         .afro-premium-read-more {
           position: relative;
           background: transparent;
-          border: 1px solid rgba(194, 65, 12, 0.3);
+          border: 1px solid rgba(255, 107, 53, 0.3);
           padding: 0.75rem 1.5rem;
           border-radius: 8px;
-          color: #C2410C;
+          color: #ff6b35;
           font-weight: 600;
           cursor: pointer;
           display: flex;
@@ -1548,8 +1548,8 @@ const AfroBlogList = () => {
         }
 
         .afro-premium-read-more:hover {
-          background: rgba(194, 65, 12, 0.1);
-          border-color: #C2410C;
+          background: rgba(255, 107, 53, 0.1);
+          border-color: #ff6b35;
           transform: translateY(-2px);
         }
 
@@ -1569,7 +1569,7 @@ const AfroBlogList = () => {
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(194, 65, 12, 0.2), transparent);
+          background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.2), transparent);
           transition: left 0.5s ease;
         }
 
@@ -1623,11 +1623,11 @@ const AfroBlogList = () => {
         .afro-newsletter-sparkle {
           width: 1rem;
           height: 1rem;
-          color: #C2410C;
+          color: #ff6b35;
         }
 
         .afro-newsletter-badge span {
-          color: #C2410C;
+          color: #ff6b35;
           font-weight: 600;
           font-size: 0.875rem;
         }
@@ -1674,8 +1674,8 @@ const AfroBlogList = () => {
 
         .afro-email-input:focus {
           outline: none;
-          border-color: #C2410C;
-          background: rgba(194, 65, 12, 0.05);
+          border-color: #ff6b35;
+          background: rgba(255, 107, 53, 0.05);
         }
 
         .afro-email-input::placeholder {
@@ -1688,7 +1688,7 @@ const AfroBlogList = () => {
           left: 50%;
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(90deg, #ff6b35 0%, #e55a2b 100%);
           transition: all 0.3s ease;
           transform: translateX(-50%);
         }
@@ -1699,7 +1699,7 @@ const AfroBlogList = () => {
 
         .afro-premium-subscribe-btn {
           position: relative;
-          background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
           border: none;
           padding: 1rem 1.5rem;
           border-radius: 12px;
@@ -1716,7 +1716,7 @@ const AfroBlogList = () => {
 
         .afro-premium-subscribe-btn:hover {
           transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(194, 65, 12, 0.4);
+          box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
         }
 
         .afro-subscribe-sparkle {
@@ -1762,7 +1762,7 @@ const AfroBlogList = () => {
         .afro-orb-1 {
           width: 80px;
           height: 80px;
-          background: #C2410C;
+          background: #ff6b35;
           top: 20%;
           left: 10%;
           animation: afroFloatOrbNews 5s ease-in-out infinite;
@@ -1771,7 +1771,7 @@ const AfroBlogList = () => {
         .afro-orb-2 {
           width: 120px;
           height: 120px;
-          background: #C2410C;
+          background: #ff6b35;
           top: 60%;
           right: 15%;
           animation: afroFloatOrbNews 7s ease-in-out infinite reverse;
@@ -1780,7 +1780,7 @@ const AfroBlogList = () => {
         .afro-orb-3 {
           width: 60px;
           height: 60px;
-          background: #9A3412;
+          background: #e55a2b;
           bottom: 30%;
           left: 20%;
           animation: afroFloatOrbNews 9s ease-in-out infinite;

@@ -462,7 +462,7 @@ const AfroShopCatalog = () => {
         .afro-shop-container {
           position: relative;
           min-height: 100vh;
-          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #9A3412 50%, #1a1a1a 75%, #0a0a0a 100%);
+          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #ff6b35 50%, #1a1a1a 75%, #0a0a0a 100%);
           background-size: 400% 400%;
           animation: afroGradientShift 15s ease infinite;
           overflow-x: hidden;
@@ -485,7 +485,7 @@ const AfroShopCatalog = () => {
           position: absolute;
           width: 4px;
           height: 4px;
-          background: linear-gradient(45deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(45deg, #C2410C 0%, #ff6b35 100%);
           border-radius: 50%;
           animation: afroFloatParticle linear infinite;
           opacity: 0.6;
@@ -513,7 +513,7 @@ const AfroShopCatalog = () => {
           position: fixed;
           width: 20px;
           height: 20px;
-          background: radial-gradient(circle, #C2410C 0% transparent);
+          background: radial-gradient(circle, #ff6b35 0% transparent);
           border-radius: 50%;
           pointer-events: none;
           z-index: 9999;
@@ -573,7 +573,7 @@ const AfroShopCatalog = () => {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: linear-gradient(135deg, rgba(194, 65, 12, 0.2), rgba(154, 52, 18, 0.1));
+          background: linear-gradient(135deg, #ff6b35, #ff6b35);
           border: 1px solid rgba(194, 65, 12, 0.3);
           padding: 0.5rem 1.5rem;
           border-radius: 50px;
@@ -591,7 +591,7 @@ const AfroShopCatalog = () => {
         }
 
         .afro-header-badge span {
-          color: #C2410C;
+          color:rgb(6, 5, 5);
           font-weight: 600;
           font-size: 0.875rem;
           white-space: nowrap;
@@ -619,7 +619,7 @@ const AfroShopCatalog = () => {
         }
 
         .afro-title-accent {
-          background: linear-gradient(135deg, #C2410C 50%, #9A3412 100%);
+          background: linear-gradient(135deg, #C2410C 50%, #ff6b35 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -638,7 +638,7 @@ const AfroShopCatalog = () => {
         .afro-underline-animation {
           width: 100px;
           height: 4px;
-          background: linear-gradient(90deg, transparent, #C2410C, transparent);
+          background: linear-gradient(90deg, transparent, #ff6b35, transparent);
           border-radius: 2px;
           animation: afroUnderlinePulse 2s ease-in-out infinite;
         }
@@ -728,7 +728,7 @@ const AfroShopCatalog = () => {
 
         .afro-search-input:focus {
           outline: none;
-          border-color: #C2410C;
+          border-color: #ff6b35;
           background: rgba(194, 65, 12, 0.05);
         }
 
@@ -742,7 +742,7 @@ const AfroShopCatalog = () => {
           left: 50%;
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(90deg, #C2410C 0% #ff6b35 100%);
           transition: all 0.3s ease;
           transform: translateX(-50%);
         }
@@ -771,7 +771,7 @@ const AfroShopCatalog = () => {
         .afro-filter-sparkle {
           width: 1rem;
           height: 1rem;
-          color: #C2410C;
+          color: #ff6b35;
           flex-shrink: 0;
         }
 
@@ -791,7 +791,7 @@ const AfroShopCatalog = () => {
         }
 
         .afro-filters-scroll-container::-webkit-scrollbar-thumb {
-          background: #C2410C;
+          background: #ff6b35;
           border-radius: 2px;
         }
 
@@ -826,14 +826,14 @@ const AfroShopCatalog = () => {
         .afro-filter-btn:hover {
           background: rgba(194, 65, 12, 0.1);
           border-color: rgba(194, 65, 12, 0.3);
-          color: #C2410C;
+          color:#ff6b35;
           transform: translateY(-2px);
         }
 
         .afro-filter-btn.afro-active {
           background: linear-gradient(135deg, rgba(194, 65, 12, 0.2), rgba(154, 52, 18, 0.1));
-          border-color: #C2410C;
-          color: rgb(194, 65, 12);
+          border-color:#ff6b35;
+          color: #ff6b35;
           box-shadow: 0 8px 25px rgba(194, 65, 12, 0.3);
         }
 
@@ -871,7 +871,7 @@ const AfroShopCatalog = () => {
           left: 50%;
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(90deg, #C2410C 0% #ff6b35 100%);
           transition: all 0.3s ease;
           transform: translateX(-50%);
         }
@@ -917,12 +917,12 @@ const AfroShopCatalog = () => {
         .afro-promo-sparkle {
           width: 1rem;
           height: 1rem;
-          color: #C2410C;
+          color: #ff6b35;
           flex-shrink: 0;
         }
 
         .afro-promo-badge span {
-          color: #C2410C;
+          color: #ff6b35;
           font-weight: 600;
           font-size: 0.875rem;
           white-space: nowrap;
@@ -940,7 +940,7 @@ const AfroShopCatalog = () => {
         }
 
         .afro-promo-highlight {
-          background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #C2410C 0%, #ff6b35 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -962,7 +962,7 @@ const AfroShopCatalog = () => {
 
         .afro-cta-button {
           position: relative;
-          background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #C2410C 0%, #ff6b35 100%);
           border: none;
           padding: 1rem 2rem;
           border-radius: 12px;
@@ -1030,7 +1030,7 @@ const AfroShopCatalog = () => {
         .afro-orb-1 {
           width: 80px;
           height: 80px;
-          background: #C2410C;
+          background: #ff6b35;
           top: 10%;
           left: 10%;
           animation: afroFloatOrb 6s ease-in-out infinite;
@@ -1039,7 +1039,7 @@ const AfroShopCatalog = () => {
         .afro-orb-2 {
           width: 120px;
           height: 120px;
-          background: #C2410C;
+          background: #ff6b35;
           top: 60%;
           right: 10%;
           animation: afroFloatOrb 8s ease-in-out infinite reverse;
@@ -1048,7 +1048,7 @@ const AfroShopCatalog = () => {
         .afro-orb-3 {
           width: 60px;
           height: 60px;
-          background: #9A3412;
+          background: #ff6b35;
           bottom: 20%;
           left: 20%;
           animation: afroFloatOrb 10s ease-in-out infinite;
@@ -1155,7 +1155,7 @@ const AfroShopCatalog = () => {
         .afro-product-main-icon {
           width: 1.75rem;
           height: 1.75rem;
-          color: #C2410C;
+          color: #ff6b35;
           flex-shrink: 0;
         }
 
@@ -1185,11 +1185,11 @@ const AfroShopCatalog = () => {
         }
 
         .afro-badge-sale {
-          background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #C2410C 0%, #ff6b35 100%);
         }
 
         .afro-badge-featured {
-          background: linear-gradient(135deg, #C2410C, #9A3412);
+          background: linear-gradient(135deg, #C2410C, #ff6b35);
         }
 
         .afro-badge-soldout {
@@ -1213,7 +1213,7 @@ const AfroShopCatalog = () => {
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #C2410C 0%, #ff6b35 100%);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1300,7 +1300,7 @@ const AfroShopCatalog = () => {
 
         .afro-category-tag {
           background: rgba(194, 65, 12, 0.1);
-          color: #C2410C;
+          color: #ff6b35;
           padding: 0.25rem 0.6rem;
           border-radius: 6px;
           font-size: 0.7rem;
@@ -1323,8 +1323,8 @@ const AfroShopCatalog = () => {
         .afro-star {
           width: 0.875rem;
           height: 0.875rem;
-          fill: #C2410C;
-          color: #C2410C;
+          fill: #ff6b35;
+          color: #ff6b35;
           flex-shrink: 0;
         }
 
@@ -1365,6 +1365,7 @@ const AfroShopCatalog = () => {
           overflow-wrap: break-word;
         }
 
+        /* Options produit */
         .afro-options {
           margin-bottom: 1.5rem;
           width: 100%;
@@ -1402,7 +1403,7 @@ const AfroShopCatalog = () => {
 
         .afro-color-dot:hover {
           transform: scale(1.1);
-          border-color: #C2410C;
+          border-color: #ff6b35;
         }
 
         .afro-product-footer {
@@ -1438,7 +1439,7 @@ const AfroShopCatalog = () => {
 
         .afro-cart-btn {
           position: relative;
-          background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+          background: linear-gradient(135deg, #C2410C 0%, #ff6b35 100%);
           border: none;
           padding: 0.6rem 1rem;
           border-radius: 8px;
@@ -1587,7 +1588,7 @@ const AfroShopCatalog = () => {
         .afro-feature-svg {
           width: 1.75rem;
           height: 1.75rem;
-          color: #C2410C;
+          color: #ff6b35;
           flex-shrink: 0;
         }
 

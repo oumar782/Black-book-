@@ -5,12 +5,12 @@
   --vedette-premium-medium-brown: #000000;
   --vedette-premium-light-brown: #000000;
   --vedette-premium-lighter-brown: #000000;
-  --vedette-premium-accent-brown: #C2410C;
+  --vedette-premium-accent-brown: #ff6b35;
   --vedette-premium-foreground: #FFFFFF;
   --vedette-premium-muted: rgba(255, 255, 255, 0.7);
-  --vedette-premium-border: rgba(194, 65, 12, 0.2);
+  --vedette-premium-border: rgba(255, 107, 53, 0.2);
   --vedette-premium-card: rgba(0, 0, 0, 0.6);
-  --vedette-premium-glow: 0 0 30px rgba(194, 65, 12, 0.3);
+  --vedette-premium-glow: 0 0 30px rgba(255, 107, 53, 0.3);
   --vedette-premium-luxury-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   --vedette-premium-smooth-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --vedette-premium-bounce-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -47,9 +47,9 @@
 .vedette-premium-badge {
   display: inline-block;
   padding: 0.5rem 1.5rem;
-  background: rgba(194, 65, 12, 0.1);
+  background: rgba(255, 107, 53, 0.1);
   color: var(--vedette-premium-accent-brown);
-  border: 1px solid rgba(194, 65, 12, 0.3);
+  border: 1px solid rgba(255, 107, 53, 0.3);
   border-radius: 2rem;
   font-size: 0.875rem;
   font-weight: 600;
@@ -67,7 +67,7 @@
 }
 
 .vedette-premium-title-gradient {
-  background: linear-gradient(135deg, var(--vedette-premium-accent-brown), #9A3412);
+  background: linear-gradient(135deg, var(--vedette-premium-accent-brown), #ff8e53);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -136,7 +136,7 @@
   background: var(--vedette-premium-accent-brown);
   color: white;
   border-color: var(--vedette-premium-accent-brown);
-  box-shadow: 0 4px 14px rgba(194, 65, 12, 0.4);
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.4);
   transform: translateY(-2px);
 }
 
@@ -222,11 +222,11 @@
   font-weight: 600;
   cursor: pointer;
   transition: var(--vedette-premium-smooth-transition);
-  box-shadow: 0 4px 14px rgba(194, 65, 12, 0.4);
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.4);
 }
 
 .vedette-premium-image-button:hover {
-  background: #9A3412;
+  background: #ff8e53;
   transform: translateY(-2px);
   box-shadow: var(--vedette-premium-glow);
 }
@@ -337,7 +337,7 @@
 .vedette-premium-star-icon {
   color: var(--vedette-premium-accent-brown);
   font-size: 1rem;
-  filter: drop-shadow(0 0 8px rgba(194, 65, 12, 0.6));
+  filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.6));
   animation: vedette-premium-twinkle 2s ease-in-out infinite;
 }
 
@@ -468,7 +468,7 @@
   padding: 1rem 2rem;
   background: transparent;
   color: var(--vedette-premium-accent-brown);
-  border: 1px solid rgba(194, 65, 12, 0.3);
+  border: 1px solid rgba(255, 107, 53, 0.3);
   border-radius: 0.5rem;
   font-weight: 600;
   cursor: pointer;
@@ -476,9 +476,9 @@
 }
 
 .vedette-premium-cta-button:hover {
-  background: rgba(194, 65, 12, 0.1);
+  background: rgba(255, 107, 53, 0.1);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(194, 65, 12, 0.3);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
 }
 
 /* Éléments décoratifs */

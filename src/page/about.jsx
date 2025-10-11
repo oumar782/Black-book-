@@ -33,25 +33,25 @@ const AboutPremium = () => {
       icon: HeartHandshake,
       title: "Authenticité",
       description: "Nous préservons et transmettons la richesse authentique de nos cultures africaines.",
-      color: "#8B7355"
+      color: "#ff6b35"
     },
     {
       icon: Award,
       title: "Excellence",
       description: "Nous visons l'excellence dans chaque ressource et expérience que nous proposons.",
-      color: "#7D5A3A"
+      color: "#ff8e53"
     },
     {
       icon: UsersRound,
       title: "Communauté",
       description: "Nous créons un espace bienveillant où chacun peut apprendre et grandir ensemble.",
-      color: "#5C4033"
+      color: "#ff6b35"
     },
     {
       icon: GlobeLock,
       title: "Impact Global",
       description: "Nous œuvrons pour une reconnaissance mondiale de l'héritage africain.",
-      color: "#A9927D"
+      color: "#ff8e53"
     }
   ];
 
@@ -61,21 +61,21 @@ const AboutPremium = () => {
       role: "Fondatrice & Directrice",
       bio: "Historienne spécialisée en civilisations africaines, passionnée par la transmission culturelle.",
       initials: "AK",
-      color: "#8B7355"
+      color: "#ff6b35"
     },
     {
       name: "Marcus Diallo",
       role: "Directeur Contenu",
       bio: "Expert en éducation digitale et ancien journaliste culturel.",
       initials: "MD",
-      color: "#7D5A3A"
+      color: "#ff8e53"
     },
     {
       name: "Fatou Sané",
       role: "Responsable Communauté",
       bio: "Anthropologue et médiatrice culturelle, connecteuse d'âmes.",
       initials: "FS",
-      color: "#5C4033"
+      color: "#ff6b35"
     }
   ];
 
