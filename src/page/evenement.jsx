@@ -157,8 +157,7 @@ const AfroEventsCalendar = () => {
         <div className="afro-events-header">
           <h1 className="afro-main-title">
             <span className="afro-title-word afro-title-word-1">Événements</span>
-            <span className="afro-title-word afro-title-word-2">&</span>
-            <span className="afro-title-word afro-title-word-3">Ateliers</span>
+            
           </h1>
           <p className="afro-subtitle">
             Rejoins-nous pour des expériences enrichissantes qui connectent tradition et modernité. 

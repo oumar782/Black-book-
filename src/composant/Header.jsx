@@ -7,10 +7,17 @@ const HeaderPremium = () => {
   const navigation = [
     { name: 'Accueil', href: '/', current: true },
     { name: 'À propos', href: '/a-propos', current: false },
+    { name: ' The Apex', href: '/Blog', current: false },
     { name: 'Ressources', href: '/Nos-ressources', current: false },
     { name: 'Événements', href: '/evenements', current: false },
-    { name: 'Boutique', href: '/boutique', current: false },
-    { name: 'Blog', href: '/Blog', current: false },
+    { name: 'Défis ', href: '/evenements', current: false },
+    { name: ' The Sun  ', href: '/evenements', current: false },
+    { name: 'Boutique ', href: '/boutique', current: false },
+    { name: 'Musée', href: '/Blog', current: false },
+    { name: 'Tourisme', href: '/Blog', current: false },
+    { name: 'Lada', href: '/Blog', current: false },
+    { name: 'Maps et Stats', href: '/Blog', current: false },
+    { name: 'Cameleon', href: '/Blog', current: false },
     { name: 'Fracture', href: '/fracture', current: false },
     { name: 'Contact', href: '/contact', current: false }
   ];
@@ -64,7 +71,7 @@ const HeaderPremium = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, #ff6b35 0%, #ff8e53 50%, #ff6b35 100%);
+          background: linear-gradient(135deg,rgb(238, 67, 5) 0%,rgb(255, 172, 83) 50%, #ff6b35 100%);
           border-radius: 16px;
           opacity: 0;
           transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -115,7 +122,7 @@ const HeaderPremium = () => {
         }
 
         .header-premium-logo-text span:last-child {
-          background: linear-gradient(135deg, #ffffff 0%, #ff8e53 50%, #ff6b35 100%);
+          background: linear-gradient(135deg,rgb(243, 108, 6) 0%,rgb(243, 108, 6)  50%,rgba(223, 120, 68, 0.67) 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -153,7 +160,7 @@ const HeaderPremium = () => {
           transform: translateX(-50%);
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #ff6b35, #ff8e53, #ff6b35);
+          background: linear-gradient(90deg, rgb(243, 108, 6), rgb(243, 108, 6), #ff6b35);
           border-radius: 2px;
           transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
           box-shadow: 0 0 10px rgba(255, 107, 53, 0.4);
@@ -214,7 +221,7 @@ const HeaderPremium = () => {
         }
 
         .header-premium-btn-primary {
-          background: linear-gradient(135deg, #ff6b35 0%, #ff8e53 100%);
+          background: linear-gradient(135deg, rgb(243, 108, 6), rgb(243, 108, 6), #ff6b35 100%);
           color: white;
           box-shadow: 
             0 4px 20px rgba(255, 107, 53, 0.3),
@@ -226,7 +233,7 @@ const HeaderPremium = () => {
           box-shadow: 
             0 8px 30px rgba(255, 107, 53, 0.5),
             0 0 0 1px rgba(255, 107, 53, 0.2);
-          background: linear-gradient(135deg, #ff6b35 0%, #ff8e53 100%);
+          background: linear-gradient(135deg, #ff6b35 0%, rgb(243, 108, 6), #ff6b35) 100%);
         }
 
         .header-premium-menu-toggle {
@@ -400,8 +407,8 @@ const HeaderPremium = () => {
               <img src={logo} alt="The Black Book" className="header-premium-logo-img" />
             </div>
             <div className="header-premium-logo-text">
-              <span>THE</span>&nbsp;
-              <span>BLACK BOOK</span>
+              <span>AFRO</span>&nbsp;
+              <span> BLACK BOOK</span>
             </div>
           </div>
 
