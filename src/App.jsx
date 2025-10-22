@@ -11,6 +11,8 @@ import Shop from "./page/boutique.jsx";
 import Blog from "./page/blog.jsx";
 import Contact from "./page/contact.jsx";
 import Fracture from "./page/fracture.jsx";
+import Apex from "./page/Apex.jsx";
+import Sun from "./page/Sun.jsx";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/Blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/fracture" element={<Fracture />} />
+          <Route path="/apex" element={<Apex />} />
+          <Route path="/the-sun" element={<Sun />} />
           {/* Ajoute d'autres routes ici si besoin */}
         </Routes>
       </main>

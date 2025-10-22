@@ -16,8 +16,8 @@ const HeaderPremium = () => {
   const navigation = [
     { name: 'Accueil', href: '/', current: true },
     { name: 'À propos', href: '/a-propos', current: false },
-    { name: 'The Apex', href: '/Blog', current: false },
-    { name: 'Ressources', href: '/Nos-ressources', current: false },
+    { name: 'The Apex', href: '/apex', current: false },
+    { name: 'Ressources', href: '/nos-ressources', current: false },
     { name: 'Événements', href: '/evenements', current: false },
     { name: 'Défis', href: '/defis', current: false },
     { name: 'The Sun', href: '/the-sun', current: false },
@@ -26,7 +26,7 @@ const HeaderPremium = () => {
     { name: 'Tourisme', href: '/tourisme', current: false },
     { name: 'Lada', href: '/lada', current: false },
     { name: 'Maps et Stats', href: '/maps-stats', current: false },
-    { name: 'Cameleon', href: '/cameleon', current: false },
+    { name: 'Caméléon', href: '/cameleon', current: false },
     { name: 'Fracture', href: '/fracture', current: false },
     { name: 'Contact', href: '/contact', current: false }
   ];
@@ -61,7 +61,7 @@ const HeaderPremium = () => {
           transition: height 0.4s ease;
         }
 
-        /* Logo Styles - Toujours visible complet */
+        /* Logo Styles */
         .header-premium-logo-container {
           display: flex;
           align-items: center;
@@ -88,7 +88,7 @@ const HeaderPremium = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, rgb(238, 67, 5) 0%, rgb(255, 172, 83) 50%, #ff6b35 100%);
+          background: linear-gradient(135deg, #e25822 0%, #f9a825 100%);
           border-radius: 14px;
           opacity: 0;
           transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -135,7 +135,7 @@ const HeaderPremium = () => {
         }
 
         .header-premium-logo-text span:last-child {
-          background: linear-gradient(135deg, rgb(243, 108, 6) 0%, rgb(243, 108, 6) 50%, rgba(223, 120, 68, 0.67) 100%);
+          background: linear-gradient(135deg, rgb(243, 108, 6) 0%, rgb(243, 108, 6) 50%, #f9a825 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -260,6 +260,52 @@ const HeaderPremium = () => {
           transform: translateX(4px);
         }
 
+        /* Auth Buttons Desktop */
+        .header-premium-auth-buttons {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-left: 24px;
+        }
+
+        .header-premium-auth-btn {
+          padding: 10px 20px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          border-radius: 10px;
+          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          text-decoration: none;
+          white-space: nowrap;
+          border: none;
+          cursor: pointer;
+        }
+
+        .header-premium-login-btn {
+          background: transparent;
+          color: #bbb;
+          border: 1px solid rgba(255, 107, 53, 0.4);
+        }
+
+        .header-premium-login-btn:hover {
+          background: rgba(255, 107, 53, 0.1);
+          color: white;
+          border-color: rgba(255, 107, 53, 0.6);
+          transform: translateY(-1px);
+        }
+
+        .header-premium-signup-btn {
+          background: linear-gradient(135deg, rgb(243, 108, 6), #ff6b35);
+          color: white;
+          border: 1px solid rgba(255, 107, 53, 0.8);
+          box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .header-premium-signup-btn:hover {
+          background: linear-gradient(135deg, #e25822, rgb(243, 108, 6));
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
         /* Mobile Menu Toggle */
         .header-premium-menu-toggle {
           display: none;
@@ -304,7 +350,7 @@ const HeaderPremium = () => {
           transform: rotate(-45deg) translate(6px, -6px);
         }
 
-        /* Enhanced Mobile Menu - Plus long avec toutes les sections */
+        /* Enhanced Mobile Menu */
         .header-premium-mobile-menu {
           position: fixed;
           top: ${isScrolled ? '70px' : '80px'};
@@ -349,6 +395,51 @@ const HeaderPremium = () => {
           border-color: rgba(255, 107, 53, 0.3);
           transform: translateX(8px);
           box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
+        }
+
+        /* Mobile Auth Buttons */
+        .header-premium-mobile-auth {
+          display: flex;
+          gap: 12px;
+          margin: 24px 0;
+          padding: 0 4px;
+        }
+
+        .header-premium-mobile-auth-btn {
+          flex: 1;
+          padding: 16px 20px;
+          font-size: 1rem;
+          font-weight: 600;
+          border-radius: 12px;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          text-align: center;
+          border: none;
+          cursor: pointer;
+        }
+
+        .header-premium-mobile-login {
+          background: transparent;
+          color: #bbb;
+          border: 1px solid rgba(255, 107, 53, 0.4);
+        }
+
+        .header-premium-mobile-login:hover {
+          background: rgba(255, 107, 53, 0.1);
+          color: white;
+          border-color: rgba(255, 107, 53, 0.6);
+        }
+
+        .header-premium-mobile-signup {
+          background: linear-gradient(135deg, rgb(243, 108, 6), #ff6b35);
+          color: white;
+          border: 1px solid rgba(255, 107, 53, 0.8);
+          box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .header-premium-mobile-signup:hover {
+          background: linear-gradient(135deg, #e25822, rgb(243, 108, 6));
+          box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
         }
 
         /* Mobile Menu Sections */
@@ -413,10 +504,21 @@ const HeaderPremium = () => {
             padding: 10px 12px;
             font-size: 0.85rem;
           }
+
+          .header-premium-auth-buttons {
+            margin-left: 16px;
+            gap: 8px;
+          }
+
+          .header-premium-auth-btn {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+          }
         }
 
         @media (max-width: 1024px) {
-          .header-premium-nav-desktop {
+          .header-premium-nav-desktop,
+          .header-premium-auth-buttons {
             display: none;
           }
 
@@ -446,6 +548,16 @@ const HeaderPremium = () => {
           .header-premium-mobile-section-title {
             font-size: 0.85rem;
             padding: 0 18px;
+          }
+
+          .header-premium-mobile-auth {
+            margin: 20px 0;
+            gap: 10px;
+          }
+
+          .header-premium-mobile-auth-btn {
+            padding: 14px 18px;
+            font-size: 0.95rem;
           }
 
           /* Logo toujours complet même sur mobile */
@@ -490,6 +602,15 @@ const HeaderPremium = () => {
 
           .header-premium-mobile-section-title {
             padding: 0 16px;
+          }
+
+          .header-premium-mobile-auth {
+            flex-direction: column;
+            gap: 8px;
+          }
+
+          .header-premium-mobile-auth-btn {
+            padding: 12px 16px;
           }
         }
 
@@ -543,6 +664,11 @@ const HeaderPremium = () => {
           .header-premium-nav-link,
           .header-premium-dropdown-toggle {
             padding: 14px 18px;
+            font-size: 1rem;
+          }
+
+          .header-premium-auth-btn {
+            padding: 12px 24px;
             font-size: 1rem;
           }
         }
@@ -618,6 +744,16 @@ const HeaderPremium = () => {
             </div>
           </nav>
 
+          {/* Desktop Auth Buttons */}
+          <div className="header-premium-auth-buttons">
+            <a href="/connexion" className="header-premium-auth-btn header-premium-login-btn">
+              Connexion
+            </a>
+            <a href="/inscription" className="header-premium-auth-btn header-premium-signup-btn">
+              S'inscrire
+            </a>
+          </div>
+
           {/* Mobile Menu Toggle */}
           <button
             className={`header-premium-menu-toggle ${isMenuOpen ? 'active' : ''}`}
@@ -631,10 +767,28 @@ const HeaderPremium = () => {
           </button>
         </div>
 
-        {/* Enhanced Mobile Menu - Plus long avec toutes les sections */}
+        {/* Enhanced Mobile Menu */}
         {isMenuOpen && (
           <div className="header-premium-mobile-menu">
             <nav className="header-premium-mobile-nav">
+              {/* Mobile Auth Buttons */}
+              <div className="header-premium-mobile-auth">
+                <a 
+                  href="/connexion" 
+                  className="header-premium-mobile-auth-btn header-premium-mobile-login"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Connexion
+                </a>
+                <a 
+                  href="/inscription" 
+                  className="header-premium-mobile-auth-btn header-premium-mobile-signup"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  S'inscrire
+                </a>
+              </div>
+
               {/* Main Navigation Section */}
               <div className="header-premium-mobile-section">
                 <div className="header-premium-mobile-section-title">Navigation Principale</div>
