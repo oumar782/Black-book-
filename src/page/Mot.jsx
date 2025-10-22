@@ -245,19 +245,7 @@ const FounderWord = () => {
        
 
             {/* Video Message */}
-            <div className="video-section">
-              <div className="video-card">
-                <div className="video-thumbnail">
-                  <div className="video-play-btn">
-                    <Play size={24} fill="currentColor" />
-                  </div>
-                  <div className="video-overlay">
-                    <span>Message Vidéo du Fondateur</span>
-                    <p>Regarder le message complet</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          
           </div>
         </div>
       </div>
