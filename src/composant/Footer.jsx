@@ -49,9 +49,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="footer">
+    <footer className="afro-footer">
       <style jsx>{`
-        .footer {
+        .afro-footer {
           background: #000000;
           border-top: 1px solid rgba(226, 88, 34, 0.3);
           width: 100%;
@@ -62,7 +62,7 @@ const Footer = () => {
         }
 
         /* Effets de particules */
-        .footer-particles {
+        .afro-footer-particles {
           position: absolute;
           top: 0;
           left: 0;
@@ -71,17 +71,17 @@ const Footer = () => {
           pointer-events: none;
         }
 
-        .footer-particle {
+        .afro-footer-particle {
           position: absolute;
           width: 3px;
           height: 3px;
           background: linear-gradient(135deg, #e25822, #f9a825);
           border-radius: 50%;
-          animation: footerFloat linear infinite;
+          animation: afroFooterFloat linear infinite;
           opacity: 0.4;
         }
 
-        @keyframes footerFloat {
+        @keyframes afroFooterFloat {
           0% {
             transform: translateY(100vh) rotate(0deg);
             opacity: 0;
@@ -98,12 +98,12 @@ const Footer = () => {
           }
         }
 
-        .footer-border {
+        .afro-footer-border {
           border-bottom: 1px solid rgba(226, 88, 34, 0.2);
           width: 100%;
         }
 
-        .footer-container {
+        .afro-footer-container {
           width: 100%;
           max-width: 100%;
           margin: 0;
@@ -112,7 +112,7 @@ const Footer = () => {
           z-index: 2;
         }
 
-        .footer-content {
+        .afro-footer-content {
           max-width: 1400px;
           margin: 0 auto;
           padding: 0 1rem;
@@ -121,36 +121,36 @@ const Footer = () => {
         }
 
         @media (min-width: 1024px) {
-          .footer-content {
+          .afro-footer-content {
             padding: 0 2rem;
           }
         }
 
         /* Newsletter Section Premium */
-        .newsletter-section {
+        .afro-newsletter-section {
           padding: 4rem 0;
           width: 100%;
           position: relative;
         }
 
-        .newsletter-grid {
+        .afro-newsletter-grid {
           display: grid;
           gap: 2rem;
           align-items: center;
         }
 
         @media (min-width: 1024px) {
-          .newsletter-grid {
+          .afro-newsletter-grid {
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
           }
         }
 
-        .newsletter-content {
+        .afro-newsletter-content {
           position: relative;
         }
 
-        .newsletter-badge {
+        .afro-newsletter-badge {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
@@ -162,19 +162,19 @@ const Footer = () => {
           backdrop-filter: blur(10px);
         }
 
-        .newsletter-badge-icon {
+        .afro-newsletter-badge-icon {
           width: 1rem;
           height: 1rem;
           color: #e25822;
         }
 
-        .newsletter-badge span {
+        .afro-newsletter-badge span {
           color: #e25822;
           font-weight: 600;
           font-size: 0.875rem;
         }
 
-        .newsletter-title {
+        .afro-newsletter-title {
           font-family: 'Inter', sans-serif;
           font-weight: 700;
           font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -183,14 +183,14 @@ const Footer = () => {
           line-height: 1.2;
         }
 
-        .gradient-marron {
+        .afro-gradient-marron {
           background: linear-gradient(135deg, #e25822 0%, #f9a825 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
 
-        .newsletter-text {
+        .afro-newsletter-text {
           color: #a3a3a3;
           font-size: clamp(1rem, 2vw, 1.125rem);
           line-height: 1.6;
@@ -198,12 +198,12 @@ const Footer = () => {
           margin-bottom: 2rem;
         }
 
-        .newsletter-form-container {
+        .afro-newsletter-form-container {
           position: relative;
           max-width: 500px;
         }
 
-        .newsletter-form {
+        .afro-newsletter-form {
           display: flex;
           flex-direction: column;
           gap: 1rem;
@@ -211,17 +211,17 @@ const Footer = () => {
         }
 
         @media (min-width: 640px) {
-          .newsletter-form {
+          .afro-newsletter-form {
             flex-direction: row;
           }
         }
 
-        .newsletter-input-wrapper {
+        .afro-newsletter-input-wrapper {
           position: relative;
           flex: 1;
         }
 
-        .newsletter-input {
+        .afro-newsletter-input {
           width: 100%;
           background: rgba(255, 255, 255, 0.05);
           border: 1px solid rgba(226, 88, 34, 0.3);
@@ -233,18 +233,18 @@ const Footer = () => {
           backdrop-filter: blur(10px);
         }
 
-        .newsletter-input::placeholder {
+        .afro-newsletter-input::placeholder {
           color: #737373;
         }
 
-        .newsletter-input:focus {
+        .afro-newsletter-input:focus {
           outline: none;
           border-color: #e25822;
           box-shadow: 0 0 0 3px rgba(226, 88, 34, 0.1);
           background: rgba(226, 88, 34, 0.05);
         }
 
-        .newsletter-underline {
+        .afro-newsletter-underline {
           position: absolute;
           bottom: 0;
           left: 50%;
@@ -255,11 +255,11 @@ const Footer = () => {
           transform: translateX(-50%);
         }
 
-        .newsletter-input:focus ~ .newsletter-underline {
+        .afro-newsletter-input:focus ~ .afro-newsletter-underline {
           width: 100%;
         }
 
-        .newsletter-button {
+        .afro-newsletter-button {
           background: linear-gradient(135deg, #e25822, #f9a825);
           color: white;
           border: none;
@@ -277,7 +277,7 @@ const Footer = () => {
           white-space: nowrap;
         }
 
-        .newsletter-button::before {
+        .afro-newsletter-button::before {
           content: '';
           position: absolute;
           top: 0;
@@ -288,16 +288,16 @@ const Footer = () => {
           transition: left 0.6s ease;
         }
 
-        .newsletter-button:hover::before {
+        .afro-newsletter-button:hover::before {
           left: 100%;
         }
 
-        .newsletter-button:hover {
+        .afro-newsletter-button:hover {
           transform: translateY(-2px);
           box-shadow: 0 8px 30px rgba(226, 88, 34, 0.5);
         }
 
-        .newsletter-disclaimer {
+        .afro-newsletter-disclaimer {
           font-size: 0.75rem;
           color: #737373;
           max-width: 500px;
@@ -307,14 +307,14 @@ const Footer = () => {
           gap: 0.5rem;
         }
 
-        .newsletter-visual {
+        .afro-newsletter-visual {
           position: relative;
           display: flex;
           justify-content: center;
           align-items: center;
         }
 
-        .newsletter-orb {
+        .afro-newsletter-orb {
           width: 200px;
           height: 200px;
           background: radial-gradient(circle, rgba(226, 88, 34, 0.2), transparent);
@@ -323,10 +323,10 @@ const Footer = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          animation: newsletterOrbGlow 3s ease-in-out infinite;
+          animation: afroNewsletterOrbGlow 3s ease-in-out infinite;
         }
 
-        @keyframes newsletterOrbGlow {
+        @keyframes afroNewsletterOrbGlow {
           0%, 100% { 
             box-shadow: 0 0 30px rgba(226, 88, 34, 0.3); 
           }
@@ -335,43 +335,43 @@ const Footer = () => {
           }
         }
 
-        .newsletter-icon {
+        .afro-newsletter-icon {
           width: 3rem;
           height: 3rem;
           color: #e25822;
         }
 
         /* Main Footer Content */
-        .main-footer {
+        .afro-main-footer {
           padding: 4rem 0;
           width: 100%;
         }
 
-        .footer-grid {
+        .afro-footer-grid {
           display: grid;
           gap: 3rem;
         }
 
         @media (min-width: 1024px) {
-          .footer-grid {
+          .afro-footer-grid {
             grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
             gap: 4rem;
           }
         }
 
-        .brand-section {
+        .afro-brand-section {
           display: flex;
           flex-direction: column;
           gap: 2rem;
         }
 
-        .brand-logo {
+        .afro-brand-logo {
           display: flex;
           align-items: center;
           gap: 1rem;
         }
 
-        .logo-wrapper {
+        .afro-logo-wrapper {
           position: relative;
           width: 60px;
           height: 60px;
@@ -380,7 +380,7 @@ const Footer = () => {
           justify-content: center;
         }
 
-        .logo-background {
+        .afro-logo-background {
           position: absolute;
           top: 0;
           left: 0;
@@ -393,7 +393,7 @@ const Footer = () => {
           box-shadow: 0 4px 20px rgba(226, 88, 34, 0.3);
         }
 
-        .logo-img {
+        .afro-logo-img {
           width: 50px;
           height: 50px;
           border-radius: 12px;
@@ -404,16 +404,16 @@ const Footer = () => {
           object-fit: cover;
         }
 
-        .brand-logo:hover .logo-background {
+        .afro-brand-logo:hover .afro-logo-background {
           opacity: 1;
           transform: scale(1.05) rotate(5deg);
         }
 
-        .brand-logo:hover .logo-img {
+        .afro-brand-logo:hover .afro-logo-img {
           transform: scale(1.05) rotate(-5deg);
         }
 
-        .logo-text {
+        .afro-logo-text {
           font-family: 'Playfair Display', serif;
           font-weight: 800;
           font-size: clamp(1.5rem, 3vw, 1.75rem);
@@ -424,26 +424,26 @@ const Footer = () => {
           flex-wrap: wrap;
         }
 
-        .logo-text-main {
+        .afro-logo-text-main {
           color: #e0e0e0;
           opacity: 0.9;
           font-weight: 700;
         }
 
-        .brand-description {
+        .afro-brand-description {
           color: #a3a3a3;
           line-height: 1.6;
           font-size: clamp(0.95rem, 2vw, 1.05rem);
           max-width: 400px;
         }
 
-        .social-links {
+        .afro-social-links {
           display: flex;
           gap: 0.75rem;
           flex-wrap: wrap;
         }
 
-        .social-link {
+        .afro-social-link {
           width: 3rem;
           height: 3rem;
           background: rgba(255, 255, 255, 0.05);
@@ -456,26 +456,26 @@ const Footer = () => {
           backdrop-filter: blur(10px);
         }
 
-        .social-link:hover {
+        .afro-social-link:hover {
           background: rgba(226, 88, 34, 0.1);
           border-color: rgba(226, 88, 34, 0.4);
           transform: translateY(-2px);
           box-shadow: 0 8px 20px rgba(226, 88, 34, 0.2);
         }
 
-        .social-icon {
+        .afro-social-icon {
           width: 1.25rem;
           height: 1.25rem;
           color: #a3a3a3;
           transition: all 0.3s ease;
         }
 
-        .social-link:hover .social-icon {
+        .afro-social-link:hover .afro-social-icon {
           color: #e25822;
           transform: scale(1.1);
         }
 
-        .links-section h4 {
+        .afro-links-section h4 {
           font-family: 'Inter', sans-serif;
           font-weight: 600;
           color: #f5f5f5;
@@ -483,7 +483,7 @@ const Footer = () => {
           font-size: 1.125rem;
         }
 
-        .links-list {
+        .afro-links-list {
           list-style: none;
           padding: 0;
           margin: 0;
@@ -492,7 +492,7 @@ const Footer = () => {
           gap: 1rem;
         }
 
-        .links-list a {
+        .afro-links-list a {
           color: #a3a3a3;
           text-decoration: none;
           font-size: 0.95rem;
@@ -502,7 +502,7 @@ const Footer = () => {
           display: inline-block;
         }
 
-        .links-list a::before {
+        .afro-links-list a::before {
           content: '';
           position: absolute;
           bottom: 0;
@@ -513,23 +513,23 @@ const Footer = () => {
           transition: width 0.3s ease;
         }
 
-        .links-list a:hover {
+        .afro-links-list a:hover {
           color: #e25822;
           transform: translateX(5px);
         }
 
-        .links-list a:hover::before {
+        .afro-links-list a:hover::before {
           width: 20px;
         }
 
         /* Bottom Bar */
-        .bottom-bar {
+        .afro-bottom-bar {
           border-top: 1px solid rgba(226, 88, 34, 0.2);
           padding: 2rem 0;
           width: 100%;
         }
 
-        .bottom-content {
+        .afro-bottom-content {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -539,19 +539,19 @@ const Footer = () => {
         }
 
         @media (min-width: 768px) {
-          .bottom-content {
+          .afro-bottom-content {
             flex-direction: row;
             text-align: left;
             gap: 0;
           }
         }
 
-        .copyright {
+        .afro-copyright {
           color: #a3a3a3;
           font-size: 0.875rem;
         }
 
-        .bottom-right {
+        .afro-bottom-right {
           display: flex;
           align-items: center;
           gap: 1.5rem;
@@ -559,7 +559,7 @@ const Footer = () => {
           justify-content: center;
         }
 
-        .status {
+        .afro-status {
           display: flex;
           align-items: center;
           gap: 0.5rem;
@@ -571,15 +571,15 @@ const Footer = () => {
           border: 1px solid rgba(226, 88, 34, 0.2);
         }
 
-        .status-dot {
+        .afro-status-dot {
           width: 0.5rem;
           height: 0.5rem;
           background-color: #22c55e;
           border-radius: 50%;
-          animation: pulse 2s infinite;
+          animation: afroPulse 2s infinite;
         }
 
-        @keyframes pulse {
+        @keyframes afroPulse {
           0%, 100% {
             opacity: 1;
             transform: scale(1);
@@ -590,7 +590,7 @@ const Footer = () => {
           }
         }
 
-        .made-with-love {
+        .afro-made-with-love {
           color: #a3a3a3;
           font-size: 0.875rem;
           display: flex;
@@ -598,12 +598,12 @@ const Footer = () => {
           gap: 0.5rem;
         }
 
-        .heart {
+        .afro-heart {
           color: #e25822;
-          animation: heartbeat 1.5s ease-in-out infinite;
+          animation: afroHeartbeat 1.5s ease-in-out infinite;
         }
 
-        @keyframes heartbeat {
+        @keyframes afroHeartbeat {
           0%, 100% {
             transform: scale(1);
           }
@@ -614,51 +614,51 @@ const Footer = () => {
 
         /* Responsive optimisations */
         @media (max-width: 768px) {
-          .newsletter-section {
+          .afro-newsletter-section {
             padding: 3rem 0;
           }
           
-          .main-footer {
+          .afro-main-footer {
             padding: 3rem 0;
           }
           
-          .footer-grid {
+          .afro-footer-grid {
             gap: 2rem;
           }
           
-          .brand-logo {
+          .afro-brand-logo {
             flex-direction: column;
             text-align: center;
             gap: 1rem;
           }
           
-          .logo-text {
+          .afro-logo-text {
             justify-content: center;
           }
           
-          .social-links {
+          .afro-social-links {
             justify-content: center;
           }
         }
 
         @media (max-width: 480px) {
-          .footer-content {
+          .afro-footer-content {
             padding: 0 0.75rem;
           }
           
-          .newsletter-title {
+          .afro-newsletter-title {
             font-size: 1.5rem;
           }
           
-          .newsletter-text {
+          .afro-newsletter-text {
             font-size: 0.95rem;
           }
           
-          .newsletter-button {
+          .afro-newsletter-button {
             padding: 0.875rem 1.5rem;
           }
           
-          .bottom-right {
+          .afro-bottom-right {
             flex-direction: column;
             gap: 1rem;
           }
@@ -666,20 +666,20 @@ const Footer = () => {
 
         /* Support tactile */
         @media (hover: none) {
-          .newsletter-button:hover,
-          .social-link:hover,
-          .brand-logo:hover .logo-background,
-          .brand-logo:hover .logo-img,
-          .links-list a:hover {
+          .afro-newsletter-button:hover,
+          .afro-social-link:hover,
+          .afro-brand-logo:hover .afro-logo-background,
+          .afro-brand-logo:hover .afro-logo-img,
+          .afro-links-list a:hover {
             transform: none;
           }
         }
       `}</style>
 
       {/* Effets de particules */}
-      <div className="footer-particles">
+      <div className="afro-footer-particles">
         {[...Array(15)].map((_, i) => (
-          <div key={i} className="footer-particle" style={{
+          <div key={i} className="afro-footer-particle" style={{
             left: `${Math.random() * 100}%`,
             animationDelay: `${Math.random() * 15}s`,
             animationDuration: `${12 + Math.random() * 8}s`
@@ -688,53 +688,53 @@ const Footer = () => {
       </div>
 
       {/* Newsletter Section */}
-      <div className="footer-border">
-        <div className="footer-container">
-          <div className="footer-content">
-            <div className="newsletter-section">
-              <div className="newsletter-grid">
-                <div className="newsletter-content">
-                  <div className="newsletter-badge">
-                    <Mail className="newsletter-badge-icon" />
+      <div className="afro-footer-border">
+        <div className="afro-footer-container">
+          <div className="afro-footer-content">
+            <div className="afro-newsletter-section">
+              <div className="afro-newsletter-grid">
+                <div className="afro-newsletter-content">
+                  <div className="afro-newsletter-badge">
+                    <Mail className="afro-newsletter-badge-icon" />
                     <span>Restez informé</span>
                   </div>
                   
-                  <h2 className="newsletter-title">
-                    Rejoignez notre <span className="gradient-marron">communauté</span>
+                  <h2 className="afro-newsletter-title">
+                    Rejoignez notre <span className="afro-gradient-marron">communauté</span>
                   </h2>
                   
-                  <p className="newsletter-text">
+                  <p className="afro-newsletter-text">
                     Recevez les dernières actualités, événements exclusifs et ressources 
                     premium directement dans votre boîte mail.
                   </p>
 
-                  <div className="newsletter-form-container">
-                    <form className="newsletter-form">
-                      <div className="newsletter-input-wrapper">
+                  <div className="afro-newsletter-form-container">
+                    <form className="afro-newsletter-form">
+                      <div className="afro-newsletter-input-wrapper">
                         <input
                           type="email"
                           placeholder="Votre adresse email"
-                          className="newsletter-input"
+                          className="afro-newsletter-input"
                           required
                         />
-                        <div className="newsletter-underline"></div>
+                        <div className="afro-newsletter-underline"></div>
                       </div>
-                      <button type="submit" className="newsletter-button">
+                      <button type="submit" className="afro-newsletter-button">
                         <span>S'abonner</span>
                         <ArrowRight size={18} />
                       </button>
                     </form>
                     
-                    <p className="newsletter-disclaimer">
+                    <p className="afro-newsletter-disclaimer">
                       <Shield size={14} />
                       Nous respectons votre vie privée. Désabonnez-vous à tout moment.
                     </p>
                   </div>
                 </div>
 
-                <div className="newsletter-visual">
-                  <div className="newsletter-orb">
-                    <Mail className="newsletter-icon" />
+                <div className="afro-newsletter-visual">
+                  <div className="afro-newsletter-orb">
+                    <Mail className="afro-newsletter-icon" />
                   </div>
                 </div>
               </div>
@@ -744,39 +744,39 @@ const Footer = () => {
       </div>
 
       {/* Main Footer Content */}
-      <div className="footer-container">
-        <div className="footer-content">
-          <div className="main-footer">
-            <div className="footer-grid">
+      <div className="afro-footer-container">
+        <div className="afro-footer-content">
+          <div className="afro-main-footer">
+            <div className="afro-footer-grid">
               {/* Brand Section */}
-              <div className="brand-section">
-                <div className="brand-logo">
-                  <div className="logo-wrapper">
-                    <div className="logo-background"></div>
-                    <img src={logo} alt="THE BLACK BOOK" className="logo-img" />
+              <div className="afro-brand-section">
+                <div className="afro-brand-logo">
+                  <div className="afro-logo-wrapper">
+                    <div className="afro-logo-background"></div>
+                    <img src={logo} alt="THE BLACK BOOK" className="afro-logo-img" />
                   </div>
-                  <div className="logo-text">
-                    <span className="logo-text-main">AFRO</span>{' '}
-                    <span className="gradient-marron">BLACK BOOK</span>
+                  <div className="afro-logo-text">
+                    <span className="afro-logo-text-main">AFRO</span>{' '}
+                    <span className="afro-gradient-marron">BLACK BOOK</span>
                   </div>
                 </div>
                 
-                <p className="brand-description">
+                <p className="afro-brand-description">
                   Plateforme éducative et culturelle dédiée à la valorisation 
                   de l'héritage africain et de sa diaspora. Ensemble, 
                   construisons un avenir ancré dans nos racines.
                 </p>
 
                 {/* Social Links */}
-                <div className="social-links">
+                <div className="afro-social-links">
                   {socialLinks.map((social) => (
                     <a
                       key={social.name}
                       href={social.href}
-                      className="social-link"
+                      className="afro-social-link"
                       aria-label={social.name}
                     >
-                      <social.icon className="social-icon" />
+                      <social.icon className="afro-social-icon" />
                     </a>
                   ))}
                 </div>
@@ -784,9 +784,9 @@ const Footer = () => {
 
               {/* Links Sections */}
               {Object.entries(footerLinks).map(([key, section]) => (
-                <div key={key} className="links-section">
+                <div key={key} className="afro-links-section">
                   <h4>{section.title}</h4>
-                  <ul className="links-list">
+                  <ul className="afro-links-list">
                     {section.links.map((link) => (
                       <li key={link.name}>
                         <a href={link.href}>
@@ -803,21 +803,21 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="footer-border">
-        <div className="footer-container">
-          <div className="footer-content">
-            <div className="bottom-bar">
-              <div className="bottom-content">
-                <div className="copyright">
+      <div className="afro-footer-border">
+        <div className="afro-footer-container">
+          <div className="afro-footer-content">
+            <div className="afro-bottom-bar">
+              <div className="afro-bottom-content">
+                <div className="afro-copyright">
                   © 2025 THE BLACK BOOK. Tous droits réservés.
                 </div>
                 
-                <div className="bottom-right">
-                  <span className="made-with-love">
-                    Fait avec <span className="heart">❤</span> pour la diaspora africaine
+                <div className="afro-bottom-right">
+                  <span className="afro-made-with-love">
+                    Fait avec <span className="afro-heart">❤</span> pour la diaspora africaine
                   </span>
-                  <div className="status">
-                    <div className="status-dot"></div>
+                  <div className="afro-status">
+                    <div className="afro-status-dot"></div>
                     <span>Tous les systèmes opérationnels</span>
                   </div>
                 </div>

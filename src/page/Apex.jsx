@@ -344,8 +344,8 @@ const Apex = () => {
                       {getIconComponent(section.icon)}
                     </div>
                     <div className="section-title-content">
-                      <h2 className="section-title">{section.title}</h2>
-                      <div className="section-stats">{section.stats}</div>
+                    <h2 className="section-titles">{section.title}</h2>
+                    <div className="section-stats">{section.stats}</div>
                       <span className="section-category">{section.category}</span>
                     </div>
                   </div>

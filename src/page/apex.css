@@ -29,6 +29,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 /* Filtre Section */
 .filter-section {
   margin-bottom: 2rem;
@@ -231,9 +232,10 @@
   
   .search-input,
   .category-select {
-    font-size: 16px; /* Empêche le zoom sur iOS */
+    font-size: 16px;
   }
 }
+
 body {
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.7;
@@ -936,7 +938,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: rgb(252, 248, 248);
   flex-shrink: 0;
   transition: all 0.3s ease;
 }
@@ -954,7 +956,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 10px;
+  font-size: 1.5rem; /* ← Taille corrigée */
   font-weight: 700;
   margin-bottom: 0.5rem;
   line-height: 1.2;
@@ -1255,6 +1257,10 @@ body {
   .social-links {
     justify-content: center;
   }
+
+  .section-title {
+    font-size: 1.3rem; /* Taille réduite pour mobile */
+  }
 }
 
 @media (max-width: 480px) {
@@ -1277,6 +1283,10 @@ body {
   .quote {
     font-size: 1.2rem;
     padding: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.2rem; /* Taille encore plus réduite pour petits écrans */
   }
 }
 

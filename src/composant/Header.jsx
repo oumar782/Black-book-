@@ -970,13 +970,7 @@ const HeaderPremium = () => {
                   À propos
                 </a>
                 <div className="header-premium-mobile-submenu">
-                  <a
-                    href="/a-propos"
-                    className="header-premium-mobile-submenu-item"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Vue d'ensemble
-                  </a>
+                
                   {navigation[1].submenu.map((subItem) => (
                     <a
                       key={subItem.name}
