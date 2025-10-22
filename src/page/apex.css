@@ -954,7 +954,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 1.5rem;
+  font-size: 10px;
   font-weight: 700;
   margin-bottom: 0.5rem;
   line-height: 1.2;

@@ -13,6 +13,7 @@ import Contact from "./page/contact.jsx";
 import Fracture from "./page/fracture.jsx";
 import Apex from "./page/Apex.jsx";
 import Sun from "./page/Sun.jsx";
+import Mot  from "./page/Mot.jsx";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/a-propos" element={<AboutPage />} />
+          <Route path="/À-propos" element={<AboutPage />} />
           <Route path="/Nos-ressources" element={<Ressources />} />
           <Route path="/evenements" element={<Event />} />
           <Route path="/boutique" element={<Shop />} />
@@ -30,6 +31,7 @@ function App() {
           <Route path="/fracture" element={<Fracture />} />
           <Route path="/apex" element={<Apex />} />
           <Route path="/the-sun" element={<Sun />} />
+          <Route path="/Mot-du-promotteur" element={<Mot />} />
           {/* Ajoute d'autres routes ici si besoin */}
         </Routes>
       </main>

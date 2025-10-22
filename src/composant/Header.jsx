@@ -15,7 +15,15 @@ const HeaderPremium = () => {
 
   const navigation = [
     { name: 'Accueil', href: '/', current: true },
-    { name: 'À propos', href: '/a-propos', current: false },
+    { 
+      name: 'À propos', 
+      href: '/À-propos', 
+      current: false,
+      submenu: [
+        { name: 'Mot du Promoteur', href: '/Mot-du-promotteur' },
+        { name: 'Notre Mission', href: '/À-propos' }
+      ]
+    },
     { name: 'The Apex', href: '/apex', current: false },
     { name: 'Ressources', href: '/nos-ressources', current: false },
     { name: 'Événements', href: '/evenements', current: false },
@@ -260,6 +268,85 @@ const HeaderPremium = () => {
           transform: translateX(4px);
         }
 
+        /* À propos Dropdown Styles */
+        .header-premium-apropos-dropdown {
+          position: relative;
+        }
+
+        .header-premium-apropos-toggle {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 12px 16px;
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: #bbb;
+          background: none;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          border-radius: 10px;
+          white-space: nowrap;
+        }
+
+        .header-premium-apropos-toggle:hover {
+          color: white;
+          background: rgba(255, 107, 53, 0.1);
+        }
+
+        .header-premium-apropos-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          margin-top: 8px;
+          background: rgba(15, 10, 5, 0.98);
+          backdrop-filter: blur(20px) saturate(180%);
+          border: 1px solid rgba(255, 107, 53, 0.2);
+          border-radius: 16px;
+          padding: 12px;
+          min-width: 200px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 107, 53, 0.1);
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-10px);
+          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          z-index: 1001;
+        }
+
+        .header-premium-apropos-dropdown:hover .header-premium-apropos-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+
+        .header-premium-apropos-link {
+          display: block;
+          padding: 12px 16px;
+          font-size: 0.9rem;
+          color: #ccc;
+          text-decoration: none;
+          border-radius: 8px;
+          transition: all 0.3s ease;
+          margin-bottom: 4px;
+        }
+
+        .header-premium-apropos-link:hover {
+          color: white;
+          background: rgba(255, 107, 53, 0.15);
+          transform: translateX(4px);
+        }
+
+        .header-premium-apropos-link::before {
+          content: '';
+          display: inline-block;
+          width: 4px;
+          height: 4px;
+          background: #ff6b35;
+          border-radius: 50%;
+          margin-right: 8px;
+          vertical-align: middle;
+        }
+
         /* Auth Buttons Desktop */
         .header-premium-auth-buttons {
           display: flex;
@@ -397,6 +484,40 @@ const HeaderPremium = () => {
           box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
         }
 
+        /* Mobile Submenu Styles */
+        .header-premium-mobile-submenu {
+          margin-left: 16px;
+          border-left: 2px solid rgba(255, 107, 53, 0.3);
+          padding-left: 8px;
+          margin-top: 4px;
+          margin-bottom: 12px;
+        }
+
+        .header-premium-mobile-submenu-item {
+          display: block;
+          padding: 14px 20px;
+          font-size: 1rem;
+          color: #aaa;
+          text-decoration: none;
+          border-radius: 10px;
+          transition: all 0.3s ease;
+          margin-bottom: 4px;
+          background: rgba(255, 255, 255, 0.01);
+        }
+
+        .header-premium-mobile-submenu-item:hover {
+          color: white;
+          background: rgba(255, 107, 53, 0.1);
+          transform: translateX(4px);
+        }
+
+        .header-premium-mobile-submenu-item::before {
+          content: '›';
+          color: #ff6b35;
+          margin-right: 8px;
+          font-weight: bold;
+        }
+
         /* Mobile Auth Buttons */
         .header-premium-mobile-auth {
           display: flex;
@@ -500,7 +621,8 @@ const HeaderPremium = () => {
           }
           
           .header-premium-nav-link,
-          .header-premium-dropdown-toggle {
+          .header-premium-dropdown-toggle,
+          .header-premium-apropos-toggle {
             padding: 10px 12px;
             font-size: 0.85rem;
           }
@@ -662,7 +784,8 @@ const HeaderPremium = () => {
           }
 
           .header-premium-nav-link,
-          .header-premium-dropdown-toggle {
+          .header-premium-dropdown-toggle,
+          .header-premium-apropos-toggle {
             padding: 14px 18px;
             font-size: 1rem;
           }
@@ -711,7 +834,41 @@ const HeaderPremium = () => {
 
           {/* Desktop Navigation with Dropdown */}
           <nav className="header-premium-nav-desktop">
-            {navigation.slice(0, 6).map((item) => (
+            {navigation.slice(0, 1).map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className={`header-premium-nav-link ${item.current ? 'active' : ''}`}
+                aria-current={item.current ? 'page' : undefined}
+              >
+                {item.name}
+              </a>
+            ))}
+            
+            {/* À propos avec sous-menu */}
+            <div className="header-premium-apropos-dropdown">
+              <button className="header-premium-apropos-toggle">
+                À propos
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                  <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                </svg>
+              </button>
+              <div className="header-premium-apropos-menu">
+              
+                {navigation[1].submenu.map((subItem) => (
+                  <a
+                    key={subItem.name}
+                    href={subItem.href}
+                    className="header-premium-apropos-link"
+                  >
+                    {subItem.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Autres liens principaux */}
+            {navigation.slice(2, 6).map((item) => (
               <a
                 key={item.name}
                 href={item.href}
@@ -792,7 +949,47 @@ const HeaderPremium = () => {
               {/* Main Navigation Section */}
               <div className="header-premium-mobile-section">
                 <div className="header-premium-mobile-section-title">Navigation Principale</div>
-                {navigation.slice(0, 6).map((item) => (
+                {navigation.slice(0, 1).map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className={`header-premium-mobile-menu-item ${item.current ? 'active' : ''}`}
+                    onClick={() => setIsMenuOpen(false)}
+                    aria-current={item.current ? 'page' : undefined}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+                
+                {/* À propos avec sous-menu mobile */}
+                <a
+                  href="/a-propos"
+                  className="header-premium-mobile-menu-item"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  À propos
+                </a>
+                <div className="header-premium-mobile-submenu">
+                  <a
+                    href="/a-propos"
+                    className="header-premium-mobile-submenu-item"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Vue d'ensemble
+                  </a>
+                  {navigation[1].submenu.map((subItem) => (
+                    <a
+                      key={subItem.name}
+                      href={subItem.href}
+                      className="header-premium-mobile-submenu-item"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {subItem.name}
+                    </a>
+                  ))}
+                </div>
+
+                {navigation.slice(2, 6).map((item) => (
                   <a
                     key={item.name}
                     href={item.href}

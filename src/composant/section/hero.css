@@ -1,16 +1,17 @@
-/* Variables CSS uniques - Palette orange */
+/* Variables CSS uniques - Palette orange/dorée */
 :root {
   --hero-premium-deep-brown: #000000;
   --hero-premium-dark-brown: #000000;
   --hero-premium-medium-brown: #000000;
   --hero-premium-light-brown: #000000;
   --hero-premium-lighter-brown: #000000;
-  --hero-premium-accent-brown: #ff6b35;
+  --hero-premium-accent-primary: #e25822;
+  --hero-premium-accent-secondary: #f9a825;
   --hero-premium-foreground: #FFFFFF;
   --hero-premium-muted: rgba(255, 255, 255, 0.7);
-  --hero-premium-border: rgba(255, 107, 53, 0.3);
+  --hero-premium-border: rgba(226, 88, 34, 0.3);
   --hero-premium-card: rgba(0, 0, 0, 0.6);
-  --hero-premium-glow: 0 0 20px rgba(255, 107, 53, 0.4);
+  --hero-premium-glow: 0 0 20px rgba(226, 88, 34, 0.4);
   --hero-premium-smooth-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --hero-premium-bounce-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -115,7 +116,7 @@ body {
   display: inline-flex;
   align-items: center;
   padding: 0.5rem 1rem;
-  background: rgba(255, 107, 53, 0.2);
+  background: rgba(226, 88, 34, 0.2);
   border: 1px solid var(--hero-premium-border);
   border-radius: 2rem;
   backdrop-filter: blur(10px);
@@ -123,7 +124,7 @@ body {
 }
 
 .hero-premium-badge span {
-  color: var(--hero-premium-accent-brown);
+  color: var(--hero-premium-accent-primary);
   font-size: 0.875rem;
   font-weight: 500;
 }
@@ -148,16 +149,17 @@ body {
 }
 
 .hero-premium-title-typed {
-  background: linear-gradient(135deg, var(--hero-premium-accent-brown), #ff8e53);
+  background: linear-gradient(135deg, var(--hero-premium-accent-primary), var(--hero-premium-accent-secondary));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   display: inline-block;
   min-height: 1.2em;
+  text-shadow: 0 4px 20px rgba(226, 88, 34, 0.3);
 }
 
 .hero-premium-typing-cursor {
-  color: var(--hero-premium-accent-brown);
+  color: var(--hero-premium-accent-primary);
   animation: hero-premium-blink 1s infinite;
 }
 
@@ -208,15 +210,15 @@ body {
 }
 
 .hero-premium-btn-primary {
-  background: var(--hero-premium-accent-brown);
+  background: linear-gradient(135deg, var(--hero-premium-accent-primary), var(--hero-premium-accent-secondary));
   color: white;
-  box-shadow: 0 4px 14px 0 rgba(255, 107, 53, 0.4);
+  box-shadow: 0 4px 14px 0 rgba(226, 88, 34, 0.4);
 }
 
 .hero-premium-btn-primary:hover {
-  background: #ff8e53;
+  background: linear-gradient(135deg, #e25822, #f9b835);
   transform: translateY(-2px);
-  box-shadow: var(--hero-premium-glow);
+  box-shadow: var(--hero-premium-glow), 0 8px 25px rgba(226, 88, 34, 0.5);
 }
 
 .hero-premium-btn-arrow {
@@ -230,13 +232,14 @@ body {
 
 .hero-premium-btn-secondary {
   background: transparent;
-  color: var(--hero-premium-accent-brown);
+  color: var(--hero-premium-accent-primary);
   border: 1px solid var(--hero-premium-border);
 }
 
 .hero-premium-btn-secondary:hover {
-  background: rgba(255, 107, 53, 0.1);
+  background: rgba(226, 88, 34, 0.1);
   transform: translateY(-2px);
+  border-color: rgba(226, 88, 34, 0.5);
 }
 
 /* Statistiques */
@@ -266,7 +269,7 @@ body {
 .hero-premium-stat-icon-inner {
   width: 3rem;
   height: 3rem;
-  background: rgba(255, 107, 53, 0.2);
+  background: rgba(226, 88, 34, 0.2);
   border-radius: 0.75rem;
   display: flex;
   align-items: center;
@@ -281,7 +284,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: var(--hero-premium-accent-brown);
+  background: linear-gradient(135deg, var(--hero-premium-accent-primary), var(--hero-premium-accent-secondary));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -290,11 +293,25 @@ body {
   opacity: 0.1;
 }
 
+.hero-premium-stat-icon svg {
+  color: var(--hero-premium-accent-primary);
+  transition: var(--hero-premium-smooth-transition);
+}
+
+.hero-premium-stat-item:hover .hero-premium-stat-icon svg {
+  color: var(--hero-premium-accent-secondary);
+  transform: scale(1.1);
+}
+
 .hero-premium-stat-value {
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--hero-premium-foreground);
   margin-bottom: 0.25rem;
+  background: linear-gradient(135deg, var(--hero-premium-accent-primary), var(--hero-premium-accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .hero-premium-stat-label {
@@ -319,9 +336,10 @@ body {
 .hero-premium-floating-circle {
   position: absolute;
   border-radius: 50%;
-  background: var(--hero-premium-accent-brown);
+  background: linear-gradient(135deg, var(--hero-premium-accent-primary), var(--hero-premium-accent-secondary));
   opacity: 0.15;
   animation: hero-premium-float 6s ease-in-out infinite;
+  filter: blur(1px);
 }
 
 .hero-premium-circle-1 {
@@ -337,7 +355,7 @@ body {
   height: 120px;
   top: 90px;
   left: 90px;
-  background: rgba(255, 107, 53, 0.1);
+  background: rgba(226, 88, 34, 0.1);
   animation-delay: 1s;
 }
 
@@ -346,13 +364,13 @@ body {
   height: 80px;
   top: 110px;
   left: 110px;
-  background: rgba(255, 107, 53, 0.2);
+  background: rgba(249, 168, 37, 0.2);
   animation-delay: 2s;
 }
 
 .hero-premium-pulse-ring {
   position: absolute;
-  border: 2px solid var(--hero-premium-accent-brown);
+  border: 2px solid var(--hero-premium-accent-primary);
   border-radius: 50%;
   opacity: 0;
   animation: hero-premium-pulse 3s linear infinite;
@@ -364,6 +382,7 @@ body {
   top: 25px;
   left: 25px;
   animation-delay: 0s;
+  border-color: var(--hero-premium-accent-primary);
 }
 
 .hero-premium-ring-2 {
@@ -372,6 +391,7 @@ body {
   top: 0;
   left: 0;
   animation-delay: 1s;
+  border-color: var(--hero-premium-accent-secondary);
 }
 
 .hero-premium-ring-3 {
@@ -380,6 +400,8 @@ body {
   top: -25px;
   left: -25px;
   animation-delay: 2s;
+  border: 2px solid transparent;
+  border-image: linear-gradient(135deg, var(--hero-premium-accent-primary), var(--hero-premium-accent-secondary)) 1;
 }
 
 /* Indicateur de scroll */
@@ -398,7 +420,7 @@ body {
 }
 
 .hero-premium-scroll-indicator:hover {
-  color: var(--hero-premium-accent-brown);
+  color: var(--hero-premium-accent-primary);
 }
 
 .hero-premium-scroll-text {
@@ -584,5 +606,26 @@ body {
   .hero-premium-visual-container {
     width: 400px;
     height: 400px;
+  }
+}
+
+/* Effets de lumière supplémentaires */
+.hero-premium-glow-effect {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(226, 88, 34, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: hero-premium-glowMove 8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes hero-premium-glowMove {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(50%, 50%) scale(1.2);
   }
 }

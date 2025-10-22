@@ -1,16 +1,16 @@
-/* Variables CSS uniques */
+/* Variables CSS uniques - Palette orange/dorée */
 :root {
   --souscription-deep-brown: #000000;
   --souscription-dark-brown: #000000;
   --souscription-medium-brown: #000000;
   --souscription-light-brown: #000000;
-  --souscription-gold: #ff6b35;
-  --souscription-light-gold: #ff8e53;
+  --souscription-gold: #e25822;
+  --souscription-light-gold: #f9a825;
   --souscription-foreground: #FFFFFF;
   --souscription-muted: rgba(255, 255, 255, 0.7);
-  --souscription-border: rgba(255, 107, 53, 0.2);
+  --souscription-border: rgba(226, 88, 34, 0.2);
   --souscription-card: rgba(0, 0, 0, 0.6);
-  --souscription-glow: 0 0 30px rgba(255, 107, 53, 0.3);
+  --souscription-glow: 0 0 30px rgba(226, 88, 34, 0.3);
   --souscription-luxury-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   --souscription-smooth-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --souscription-bounce-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -47,9 +47,9 @@
 .souscription-badge {
   display: inline-block;
   padding: 0.5rem 1.5rem;
-  background: rgba(255, 107, 53, 0.1);
+  background: rgba(226, 88, 34, 0.1);
   color: var(--souscription-gold);
-  border: 1px solid rgba(255, 107, 53, 0.3);
+  border: 1px solid rgba(226, 88, 34, 0.3);
   border-radius: 2rem;
   font-size: 0.875rem;
   font-weight: 600;
@@ -74,11 +74,12 @@
   background-clip: text;
   color: transparent;
   position: relative;
+  text-shadow: 0 4px 20px rgba(226, 88, 34, 0.3);
 }
 
 .souscription-description {
   font-size: 1.25rem;
-  color:white;
+  color: white;
   max-width: 600px;
   margin: 0 auto 3rem;
   line-height: 1.6;
@@ -122,12 +123,13 @@
 }
 
 .souscription-discount-badge {
-  background: #10b981;
+  background: linear-gradient(135deg, #10b981, #34d399);
   color: white;
   padding: 0.125rem 0.5rem;
   border-radius: 1rem;
   font-size: 0.75rem;
   font-weight: 600;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
 }
 
 .souscription-toggle-slider {
@@ -136,10 +138,10 @@
   left: 0.25rem;
   width: calc(50% - 0.25rem);
   height: calc(100% - 0.5rem);
-  background: var(--souscription-gold);
+  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
   border-radius: 0.5rem;
   transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.4);
+  box-shadow: 0 4px 14px rgba(226, 88, 34, 0.4);
 }
 
 .souscription-toggle-slider.annual {
@@ -195,19 +197,17 @@
   transform: translateX(-50%);
   z-index: 3;
   color: #FFFFFF;
-
 }
 
 .souscription-badge-content {
   background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
   color: #FFFFFF;
-
   padding: 0.5rem 1.5rem;
   border-radius: 0 0 1rem 1rem;
   font-size: 0.75rem;
   font-weight: 600;
   white-space: nowrap;
-  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.4);
+  box-shadow: 0 4px 14px rgba(226, 88, 34, 0.4);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -237,7 +237,7 @@
   height: 5rem;
   margin: 0 auto 1rem;
   border-radius: 1.25rem;
-  background: rgba(255, 107, 53, 0.1);
+  background: rgba(226, 88, 34, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -246,20 +246,20 @@
 }
 
 .souscription-plan-card:hover .souscription-plan-icon {
-  background: var(--souscription-plan-color);
+  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
   color: white;
   transform: scale(1.1) rotate(5deg);
 }
 
 .souscription-popular-icon {
-  background: var(--souscription-gold);
+  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
   color: white;
 }
 
 .souscription-icon-glow {
   position: absolute;
   inset: 0;
-  background: var(--souscription-plan-color);
+  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
   border-radius: 1.25rem;
   opacity: 0.3;
   filter: blur(10px);
@@ -295,6 +295,10 @@
   font-weight: 800;
   color: var(--souscription-foreground);
   line-height: 1;
+  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .souscription-price-detail {
@@ -305,13 +309,14 @@
 }
 
 .souscription-annual-savings {
-  background: rgba(16, 185, 129, 0.2);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(52, 211, 153, 0.2));
   color: #10b981;
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
   font-size: 0.75rem;
   font-weight: 600;
   display: inline-block;
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 /* Features du plan */
@@ -329,7 +334,7 @@
 .souscription-feature-check {
   width: 1.25rem;
   height: 1.25rem;
-  background: var(--souscription-plan-color);
+  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -337,6 +342,7 @@
   flex-shrink: 0;
   margin-top: 0.125rem;
   color: white;
+  box-shadow: 0 2px 8px rgba(226, 88, 34, 0.3);
 }
 
 .souscription-feature-text {
@@ -349,9 +355,9 @@
 .souscription-plan-button {
   width: 100%;
   padding: 1rem 2rem;
-  background: rgba(255, 107, 53, 0.1);
+  background: rgba(226, 88, 34, 0.1);
   color: white;
-  border: 1px solid rgba(255, 107, 53, 0.3);
+  border: 1px solid rgba(226, 88, 34, 0.3);
   border-radius: 0.75rem;
   font-weight: 600;
   cursor: pointer;
@@ -365,21 +371,22 @@
 }
 
 .souscription-plan-button:hover {
-  background: var(--souscription-plan-color);
+  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+  box-shadow: 0 8px 25px rgba(226, 88, 34, 0.4);
+  border-color: transparent;
 }
 
 .souscription-popular-button {
-  background: var(--souscription-gold);
+  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
   color: #FFFFFF;
-  border-color: var(--souscription-gold);
-  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.4);
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(226, 88, 34, 0.4);
 }
 
 .souscription-popular-button:hover {
-  box-shadow: var(--souscription-glow);
+  box-shadow: var(--souscription-glow), 0 8px 30px rgba(226, 88, 34, 0.6);
 }
 
 .souscription-button-arrow {
@@ -394,7 +401,7 @@
 .souscription-card-glow {
   position: absolute;
   inset: 0;
-  background: var(--souscription-plan-color);
+  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
   opacity: 0;
   border-radius: 1.5rem;
   filter: blur(20px);
@@ -484,11 +491,11 @@
 
 .souscription-star {
   color: var(--souscription-gold);
-  filter: drop-shadow(0 0 4px rgba(255, 107, 53, 0.6));
+  filter: drop-shadow(0 0 4px rgba(226, 88, 34, 0.6));
 }
 
 .souscription-testimonial-comment {
-  color:white;
+  color: white;
   font-style: italic;
   line-height: 1.6;
   margin-bottom: 1.5rem;
@@ -503,13 +510,14 @@
 .souscription-author-avatar {
   width: 3rem;
   height: 3rem;
-  background: var(--souscription-gold);
+  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
   color: white;
+  box-shadow: 0 4px 12px rgba(226, 88, 34, 0.3);
 }
 
 .souscription-author-name {
@@ -543,7 +551,7 @@
   padding: 0.75rem 2rem;
   background: transparent;
   color: white;
-  border: 1px solid rgba(255, 107, 53, 0.3);
+  border: 1px solid rgba(226, 88, 34, 0.3);
   border-radius: 0.75rem;
   font-weight: 600;
   cursor: pointer;
@@ -551,8 +559,9 @@
 }
 
 .souscription-faq-button:hover {
-  background: rgba(255, 107, 53, 0.1);
+  background: rgba(226, 88, 34, 0.1);
   transform: translateY(-2px);
+  border-color: rgba(226, 88, 34, 0.5);
 }
 
 /* Éléments décoratifs */
@@ -566,7 +575,7 @@
 .souscription-floating-orb {
   position: absolute;
   border-radius: 50%;
-  background: var(--souscription-gold);
+  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
   opacity: 0.05;
   filter: blur(40px);
   animation: souscription-float 8s ease-in-out infinite;
@@ -665,5 +674,29 @@
   
   .souscription-price-amount {
     font-size: 2.5rem;
+  }
+}
+
+/* Effets de lumière supplémentaires */
+.souscription-premium-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(226, 88, 34, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(50px);
+  animation: souscription-glowPulse 6s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes souscription-glowPulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(1.1);
   }
 }

@@ -53,7 +53,7 @@ const Footer = () => {
       <style jsx>{`
         .footer {
           background: #000000;
-          border-top: 1px solid rgba(255, 107, 53, 0.3);
+          border-top: 1px solid rgba(226, 88, 34, 0.3);
           width: 100%;
           margin: 0;
           padding: 0;
@@ -75,7 +75,7 @@ const Footer = () => {
           position: absolute;
           width: 3px;
           height: 3px;
-          background: linear-gradient(45deg, #ff6b35, #ff8e53);
+          background: linear-gradient(135deg, #e25822, #f9a825);
           border-radius: 50%;
           animation: footerFloat linear infinite;
           opacity: 0.4;
@@ -99,7 +99,7 @@ const Footer = () => {
         }
 
         .footer-border {
-          border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+          border-bottom: 1px solid rgba(226, 88, 34, 0.2);
           width: 100%;
         }
 
@@ -154,8 +154,8 @@ const Footer = () => {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 142, 83, 0.1));
-          border: 1px solid rgba(255, 107, 53, 0.3);
+          background: linear-gradient(135deg, rgba(226, 88, 34, 0.2), rgba(249, 168, 37, 0.1));
+          border: 1px solid rgba(226, 88, 34, 0.3);
           padding: 0.5rem 1.25rem;
           border-radius: 50px;
           margin-bottom: 1.5rem;
@@ -165,11 +165,11 @@ const Footer = () => {
         .newsletter-badge-icon {
           width: 1rem;
           height: 1rem;
-          color: #ff6b35;
+          color: #e25822;
         }
 
         .newsletter-badge span {
-          color: #ff6b35;
+          color: #e25822;
           font-weight: 600;
           font-size: 0.875rem;
         }
@@ -184,7 +184,7 @@ const Footer = () => {
         }
 
         .gradient-marron {
-          background: linear-gradient(135deg, #ff6b35 0%, #ff8e53 50%, #ff6b35 100%);
+          background: linear-gradient(135deg, #e25822 0%, #f9a825 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -224,7 +224,7 @@ const Footer = () => {
         .newsletter-input {
           width: 100%;
           background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 107, 53, 0.3);
+          border: 1px solid rgba(226, 88, 34, 0.3);
           color: #f5f5f5;
           padding: 1rem 1.5rem;
           border-radius: 12px;
@@ -239,9 +239,9 @@ const Footer = () => {
 
         .newsletter-input:focus {
           outline: none;
-          border-color: #ff6b35;
-          box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
-          background: rgba(255, 107, 53, 0.05);
+          border-color: #e25822;
+          box-shadow: 0 0 0 3px rgba(226, 88, 34, 0.1);
+          background: rgba(226, 88, 34, 0.05);
         }
 
         .newsletter-underline {
@@ -250,7 +250,7 @@ const Footer = () => {
           left: 50%;
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #ff6b35, #ff8e53);
+          background: linear-gradient(90deg, #e25822, #f9a825);
           transition: all 0.3s ease;
           transform: translateX(-50%);
         }
@@ -260,7 +260,7 @@ const Footer = () => {
         }
 
         .newsletter-button {
-          background: linear-gradient(135deg, #ff6b35, #ff8e53);
+          background: linear-gradient(135deg, #e25822, #f9a825);
           color: white;
           border: none;
           padding: 1rem 2rem;
@@ -271,7 +271,7 @@ const Footer = () => {
           align-items: center;
           gap: 0.5rem;
           transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+          box-shadow: 0 4px 20px rgba(226, 88, 34, 0.3);
           position: relative;
           overflow: hidden;
           white-space: nowrap;
@@ -294,7 +294,7 @@ const Footer = () => {
 
         .newsletter-button:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 30px rgba(255, 107, 53, 0.5);
+          box-shadow: 0 8px 30px rgba(226, 88, 34, 0.5);
         }
 
         .newsletter-disclaimer {
@@ -317,8 +317,8 @@ const Footer = () => {
         .newsletter-orb {
           width: 200px;
           height: 200px;
-          background: radial-gradient(circle, rgba(255, 107, 53, 0.2), transparent);
-          border: 2px solid rgba(255, 107, 53, 0.3);
+          background: radial-gradient(circle, rgba(226, 88, 34, 0.2), transparent);
+          border: 2px solid rgba(226, 88, 34, 0.3);
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -327,14 +327,18 @@ const Footer = () => {
         }
 
         @keyframes newsletterOrbGlow {
-          0%, 100% { box-shadow: 0 0 30px rgba(255, 107, 53, 0.3); }
-          50% { box-shadow: 0 0 50px rgba(255, 107, 53, 0.5); }
+          0%, 100% { 
+            box-shadow: 0 0 30px rgba(226, 88, 34, 0.3); 
+          }
+          50% { 
+            box-shadow: 0 0 50px rgba(226, 88, 34, 0.5); 
+          }
         }
 
         .newsletter-icon {
           width: 3rem;
           height: 3rem;
-          color: #ff6b35;
+          color: #e25822;
         }
 
         /* Main Footer Content */
@@ -382,11 +386,11 @@ const Footer = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, #ff6b35 0%, #ff8e53 50%, #ff6b35 100%);
+          background: linear-gradient(135deg, #e25822 0%, #f9a825 100%);
           border-radius: 16px;
           opacity: 0.8;
           transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+          box-shadow: 0 4px 20px rgba(226, 88, 34, 0.3);
         }
 
         .logo-img {
@@ -396,7 +400,7 @@ const Footer = () => {
           transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
           position: relative;
           z-index: 2;
-          filter: brightness(1.1) drop-shadow(0 2px 8px rgba(255, 107, 53, 0.3));
+          filter: brightness(1.1) drop-shadow(0 2px 8px rgba(226, 88, 34, 0.3));
           object-fit: cover;
         }
 
@@ -443,7 +447,7 @@ const Footer = () => {
           width: 3rem;
           height: 3rem;
           background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 107, 53, 0.2);
+          border: 1px solid rgba(226, 88, 34, 0.2);
           border-radius: 12px;
           display: flex;
           align-items: center;
@@ -453,10 +457,10 @@ const Footer = () => {
         }
 
         .social-link:hover {
-          background: rgba(255, 107, 53, 0.1);
-          border-color: rgba(255, 107, 53, 0.4);
+          background: rgba(226, 88, 34, 0.1);
+          border-color: rgba(226, 88, 34, 0.4);
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(255, 107, 53, 0.2);
+          box-shadow: 0 8px 20px rgba(226, 88, 34, 0.2);
         }
 
         .social-icon {
@@ -467,7 +471,7 @@ const Footer = () => {
         }
 
         .social-link:hover .social-icon {
-          color: #ff6b35;
+          color: #e25822;
           transform: scale(1.1);
         }
 
@@ -505,12 +509,12 @@ const Footer = () => {
           left: 0;
           width: 0;
           height: 1px;
-          background: linear-gradient(90deg, #ff6b35, #ff8e53);
+          background: linear-gradient(90deg, #e25822, #f9a825);
           transition: width 0.3s ease;
         }
 
         .links-list a:hover {
-          color: #ff6b35;
+          color: #e25822;
           transform: translateX(5px);
         }
 
@@ -520,7 +524,7 @@ const Footer = () => {
 
         /* Bottom Bar */
         .bottom-bar {
-          border-top: 1px solid rgba(255, 107, 53, 0.2);
+          border-top: 1px solid rgba(226, 88, 34, 0.2);
           padding: 2rem 0;
           width: 100%;
         }
@@ -559,12 +563,12 @@ const Footer = () => {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          color: #ff6b35;
+          color: #e25822;
           font-size: 0.875rem;
-          background: rgba(255, 107, 53, 0.1);
+          background: rgba(226, 88, 34, 0.1);
           padding: 0.5rem 1rem;
           border-radius: 20px;
-          border: 1px solid rgba(255, 107, 53, 0.2);
+          border: 1px solid rgba(226, 88, 34, 0.2);
         }
 
         .status-dot {
@@ -595,7 +599,7 @@ const Footer = () => {
         }
 
         .heart {
-          color: #ff6b35;
+          color: #e25822;
           animation: heartbeat 1.5s ease-in-out infinite;
         }
 
@@ -752,7 +756,7 @@ const Footer = () => {
                     <img src={logo} alt="THE BLACK BOOK" className="logo-img" />
                   </div>
                   <div className="logo-text">
-                    <span className="logo-text-main">THE</span>{' '}
+                    <span className="logo-text-main">AFRO</span>{' '}
                     <span className="gradient-marron">BLACK BOOK</span>
                   </div>
                 </div>

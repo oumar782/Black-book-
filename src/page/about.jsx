@@ -14,7 +14,7 @@ const AboutPremium = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -33,25 +33,25 @@ const AboutPremium = () => {
       icon: HeartHandshake,
       title: "Authenticité",
       description: "Nous préservons et transmettons la richesse authentique de nos cultures africaines.",
-      color: "#ff6b35"
+      color: "#e25822"
     },
     {
       icon: Award,
       title: "Excellence",
       description: "Nous visons l'excellence dans chaque ressource et expérience que nous proposons.",
-      color: "#ff8e53"
+      color: "#f9a825"
     },
     {
       icon: UsersRound,
       title: "Communauté",
       description: "Nous créons un espace bienveillant où chacun peut apprendre et grandir ensemble.",
-      color: "#ff6b35"
+      color: "#e25822"
     },
     {
       icon: GlobeLock,
       title: "Impact Global",
       description: "Nous œuvrons pour une reconnaissance mondiale de l'héritage africain.",
-      color: "#ff8e53"
+      color: "#f9a825"
     }
   ];
 
@@ -61,21 +61,21 @@ const AboutPremium = () => {
       role: "Fondatrice & Directrice",
       bio: "Historienne spécialisée en civilisations africaines, passionnée par la transmission culturelle.",
       initials: "AK",
-      color: "#ff6b35"
+      color: "#e25822"
     },
     {
       name: "Marcus Diallo",
       role: "Directeur Contenu",
       bio: "Expert en éducation digitale et ancien journaliste culturel.",
       initials: "MD",
-      color: "#ff8e53"
+      color: "#f9a825"
     },
     {
       name: "Fatou Sané",
       role: "Responsable Communauté",
       bio: "Anthropologue et médiatrice culturelle, connecteuse d'âmes.",
       initials: "FS",
-      color: "#ff6b35"
+      color: "#e25822"
     }
   ];
 
@@ -86,6 +86,7 @@ const AboutPremium = () => {
         <div className="about-premium-hero">
           <div className="about-premium-content">
             <div className={`about-premium-content-badge ${isVisible ? 'animate-fade-in-up' : ''}`}>
+              <span className="badge-sparkle"></span>
               Notre Mission
             </div>
             
@@ -94,19 +95,19 @@ const AboutPremium = () => {
             </h1>
             
             <div className="about-premium-text">
-              <p className={`${isVisible ? 'animate-fade-in-up' : ''}`}>
+              <p className={`about-premium-paragraph ${isVisible ? 'animate-fade-in-up' : ''}`}>
                 THE BLACK BOOK est né d'une conviction profonde : notre héritage africain 
                 mérite d'être célébré, partagé et transmis aux générations futures.
               </p>
               
-              <p className={`${isVisible ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: '0.2s' }}>
+              <p className={`about-premium-paragraph ${isVisible ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: '0.2s' }}>
                 Nous croyons que la connaissance de nos racines est un pilier fondamental 
                 pour construire un avenir épanoui et fier. C'est pourquoi nous avons créé 
                 cette plateforme unique qui rassemble ressources éducatives, événements 
                 culturels et communauté bienveillante.
               </p>
               
-              <p className={`${isVisible ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: '0.4s' }}>
+              <p className={`about-premium-paragraph ${isVisible ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: '0.4s' }}>
                 Chaque jour, nous travaillons pour rendre accessible la richesse de nos 
                 cultures, depuis les royaumes anciens jusqu'aux innovations contemporaines, 
                 en passant par les arts, la philosophie et les traditions orales qui font 
@@ -128,6 +129,7 @@ const AboutPremium = () => {
                 <div className="about-premium-floating-element about-premium-element-2"></div>
                 <div className="about-premium-floating-element about-premium-element-3"></div>
               </div>
+              <div className="about-premium-image-shine"></div>
             </div>
           </div>
         </div>
@@ -162,6 +164,7 @@ const AboutPremium = () => {
                 <h3 className="about-premium-value-title">{value.title}</h3>
                 <p className="about-premium-value-description">{value.description}</p>
                 <div className="about-premium-value-decoration"></div>
+                <div className="about-premium-card-shine"></div>
               </div>
             ))}
           </div>
@@ -197,6 +200,7 @@ const AboutPremium = () => {
                     <span className="about-premium-avatar-initials">{member.initials}</span>
                   </div>
                   <div className="about-premium-avatar-glow"></div>
+                  <div className="about-premium-avatar-ring"></div>
                 </div>
                 
                 <h3 className="about-premium-member-name">{member.name}</h3>
@@ -210,18 +214,21 @@ const AboutPremium = () => {
                   <div className="about-premium-decoration-dot about-premium-dot-2"></div>
                   <div className="about-premium-decoration-dot about-premium-dot-3"></div>
                 </div>
+                <div className="about-premium-card-shine"></div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Éléments décoratifs */}
+      {/* Éléments décoratifs améliorés */}
       <div className="about-premium-decorative-background">
         <div className="about-premium-background-pattern about-premium-pattern-1"></div>
         <div className="about-premium-background-pattern about-premium-pattern-2"></div>
         <div className="about-premium-background-orb about-premium-orb-1"></div>
         <div className="about-premium-background-orb about-premium-orb-2"></div>
+        <div className="about-premium-background-glow about-premium-glow-1"></div>
+        <div className="about-premium-background-glow about-premium-glow-2"></div>
       </div>
     </section>
   );
