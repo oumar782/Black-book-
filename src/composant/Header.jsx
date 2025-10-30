@@ -27,12 +27,12 @@ const HeaderPremium = () => {
     { name: 'The Apex', href: '/apex', current: false },
     { name: 'Ressources', href: '/nos-ressources', current: false },
     { name: 'Événements', href: '/evenements', current: false },
-    { name: 'Défis', href: '/defis', current: false },
+    { name: 'Défis', href: '/Defis', current: false },
     { name: 'The Sun', href: '/the-sun', current: false },
     { name: 'Boutique', href: '/boutique', current: false },
-    { name: 'Musée', href: '/musee', current: false },
+    { name: 'Musée', href: '/Musée', current: false },
     { name: 'Tourisme', href: '/tourisme', current: false },
-    { name: 'Lada', href: '/lada', current: false },
+    { name: 'Lada', href: '/Lada', current: false },
     { name: 'Maps et Stats', href: '/maps-stats', current: false },
     { name: 'Caméléon', href: '/cameleon', current: false },
     { name: 'Fracture', href: '/fracture', current: false },
@@ -126,7 +126,6 @@ const HeaderPremium = () => {
 
         .header-premium-logo-text {
           font-family: 'Playfair Display', serif;
-          font-weight: 800;
           font-size: ${isScrolled ? '1.3rem' : '1.5rem'};
           color: white;
           display: flex;
@@ -134,12 +133,17 @@ const HeaderPremium = () => {
           letter-spacing: -0.5px;
           transition: font-size 0.4s ease;
           white-space: nowrap;
+          font-weight: 800;
+          line-height: 1.1;
+          letter-spacing: -0.02em;
         }
 
         .header-premium-logo-text span:first-child {
           color: #e0e0e0;
           opacity: 0.9;
-          font-weight: 700;
+          font-weight: bold;
+          line-height: 1.1;
+          letter-spacing: -0.02em;
         }
 
         .header-premium-logo-text span:last-child {
@@ -450,7 +454,7 @@ const HeaderPremium = () => {
           padding: 24px;
           overflow-y: auto;
           z-index: 999;
-          animation: header-premium-slideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          animation: slideIn 0.3s ease-out forwards;
           min-height: calc(100vh - ${isScrolled ? '70px' : '80px'});
         }
 
@@ -612,6 +616,129 @@ const HeaderPremium = () => {
           font-size: 0.8rem;
           color: #888;
           opacity: 0.7;
+        }
+
+        /* Nouvelles Animations Appliquées */
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-slideIn {
+          animation: slideIn 0.3s ease-out forwards;
+        }
+
+        /* Effet glow sur les boutons */
+        .shadow-glow {
+          box-shadow: 0 0 15px rgba(245, 158, 11, 0.7);
+        }
+
+        /* Effet glow au hover */
+        .group:hover .group-hover\\:animate-glow-pulse {
+          animation: glowPulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes glowPulse {
+          0% {
+            box-shadow: 0 0 0 rgba(245, 158, 11, 0.5);
+          }
+          50% {
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.8);
+          }
+          100% {
+            box-shadow: 0 0 0 rgba(245, 158, 11, 0.5);
+          }
+        }
+
+        /* Style pour le header avec les nouvelles propriétés */
+        .header {
+          background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+          backdrop-filter: blur(10px);
+          border-bottom: 1px solid rgba(0,0,0,0.05);
+          box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Style pour les liens actifs */
+        .nav-link-active::after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: #f59e0b;
+          border-radius: 1px;
+          transform: scaleX(0);
+          transition: transform 0.3s ease;
+        }
+
+        .nav-link-active:hover::after {
+          transform: scaleX(1);
+        }
+
+        /* Style pour les boutons */
+        .btn-outline {
+          border: 1px solid #d1d5db;
+          color: #4b5563;
+          background: white;
+          transition: all 0.2s ease;
+        }
+
+        .btn-outline:hover {
+          background: #f9fafb;
+          border-color: #9ca3af;
+        }
+
+        .btn-primary {
+          background: #f59e0b;
+          color: white;
+          box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+          transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+          background: #d97706;
+          box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Mobile menu styles avec les nouvelles classes */
+        .mobile-menu {
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(10px);
+          border-radius: 12px;
+          padding: 1rem;
+          margin-top: 0.5rem;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+
+        .mobile-menu a {
+          padding: 0.75rem 1rem;
+          border-radius: 8px;
+          transition: background 0.2s ease;
+        }
+
+        .mobile-menu a.active {
+          background: #fef3c7;
+          color: #d97706;
+        }
+
+        .mobile-menu button {
+          width: 100%;
+          margin-top: 0.5rem;
+          padding: 0.75rem;
+          border-radius: 8px;
+          font-size: 0.875rem;
+          transition: all 0.2s ease;
+        }
+
+        .mobile-menu button:last-child {
+          margin-top: 0.5rem;
         }
 
         /* Responsive Design */
@@ -796,7 +923,7 @@ const HeaderPremium = () => {
           }
         }
 
-        /* Animations */
+        /* Animations Originales */
         @keyframes header-premium-slideDown {
           from {
             opacity: 0;
@@ -854,7 +981,6 @@ const HeaderPremium = () => {
                 </svg>
               </button>
               <div className="header-premium-apropos-menu">
-              
                 {navigation[1].submenu.map((subItem) => (
                   <a
                     key={subItem.name}
@@ -926,7 +1052,7 @@ const HeaderPremium = () => {
 
         {/* Enhanced Mobile Menu */}
         {isMenuOpen && (
-          <div className="header-premium-mobile-menu">
+          <div className="header-premium-mobile-menu animate-slideIn">
             <nav className="header-premium-mobile-nav">
               {/* Mobile Auth Buttons */}
               <div className="header-premium-mobile-auth">
@@ -970,7 +1096,6 @@ const HeaderPremium = () => {
                   À propos
                 </a>
                 <div className="header-premium-mobile-submenu">
-                
                   {navigation[1].submenu.map((subItem) => (
                     <a
                       key={subItem.name}

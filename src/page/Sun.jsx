@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Heart, Users, Sun, Globe, Shield, Star, Quote, ArrowRight, Play, Pause, Volume2, VolumeX, ChevronRight, ChevronLeft, Clock, MapPin, UsersRound, Sparkles } from 'lucide-react';
+import { Heart, Users, Sun, Globe, Shield, Star, Quote, ArrowRight, Play, Pause, Volume2, VolumeX, ChevronRight, ChevronLeft, Clock, MapPin, UsersRound, Sparkles, X } from 'lucide-react';
 import './sun.css';
 
 const SoleilPage = () => {
@@ -7,7 +7,23 @@ const SoleilPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [prayers, setPrayers] = useState([]);
+  const [currentPrayer, setCurrentPrayer] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [showParticipationModal, setShowParticipationModal] = useState(false);
+  const [participationForm, setParticipationForm] = useState({
+    user_name: '',
+    user_email: '',
+    user_country: '',
+    user_message: ''
+  });
+  const [participating, setParticipating] = useState(false);
   const carouselRef = useRef(null);
+
+  // URLs des APIs
+  const API_BASE = 'http://localhost:5000/api';
+  const PRAYERS_API = `${API_BASE}/priere`;
+  const PARTICIPATIONS_API = `${API_BASE}/participation/`;
 
   const heroImages = [
     {
@@ -59,8 +75,108 @@ const SoleilPage = () => {
     }
   ];
 
+  const countries = [
+    "Algérie", "Angola", "Bénin", "Botswana", "Burkina Faso", "Burundi", "Cameroun", "Cap-Vert",
+    "République Centrafricaine", "Comores", "République Démocratique du Congo", "Congo", "Côte d'Ivoire",
+    "Djibouti", "Égypte", "Érythrée", "Eswatini", "Éthiopie", "Gabon", "Gambie", "Ghana", "Guinée",
+    "Guinée-Bissau", "Guinée équatoriale", "Kenya", "Lesotho", "Liberia", "Libye", "Madagascar", "Malawi",
+    "Mali", "Maroc", "Maurice", "Mauritanie", "Mozambique", "Namibie", "Niger", "Nigeria", "Ouganda",
+    "Rwanda", "São Tomé-et-Príncipe", "Sénégal", "Seychelles", "Sierra Leone", "Somalie", "Soudan",
+    "Soudan du Sud", "Tanzanie", "Tchad", "Togo", "Tunisie", "Zambie", "Zimbabwe", "Autre"
+  ];
+
+  // Charger les prières depuis l'API
+  const fetchPrayers = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(PRAYERS_API);
+      if (response.ok) {
+        const data = await response.json();
+        setPrayers(data);
+        if (data.length > 0) {
+          setCurrentPrayer(data[0]);
+        }
+      }
+    } catch (error) {
+      console.error('Erreur lors du chargement des prières:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Ouvrir le modal de participation
+  const openParticipationModal = () => {
+    setShowParticipationModal(true);
+  };
+
+  // Fermer le modal
+  const closeParticipationModal = () => {
+    setShowParticipationModal(false);
+    setParticipationForm({
+      user_name: '',
+      user_email: '',
+      user_country: '',
+      user_message: ''
+    });
+  };
+
+  // Gérer les changements du formulaire
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setParticipationForm(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // Participer à une prière
+  const participateToPrayer = async (e) => {
+    e.preventDefault();
+    
+    try {
+      setParticipating(true);
+      
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      
+      const response = await fetch(PARTICIPATIONS_API, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prayer_id: currentPrayer.id,
+          user_name: participationForm.user_name,
+          user_email: participationForm.user_email,
+          user_country: participationForm.user_country,
+          user_message: participationForm.user_message,
+          timezone: timezone
+        })
+      });
+
+      if (response.ok) {
+        const participation = await response.json();
+        alert('🙏 Merci pour votre participation ! Votre prière a été enregistrée.');
+        closeParticipationModal();
+      } else {
+        const error = await response.json();
+        alert(`❌ ${error.error || 'Erreur lors de la participation'}`);
+      }
+    } catch (error) {
+      console.error('Erreur participation:', error);
+      alert('❌ Erreur de connexion au serveur');
+    } finally {
+      setParticipating(false);
+    }
+  };
+
+  // Changer de prière
+  const selectPrayer = (prayer) => {
+    setCurrentPrayer(prayer);
+  };
+
   useEffect(() => {
     setIsVisible(true);
+    fetchPrayers();
     
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length);
@@ -80,7 +196,6 @@ const SoleilPage = () => {
   return (
     <div className={`africa-premium ${isVisible ? 'visible' : ''}`}>
     
-
       {/* Hero Carousel Cinématographique */}
       <section className="hero-carousel" id="section-0">
         <div className="cosmic-overlay"></div>
@@ -119,7 +234,10 @@ const SoleilPage = () => {
                   </p>
 
                   <div className="hero-actions">
-                    <button className="cta-btn primary">
+                    <button 
+                      className="cta-btn primary"
+                      onClick={() => document.getElementById('section-3').scrollIntoView({ behavior: 'smooth' })}
+                    >
                       <div className="btn-aurora"></div>
                       <span>Commencer la Prière</span>
                       <div className="btn-sparkle">
@@ -204,7 +322,7 @@ const SoleilPage = () => {
                 <div className="card-glow" style={{ '--glow-color': feature.color }}></div>
                 <div className="card-content">
                   <div className="feature-icon-wrapper" style={{ '--icon-color': feature.color }}>
-                 
+                    {feature.icon}
                   </div>
                   <h3 className="feature-title">{feature.title}</h3>
                   <p className="feature-description">{feature.description}</p>
@@ -307,7 +425,10 @@ const SoleilPage = () => {
               </div>
 
               <div className="message-actions">
-                <button className="action-btn primary">
+                <button 
+                  className="action-btn primary"
+                  onClick={() => document.getElementById('section-3').scrollIntoView({ behavior: 'smooth' })}
+                >
                   <div className="btn-orbital"></div>
                   <Heart size={18} />
                   <span>Rejoindre le Cercle</span>
@@ -344,90 +465,201 @@ const SoleilPage = () => {
             </p>
           </div>
 
-          <div className="prayers-display">
-            <div className="prayer-main">
-              <div className="prayer-card">
-                <div className="card-aura"></div>
-                <div className="card-header">
-                  <div className="prayer-badge">
-                    <Shield size={18} />
-                    <span>Hymne à la Terre</span>
-                  </div>
-                  <div className="prayer-meta">
-                    <span className="meta-item">Prière Sacrée</span>
-                    <span className="meta-item">Cérémonie d'Unité</span>
-                  </div>
-                </div>
-
-                <div className="prayer-content">
-                  <div className="prayer-text">
-                    <p className="prayer-line">Ô Terre d'Afrique, souffle ancien et jeune à la fois,</p>
-                    <p className="prayer-line">De tes collines aux déserts, des fleuves aux forêts,</p>
-                    <p className="prayer-line">Ton cœur bat dans chaque pas de tes enfants.</p>
-                    
-                    <div className="prayer-break">
-                      <div className="break-ornament"></div>
-                    </div>
-                    
-                    <p className="prayer-line">Nous venons de mille langues, mais nos voix t'appellent en un seul chant.</p>
-                    <p className="prayer-line">Nous portons des noms différents, mais notre sang coule du même soleil.</p>
-                    
-                    <div className="prayer-break">
-                      <div className="break-ornament"></div>
-                    </div>
-                    
-                    <p className="prayer-line">Que l'aube trouve nos mains unies,</p>
-                    <p className="prayer-line">Que le midi nous trouve au travail,</p>
-                    <p className="prayer-line">Que le soir nous trouve en paix.</p>
-                  </div>
-
-                  <div className="prayer-seal">
-                    <div className="seal-container">
-                      <div className="seal-ring"></div>
-                      <div className="seal-circle">
-                        <span className="seal-text">Ase</span>
-                      </div>
-                    </div>
-                    <p className="seal-meaning">Que la parole porte fruit</p>
-                  </div>
-                </div>
-              </div>
+          {loading ? (
+            <div className="loading-prayer">
+              <div className="prayer-loading-spinner"></div>
+              <p>Chargement des prières sacrées...</p>
             </div>
+          ) : currentPrayer ? (
+            <div className="prayers-display">
+              <div className="prayer-main">
+                <div className="prayer-card">
+                  <div className="card-aura"></div>
+                  <div className="card-header">
+                    <div className="prayer-badge">
+                      <Shield size={18} />
+                      <span>{currentPrayer.category || 'Prière Sacrée'}</span>
+                    </div>
+                    <div className="prayer-meta">
+                      <span className="meta-item">{currentPrayer.type || 'Prière'}</span>
+                      <span className="meta-item">{currentPrayer.duration} min</span>
+                    </div>
+                  </div>
 
-            <div className="prayer-sidebar">
-              <div className="sidebar-card">
-                <div className="card-aura"></div>
-                <h4>Autres Prières</h4>
-                <div className="prayer-list">
-                  {['Afrique Debout', 'Invocation de Protection', 'Hymne aux Ancêtres', 'Chant d\'Unité'].map((prayer, index) => (
-                    <button key={index} className="prayer-item">
-                      <div className="item-orb"></div>
-                      <div className="item-icon">
-                        <Star size={14} />
+                  <div className="prayer-content">
+                    <h3 className="prayer-title">{currentPrayer.title}</h3>
+                    <div className="prayer-text">
+                      {currentPrayer.content.split('\n').map((line, index) => (
+                        <p key={index} className="prayer-line">{line}</p>
+                      ))}
+                    </div>
+
+                    <div className="prayer-seal">
+                      <div className="seal-container">
+                        <div className="seal-ring"></div>
+                        <div className="seal-circle">
+                          <span className="seal-text">Ase</span>
+                        </div>
                       </div>
-                      <span>{prayer}</span>
-                      <ChevronRight size={14} />
+                      <p className="seal-meaning">Que la parole porte fruit</p>
+                    </div>
+                  </div>
+
+                  <div className="prayer-actions">
+                    <button 
+                      className="ritual-btn large"
+                      onClick={openParticipationModal}
+                    >
+                      <div className="btn-orbital"></div>
+                      <Sun size={18} />
+                      <span>Participer à cette Prière</span>
                     </button>
-                  ))}
+                  </div>
                 </div>
               </div>
 
-              <div className="ritual-info">
-                <div className="ritual-header">
-                  <Clock size={18} />
-                  <span>Cérémonie du Soleil</span>
+              <div className="prayer-sidebar">
+                <div className="sidebar-card">
+                  <div className="card-aura"></div>
+                  <h4>Autres Prières</h4>
+                  <div className="prayer-list">
+                    {prayers.map((prayer) => (
+                      <button 
+                        key={prayer.id} 
+                        className={`prayer-item ${currentPrayer.id === prayer.id ? 'active' : ''}`}
+                        onClick={() => selectPrayer(prayer)}
+                      >
+                        <div className="item-orb"></div>
+                        <div className="item-icon">
+                          <Star size={14} />
+                        </div>
+                        <span>{prayer.title}</span>
+                        <ChevronRight size={14} />
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <p>Rejoignez-nous chaque aube pour la prière commune</p>
-                <button className="ritual-btn">
-                  <div className="btn-orbital"></div>
-                  <span>Participer</span>
-                  <Sun size={14} />
-                </button>
+
+                <div className="ritual-info">
+                  <div className="ritual-header">
+                    <Clock size={18} />
+                    <span>Cérémonie du Soleil</span>
+                  </div>
+                  <p>Rejoignez-nous chaque aube pour la prière commune</p>
+                  <button 
+                    className="ritual-btn"
+                    onClick={openParticipationModal}
+                  >
+                    <div className="btn-orbital"></div>
+                    <span>Participer Maintenant</span>
+                    <Sun size={14} />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="no-prayers">
+              <p>Aucune prière disponible pour le moment.</p>
+            </div>
+          )}
         </div>
       </section>
+
+      {/* Modal de Participation */}
+      {showParticipationModal && (
+        <div className="modal-overlay">
+          <div className="participation-modal">
+            <div className="modal-header">
+              <h3>Participer à la Prière</h3>
+              <button className="modal-close" onClick={closeParticipationModal}>
+                <X size={20} />
+              </button>
+            </div>
+            
+            <form onSubmit={participateToPrayer} className="participation-form">
+              <div className="form-group">
+                <label htmlFor="user_name">Votre Nom Complet *</label>
+                <input
+                  type="text"
+                  id="user_name"
+                  name="user_name"
+                  value={participationForm.user_name}
+                  onChange={handleFormChange}
+                  required
+                  placeholder="Entrez votre nom complet"
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="user_email">Votre Email *</label>
+                <input
+                  type="email"
+                  id="user_email"
+                  name="user_email"
+                  value={participationForm.user_email}
+                  onChange={handleFormChange}
+                  required
+                  placeholder="Entrez votre email"
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="user_country">Votre Pays</label>
+                <select
+                  id="user_country"
+                  name="user_country"
+                  value={participationForm.user_country}
+                  onChange={handleFormChange}
+                >
+                  <option value="">Sélectionnez votre pays</option>
+                  {countries.map(country => (
+                    <option key={country} value={country}>{country}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="user_message">Votre Message (Optionnel)</label>
+                <textarea
+                  id="user_message"
+                  name="user_message"
+                  value={participationForm.user_message}
+                  onChange={handleFormChange}
+                  rows="4"
+                  placeholder="Partagez un message, une intention ou une dédicace..."
+                />
+              </div>
+
+              <div className="form-actions">
+                <button 
+                  type="button" 
+                  className="btn-outline"
+                  onClick={closeParticipationModal}
+                >
+                  Annuler
+                </button>
+                <button 
+                  type="submit" 
+                  className="btn-primary"
+                  disabled={participating}
+                >
+                  {participating ? (
+                    <>
+                      <div className="prayer-loading-spinner small"></div>
+                      Enregistrement...
+                    </>
+                  ) : (
+                    <>
+                      <Heart size={16} />
+                      Confirmer la Participation
+                    </>
+                  )}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* CTA Final Épique */}
       <section className="cta-final">
@@ -458,7 +690,10 @@ const SoleilPage = () => {
             </p>
 
             <div className="cta-actions">
-              <button className="cta-btn primary large">
+              <button 
+                className="cta-btn primary large"
+                onClick={() => document.getElementById('section-3').scrollIntoView({ behavior: 'smooth' })}
+              >
                 <div className="btn-aurora-large"></div>
                 <Sun size={20} />
                 <span>Commencer le Voyage</span>
@@ -491,8 +726,6 @@ const SoleilPage = () => {
           </div>
         </div>
       </section>
-
-      
     </div>
   );
 };

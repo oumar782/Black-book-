@@ -14,6 +14,9 @@ import Fracture from "./page/fracture.jsx";
 import Apex from "./page/Apex.jsx";
 import Sun from "./page/Sun.jsx";
 import Mot  from "./page/Mot.jsx";
+import Defi  from "./page/Defis.jsx";
+import Lada  from "./page/Lada.jsx";
+import Muse  from "./page/Musée.jsx";
 
 function App() {
   return (
@@ -32,6 +35,9 @@ function App() {
           <Route path="/apex" element={<Apex />} />
           <Route path="/the-sun" element={<Sun />} />
           <Route path="/Mot-du-promotteur" element={<Mot />} />
+          <Route path="/Defis" element={<Defi />} />
+          <Route path="/Lada" element={<Lada />} />
+          <Route path="/Musée" element={<Muse />} />
           {/* Ajoute d'autres routes ici si besoin */}
         </Routes>
       </main>

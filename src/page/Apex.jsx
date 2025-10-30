@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Globe, History, Users, MapPin, Award, BookOpen, ArrowRight, ChevronDown, Star, Zap, Brain, Heart, Compass, Dna, Mountain, Search, Filter } from 'lucide-react';
+import { Globe, History, Users, MapPin, Award, BookOpen, ArrowRight, ChevronDown, Star, Zap, Brain, Heart, Compass, Dna, Mountain, Search, Filter, X, Clock, User, Calendar } from 'lucide-react';
 import './apex.css';
 
 const Apex = () => {
@@ -7,80 +7,64 @@ const Apex = () => {
   const [activeTab, setActiveTab] = useState('decouvertes');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedPost, setSelectedPost] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
-  // Données initiales enrichies
-  const sections = [
+  // URLs des APIs
+  const API_BASE = 'http://localhost:3000/api';
+  const BLOG_API = `${API_BASE}/apex/`;
+
+  // Données initiales enrichies (fallback si API échoue)
+  const defaultSections = [
     {
       id: 1,
       title: "L'Afrique, Berceau de l'Humanité",
-      content: "Les découvertes archéologiques en Afrique ont révélé les plus anciens vestiges humains, démontrant que l'évolution complète de l'homme moderne s'est déroulée sur le continent africain. De Lucy en Éthiopie aux sites de Sterkfontein en Afrique du Sud, l'Afrique regorge de sites préhistoriques qui retracent l'histoire de l'humanité sur plusieurs millions d'années.",
+      content: "Les découvertes archéologiques en Afrique ont révélé les plus anciens vestiges humains, démontrant que l'évolution complète de l'homme moderne s'est déroulée sur le continent africain. De Lucy en Éthiopie aux sites de Sterkfontein en Afrique du Sud, l'Afrique regorge de sites préhistoriques qui retracent l'histoire de l'humanité sur plusieurs millions d'années.\n\nLes recherches génétiques confirment que tous les humains modernes partagent des ancêtres communs originaires d'Afrique. L'ADN mitochondrial de l'Ève mitochondriale remonte à 200 000 ans en Afrique, établissant notre origine commune.\n\nCette réalité scientifique fondamentale nous rappelle notre unité et notre histoire partagée en tant qu'espèce humaine.",
       icon: 'Globe',
       stats: "7M d'années d'histoire",
       color: "var(--color-primary)",
-      category: "archéologie"
+      category: "archéologie",
+      author_name: "Dr. Sarah Mensah",
+      read_time: 8,
+      published_at: "2024-01-15T10:30:00.000Z"
     },
     {
       id: 2,
       title: "Lucy : Notre Ancêtre Commun",
-      content: "Découverte en 1974 en Éthiopie, Lucy (Australopithecus afarensis) représente l'un des fossiles les plus complets jamais trouvés. Âgée de 3,2 millions d'années, elle démontre la bipédie précoce de nos ancêtres et constitue une pièce maîtresse dans la compréhension de l'évolution humaine.",
+      content: "Découverte en 1974 en Éthiopie, Lucy (Australopithecus afarensis) représente l'un des fossiles les plus complets jamais trouvés. Âgée de 3,2 millions d'années, elle démontre la bipédie précoce de nos ancêtres et constitue une pièce maîtresse dans la compréhension de l'évolution humaine.\n\nLes analyses ont montré que Lucy mesurait environ 1,10 mètre et pesait 27 kg. Sa structure osseuse indique qu'elle était bipède, mais conservait encore une aptitude à grimper aux arbres.\n\nCette découverte a confirmé que la bipédie est apparue avant le développement important du cerveau chez les hominidés, révolutionnant notre compréhension de l'évolution humaine.",
       icon: 'Users',
       stats: "3.2M d'années",
       color: "var(--color-secondary)",
-      category: "fossiles"
+      category: "fossiles",
+      author_name: "Prof. Jean Koffi",
+      read_time: 6,
+      published_at: "2024-01-14T14:20:00.000Z"
     },
     {
       id: 3,
       title: "Civilisations Anciennes",
-      content: "L'Égypte antique, le Royaume du Mali, l'Empire du Ghana, le Grand Zimbabwe... L'Afrique a vu naître certaines des civilisations les plus avancées de l'histoire humaine, avec des réalisations architecturales, scientifiques et culturelles remarquables.",
+      content: "L'Égypte antique, le Royaume du Mali, l'Empire du Ghana, le Grand Zimbabwe... L'Afrique a vu naître certaines des civilisations les plus avancées de l'histoire humaine, avec des réalisations architecturales, scientifiques et culturelles remarquables.\n\nLes pyramides de Gizeh, construites il y a plus de 4500 ans, témoignent d'une maîtrise technique exceptionnelle. Le Royaume du Mali, sous l'empereur Mansa Moussa, était l'un des plus riches et puissants de son époque.\n\nCes civilisations ont développé des systèmes d'écriture, des connaissances astronomiques avancées et des réseaux commerciaux sophistiqués bien avant les contacts avec d'autres continents.",
       icon: 'History',
       stats: "10 000 ans d'histoire",
       color: "var(--color-accent)",
-      category: "civilisations"
+      category: "civilisations",
+      author_name: "Dr. Amina Diallo",
+      read_time: 10,
+      published_at: "2024-01-13T09:15:00.000Z"
     },
     {
       id: 4,
       title: "Héritage Génétique",
-      content: "Les recherches en génétique confirment que toute l'humanité moderne partage des ancêtres communs originaires d'Afrique. L'ADN mitochondrial de l'Ève mitochondriale remonte à 200 000 ans en Afrique, établissant notre origine commune.",
+      content: "Les recherches en génétique confirment que toute l'humanité moderne partage des ancêtres communs originaires d'Afrique. L'ADN mitochondrial de l'Ève mitochondriale remonte à 200 000 ans en Afrique, établissant notre origine commune.\n\nLes analyses génétiques montrent que la diversité génétique est la plus élevée en Afrique, ce qui soutient la théorie de l'origine africaine de l'humanité. Chaque population humaine hors d'Afrique ne représente qu'un sous-ensemble de la diversité génétique africaine.\n\nCes découvertes ont des implications importantes pour comprendre les migrations humaines à travers le monde et notre unité fondamentale en tant qu'espèce.",
       icon: 'Dna',
       stats: "99.9% ADN commun",
       color: "var(--color-primary)",
-      category: "génétique"
-    },
-    {
-      id: 5,
-      title: "Sites Archéologiques Majeurs",
-      content: "L'Afrique compte plus de 200 sites préhistoriques majeurs, dont les grottes de Blombos en Afrique du Sud qui révèlent les premières expressions artistiques de l'humanité datant de 75 000 ans.",
-      icon: 'MapPin',
-      stats: "200+ sites",
-      color: "var(--color-secondary)",
-      category: "archéologie"
-    },
-    {
-      id: 6,
-      title: "Savoirs Ancestraux",
-      content: "Les connaissances en astronomie, médecine traditionnelle, métallurgie et agriculture développées en Afrique ont influencé le monde entier bien avant les contacts avec d'autres continents.",
-      icon: 'BookOpen',
-      stats: "5 000 ans de savoir",
-      color: "var(--color-accent)",
-      category: "savoirs"
-    },
-    {
-      id: 7,
-      title: "Innovations Technologiques",
-      content: "Dès l'âge de pierre, les populations africaines ont développé des techniques avancées de taille d'outils, de production de pigments et de construction qui témoignent d'une intelligence et d'une créativité remarquables.",
-      icon: 'Zap',
-      stats: "2.5M d'innovations",
-      color: "var(--color-primary)",
-      category: "technologie"
-    },
-    {
-      id: 8,
-      title: "Résilience Humaine",
-      content: "L'adaptation aux divers climats et écosystèmes africains a forgé la résilience et la diversité génétique qui caractérisent l'humanité moderne aujourd'hui.",
-      icon: 'Mountain',
-      stats: "54 écosystèmes",
-      color: "var(--color-secondary)",
-      category: "évolution"
+      category: "génétique",
+      author_name: "Dr. Kwame Nkrumah",
+      read_time: 7,
+      published_at: "2024-01-12T16:45:00.000Z"
     }
   ];
 
@@ -103,8 +87,49 @@ const Apex = () => {
   // Catégories uniques pour le filtre
   const categories = ['all', 'archéologie', 'fossiles', 'civilisations', 'génétique', 'savoirs', 'technologie', 'évolution'];
 
+  // Charger les articles depuis l'API
+  const fetchBlogPosts = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(BLOG_API);
+      if (response.ok) {
+        const data = await response.json();
+        setBlogPosts(data);
+      }
+    } catch (error) {
+      console.error('Erreur lors du chargement des articles:', error);
+      // Utiliser les données par défaut en cas d'erreur
+      setBlogPosts(defaultSections);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Ouvrir le modal avec l'article complet
+  const openModal = (post) => {
+    setSelectedPost(post);
+    setShowModal(true);
+    document.body.style.overflow = 'hidden'; // Empêcher le scroll
+  };
+
+  // Fermer le modal
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedPost(null);
+    document.body.style.overflow = 'auto'; // Rétablir le scroll
+  };
+
+  // Formater la date
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString('fr-FR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
   // Filtrer les sections
-  const filteredSections = sections.filter(section => {
+  const filteredSections = blogPosts.filter(section => {
     const matchesSearch = section.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                          section.content.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || section.category === selectedCategory;
@@ -127,7 +152,11 @@ const Apex = () => {
     Dna,
     Mountain,
     Search,
-    Filter
+    Filter,
+    X,
+    Clock,
+    User,
+    Calendar
   };
 
   const getIconComponent = (iconName) => {
@@ -136,6 +165,8 @@ const Apex = () => {
   };
 
   useEffect(() => {
+    fetchBlogPosts();
+    
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
     };
@@ -303,7 +334,7 @@ const Apex = () => {
           {/* Résultats du filtre */}
           <div className="filter-results">
             <p className="results-count">
-              {filteredSections.length} résultat{filteredSections.length !== 1 ? 's' : ''} trouvé{filteredSections.length !== 1 ? 's' : ''}
+              {loading ? 'Chargement...' : `${filteredSections.length} résultat${filteredSections.length !== 1 ? 's' : ''} trouvé${filteredSections.length !== 1 ? 's' : ''}`}
             </p>
           </div>
 
@@ -336,7 +367,12 @@ const Apex = () => {
 
           {/* Sections Grid */}
           <div className="sections-grid">
-            {filteredSections.length > 0 ? (
+            {loading ? (
+              <div className="loading-state">
+                <div className="spinner"></div>
+                <p>Chargement des articles...</p>
+              </div>
+            ) : filteredSections.length > 0 ? (
               filteredSections.map((section, index) => (
                 <section key={section.id} className="content-section" data-aos="fade-up" data-aos-delay={index * 100}>
                   <div className="section-header-card">
@@ -344,15 +380,20 @@ const Apex = () => {
                       {getIconComponent(section.icon)}
                     </div>
                     <div className="section-title-content">
-                    <h2 className="section-titles">{section.title}</h2>
-                    <div className="section-stats">{section.stats}</div>
+                      <h2 className="section-titles">{section.title}</h2>
+                      <div className="section-stats">{section.stats}</div>
                       <span className="section-category">{section.category}</span>
                     </div>
                   </div>
                   <div className="section-content">
-                    <p className="section-text">{section.content}</p>
-                    <button className="section-link">
-                      En savoir plus <ArrowRight size={16} />
+                    <p className="section-text">
+                      {section.content.split('\n')[0].substring(0, 200)}...
+                    </p>
+                    <button 
+                      className="section-link"
+                      onClick={() => openModal(section)}
+                    >
+                      Lire la suite <ArrowRight size={16} />
                     </button>
                   </div>
                 </section>
@@ -387,6 +428,63 @@ const Apex = () => {
           </div>
         </div>
       </section>
+
+      {/* Modal de lecture complète */}
+      {showModal && selectedPost && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="article-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <button className="modal-close" onClick={closeModal}>
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="modal-content">
+              <div className="article-header">
+                <div className="article-meta">
+                  <span className="article-category">{selectedPost.category}</span>
+                  <div className="article-info">
+                    <span className="info-item">
+                      <User size={16} />
+                      {selectedPost.author_name || 'Auteur inconnu'}
+                    </span>
+                    <span className="info-item">
+                      <Calendar size={16} />
+                      {selectedPost.published_at ? formatDate(selectedPost.published_at) : 'Date inconnue'}
+                    </span>
+                    <span className="info-item">
+                      <Clock size={16} />
+                      {selectedPost.read_time || 5} min de lecture
+                    </span>
+                  </div>
+                </div>
+                
+                <h1 className="article-title">{selectedPost.title}</h1>
+                <div className="article-stats">{selectedPost.stats}</div>
+              </div>
+
+              <div className="article-content">
+                {selectedPost.content.split('\n').map((paragraph, index) => (
+                  <p key={index} className="article-paragraph">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+
+              <div className="article-footer">
+                <div className="article-actions">
+                  <button className="action-btn primary" onClick={closeModal}>
+                    Fermer
+                  </button>
+                  <button className="action-btn secondary">
+                    Partager
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
