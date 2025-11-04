@@ -1,12 +1,12 @@
 /* Variables CSS pour une cohérence */
 :root {
-  --events-primary: #C2410C;
-  --events-primary-light: #9A3412;
+  --events-primary: #e25822;
+  --events-primary-light: #f9a825;
   --events-primary-dark: #7C2D12;
   --events-secondary: #000000;
   --events-success: #27ae60;
   --events-warning: #f39c12;
-  --events-danger: #e74c3c;
+  --events-danger: #e25822;
   --events-dark: #000000;
   --events-light: #1a1a1a;
   --events-gray: #666666;

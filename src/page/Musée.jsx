@@ -1,13 +1,15 @@
-// Musée.jsx
+// MuséePersonnalités.jsx
 import React, { useState, useEffect } from 'react';
 import { Search, Filter, X, MapPin, Users, Book, Award, Globe, ArrowRight, ChevronDown, Star, Calendar, User, Heart, Share2, Eye, Zap, Target, TrendingUp } from 'lucide-react';
 import './musée.css';
-const Musée = () => {
+
+const MuséePersonnalités = () => {
   const [activeTab, setActiveTab] = useState('tout');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedPeriod, setSelectedPeriod] = useState('');
+  const [selectedDiscipline, setSelectedDiscipline] = useState('');
   const [showFilters, setShowFilters] = useState(false);
   const [selectedPersonality, setSelectedPersonality] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,6 +31,7 @@ const Musée = () => {
       name: "Wangari Maathai",
       country: "Kenya",
       category: "scientifique",
+      discipline: "Écologie",
       specialty: "Écologie & Environnement",
       period: "contemporain",
       image: "/api/placeholder/400/500",
@@ -58,6 +61,7 @@ const Musée = () => {
       name: "Cheikh Anta Diop",
       country: "Sénégal",
       category: "scientifique",
+      discipline: "Histoire",
       specialty: "Histoire & Anthropologie",
       period: "moderne",
       image: "/api/placeholder/400/500",
@@ -87,6 +91,7 @@ const Musée = () => {
       name: "Miriam Makeba",
       country: "Afrique du Sud",
       category: "non-scientifique",
+      discipline: "Musique",
       specialty: "Musique & Activisme",
       period: "contemporain",
       image: "/api/placeholder/400/500",
@@ -116,6 +121,7 @@ const Musée = () => {
       name: "Thomas Sankara",
       country: "Burkina Faso",
       category: "non-scientifique",
+      discipline: "Politique",
       specialty: "Leadership Révolutionnaire",
       period: "contemporain",
       image: "/api/placeholder/400/500",
@@ -145,6 +151,7 @@ const Musée = () => {
   const countries = [...new Set(personalities.map(p => p.country))];
   const categories = [...new Set(personalities.map(p => p.category))];
   const periods = [...new Set(personalities.map(p => p.period))];
+  const disciplines = [...new Set(personalities.map(p => p.discipline))];
 
   const filteredPersonalities = personalities.filter(personality => {
     const matchesSearch = personality.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -154,9 +161,10 @@ const Musée = () => {
     const matchesCountry = !selectedCountry || personality.country === selectedCountry;
     const matchesCategory = !selectedCategory || personality.category === selectedCategory;
     const matchesPeriod = !selectedPeriod || personality.period === selectedPeriod;
+    const matchesDiscipline = !selectedDiscipline || personality.discipline === selectedDiscipline;
     const matchesTab = activeTab === 'tout' || personality.category === activeTab;
 
-    return matchesSearch && matchesCountry && matchesCategory && matchesPeriod && matchesTab;
+    return matchesSearch && matchesCountry && matchesCategory && matchesPeriod && matchesDiscipline && matchesTab;
   });
 
   const openPersonalityModal = (personality) => {
@@ -169,91 +177,91 @@ const Musée = () => {
     setSelectedCountry('');
     setSelectedCategory('');
     setSelectedPeriod('');
+    setSelectedDiscipline('');
   };
 
   const activeFilters = [
     selectedCountry && `Pays: ${selectedCountry}`,
     selectedCategory && `Catégorie: ${selectedCategory === 'scientifique' ? 'Scientifique' : 'Non-scientifique'}`,
-    selectedPeriod && `Période: ${selectedPeriod}`
+    selectedPeriod && `Période: ${selectedPeriod}`,
+    selectedDiscipline && `Discipline: ${selectedDiscipline}`
   ].filter(Boolean);
 
   return (
-    <div className="musee-page">
+    <div className="mp-page">
       {/* Hero Section Spectaculaire */}
-      <section className="hero-section">
-        <div className="hero-background">
-          <div className="hero-image"></div>
-          <div className="hero-gradient"></div>
-          <div className="hero-pattern"></div>
+      <section className="mp-hero-section">
+        <div className="mp-hero-background">
+          <div className="mp-hero-image"></div>
+          <div className="mp-hero-gradient"></div>
+          <div className="mp-hero-pattern"></div>
         </div>
         
-        <div className="hero-content">
-          <div className="hero-badge">
+        <div className="mp-hero-content">
+          <div className="mp-hero-badge">
             <Zap size={16} />
             Patrimoine Exceptionnel
           </div>
           
-          <h1 className="hero-title">
+          <h1 className="mp-hero-title">
             Musée des 
-            <span className="hero-highlight"> Grandes Figures</span>
+            <span className="mp-hero-highlight"> Grandes Figures</span>
             <br />
             de l'Histoire Noire
           </h1>
           
-          <p className="hero-subtitle">
+          <p className="mp-hero-subtitle">
             Découvrez l'héritage précieux des personnalités noires qui ont 
             façonné notre monde à travers la science, les arts, la politique 
             et l'innovation. Un voyage à travers les siècles d'excellence.
           </p>
           
-          <div className="hero-stats">
-            <div className="stat">
-              <div className="stat-number">150+</div>
-              <div className="stat-label">Personnalités</div>
+          <div className="mp-hero-stats">
+            <div className="mp-stat">
+              <div className="mp-stat-number">150+</div>
+              <div className="mp-stat-label">Personnalités</div>
             </div>
-            <div className="stat">
-              <div className="stat-number">42</div>
-              <div className="stat-label">Pays représentés</div>
+            <div className="mp-stat">
+              <div className="mp-stat-number">42</div>
+              <div className="mp-stat-label">Pays représentés</div>
             </div>
-            <div className="stat">
-              <div className="stat-number">12</div>
-              <div className="stat-label">Domaines d'expertise</div>
+            <div className="mp-stat">
+              <div className="mp-stat-number">12</div>
+              <div className="mp-stat-label">Domaines d'expertise</div>
             </div>
           </div>
           
-          <button className="cta-button">
+          <button className="mp-cta-button">
             Explorer la Collection
             <ArrowRight size={20} />
           </button>
         </div>
         
-        <div className="scroll-indicator">
-          <ArrowRight size={20} className="bounce" />
+        <div className="mp-scroll-indicator">
+          <ArrowRight size={20} className="mp-bounce" />
         </div>
       </section>
 
- 
-
       {/* Navigation par onglets */}
-      <div className="tabs-section">
-        <div className="container">
-          <div className="tabs-container">
+      <div className="mp-tabs-section">
+        <div className="mp-container">
+          <div className="mp-tabs-container">
             <button 
-              className={`tab ${activeTab === 'tout' ? 'active' : ''}`}
+              className={`mp-tab ${activeTab === 'tout' ? 'mp-active' : ''}`}
               onClick={() => setActiveTab('tout')}
             >
               <Globe size={18} />
               Toutes les catégories
             </button>
             <button 
-              className={`tab ${activeTab === 'scientifique' ? 'active' : ''}`}
+              className={`mp-tab ${activeTab === 'scientifique' ? 'mp-active' : ''}`}
               onClick={() => setActiveTab('scientifique')}
             >
               <Award size={18} />
               Domaines scientifiques
             </button>
             <button 
-              className={`tab ${activeTab === 'non-scientifique' ? 'active' : ''}`}
+              className={`mp-tab ${activeTab === 'non-scientifique' ? 'mp-active' : ''}`}
               onClick={() => setActiveTab('non-scientifique')}
             >
               <Users size={18} />
@@ -264,39 +272,39 @@ const Musée = () => {
       </div>
 
       {/* Section de filtres */}
-      <section className="filters-section">
-        <div className="container">
-          <div className="filters-container">
-            <div className="search-filter">
-              <div className="search-box">
-                <Search size={20} className="search-icon" />
+      <section className="mp-filters-section">
+        <div className="mp-container">
+          <div className="mp-filters-container">
+            <div className="mp-search-filter">
+              <div className="mp-search-box">
+                <Search size={20} className="mp-search-icon" />
                 <input
                   type="text"
                   placeholder="Rechercher une personnalité, une spécialité, un pays..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="search-input"
+                  className="mp-search-input"
                 />
               </div>
               
               <button 
-                className="filter-toggle"
+                className="mp-filter-toggle"
                 onClick={() => setShowFilters(!showFilters)}
               >
                 <Filter size={18} />
                 Filtres avancés
-                <ChevronDown size={16} className={showFilters ? 'rotated' : ''} />
+                <ChevronDown size={16} className={showFilters ? 'mp-rotated' : ''} />
               </button>
             </div>
 
             {showFilters && (
-              <div className="advanced-filters">
-                <div className="filter-group">
+              <div className="mp-advanced-filters">
+                <div className="mp-filter-group">
                   <label>Pays d'origine</label>
                   <select 
                     value={selectedCountry} 
                     onChange={(e) => setSelectedCountry(e.target.value)}
-                    className="filter-select"
+                    className="mp-filter-select"
                   >
                     <option value="">Tous les pays</option>
                     {countries.map(country => (
@@ -305,12 +313,12 @@ const Musée = () => {
                   </select>
                 </div>
 
-                <div className="filter-group">
+                <div className="mp-filter-group">
                   <label>Catégorie</label>
                   <select 
                     value={selectedCategory} 
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="filter-select"
+                    className="mp-filter-select"
                   >
                     <option value="">Toutes les catégories</option>
                     <option value="scientifique">Scientifique</option>
@@ -318,12 +326,26 @@ const Musée = () => {
                   </select>
                 </div>
 
-                <div className="filter-group">
+                <div className="mp-filter-group">
+                  <label>Discipline</label>
+                  <select 
+                    value={selectedDiscipline} 
+                    onChange={(e) => setSelectedDiscipline(e.target.value)}
+                    className="mp-filter-select"
+                  >
+                    <option value="">Toutes les disciplines</option>
+                    {disciplines.map(discipline => (
+                      <option key={discipline} value={discipline}>{discipline}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="mp-filter-group">
                   <label>Période historique</label>
                   <select 
                     value={selectedPeriod} 
                     onChange={(e) => setSelectedPeriod(e.target.value)}
-                    className="filter-select"
+                    className="mp-filter-select"
                   >
                     <option value="">Toutes les périodes</option>
                     <option value="historique">Historique</option>
@@ -336,10 +358,10 @@ const Musée = () => {
 
             {/* Indicateurs de filtres actifs */}
             {activeFilters.length > 0 && (
-              <div className="active-filters">
-                <div className="filters-list">
+              <div className="mp-active-filters">
+                <div className="mp-filters-list">
                   {activeFilters.map((filter, index) => (
-                    <span key={index} className="filter-tag">
+                    <span key={index} className="mp-filter-tag">
                       {filter}
                       <button onClick={clearFilters}>
                         <X size={14} />
@@ -347,7 +369,7 @@ const Musée = () => {
                     </span>
                   ))}
                 </div>
-                <button className="clear-all" onClick={clearFilters}>
+                <button className="mp-clear-all" onClick={clearFilters}>
                   Tout effacer
                 </button>
               </div>
@@ -357,18 +379,18 @@ const Musée = () => {
       </section>
 
       {/* Résultats */}
-      <main className="main-content">
-        <div className="container">
-          <div className="results-header">
-            <h2 className="results-title">
+      <main className="mp-main-content">
+        <div className="mp-container">
+          <div className="mp-results-header">
+            <h2 className="mp-results-title">
               {filteredPersonalities.length} personnalité{filteredPersonalities.length !== 1 ? 's' : ''} trouvée{filteredPersonalities.length !== 1 ? 's' : ''}
             </h2>
-            <div className="results-stats">
-              <div className="stat">
+            <div className="mp-results-stats">
+              <div className="mp-stat">
                 <Users size={20} />
                 <span>{personalities.filter(p => p.category === 'scientifique').length} Scientifiques</span>
               </div>
-              <div className="stat">
+              <div className="mp-stat">
                 <Book size={20} />
                 <span>{personalities.filter(p => p.category === 'non-scientifique').length} Non-scientifiques</span>
               </div>
@@ -376,66 +398,66 @@ const Musée = () => {
           </div>
 
           {filteredPersonalities.length === 0 ? (
-            <div className="no-results">
-              <div className="no-results-content">
+            <div className="mp-no-results">
+              <div className="mp-no-results-content">
                 <Search size={48} />
                 <h3>Aucune personnalité trouvée</h3>
                 <p>Essayez de modifier vos critères de recherche ou vos filtres</p>
-                <button className="reset-btn" onClick={clearFilters}>
+                <button className="mp-reset-btn" onClick={clearFilters}>
                   Réinitialiser les filtres
                 </button>
               </div>
             </div>
           ) : (
-            <div className="personalities-grid">
+            <div className="mp-personalities-grid">
               {filteredPersonalities.map(personality => (
                 <div 
                   key={personality.id} 
-                  className="personality-card"
+                  className="mp-personality-card"
                   onClick={() => openPersonalityModal(personality)}
                 >
-                  <div className="card-image">
+                  <div className="mp-card-image">
                     <img src={personality.image} alt={personality.name} />
-                    <div className="card-overlay">
-                      <div className="overlay-content">
-                        <span className="view-details">Voir les détails</span>
+                    <div className="mp-card-overlay">
+                      <div className="mp-overlay-content">
+                        <span className="mp-view-details">Voir les détails</span>
                         <ArrowRight size={20} />
                       </div>
                     </div>
-                    <div className="card-badge" style={{backgroundColor: personality.color}}>
-                      {personality.category === 'scientifique' ? 'Science' : 'Leadership'}
+                    <div className="mp-card-badge" style={{backgroundColor: personality.color}}>
+                      {personality.discipline}
                     </div>
                   </div>
                   
-                  <div className="card-content">
-                    <div className="card-header">
-                      <h3 className="personality-name">{personality.name}</h3>
-                      <div className="personality-meta">
-                        <div className="country">
+                  <div className="mp-card-content">
+                    <div className="mp-card-header">
+                      <h3 className="mp-personality-name">{personality.name}</h3>
+                      <div className="mp-personality-meta">
+                        <div className="mp-country">
                           <MapPin size={14} />
                           {personality.country}
                         </div>
-                        <div className="period">{personality.period}</div>
+                        <div className="mp-period">{personality.period}</div>
                       </div>
                     </div>
                     
-                    <div className="specialty">{personality.specialty}</div>
-                    <p className="description">{personality.description}</p>
+                    <div className="mp-specialty">{personality.specialty}</div>
+                    <p className="mp-description">{personality.description}</p>
                     
-                    <div className="achievements">
+                    <div className="mp-achievements">
                       {personality.achievements.slice(0, 2).map((achievement, index) => (
-                        <span key={index} className="achievement-tag">
+                        <span key={index} className="mp-achievement-tag">
                           {achievement}
                         </span>
                       ))}
                     </div>
                     
-                    <div className="card-stats">
-                      <div className="stat">
+                    <div className="mp-card-stats">
+                      <div className="mp-stat">
                         <Book size={14} />
                         {personality.stats.publications} publication{personality.stats.publications !== 1 ? 's' : ''}
                       </div>
-                      <div className="stat">
+                      <div className="mp-stat">
                         <TrendingUp size={14} />
                         Influence: {personality.stats.influence}%
                       </div>
@@ -450,82 +472,86 @@ const Musée = () => {
 
       {/* Modal de détail */}
       {isModalOpen && selectedPersonality && (
-        <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setIsModalOpen(false)}>
+        <div className="mp-modal-overlay" onClick={() => setIsModalOpen(false)}>
+          <div className="mp-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="mp-modal-close" onClick={() => setIsModalOpen(false)}>
               <X size={24} />
             </button>
             
-            <div className="modal-header">
-              <div className="personality-image">
+            <div className="mp-modal-header">
+              <div className="mp-personality-image">
                 <img src={selectedPersonality.image} alt={selectedPersonality.name} />
-                <div className="image-overlay" style={{backgroundColor: `${selectedPersonality.color}20`}}></div>
+                <div className="mp-image-overlay" style={{backgroundColor: `${selectedPersonality.color}20`}}></div>
               </div>
               
-              <div className="personality-info">
-                <div className="personality-meta">
-                  <span className="category-tag" style={{backgroundColor: selectedPersonality.color}}>
+              <div className="mp-personality-info">
+                <div className="mp-personality-meta">
+                  <span className="mp-category-tag" style={{backgroundColor: selectedPersonality.color}}>
                     {selectedPersonality.category === 'scientifique' ? 'Scientifique' : 'Leader'}
                   </span>
-                  <span className="period-tag">{selectedPersonality.period}</span>
+                  <span className="mp-period-tag">{selectedPersonality.period}</span>
                 </div>
                 
                 <h2>{selectedPersonality.name}</h2>
-                <div className="specialty-large">{selectedPersonality.specialty}</div>
+                <div className="mp-specialty-large">{selectedPersonality.specialty}</div>
                 
-                <div className="info-grid">
-                  <div className="info-item">
+                <div className="mp-info-grid">
+                  <div className="mp-info-item">
                     <MapPin size={18} />
                     <span>{selectedPersonality.country}</span>
                   </div>
-                  <div className="info-item">
+                  <div className="mp-info-item">
                     <Target size={18} />
                     <span>{selectedPersonality.stats.projects} projets</span>
                   </div>
-                  <div className="info-item">
+                  <div className="mp-info-item">
                     <Eye size={18} />
                     <span>{selectedPersonality.stats.followers} followers</span>
                   </div>
+                  <div className="mp-info-item">
+                    <Award size={18} />
+                    <span>{selectedPersonality.discipline}</span>
+                  </div>
                 </div>
                 
-                <div className="influence-meter">
-                  <div className="meter-label">
+                <div className="mp-influence-meter">
+                  <div className="mp-meter-label">
                     <TrendingUp size={16} />
                     Niveau d'influence mondiale
                   </div>
-                  <div className="meter-bar">
+                  <div className="mp-meter-bar">
                     <div 
-                      className="meter-fill" 
+                      className="mp-meter-fill" 
                       style={{
                         width: `${selectedPersonality.stats.influence}%`,
                         background: selectedPersonality.color
                       }}
                     ></div>
                   </div>
-                  <span className="meter-value">{selectedPersonality.stats.influence}%</span>
+                  <span className="mp-meter-value">{selectedPersonality.stats.influence}%</span>
                 </div>
               </div>
             </div>
             
-            <div className="modal-body">
-              <div className="section">
+            <div className="mp-modal-body">
+              <div className="mp-section">
                 <h3>Biographie Complète</h3>
                 <p>{selectedPersonality.detailedDescription}</p>
               </div>
               
-              <div className="sections-grid">
-                <div className="section">
+              <div className="mp-sections-grid">
+                <div className="mp-section">
                   <h3>Principales réalisations</h3>
-                  <ul className="achievements-list">
+                  <ul className="mp-achievements-list">
                     {selectedPersonality.achievements.map((achievement, index) => (
                       <li key={index}>{achievement}</li>
                     ))}
                   </ul>
                 </div>
                 
-                <div className="section">
+                <div className="mp-section">
                   <h3>Contributions majeures</h3>
-                  <ul className="contributions-list">
+                  <ul className="mp-contributions-list">
                     {selectedPersonality.contributions.map((contribution, index) => (
                       <li key={index}>{contribution}</li>
                     ))}
@@ -533,44 +559,44 @@ const Musée = () => {
                 </div>
               </div>
               
-              <div className="stats-grid">
-                <div className="stat-card">
+              <div className="mp-stats-grid">
+                <div className="mp-stat-card">
                   <Book size={24} />
-                  <div className="stat-value">{selectedPersonality.stats.publications}</div>
-                  <div className="stat-label">Publications</div>
+                  <div className="mp-stat-value">{selectedPersonality.stats.publications}</div>
+                  <div className="mp-stat-label">Publications</div>
                 </div>
                 
-                <div className="stat-card">
+                <div className="mp-stat-card">
                   <Award size={24} />
-                  <div className="stat-value">{selectedPersonality.achievements.length}</div>
-                  <div className="stat-label">Réalisations</div>
+                  <div className="mp-stat-value">{selectedPersonality.achievements.length}</div>
+                  <div className="mp-stat-label">Réalisations</div>
                 </div>
                 
-                <div className="stat-card">
+                <div className="mp-stat-card">
                   <Users size={24} />
-                  <div className="stat-value">{selectedPersonality.stats.followers}</div>
-                  <div className="stat-label">Influence</div>
+                  <div className="mp-stat-value">{selectedPersonality.stats.followers}</div>
+                  <div className="mp-stat-label">Influence</div>
                 </div>
                 
-                <div className="stat-card">
+                <div className="mp-stat-card">
                   <Target size={24} />
-                  <div className="stat-value">{selectedPersonality.stats.projects}</div>
-                  <div className="stat-label">Projets</div>
+                  <div className="mp-stat-value">{selectedPersonality.stats.projects}</div>
+                  <div className="mp-stat-label">Projets</div>
                 </div>
               </div>
             </div>
             
-            <div className="modal-footer">
-              <div className="action-buttons">
-                <button className="action-btn primary">
+            <div className="mp-modal-footer">
+              <div className="mp-action-buttons">
+                <button className="mp-action-btn mp-primary">
                   <Heart size={18} />
                   Ajouter aux favoris
                 </button>
-                <button className="action-btn secondary">
+                <button className="mp-action-btn mp-secondary">
                   <Share2 size={18} />
                   Partager
                 </button>
-              </div>
+              </div> 
             </div>
           </div>
         </div>
@@ -579,4 +605,4 @@ const Musée = () => {
   );
 };
 
-export default Musée;
+export default MuséePersonnalités;

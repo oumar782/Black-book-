@@ -17,6 +17,8 @@ import Mot  from "./page/Mot.jsx";
 import Defi  from "./page/Defis.jsx";
 import Lada  from "./page/Lada.jsx";
 import Muse  from "./page/Musée.jsx";
+import Came  from "./page/Cameleon.jsx";
+import Tour  from "./page/Tourism.jsx";
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
           <Route path="/Defis" element={<Defi />} />
           <Route path="/Lada" element={<Lada />} />
           <Route path="/Musée" element={<Muse />} />
+          <Route path="/Caméléon" element={<Came />} />
+          <Route path="/Tourisme" element={<Tour />} />
           {/* Ajoute d'autres routes ici si besoin */}
         </Routes>
       </main>

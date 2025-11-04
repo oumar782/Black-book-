@@ -50,28 +50,28 @@ const SoleilPage = () => {
 
   const features = [
     {
-      icon: <Clock className="feature-icon" />,
+      icon: <Clock className="soleil-feature-icon" />,
       title: "7 Millions d'Années",
       description: "Histoire humaine préservée en terre africaine",
-      color: "var(--accent-gold)"
+      color: "var(--soleil-accent-gold)"
     },
     {
-      icon: <MapPin className="feature-icon" />,
+      icon: <MapPin className="soleil-feature-icon" />,
       title: "54 Nations",
       description: "Unies par un destin commun et un soleil partagé",
-      color: "var(--accent-orange)"
+      color: "var(--soleil-accent-orange)"
     },
     {
-      icon: <UsersRound className="feature-icon" />,
+      icon: <UsersRound className="soleil-feature-icon" />,
       title: "2000+ Cultures",
       description: "Richesse linguistique et traditionnelle unique",
-      color: "var(--accent-red)"
+      color: "var(--soleil-accent-red)"
     },
     {
-      icon: <Sparkles className="feature-icon" />,
+      icon: <Sparkles className="soleil-feature-icon" />,
       title: "Héritage Mélanine",
       description: "Sagesse ancestrale inscrite dans notre essence",
-      color: "var(--accent-sun)"
+      color: "var(--soleil-accent-sun)"
     }
   ];
 
@@ -194,57 +194,57 @@ const SoleilPage = () => {
   };
 
   return (
-    <div className={`africa-premium ${isVisible ? 'visible' : ''}`}>
+    <div className={`soleil-container ${isVisible ? 'soleil-visible' : ''}`}>
     
       {/* Hero Carousel Cinématographique */}
-      <section className="hero-carousel" id="section-0">
-        <div className="cosmic-overlay"></div>
-        <div className="carousel-track">
+      <section className="soleil-hero-carousel" id="section-0">
+        <div className="soleil-cosmic-overlay"></div>
+        <div className="soleil-carousel-track">
           {heroImages.map((image, index) => (
             <div
               key={index}
-              className={`carousel-slide ${index === currentSlide ? 'active' : ''}`}
+              className={`soleil-carousel-slide ${index === currentSlide ? 'soleil-active' : ''}`}
               style={{ backgroundImage: `url(${image.url})` }}
             >
-              <div className="slide-gradient"></div>
-              <div className="particle-field">
+              <div className="soleil-slide-gradient"></div>
+              <div className="soleil-particle-field">
                 {[...Array(15)].map((_, i) => (
-                  <div key={i} className="particle" style={{ '--particle-delay': `${i * 0.2}s` }}></div>
+                  <div key={i} className="soleil-particle" style={{ '--soleil-particle-delay': `${i * 0.2}s` }}></div>
                 ))}
               </div>
-              <div className="slide-content">
-                <div className="content-wrapper">
-                  <div className="title-group">
-                    <div className="title-decoration">
-                      <div className="title-line left"></div>
-                      <div className="title-ornament"></div>
-                      <div className="title-line right"></div>
+              <div className="soleil-slide-content">
+                <div className="soleil-content-wrapper">
+                  <div className="soleil-title-group">
+                    <div className="soleil-title-decoration">
+                      <div className="soleil-title-line soleil-left"></div>
+                      <div className="soleil-title-ornament"></div>
+                      <div className="soleil-title-line soleil-right"></div>
                     </div>
-                    <h1 className="slide-title">
-                      <span className="title-main">{image.title}</span>
-                      <span className="title-accent">{image.subtitle}</span>
+                    <h1 className="soleil-slide-title">
+                      <span className="soleil-title-main">{image.title}</span>
+                      <span className="soleil-title-accent">{image.subtitle}</span>
                     </h1>
                   </div>
                   
-                  <p className="slide-description">
+                  <p className="soleil-slide-description">
                     {index === 0 && "Terre sacrée où l'humanité a pris son premier souffle, gardienne des secrets les plus anciens de notre existence commune."}
                     {index === 1 && "Le même soleil qui a vu naître nos ancêtres continue de nous unir dans sa lumière éternelle et bienveillante."}
                     {index === 2 && "La sagesse de ceux qui nous ont précédés résonne à travers les âges, guidant nos pas vers l'unité retrouvée."}
                     {index === 3 && "Dans la riche tapisserie de nos cultures diverses, se tisse l'histoire unique d'un peuple aux racines communes."}
                   </p>
 
-                  <div className="hero-actions">
+                  <div className="soleil-hero-actions">
                     <button 
-                      className="cta-btn primary"
+                      className="soleil-cta-btn soleil-primary"
                       onClick={() => document.getElementById('section-3').scrollIntoView({ behavior: 'smooth' })}
                     >
-                      <div className="btn-aurora"></div>
+                      <div className="soleil-btn-aurora"></div>
                       <span>Commencer la Prière</span>
-                      <div className="btn-sparkle">
+                      <div className="soleil-btn-sparkle">
                         <Sparkles size={16} />
                       </div>
                     </button>
-                    <button className="cta-btn secondary">
+                    <button className="soleil-cta-btn soleil-secondary">
                       <span>Découvrir l'Héritage</span>
                       <ArrowRight size={16} />
                     </button>
@@ -256,80 +256,80 @@ const SoleilPage = () => {
         </div>
 
         {/* Contrôles Élégants */}
-        <div className="carousel-controls">
-          <button className="control-btn prev" onClick={prevSlide}>
-            <div className="control-orb"></div>
+        <div className="soleil-carousel-controls">
+          <button className="soleil-control-btn soleil-prev" onClick={prevSlide}>
+            <div className="soleil-control-orb"></div>
             <ChevronLeft size={20} />
           </button>
           
-          <div className="pagination">
+          <div className="soleil-pagination">
             {heroImages.map((_, index) => (
               <button
                 key={index}
-                className={`pagination-dot ${index === currentSlide ? 'active' : ''}`}
+                className={`soleil-pagination-dot ${index === currentSlide ? 'soleil-active' : ''}`}
                 onClick={() => setCurrentSlide(index)}
               >
-                <div className="dot-progress"></div>
-                <div className="dot-core"></div>
+                <div className="soleil-dot-progress"></div>
+                <div className="soleil-dot-core"></div>
               </button>
             ))}
           </div>
           
-          <button className="control-btn next" onClick={nextSlide}>
-            <div className="control-orb"></div>
+          <button className="soleil-control-btn soleil-next" onClick={nextSlide}>
+            <div className="soleil-control-orb"></div>
             <ChevronRight size={20} />
           </button>
         </div>
 
         {/* Indicateur de défilement Animé */}
-        <div className="scroll-indicator">
-          <div className="scroll-track">
-            <div className="scroll-orb"></div>
+        <div className="soleil-scroll-indicator">
+          <div className="soleil-scroll-track">
+            <div className="soleil-scroll-orb"></div>
           </div>
           <span>Explorer la Sagesse</span>
         </div>
       </section>
 
       {/* Features Grid avec Animations Avancées */}
-      <section className="features-section" id="section-1">
-        <div className="cosmic-background">
-          <div className="cosmic-orb large"></div>
-          <div className="cosmic-orb medium"></div>
-          <div className="cosmic-orb small"></div>
+      <section className="soleil-features-section" id="section-1">
+        <div className="soleil-cosmic-background">
+          <div className="soleil-cosmic-orb soleil-large"></div>
+          <div className="soleil-cosmic-orb soleil-medium"></div>
+          <div className="soleil-cosmic-orb soleil-small"></div>
         </div>
         
-        <div className="container">
-          <div className="section-header">
-            <div className="header-badge">
-              <div className="badge-orb"></div>
-              <Star className="badge-icon" size={20} />
+        <div className="soleil-container-inner">
+          <div className="soleil-section-header">
+            <div className="soleil-header-badge">
+              <div className="soleil-badge-orb"></div>
+              <Star className="soleil-badge-icon" size={20} />
               <span>Notre Essence</span>
             </div>
-            <h2 className="section-title">
-              <span className="title-glow">L'Héritage Africain</span>
+            <h2 className="soleil-section-title">
+              <span className="soleil-title-glow">L'Héritage Africain</span>
             </h2>
-            <p className="section-subtitle">
+            <p className="soleil-section-subtitle">
               Découvrez les piliers fondamentaux de notre identité commune et de notre riche patrimoine
             </p>
           </div>
 
-          <div className="features-grid">
+          <div className="soleil-features-grid">
             {features.map((feature, index) => (
-              <div key={index} className="feature-card" style={{ '--delay': `${index * 0.1}s` }}>
-                <div className="card-orbital">
-                  <div className="orbital-ring"></div>
+              <div key={index} className="soleil-feature-card" style={{ '--soleil-delay': `${index * 0.1}s` }}>
+                <div className="soleil-card-orbital">
+                  <div className="soleil-orbital-ring"></div>
                 </div>
-                <div className="card-glow" style={{ '--glow-color': feature.color }}></div>
-                <div className="card-content">
-                  <div className="feature-icon-wrapper" style={{ '--icon-color': feature.color }}>
+                <div className="soleil-card-glow" style={{ '--soleil-glow-color': feature.color }}></div>
+                <div className="soleil-card-content">
+                  <div className="soleil-feature-icon-wrapper" style={{ '--soleil-icon-color': feature.color }}>
                     {feature.icon}
                   </div>
-                  <h3 className="feature-title">{feature.title}</h3>
-                  <p className="feature-description">{feature.description}</p>
-                  <div className="feature-ornament">
-                    <div className="ornament-dot"></div>
-                    <div className="ornament-line"></div>
-                    <div className="ornament-dot"></div>
+                  <h3 className="soleil-feature-title">{feature.title}</h3>
+                  <p className="soleil-feature-description">{feature.description}</p>
+                  <div className="soleil-feature-ornament">
+                    <div className="soleil-ornament-dot"></div>
+                    <div className="soleil-ornament-line"></div>
+                    <div className="soleil-ornament-dot"></div>
                   </div>
                 </div>
               </div>
@@ -339,60 +339,60 @@ const SoleilPage = () => {
       </section>
 
       {/* Message Principal avec Design Organique */}
-      <section className="message-section" id="section-2">
-        <div className="organic-background">
-          <div className="organic-shape shape-1"></div>
-          <div className="organic-shape shape-2"></div>
-          <div className="organic-shape shape-3"></div>
+      <section className="soleil-message-section" id="section-2">
+        <div className="soleil-organic-background">
+          <div className="soleil-organic-shape soleil-shape-1"></div>
+          <div className="soleil-organic-shape soleil-shape-2"></div>
+          <div className="soleil-organic-shape soleil-shape-3"></div>
         </div>
         
-        <div className="container">
-          <div className="message-grid">
-            <div className="message-visual">
-              <div className="sacred-geometry">
-                <div className="geometry-base">
-                  <div className="sun-core">
-                    <div className="core-pulse"></div>
-                    <div className="core-glow"></div>
-                    <div className="core-sparkles">
+        <div className="soleil-container-inner">
+          <div className="soleil-message-grid">
+            <div className="soleil-message-visual">
+              <div className="soleil-sacred-geometry">
+                <div className="soleil-geometry-base">
+                  <div className="soleil-sun-core">
+                    <div className="soleil-core-pulse"></div>
+                    <div className="soleil-core-glow"></div>
+                    <div className="soleil-core-sparkles">
                       {[...Array(12)].map((_, i) => (
-                        <div key={i} className="sparkle" style={{ '--angle': `${i * 30}deg` }}></div>
+                        <div key={i} className="soleil-sparkle" style={{ '--soleil-angle': `${i * 30}deg` }}></div>
                       ))}
                     </div>
                   </div>
-                  <div className="geometry-ring ring-1"></div>
-                  <div className="geometry-ring ring-2"></div>
-                  <div className="geometry-ring ring-3"></div>
+                  <div className="soleil-geometry-ring soleil-ring-1"></div>
+                  <div className="soleil-geometry-ring soleil-ring-2"></div>
+                  <div className="soleil-geometry-ring soleil-ring-3"></div>
                 </div>
-                <div className="africa-silhouette">
-                  <div className="silhouette-glow"></div>
+                <div className="soleil-africa-silhouette">
+                  <div className="soleil-silhouette-glow"></div>
                 </div>
               </div>
             </div>
 
-            <div className="message-content">
-              <div className="content-header">
-                <div className="title-decoration">
-                  <div className="title-orb"></div>
-                  <Sun className="title-icon" size={28} />
+            <div className="soleil-message-content">
+              <div className="soleil-content-header">
+                <div className="soleil-title-decoration">
+                  <div className="soleil-title-orb"></div>
+                  <Sun className="soleil-title-icon" size={28} />
                   <h2>Le Message du Soleil</h2>
                 </div>
-                <div className="accent-bar">
-                  <div className="bar-glow"></div>
+                <div className="soleil-accent-bar">
+                  <div className="soleil-bar-glow"></div>
                 </div>
               </div>
 
-              <div className="message-text">
-                <p className="lead-text">
+              <div className="soleil-message-text">
+                <p className="soleil-lead-text">
                   <strong>Le Soleil</strong> c'est une page pour nous rappeler que nous sommes 
-                  <span className="highlight"> un même organisme</span> avec 
-                  <span className="highlight"> un but commun</span>.
+                  <span className="soleil-highlight"> un même organisme</span> avec 
+                  <span className="soleil-highlight"> un but commun</span>.
                 </p>
                 
-                <div className="message-points">
-                  <div className="point-item">
-                    <div className="point-marker">
-                      <div className="marker-pulse"></div>
+                <div className="soleil-message-points">
+                  <div className="soleil-point-item">
+                    <div className="soleil-point-marker">
+                      <div className="soleil-marker-pulse"></div>
                     </div>
                     <p>
                       Trop de choses nous ont séparé 
@@ -401,9 +401,9 @@ const SoleilPage = () => {
                     </p>
                   </div>
                   
-                  <div className="point-item">
-                    <div className="point-marker">
-                      <div className="marker-pulse"></div>
+                  <div className="soleil-point-item">
+                    <div className="soleil-point-marker">
+                      <div className="soleil-marker-pulse"></div>
                     </div>
                     <p>
                       À travers ce même <strong>soleil</strong> auquel nos ancêtres 
@@ -411,9 +411,9 @@ const SoleilPage = () => {
                     </p>
                   </div>
                   
-                  <div className="point-item">
-                    <div className="point-marker">
-                      <div className="marker-pulse"></div>
+                  <div className="soleil-point-item">
+                    <div className="soleil-point-marker">
+                      <div className="soleil-marker-pulse"></div>
                     </div>
                     <p>
                       Réponse que la génération vivante donnera à travers 
@@ -424,16 +424,16 @@ const SoleilPage = () => {
                 </div>
               </div>
 
-              <div className="message-actions">
+              <div className="soleil-message-actions">
                 <button 
-                  className="action-btn primary"
+                  className="soleil-action-btn soleil-primary"
                   onClick={() => document.getElementById('section-3').scrollIntoView({ behavior: 'smooth' })}
                 >
-                  <div className="btn-orbital"></div>
+                  <div className="soleil-btn-orbital"></div>
                   <Heart size={18} />
                   <span>Rejoindre le Cercle</span>
                 </button>
-                <button className="action-btn outline">
+                <button className="soleil-action-btn soleil-outline">
                   <Users size={18} />
                   <span>Partager la Lumière</span>
                 </button>
@@ -444,73 +444,73 @@ const SoleilPage = () => {
       </section>
 
       {/* Section Prières avec Design Sacré */}
-      <section className="prayers-section" id="section-3">
-        <div className="sacred-background">
-          <div className="sacred-pattern"></div>
-          <div className="sacred-glow"></div>
+      <section className="soleil-prayers-section" id="section-3">
+        <div className="soleil-sacred-background">
+          <div className="soleil-sacred-pattern"></div>
+          <div className="soleil-sacred-glow"></div>
         </div>
         
-        <div className="container">
-          <div className="section-header">
-            <div className="header-badge">
-              <div className="badge-orb"></div>
-              <Quote className="badge-icon" size={20} />
+        <div className="soleil-container-inner">
+          <div className="soleil-section-header">
+            <div className="soleil-header-badge">
+              <div className="soleil-badge-orb"></div>
+              <Quote className="soleil-badge-icon" size={20} />
               <span>Prières Sacrées</span>
             </div>
-            <h2 className="section-title">
-              <span className="title-glow">Invocation d'Unité</span>
+            <h2 className="soleil-section-title">
+              <span className="soleil-title-glow">Invocation d'Unité</span>
             </h2>
-            <p className="section-subtitle">
+            <p className="soleil-section-subtitle">
               Des paroles qui transcendent le temps pour célébrer notre connexion divine
             </p>
           </div>
 
           {loading ? (
-            <div className="loading-prayer">
-              <div className="prayer-loading-spinner"></div>
+            <div className="soleil-loading-prayer">
+              <div className="soleil-prayer-loading-spinner"></div>
               <p>Chargement des prières sacrées...</p>
             </div>
           ) : currentPrayer ? (
-            <div className="prayers-display">
-              <div className="prayer-main">
-                <div className="prayer-card">
-                  <div className="card-aura"></div>
-                  <div className="card-header">
-                    <div className="prayer-badge">
+            <div className="soleil-prayers-display">
+              <div className="soleil-prayer-main">
+                <div className="soleil-prayer-card">
+                  <div className="soleil-card-aura"></div>
+                  <div className="soleil-card-header">
+                    <div className="soleil-prayer-badge">
                       <Shield size={18} />
                       <span>{currentPrayer.category || 'Prière Sacrée'}</span>
                     </div>
-                    <div className="prayer-meta">
-                      <span className="meta-item">{currentPrayer.type || 'Prière'}</span>
-                      <span className="meta-item">{currentPrayer.duration} min</span>
+                    <div className="soleil-prayer-meta">
+                      <span className="soleil-meta-item">{currentPrayer.type || 'Prière'}</span>
+                      <span className="soleil-meta-item">{currentPrayer.duration} min</span>
                     </div>
                   </div>
 
-                  <div className="prayer-content">
-                    <h3 className="prayer-title">{currentPrayer.title}</h3>
-                    <div className="prayer-text">
+                  <div className="soleil-prayer-content">
+                    <h3 className="soleil-prayer-title">{currentPrayer.title}</h3>
+                    <div className="soleil-prayer-text">
                       {currentPrayer.content.split('\n').map((line, index) => (
-                        <p key={index} className="prayer-line">{line}</p>
+                        <p key={index} className="soleil-prayer-line">{line}</p>
                       ))}
                     </div>
 
-                    <div className="prayer-seal">
-                      <div className="seal-container">
-                        <div className="seal-ring"></div>
-                        <div className="seal-circle">
-                          <span className="seal-text">Ase</span>
+                    <div className="soleil-prayer-seal">
+                      <div className="soleil-seal-container">
+                        <div className="soleil-seal-ring"></div>
+                        <div className="soleil-seal-circle">
+                          <span className="soleil-seal-text">Ase</span>
                         </div>
                       </div>
-                      <p className="seal-meaning">Que la parole porte fruit</p>
+                      <p className="soleil-seal-meaning">Que la parole porte fruit</p>
                     </div>
                   </div>
 
-                  <div className="prayer-actions">
+                  <div className="soleil-prayer-actions">
                     <button 
-                      className="ritual-btn large"
+                      className="soleil-ritual-btn soleil-large"
                       onClick={openParticipationModal}
                     >
-                      <div className="btn-orbital"></div>
+                      <div className="soleil-btn-orbital"></div>
                       <Sun size={18} />
                       <span>Participer à cette Prière</span>
                     </button>
@@ -518,19 +518,19 @@ const SoleilPage = () => {
                 </div>
               </div>
 
-              <div className="prayer-sidebar">
-                <div className="sidebar-card">
-                  <div className="card-aura"></div>
+              <div className="soleil-prayer-sidebar">
+                <div className="soleil-sidebar-card">
+                  <div className="soleil-card-aura"></div>
                   <h4>Autres Prières</h4>
-                  <div className="prayer-list">
+                  <div className="soleil-prayer-list">
                     {prayers.map((prayer) => (
                       <button 
                         key={prayer.id} 
-                        className={`prayer-item ${currentPrayer.id === prayer.id ? 'active' : ''}`}
+                        className={`soleil-prayer-item ${currentPrayer.id === prayer.id ? 'soleil-active' : ''}`}
                         onClick={() => selectPrayer(prayer)}
                       >
-                        <div className="item-orb"></div>
-                        <div className="item-icon">
+                        <div className="soleil-item-orb"></div>
+                        <div className="soleil-item-icon">
                           <Star size={14} />
                         </div>
                         <span>{prayer.title}</span>
@@ -540,17 +540,17 @@ const SoleilPage = () => {
                   </div>
                 </div>
 
-                <div className="ritual-info">
-                  <div className="ritual-header">
+                <div className="soleil-ritual-info">
+                  <div className="soleil-ritual-header">
                     <Clock size={18} />
                     <span>Cérémonie du Soleil</span>
                   </div>
                   <p>Rejoignez-nous chaque aube pour la prière commune</p>
                   <button 
-                    className="ritual-btn"
+                    className="soleil-ritual-btn"
                     onClick={openParticipationModal}
                   >
-                    <div className="btn-orbital"></div>
+                    <div className="soleil-btn-orbital"></div>
                     <span>Participer Maintenant</span>
                     <Sun size={14} />
                   </button>
@@ -558,7 +558,7 @@ const SoleilPage = () => {
               </div>
             </div>
           ) : (
-            <div className="no-prayers">
+            <div className="soleil-no-prayers">
               <p>Aucune prière disponible pour le moment.</p>
             </div>
           )}
@@ -567,17 +567,17 @@ const SoleilPage = () => {
 
       {/* Modal de Participation */}
       {showParticipationModal && (
-        <div className="modal-overlay">
-          <div className="participation-modal">
-            <div className="modal-header">
+        <div className="soleil-modal-overlay">
+          <div className="soleil-participation-modal">
+            <div className="soleil-modal-header">
               <h3>Participer à la Prière</h3>
-              <button className="modal-close" onClick={closeParticipationModal}>
+              <button className="soleil-modal-close" onClick={closeParticipationModal}>
                 <X size={20} />
               </button>
             </div>
             
-            <form onSubmit={participateToPrayer} className="participation-form">
-              <div className="form-group">
+            <form onSubmit={participateToPrayer} className="soleil-participation-form">
+              <div className="soleil-form-group">
                 <label htmlFor="user_name">Votre Nom Complet *</label>
                 <input
                   type="text"
@@ -590,7 +590,7 @@ const SoleilPage = () => {
                 />
               </div>
 
-              <div className="form-group">
+              <div className="soleil-form-group">
                 <label htmlFor="user_email">Votre Email *</label>
                 <input
                   type="email"
@@ -603,7 +603,7 @@ const SoleilPage = () => {
                 />
               </div>
 
-              <div className="form-group">
+              <div className="soleil-form-group">
                 <label htmlFor="user_country">Votre Pays</label>
                 <select
                   id="user_country"
@@ -618,7 +618,7 @@ const SoleilPage = () => {
                 </select>
               </div>
 
-              <div className="form-group">
+              <div className="soleil-form-group">
                 <label htmlFor="user_message">Votre Message (Optionnel)</label>
                 <textarea
                   id="user_message"
@@ -630,22 +630,22 @@ const SoleilPage = () => {
                 />
               </div>
 
-              <div className="form-actions">
+              <div className="soleil-form-actions">
                 <button 
                   type="button" 
-                  className="btn-outline"
+                  className="soleil-btn-outline"
                   onClick={closeParticipationModal}
                 >
                   Annuler
                 </button>
                 <button 
                   type="submit" 
-                  className="btn-primary"
+                  className="soleil-btn-primary"
                   disabled={participating}
                 >
                   {participating ? (
                     <>
-                      <div className="prayer-loading-spinner small"></div>
+                      <div className="soleil-prayer-loading-spinner soleil-small"></div>
                       Enregistrement...
                     </>
                   ) : (
@@ -662,64 +662,64 @@ const SoleilPage = () => {
       )}
 
       {/* CTA Final Épique */}
-      <section className="cta-final">
-        <div className="epic-background">
-          <div className="epic-glow"></div>
-          <div className="epic-particle-field">
+      <section className="soleil-cta-final">
+        <div className="soleil-epic-background">
+          <div className="soleil-epic-glow"></div>
+          <div className="soleil-epic-particle-field">
             {[...Array(20)].map((_, i) => (
-              <div key={i} className="epic-particle" style={{ '--epic-delay': `${i * 0.1}s` }}></div>
+              <div key={i} className="soleil-epic-particle" style={{ '--soleil-epic-delay': `${i * 0.1}s` }}></div>
             ))}
           </div>
         </div>
         
-        <div className="container">
-          <div className="cta-content">
-            <div className="cta-badge">
-              <div className="badge-orbital"></div>
+        <div className="soleil-container-inner">
+          <div className="soleil-cta-content">
+            <div className="soleil-cta-badge">
+              <div className="soleil-badge-orbital"></div>
               <Sparkles size={20} />
               <span>Rejoignez le Mouvement</span>
             </div>
             
-            <h2 className="cta-title">
-              Ensemble, sous le même <span className="accent">Soleil</span>
+            <h2 className="soleil-cta-title">
+              Ensemble, sous le même <span className="soleil-accent">Soleil</span>
             </h2>
             
-            <p className="cta-description">
+            <p className="soleil-cta-description">
               Devenez gardien de la tradition et artisan de l'unité africaine. 
               Votre lumière compte dans ce cercle sacré.
             </p>
 
-            <div className="cta-actions">
+            <div className="soleil-cta-actions">
               <button 
-                className="cta-btn primary large"
+                className="soleil-cta-btn soleil-primary soleil-large"
                 onClick={() => document.getElementById('section-3').scrollIntoView({ behavior: 'smooth' })}
               >
-                <div className="btn-aurora-large"></div>
+                <div className="soleil-btn-aurora-large"></div>
                 <Sun size={20} />
                 <span>Commencer le Voyage</span>
-                <div className="btn-sparkle-group">
+                <div className="soleil-btn-sparkle-group">
                   <Sparkles size={14} />
                   <Sparkles size={14} />
                   <Sparkles size={14} />
                 </div>
               </button>
               
-              <button className="cta-btn outline">
+              <button className="soleil-cta-btn soleil-outline">
                 <span>Découvrir les Traditions</span>
                 <ArrowRight size={16} />
               </button>
             </div>
 
-            <div className="community-stats">
+            <div className="soleil-community-stats">
               {[
                 { number: '10K+', label: 'Âmes Unies' },
                 { number: '54', label: 'Nations Représentées' },
                 { number: '7M', label: 'Ans d\'Héritage' }
               ].map((stat, index) => (
-                <div key={index} className="stat">
-                  <div className="stat-orb"></div>
-                  <div className="stat-number">{stat.number}</div>
-                  <div className="stat-label">{stat.label}</div>
+                <div key={index} className="soleil-stat">
+                  <div className="soleil-stat-orb"></div>
+                  <div className="soleil-stat-number">{stat.number}</div>
+                  <div className="soleil-stat-label">{stat.label}</div>
                 </div>
               ))}
             </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Sun, Sparkles } from 'lucide-react';
 import heroImage from '../../assets/hero-image.webp';
 import './hero.css';
 
@@ -63,14 +64,9 @@ const HeroPremium = () => {
       <div className="hero-premium-content">
         <div className="hero-premium-grid">
           <div className="hero-premium-text-content">
-            <div className="hero-premium-badge">
-              <span> Plateforme éducative & culturelle</span>
-            </div>
-
             <div className="hero-premium-title-section">
               <h1 className="hero-premium-title">
                 <span className="hero-premium-title-main">Reconnecte-toi</span>
-                <br />
                 <span className="hero-premium-title-typed">
                   {typedText}
                   <span className="hero-premium-typing-cursor">|</span>
@@ -108,19 +104,28 @@ const HeroPremium = () => {
           </div>
 
           <div className="hero-premium-visual">
-            <div className="hero-premium-visual-container">
-              <div className="hero-premium-floating-circle hero-premium-circle-1"></div>
-              <div className="hero-premium-floating-circle hero-premium-circle-2"></div>
-              <div className="hero-premium-floating-circle hero-premium-circle-3"></div>
-              <div className="hero-premium-pulse-ring hero-premium-ring-1"></div>
-              <div className="hero-premium-pulse-ring hero-premium-ring-2"></div>
-              <div className="hero-premium-pulse-ring hero-premium-ring-3"></div>
+            <div className="hero-premium-sacred-geometry">
+              <div className="hero-premium-geometry-base">
+                <div className="hero-premium-sun-core">
+                  <div className="hero-premium-core-pulse"></div>
+                  <div className="hero-premium-core-glow"></div>
+                  <div className="hero-premium-core-sparkles">
+                    {[...Array(12)].map((_, i) => (
+                      <div key={i} className="hero-premium-sparkle" style={{ '--hero-premium-angle': `${i * 30}deg` }}></div>
+                    ))}
+                  </div>
+                </div>
+                <div className="hero-premium-geometry-ring hero-premium-ring-1"></div>
+                <div className="hero-premium-geometry-ring hero-premium-ring-2"></div>
+                <div className="hero-premium-geometry-ring hero-premium-ring-3"></div>
+              </div>
+              <div className="hero-premium-africa-silhouette">
+                <div className="hero-premium-silhouette-glow"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-    
     </section>
   );
 };

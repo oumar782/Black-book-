@@ -31,10 +31,10 @@ const HeaderPremium = () => {
     { name: 'The Sun', href: '/the-sun', current: false },
     { name: 'Boutique', href: '/boutique', current: false },
     { name: 'Musée', href: '/Musée', current: false },
-    { name: 'Tourisme', href: '/tourisme', current: false },
+    { name: 'Tourisme', href: '/Tourisme', current: false },
     { name: 'Lada', href: '/Lada', current: false },
     { name: 'Maps et Stats', href: '/maps-stats', current: false },
-    { name: 'Caméléon', href: '/cameleon', current: false },
+    { name: 'Caméléon', href: '/Caméléon', current: false },
     { name: 'Fracture', href: '/fracture', current: false },
     { name: 'Contact', href: '/contact', current: false }
   ];

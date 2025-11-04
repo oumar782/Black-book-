@@ -178,10 +178,7 @@ const AfroShopCatalog = () => {
           <div className="afro-hero-section">
             <div className="afro-hero-background" />
             <div className="afro-header">
-              <div className="afro-header-badge">
-                <Crown className="afro-badge-icon" />
-                <span>Collection Premium</span>
-              </div>
+            
               <h1 className="afro-main-title">
                 <span className="afro-title-gradient">Boutique</span>
                 <span className="afro-title-accent">Culturelle</span>
@@ -485,7 +482,7 @@ const AfroShopCatalog = () => {
           position: absolute;
           width: 4px;
           height: 4px;
-          background: linear-gradient(45deg, #C2410C 0%, #ff6b35 100%);
+          background: linear-gradient(45deg, #e25822 0%, #f07547 100%);
           border-radius: 50%;
           animation: afroFloatParticle linear infinite;
           opacity: 0.6;
@@ -573,7 +570,7 @@ const AfroShopCatalog = () => {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: linear-gradient(135deg, #ff6b35, #ff6b35);
+          background: linear-gradient(135deg, #e25822, #f07547);
           border: 1px solid rgba(194, 65, 12, 0.3);
           padding: 0.5rem 1.5rem;
           border-radius: 50px;

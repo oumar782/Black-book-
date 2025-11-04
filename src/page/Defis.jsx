@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Search, Filter, X, Globe, Users, Leaf, TrendingUp, BookOpen, Heart, Zap, ArrowRight, Menu, X as CloseIcon } from 'lucide-react';
+import './defis.css';
 
 const DEFISPage = () => {
   const [activeTab, setActiveTab] = useState('tous');
@@ -8,7 +9,6 @@ const DEFISPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   // Données des sections
   const sectionsData = {
     santé: {
@@ -142,77 +142,70 @@ const DEFISPage = () => {
 
   return (
     <div className="defis-app">
-     
-
       {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-background">
-          <div className="hero-gradient"></div>
-          <div className="hero-pattern"></div>
+      <section className="defis-hero">
+        <div className="defis-hero-background">
+          <div className="defis-hero-gradient"></div>
+          <div className="defis-hero-pattern"></div>
         </div>
         
-        <div className="container">
-          <div className="hero-content">
-            <div className="hero-badge">
-              <Zap size={16} />
-              Initiative Jeunesse Africaine
-            </div>
-            
-            <h1 className="hero-title">
-              Réveiller la <span className="hero-highlight">Conscience</span> Collective
+        <div className="defis-container">
+          <div className="defis-hero-content">
+            <h1 className="defis-hero-title">
+              Réveiller la <span className="defis-hero-highlight">Conscience</span> Collective
             </h1>
             
-            <p className="hero-subtitle">
+            <p className="defis-hero-subtitle">
               D.É.F.I.S. est une plateforme dédiée à la mobilisation des jeunes autour des enjeux critiques 
               qui façonnent l'avenir de l'Afrique et de notre planète. Notre héritage est une terre fertile 
               qui attend d'être cultivée par les générations montantes.
             </p>
             
-            <div className="hero-stats">
-              <div className="stat">
-                <div className="stat-number">15+</div>
-                <div className="stat-label">Pays Engagés</div>
+            <div className="defis-hero-stats">
+              <div className="defis-stat">
+                <div className="defis-stat-number">15+</div>
+                <div className="defis-stat-label">Pays Engagés</div>
               </div>
-              <div className="stat">
-                <div className="stat-number">127K</div>
-                <div className="stat-label">Jeunes Mobilisés</div>
+              <div className="defis-stat">
+                <div className="defis-stat-number">127K</div>
+                <div className="defis-stat-label">Jeunes Mobilisés</div>
               </div>
-              <div className="stat">
-                <div className="stat-number">42</div>
-                <div className="stat-label">Projets Actifs</div>
+              <div className="defis-stat">
+                <div className="defis-stat-number">42</div>
+                <div className="defis-stat-label">Projets Actifs</div>
               </div>
             </div>
             
-            <button className="cta-button">
+            <button className="defis-cta-button">
               Rejoindre le Mouvement
               <ArrowRight size={20} />
             </button>
           </div>
         </div>
         
-        <div className="scroll-indicator">
+        <div className="defis-scroll-indicator">
           <ChevronDown size={24} />
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="features-section" id="mission">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-heading">Notre Approche</h2>
-            <p className="section-subtitle">
+      <section className="defis-features-section" id="mission">
+        <div className="defis-container">
+          <div className="defis-section-header">
+            <h2 className="defis-section-heading">Notre Approche</h2>
+            <p className="defis-section-subtitle">
               Une méthodologie holistique pour adresser les défis complexes de notre temps
             </p>
           </div>
           
-          <div className="features-grid">
+          <div className="defis-features-grid">
             {features.map((feature, index) => (
-              <div key={index} className="feature-card">
-                <div className="feature-icon">
+              <div key={index} className="defis-feature-card">
+                <div className="defis-feature-icon">
                   {feature.icon}
                 </div>
-                <h3 className="feature-title">{feature.title}</h3>
-                <p className="feature-description">{feature.description}</p>
+                <h3 className="defis-feature-title">{feature.title}</h3>
+                <p className="defis-feature-description">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -220,14 +213,14 @@ const DEFISPage = () => {
       </section>
 
       {/* Main Content - Domaines d'Intervention */}
-      <section className="main" id="domaines">
-        <div className="container">
-          <div className="tabs-container">
-            <div className="tabs">
+      <section className="defis-main" id="domaines">
+        <div className="defis-container">
+          <div className="defis-tabs-container">
+            <div className="defis-tabs">
               {categories.map(category => (
                 <button
                   key={category.id}
-                  className={`tab ${activeTab === category.id ? 'active' : ''}`}
+                  className={`defis-tab ${activeTab === category.id ? 'defis-tab-active' : ''}`}
                   onClick={() => {
                     setActiveTab(category.id);
                     setSelectedCategory(category.id);
@@ -241,23 +234,23 @@ const DEFISPage = () => {
           </div>
 
           {/* Filtres */}
-          <div className="filter-section">
-            <div className="filter-container">
-              <div className="search-box">
-                <Search className="search-icon" size={20} />
+          <div className="defis-filter-section">
+            <div className="defis-filter-container">
+              <div className="defis-search-box">
+                <Search className="defis-search-icon" size={20} />
                 <input
                   type="text"
-                  className="search-input"
+                  className="defis-search-input"
                   placeholder="Rechercher un domaine d'intervention..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
               
-              <div className="category-filter">
-                <Filter className="filter-icon" size={20} />
+              <div className="defis-category-filter">
+                <Filter className="defis-filter-icon" size={20} />
                 <select 
-                  className="category-select"
+                  className="defis-category-select"
                   value={selectedCategory}
                   onChange={(e) => {
                     setSelectedCategory(e.target.value);
@@ -274,9 +267,9 @@ const DEFISPage = () => {
             </div>
             
             {/* Indicateurs de filtre */}
-            <div className="filter-indicators">
+            <div className="defis-filter-indicators">
               {searchQuery && (
-                <div className="filter-tag">
+                <div className="defis-filter-tag">
                   Recherche: "{searchQuery}"
                   <button onClick={() => setSearchQuery('')}>
                     <X size={14} />
@@ -285,7 +278,7 @@ const DEFISPage = () => {
               )}
               
               {selectedCategory !== 'tous' && (
-                <div className="filter-tag">
+                <div className="defis-filter-tag">
                   Catégorie: {categories.find(c => c.id === selectedCategory)?.name}
                   <button onClick={() => {
                     setSelectedCategory('tous');
@@ -298,7 +291,7 @@ const DEFISPage = () => {
               
               {(searchQuery || selectedCategory !== 'tous') && (
                 <button 
-                  className="clear-filters"
+                  className="defis-clear-filters"
                   onClick={() => {
                     setSearchQuery('');
                     setSelectedCategory('tous');
@@ -311,8 +304,8 @@ const DEFISPage = () => {
             </div>
             
             {/* Résultats du filtre */}
-            <div className="filter-results">
-              <p className="results-count">
+            <div className="defis-filter-results">
+              <p className="defis-results-count">
                 {filteredSections.length} domaine{filteredSections.length !== 1 ? 's' : ''} trouvé{filteredSections.length !== 1 ? 's' : ''}
               </p>
             </div>
@@ -320,26 +313,26 @@ const DEFISPage = () => {
 
           {/* Grille des sections */}
           {filteredSections.length > 0 ? (
-            <div className="sections-grid">
+            <div className="defis-sections-grid">
               {filteredSections.map(([key, section]) => (
-                <div key={key} className="content-section">
-                  <div className="section-header-card">
+                <div key={key} className="defis-content-section">
+                  <div className="defis-section-header-card">
                     <div 
-                      className="section-icon"
+                      className="defis-section-icon"
                       style={{ background: section.color }}
                     >
                       {section.icon}
                     </div>
-                    <div className="section-title-content">
-                      <h3 className="section-title">{section.title}</h3>
-                      <div className="section-stats">{section.stats}</div>
+                    <div className="defis-section-title-content">
+                      <h3 className="defis-section-title">{section.title}</h3>
+                      <div className="defis-section-stats">{section.stats}</div>
                     </div>
                   </div>
                   
-                  <div className="section-content">
-                    <p className="section-text">{section.content}</p>
+                  <div className="defis-section-content">
+                    <p className="defis-section-text">{section.content}</p>
                     <button 
-                      className="section-link"
+                      className="defis-section-link"
                       onClick={() => openArticleModal(key)}
                     >
                       En savoir plus
@@ -350,10 +343,10 @@ const DEFISPage = () => {
               ))}
             </div>
           ) : (
-            <div className="no-results">
+            <div className="defis-no-results">
               <p>Aucun domaine ne correspond à votre recherche.</p>
               <button 
-                className="reset-filters-btn"
+                className="defis-reset-filters-btn"
                 onClick={() => {
                   setSearchQuery('');
                   setSelectedCategory('tous');
@@ -368,27 +361,27 @@ const DEFISPage = () => {
       </section>
 
       {/* Timeline Section */}
-      <section className="timeline-section" id="historique">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-heading">Notre Parcours</h2>
-            <p className="section-subtitle">
+      <section className="defis-timeline-section" id="historique">
+        <div className="defis-container">
+          <div className="defis-section-header">
+            <h2 className="defis-section-heading">Notre Parcours</h2>
+            <p className="defis-section-subtitle">
               Les étapes marquantes de notre engagement pour le développement durable
             </p>
           </div>
           
-          <div className="timeline">
+          <div className="defis-timeline">
             {timelineData.map((item, index) => (
-              <div key={index} className="timeline-item">
-                <div className="timeline-marker">
+              <div key={index} className="defis-timeline-item">
+                <div className="defis-timeline-marker">
                   <div style={{ fontSize: '0.8rem', fontWeight: 'bold' }}>
                     {item.year}
                   </div>
                 </div>
-                <div className="timeline-content">
-                  <div className="timeline-year">{item.year}</div>
-                  <h3 className="timeline-event">{item.event}</h3>
-                  <div className="timeline-location">{item.location}</div>
+                <div className="defis-timeline-content">
+                  <div className="defis-timeline-year">{item.year}</div>
+                  <h3 className="defis-timeline-event">{item.event}</h3>
+                  <div className="defis-timeline-location">{item.location}</div>
                 </div>
               </div>
             ))}
@@ -397,82 +390,81 @@ const DEFISPage = () => {
       </section>
 
       {/* Quote Section */}
-      <section className="quote-section">
-        <div className="container">
-          <div className="quote-content">
-            <div className="quote-icon">❝</div>
-            <blockquote className="quote">
+      <section className="defis-quote-section">
+        <div className="defis-container">
+          <div className="defis-quote-content">
+            <div className="defis-quote-icon">❝</div>
+            <blockquote className="defis-quote">
               L'héritage de nos ancêtres n'est pas un fardeau à porter, mais une terre à labourer. 
               Chaque génération a la responsabilité de faire fructifier ce qui lui a été transmis 
               et de préparer le terrain pour celles qui suivront.
             </blockquote>
-            <div className="quote-author">— Philosophie D.É.F.I.S.</div>
+            <div className="defis-quote-author">— Philosophie D.É.F.I.S.</div>
           </div>
         </div>
       </section>
 
-
       {/* Modal d'article */}
       {isModalOpen && selectedArticle && (
-        <div className="modal-overlay" onClick={closeArticleModal}>
-          <div className="article-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-header">
-              <button className="modal-close" onClick={closeArticleModal}>
+        <div className="defis-modal-overlay" onClick={closeArticleModal}>
+          <div className="defis-article-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="defis-modal-header">
+              <button className="defis-modal-close" onClick={closeArticleModal}>
                 <X size={24} />
               </button>
             </div>
             
-            <div className="modal-content">
-              <div className="article-header">
-                <div className="article-meta">
+            <div className="defis-modal-content">
+              <div className="defis-article-header">
+                <div className="defis-article-meta">
                   <div 
-                    className="article-category"
+                    className="defis-article-category"
                     style={{ background: sectionsData[selectedArticle].color }}
                   >
                     {sectionsData[selectedArticle].title}
                   </div>
-                  <div className="article-info">
-                    <div className="info-item">
+                  <div className="defis-article-info">
+                    <div className="defis-info-item">
                       <TrendingUp size={16} />
                       {sectionsData[selectedArticle].stats}
                     </div>
-                    <div className="info-item">
+                    <div className="defis-info-item">
                       <Users size={16} />
                       Impact Communautaire
                     </div>
                   </div>
                 </div>
                 
-                <h2 className="article-title">{sectionsData[selectedArticle].title}</h2>
-                <div className="article-stats">{sectionsData[selectedArticle].stats}</div>
+                <h2 className="defis-article-title">{sectionsData[selectedArticle].title}</h2>
+                <div className="defis-article-stats">{sectionsData[selectedArticle].stats}</div>
               </div>
               
-              <div className="article-content">
-                <p className="article-paragraph">
+              <div className="defis-article-content">
+                <p className="defis-article-paragraph">
                   {sectionsData[selectedArticle].fullContent}
                 </p>
                 
-                <p className="article-paragraph">
+                <p className="defis-article-paragraph">
                   Notre approche combine recherche approfondie, mobilisation communautaire et plaidoyer 
                   politique pour créer un impact durable. Nous travaillons main dans la main avec les 
                   leaders locaux, les institutions académiques et les organisations de la société civile 
                   pour développer des solutions adaptées aux contextes spécifiques.
                 </p>
                 
-                <p className="article-paragraph">
+                <p className="defis-article-paragraph">
                   L'engagement des jeunes est au cœur de notre méthodologie. Nous croyons fermement que 
                   la prochaine génération détient les clés pour résoudre les défis les plus pressants 
                   de notre temps, en s'appuyant à la fois sur la sagesse ancestrale et l'innovation moderne.
                 </p>
               </div>
               
-              <div className="article-footer">
-                <div className="article-actions">
-                  <button className="action-btn secondary">
+              <div className="defis-article-footer">
+                <div className="defis-article-actions">
+                  <button className="defis-action-btn defis-action-btn-secondary">
                     <BookOpen size={16} />
                     Télécharger le rapport
                   </button>
-                  <button className="action-btn primary">
+                  <button className="defis-action-btn defis-action-btn-primary">
                     <Users size={16} />
                     Rejoindre l'initiative
                   </button>
