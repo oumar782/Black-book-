@@ -8,7 +8,7 @@ import {
   ThumbsUp, MessageCircle, Play, Mountain, Users, Leaf,
   Code, Brain, Camera, Music, Atom, Database, Menu,
   ChevronDown, Download, Video, Mic, Image, FileText,
-  Feather, GitBranch, Layers, Cctv
+  Feather, GitBranch, Layers, Cctv, Loader
 } from 'lucide-react';
 import './cameleon.css';
 
@@ -20,7 +20,59 @@ const CameleonPro = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const heroRef = useRef(null);
+
+  // 🔌 Récupérer les articles depuis l'API
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const response = await fetch('https://backblack.vercel.app/api/cameleon');
+        const result = await response.json();
+        
+        if (result.success) {
+          setArticles(result.data);
+        } else {
+          throw new Error(result.error);
+        }
+      } catch (err) {
+        console.error('Erreur chargement articles:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticles();
+  }, []);
+
+  // 🔌 Récupérer le contenu complet d'un article
+  const fetchArticleContent = async (articleId) => {
+    try {
+      const response = await fetch(`https://backblack.vercel.app/api/cameleon/id/${articleId}`);
+      const result = await response.json();
+      
+      if (result.success) {
+        return result.data;
+      }
+    } catch (err) {
+      console.error('Erreur chargement contenu article:', err);
+    }
+    return null;
+  };
+
+  // Gestionnaire pour ouvrir le modal d'article
+  const handleOpenArticle = async (article) => {
+    // Si l'article n'a pas de contenu complet, on le récupère
+    if (!article.content) {
+      const articleWithContent = await fetchArticleContent(article.id);
+      setSelectedArticle(articleWithContent || article);
+    } else {
+      setSelectedArticle(article);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -36,126 +88,7 @@ const CameleonPro = () => {
     };
   }, []);
 
-  // Données enrichies avec icônes corrigées
-  const articles = [
-    {
-      id: 1,
-      title: "L'intelligence du camouflage : stratégies évolutives",
-      category: "nature",
-      description: "Exploration des mécanismes d'adaptation les plus sophistiqués du règne animal et végétal.",
-      content: `Le camouflage dans la nature représente l'une des adaptations les plus fascinantes de l'évolution. Les chromatophores du caméléon, les motifs disruptifs du léopard, ou la mimétique des phasmes démontrent des stratégies d'une complexité remarquable.
-
-Ces mécanismes ne se limitent pas à la dissimulation physique. Ils incluent des adaptations comportementales, temporelles et même chimiques qui permettent aux organismes de se fondre parfaitement dans leur écosystème.
-
-L'étude de ces phénomènes nous enseigne que l'adaptation réussie nécessite une compréhension profonde de son environnement et la capacité de modifier sa stratégie en temps réel.`,
-      image: "/api/placeholder/600/400",
-      stats: "15 min de lecture",
-      date: "2023-10-15",
-      likes: 142,
-      views: 2100,
-      tags: ["Évolution", "Adaptation", "Biodiversité"],
-      color: "emerald",
-      featured: true,
-      level: "avancé"
-    },
-    {
-      id: 2,
-      title: "Stratégies d'adaptation en entreprise : naviguer dans l'incertitude",
-      category: "societe",
-      description: "Comment les organisations prospèrent en s'adaptant continuellement à leur environnement économique et social.",
-      content: `Dans le paysage économique contemporain, la capacité d'adaptation est devenue la compétence organisationnelle la plus cruciale. Les entreprises qui réussissent sont celles qui maîtrisent l'art de la transformation continue.
-
-Cette adaptation va bien au-delà des simples ajustements stratégiques. Elle implique une réinvention culturelle, une agilité structurelle et une vision prospective qui anticipe les disruptions plutôt que de les subir.
-
-Le parallèle avec le caméléon est frappant : comme lui, les organisations doivent développer une sensibilité extrême à leur environnement tout en conservant leur identité fondamentale.`,
-      image: "/api/placeholder/600/400",
-      stats: "12 min de lecture",
-      date: "2023-09-22",
-      likes: 89,
-      views: 1500,
-      tags: ["Management", "Innovation", "Transformation"],
-      color: "amber",
-      featured: true,
-      level: "intermédiaire"
-    },
-    {
-      id: 3,
-      title: "Technologies adaptatives : quand la machine apprend de la nature",
-      category: "technologie",
-      description: "Exploration des systèmes technologiques qui s'adaptent dynamiquement à leur environnement d'utilisation.",
-      content: `Le biomimétisme technologique représente l'une des frontières les plus prometteuses de l'innovation contemporaine. Des matériaux qui changent de propriétés selon les conditions environnementales aux algorithmes qui s'adaptent en temps réel, la technologie apprend de la nature.
-
-Ces systèmes adaptatifs ne se contentent pas de réagir aux changements - ils les anticipent, créant ainsi des boucles d'amélioration continue qui repoussent constamment les limites du possible.
-
-Des réseaux neuronaux aux matériaux à mémoire de forme, l'adaptabilité devient la caractéristique déterminante des technologies d'avant-garde.`,
-      image: "/api/placeholder/600/400",
-      stats: "18 min de lecture",
-      date: "2023-11-05",
-      likes: 203,
-      views: 3200,
-      tags: ["IA", "Biomimétisme", "Innovation"],
-      color: "violet",
-      level: "expert"
-    },
-    {
-      id: 4,
-      title: "L'art du mimétisme dans la culture humaine contemporaine",
-      category: "culture",
-      description: "Comment les humains utilisent le mimétisme dans l'art, la mode et les relations sociales modernes.",
-      content: `Le mimétisme n'est pas exclusif au règne animal. Dans la culture humaine contemporaine, nous observons diverses formes d'adaptation et d'imitation qui nous permettent de nous intégrer dans différents contextes sociaux et culturels.
-
-Des tendances fashion aux codes sociaux, des mouvements artistiques aux comportements en ligne, le mimétisme culturel façonne notre identité collective et individuelle d'une manière profondément ancrée dans notre biologie évolutive.
-
-Cette capacité d'adaptation culturelle nous permet de naviguer dans des environnements sociaux complexes tout en préservant notre singularité.`,
-      image: "/api/placeholder/600/400",
-      stats: "10 min de lecture",
-      date: "2023-08-30",
-      likes: 76,
-      views: 1200,
-      tags: ["Art", "Société", "Culture"],
-      color: "rose",
-      level: "intermédiaire"
-    },
-    {
-      id: 5,
-      title: "Modèles d'évolution et d'adaptation dans les systèmes complexes",
-      category: "modeles",
-      description: "Étude des modèles mathématiques et systémiques qui favorisent l'évolution et l'adaptation réussie.",
-      content: `L'étude des modèles d'adaptation nous révèle des principes universels qui s'appliquent à de nombreux domaines, de l'écologie à l'économie en passant par les sciences sociales.
-
-En comprenant ces modèles, nous pouvons mieux naviguer dans des environnements changeants et incertains, anticipant les transformations plutôt que de les subir.
-
-Des algorithmes génétiques aux théories des jeux évolutionnaires, les modèles mathématiques nous offrent des outils puissants pour comprendre et maîtriser les processus d'adaptation.`,
-      image: "/api/placeholder/600/400",
-      stats: "20 min de lecture",
-      date: "2023-12-10",
-      likes: 154,
-      views: 2800,
-      tags: ["Modèles", "Évolution", "Stratégie"],
-      color: "cyan",
-      level: "expert"
-    },
-    {
-      id: 6,
-      title: "L'adaptabilité comme compétence essentielle du 21ème siècle",
-      category: "developpement",
-      description: "Pourquoi l'adaptabilité est devenue l'une des compétences les plus importantes dans un monde en mutation accélérée.",
-      content: `Dans un monde en constante et rapide évolution, la capacité à s'adapter rapidement est devenue une compétence cruciale, peut-être même la plus importante du 21ème siècle.
-
-Ceux qui maîtrisent l'art de l'adaptation sont mieux équipés pour faire face aux défis imprévus et saisir les opportunités émergentes dans un paysage professionnel et personnel en perpétuelle transformation.
-
-L'adaptabilité n'est plus une option mais une nécessité pour prospérer dans l'économie de la connaissance et l'ère numérique.`,
-      image: "/api/placeholder/600/400",
-      stats: "14 min de lecture",
-      date: "2023-07-18",
-      likes: 98,
-      views: 1800,
-      tags: ["Développement", "Compétences", "Avenir"],
-      color: "indigo",
-      level: "débutant"
-    }
-  ];
-
+  // Catégories dynamiques basées sur les données de l'API
   const categories = [
     { id: 'all', name: 'Tous les domaines', icon: <Globe size={16} />, count: articles.length },
     { id: 'nature', name: 'Nature', icon: <Leaf size={16} />, count: articles.filter(a => a.category === 'nature').length },
@@ -197,6 +130,7 @@ L'adaptabilité n'est plus une option mais une nécessité pour prospérer dans 
     }
   ];
 
+  // Filtrer les articles selon la recherche et la catégorie
   const filteredArticles = articles.filter(article => {
     const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                          article.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -204,7 +138,7 @@ L'adaptabilité n'est plus une option mais une nécessité pour prospérer dans 
     return matchesSearch && matchesCategory;
   });
 
-  const featuredArticles = articles.filter(article => article.featured);
+  const featuredArticles = articles.filter(article => article.is_featured);
 
   // Fonction pour obtenir l'icône de catégorie
   const getCategoryIcon = (categoryId) => {
@@ -218,6 +152,40 @@ L'adaptabilité n'est plus une option mais une nécessité pour prospérer dans 
     return category ? category.name : 'Tous les domaines';
   };
 
+  // Fonction pour formater le contenu des articles
+  const formatArticleContent = (contentText) => {
+    if (!contentText) return null;
+    return contentText.split('\n\n').map((paragraph, index) => (
+      <p key={index} className="cameleon-article-paragraph">{paragraph}</p>
+    ));
+  };
+
+  // Afficher le loader pendant le chargement
+  if (loading) {
+    return (
+      <div className="cameleon-pro-app">
+        <div className="cameleon-loading-container">
+          <Loader size={48} className="cameleon-spinner" />
+          <p>Chargement des articles...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Afficher l'erreur si nécessaire
+  if (error && articles.length === 0) {
+    return (
+      <div className="cameleon-pro-app">
+        <div className="cameleon-error-container">
+          <p>Erreur: {error}</p>
+          <button onClick={() => window.location.reload()}>
+            Réessayer
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="cameleon-pro-app">
       {/* Effet de souris élégant amélioré */}
@@ -228,8 +196,6 @@ L'adaptabilité n'est plus une option mais une nécessité pour prospérer dans 
         }}
       />
       
-      {/* Header Luxueux */}
-    
       {/* Hero Section Luxueuse */}
       <section className="cameleon-hero" ref={heroRef}>
         <div className="cameleon-hero-background">
@@ -262,7 +228,7 @@ L'adaptabilité n'est plus une option mais une nécessité pour prospérer dans 
 
           <div className="cameleon-hero-stats">
             {[
-              { number: "50+", label: "Stratégies" },
+              { number: articles.length, label: "Articles" },
               { number: "12", label: "Domaines" },
               { number: "∞", label: "Applications" }
             ].map((stat, index) => (
@@ -402,7 +368,7 @@ L'adaptabilité n'est plus une option mais une nécessité pour prospérer dans 
           </div>
 
           {/* Articles en Vedette */}
-          {selectedCategory === 'all' && searchQuery === '' && (
+          {selectedCategory === 'all' && searchQuery === '' && featuredArticles.length > 0 && (
             <div className="cameleon-featured-articles-section">
               <h3 className="cameleon-featured-title">
                 <Star size={20} />
@@ -413,7 +379,7 @@ L'adaptabilité n'est plus une option mais une nécessité pour prospérer dans 
                   <article 
                     key={article.id} 
                     className="cameleon-featured-article-card"
-                    onClick={() => setSelectedArticle(article)}
+                    onClick={() => handleOpenArticle(article)}
                   >
                     <div className="cameleon-featured-article-badge">
                       <Star size={12} />
@@ -436,22 +402,17 @@ L'adaptabilité n'est plus une option mais une nécessité pour prospérer dans 
                       <h3 className="cameleon-featured-article-title">{article.title}</h3>
                       <p className="cameleon-featured-article-description">{article.description}</p>
                       <div className="cameleon-featured-article-footer">
-                        <div className="cameleon-article-stats">
-                          <div className="cameleon-stat-item">
-                            <ThumbsUp size={14} />
-                            <span>{article.likes}</span>
-                          </div>
-                          <div className="cameleon-stat-item">
-                            <Eye size={14} />
-                            <span>{article.views}</span>
-                          </div>
+                        <div className="cameleon-article-tags">
+                          {article.tags && article.tags.map(tag => (
+                            <span key={tag} className="cameleon-article-tag">{tag}</span>
+                          ))}
                         </div>
                         <button className="cameleon-article-action">
                           <BookOpen size={16} />
                         </button>
                       </div>
                     </div>
-                    <div className={`cameleon-featured-article-gradient cameleon-gradient-${article.color}`} />
+                    <div className="cameleon-featured-article-gradient" />
                   </article>
                 ))}
               </div>
@@ -463,11 +424,11 @@ L'adaptabilité n'est plus une option mais une nécessité pour prospérer dans 
             {filteredArticles.map((article, index) => (
               <article 
                 key={article.id} 
-                className={`cameleon-article-card ${article.featured ? 'cameleon-featured' : ''}`}
+                className={`cameleon-article-card ${article.is_featured ? 'cameleon-featured' : ''}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => setSelectedArticle(article)}
+                onClick={() => handleOpenArticle(article)}
               >
-                {article.featured && (
+                {article.is_featured && (
                   <div className="cameleon-article-featured-badge">
                     <Star size={12} />
                     Vedette
@@ -493,22 +454,16 @@ L'adaptabilité n'est plus une option mais une nécessité pour prospérer dans 
                     <p className="cameleon-article-description">{article.description}</p>
                     
                     <div className="cameleon-article-tags">
-                      {article.tags.map(tag => (
+                      {article.tags && article.tags.map(tag => (
                         <span key={tag} className="cameleon-article-tag">{tag}</span>
                       ))}
                     </div>
                   </div>
 
                   <div className="cameleon-article-footer">
-                    <div className="cameleon-article-stats">
-                      <div className="cameleon-stat-item">
-                        <ThumbsUp size={14} />
-                        <span>{article.likes}</span>
-                      </div>
-                      <div className="cameleon-stat-item">
-                        <Eye size={14} />
-                        <span>{article.views}</span>
-                      </div>
+                    <div className="cameleon-article-date">
+                      <Calendar size={14} />
+                      <span>{new Date(article.publish_date).toLocaleDateString('fr-FR')}</span>
                     </div>
                     <button className="cameleon-article-action">
                       <BookOpen size={16} />
@@ -516,7 +471,7 @@ L'adaptabilité n'est plus une option mais une nécessité pour prospérer dans 
                   </div>
                 </div>
                 
-                <div className={`cameleon-article-gradient cameleon-gradient-${article.color}`} />
+                <div className="cameleon-article-gradient" />
                 <div className="cameleon-article-hover-effect" />
               </article>
             ))}
@@ -590,7 +545,7 @@ L'adaptabilité n'est plus une option mais une nécessité pour prospérer dans 
                     <div className="cameleon-article-info-modal">
                       <div className="cameleon-info-item">
                         <Calendar size={16} />
-                        <span>{selectedArticle.date}</span>
+                        <span>{new Date(selectedArticle.publish_date).toLocaleDateString('fr-FR')}</span>
                       </div>
                       <div className="cameleon-info-item">
                         <Clock size={16} />
@@ -601,35 +556,31 @@ L'adaptabilité n'est plus une option mais une nécessité pour prospérer dans 
                   
                   <h1 className="cameleon-article-title-modal">{selectedArticle.title}</h1>
                   
-                  <div className="cameleon-article-stats-modal">
-                    <div className="cameleon-stat-modal">
-                      <ThumbsUp size={16} />
-                      <span>{selectedArticle.likes} appréciations</span>
-                    </div>
-                    <div className="cameleon-stat-modal">
-                      <Eye size={16} />
-                      <span>{selectedArticle.views} vues</span>
-                    </div>
-                  </div>
+                  <p className="cameleon-article-description-modal">{selectedArticle.description}</p>
                 </header>
 
                 <div className="cameleon-article-content-modal">
                   <div className="cameleon-content-section">
-                    <p className="cameleon-article-lead">{selectedArticle.description}</p>
                     <div className="cameleon-article-body">
-                      {selectedArticle.content.split('\n\n').map((paragraph, index) => (
-                        <p key={index} className="cameleon-article-paragraph">{paragraph}</p>
-                      ))}
+                      {selectedArticle.content ? (
+                        formatArticleContent(selectedArticle.content)
+                      ) : (
+                        <p className="cameleon-article-paragraph">
+                          Contenu en cours de chargement...
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
 
                 <footer className="cameleon-article-footer-modal">
-                  <div className="cameleon-article-tags-modal">
-                    {selectedArticle.tags.map(tag => (
-                      <span key={tag} className="cameleon-tag-modal">{tag}</span>
-                    ))}
-                  </div>
+                  {selectedArticle.tags && selectedArticle.tags.length > 0 && (
+                    <div className="cameleon-article-tags-modal">
+                      {selectedArticle.tags.map(tag => (
+                        <span key={tag} className="cameleon-tag-modal">{tag}</span>
+                      ))}
+                    </div>
+                  )}
                   
                   <div className="cameleon-article-actions-modal">
                     <button className="cameleon-action-btn">

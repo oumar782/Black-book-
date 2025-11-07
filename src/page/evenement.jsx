@@ -1,121 +1,48 @@
-import { useState } from 'react';
-import { Calendar, Clock, MapPin, Users, Star, ArrowRight, Video, Coffee, BookOpen } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Calendar, Clock, MapPin, Users, Star, ArrowRight, Video, Coffee, BookOpen, Loader } from 'lucide-react';
 
 const AfroEventsCalendar = () => {
   const [activeTab, setActiveTab] = useState('À venir');
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const tabs = ['À venir', 'Passés', 'Mes événements'];
 
-  const events = [
-    {
-      id: 1,
-      title: "Masterclass : Leadership Africain Moderne",
-      description: "Découvrez les principes du leadership Ubuntu et comment les appliquer dans le monde professionnel contemporain.",
-      type: "Masterclass",
-      format: "En ligne",
-      date: "15 Décembre 2024",
-      time: "14h00 - 17h00",
-      duration: "3 heures",
-      instructor: "Dr. Amina Kone",
-      participants: 45,
-      maxParticipants: 60,
-      price: "Premium",
-      level: "Intermédiaire",
-      featured: true,
-      icon: Video,
-      category: "Leadership"
-    },
-    {
-      id: 2,
-      title: "Atelier : Contes et Traditions Orales",
-      description: "Séance interactive de partage de contes traditionnels africains et techniques de narration.",
-      type: "Atelier",
-      format: "Présentiel",
-      date: "22 Décembre 2024",
-      time: "10h00 - 12h00",
-      duration: "2 heures",
-      instructor: "Fatou Sané",
-      participants: 12,
-      maxParticipants: 20,
-      price: "19€",
-      level: "Tous niveaux",
-      featured: false,
-      icon: Coffee,
-      category: "Culture"
-    },
-    {
-      id: 3,
-      title: "Conférence : L'Art Contemporain Africain",
-      description: "Table ronde avec des artistes et curateurs sur les tendances actuelles de l'art africain.",
-      type: "Conférence",
-      format: "Hybride",
-      date: "28 Décembre 2024",
-      time: "19h00 - 21h00",
-      duration: "2 heures",
-      instructor: "Collectif d'artistes",
-      participants: 89,
-      maxParticipants: 100,
-      price: "Gratuit",
-      level: "Tous niveaux",
-      featured: true,
-      icon: Star,
-      category: "Art"
-    },
-    {
-      id: 4,
-      title: "Formation : Histoire des Royaumes Africains",
-      description: "Plongée approfondie dans l'histoire des grands empires africains et leur héritage.",
-      type: "Formation",
-      format: "En ligne",
-      date: "5 Janvier 2025",
-      time: "9h00 - 16h00",
-      duration: "6 heures",
-      instructor: "Marcus Diallo",
-      participants: 23,
-      maxParticipants: 50,
-      price: "49€",
-      level: "Avancé",
-      featured: false,
-      icon: BookOpen,
-      category: "Histoire"
-    },
-    {
-      id: 5,
-      title: "Cercle de Discussion : Philosophie Bantoue",
-      description: "Échanges autour des concepts philosophiques bantous et leur application moderne.",
-      type: "Discussion",
-      format: "En ligne",
-      date: "12 Janvier 2025",
-      time: "15h00 - 16h30",
-      duration: "1h30",
-      instructor: "Dr. Kwame Asante",
-      participants: 8,
-      maxParticipants: 15,
-      price: "Premium",
-      level: "Avancé",
-      featured: false,
-      icon: Users,
-      category: "Spiritualité"
-    },
-    {
-      id: 6,
-      title: "Atelier Cuisine : Saveurs d'Afrique de l'Ouest",
-      description: "Apprenez à préparer des plats traditionnels dans une ambiance conviviale et culturelle.",
-      type: "Atelier",
-      format: "Présentiel",
-      date: "19 Janvier 2025",
-      time: "14h00 - 18h00",
-      duration: "4 heures",
-      instructor: "Chef Aminata",
-      participants: 15,
-      maxParticipants: 16,
-      price: "35€",
-      level: "Débutant",
-      featured: true,
-      icon: Coffee,
-      category: "Culture"
+  // 🔌 Récupérer les événements depuis l'API
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch('https://backblack.vercel.app/api/event');
+        const result = await response.json();
+        
+        if (result.success) {
+          setEvents(result.data);
+        } else {
+          throw new Error(result.error);
+        }
+      } catch (err) {
+        console.error('Erreur chargement événements:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+  // Fonction pour obtenir l'icône selon la catégorie
+  const getCategoryIcon = (category) => {
+    switch (category) {
+      case 'Leadership': return Video;
+      case 'Culture': return Coffee;
+      case 'Art': return Star;
+      case 'Histoire': return BookOpen;
+      case 'Spiritualité': return Users;
+      default: return Calendar;
     }
-  ];
+  };
 
   const getTypeColor = (type) => {
     switch (type) {
@@ -133,9 +60,108 @@ const AfroEventsCalendar = () => {
       case 'Débutant': return 'afro-badge-debutant';
       case 'Intermédiaire': return 'afro-badge-intermediaire';
       case 'Avancé': return 'afro-badge-avance';
+      case 'Tous niveaux': return 'afro-badge-default';
       default: return 'afro-badge-default';
     }
   };
+
+  // Afficher le loader pendant le chargement
+  if (loading) {
+    return (
+      <section className="afro-events-section">
+        <div className="afro-events-container">
+          <div className="afro-loading-container">
+            <Loader size={48} className="afro-spinner" />
+            <p>Chargement des événements...</p>
+          </div>
+        </div>
+        
+        <style jsx>{`
+          .afro-events-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 30%, #1a0f0a 70%, #0a0a0a 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+          }
+          
+          .afro-events-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
+          }
+          
+          .afro-loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
+            gap: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+          }
+          
+          .afro-spinner {
+            animation: spin 1s linear infinite;
+          }
+          
+          @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+        `}</style>
+      </section>
+    );
+  }
+
+  // Afficher l'erreur si nécessaire
+  if (error && events.length === 0) {
+    return (
+      <section className="afro-events-section">
+        <div className="afro-events-container">
+          <div className="afro-error-container">
+            <p>Erreur: {error}</p>
+            <button onClick={() => window.location.reload()}>
+              Réessayer
+            </button>
+          </div>
+        </div>
+        
+        <style jsx>{`
+          .afro-events-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 30%, #1a0f0a 70%, #0a0a0a 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+          }
+          
+          .afro-events-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
+          }
+          
+          .afro-error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
+            gap: 1rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+          }
+        `}</style>
+      </section>
+    );
+  }
 
   return (
     <section className="afro-events-section">
@@ -157,7 +183,6 @@ const AfroEventsCalendar = () => {
         <div className="afro-events-header">
           <h1 className="afro-main-title">
             <span className="afro-title-word afro-title-word-1">Événements</span>
-            
           </h1>
           <p className="afro-subtitle">
             Rejoins-nous pour des expériences enrichissantes qui connectent tradition et modernité. 
@@ -168,9 +193,9 @@ const AfroEventsCalendar = () => {
         {/* Statistiques rapides */}
         <div className="afro-stats-grid">
           {[
-            { number: "24", label: "Événements ce mois" },
-            { number: "450+", label: "Participants actifs" },
-            { number: "15", label: "Experts intervenants" },
+            { number: events.length, label: "Événements ce mois" },
+            { number: events.reduce((sum, event) => sum + event.participants, 0), label: "Participants actifs" },
+            { number: new Set(events.map(event => event.instructor)).size, label: "Experts intervenants" },
             { number: "4.9", label: "Satisfaction moyenne" }
           ].map((stat, index) => (
             <div key={index} className="afro-stat-card" style={{ '--delay': `${index * 0.1}s` }}>
@@ -202,142 +227,156 @@ const AfroEventsCalendar = () => {
 
         {/* Grille des événements */}
         <div className="afro-events-grid">
-          {events.map((event, index) => (
-            <div
-              key={event.id}
-              className="afro-event-card"
-              style={{ '--delay': `${index * 0.1}s` }}
-            >
-              {/* Effet de bordure animée */}
-              <div className="afro-card-border-glow"></div>
-              <div className="afro-card-hover-effect"></div>
-              
-              <div className="afro-card-content">
-                {/* En-tête avec badges */}
-                <div className="afro-card-header">
-                  <div className="afro-badges-container">
-                    <span className={`afro-badge ${getTypeColor(event.type)}`}>
-                      <span className="afro-badge-text">{event.type}</span>
-                      <div className="afro-badge-glow"></div>
-                    </span>
-                    <span className={`afro-badge ${getLevelColor(event.level)}`}>
-                      <span className="afro-badge-text">{event.level}</span>
-                      <div className="afro-badge-glow"></div>
-                    </span>
-                    {event.featured && (
-                      <span className="afro-badge-featured">
-                        <Star className="afro-featured-icon" />
-                        <span className="afro-badge-text">Featured</span>
-                        <div className="afro-featured-sparkle"></div>
+          {events.map((event, index) => {
+            const EventIcon = getCategoryIcon(event.category);
+            
+            return (
+              <div
+                key={event.id}
+                className="afro-event-card"
+                style={{ '--delay': `${index * 0.1}s` }}
+              >
+                {/* Effet de bordure animée */}
+                <div className="afro-card-border-glow"></div>
+                <div className="afro-card-hover-effect"></div>
+                
+                <div className="afro-card-content">
+                  {/* En-tête avec badges */}
+                  <div className="afro-card-header">
+                    <div className="afro-badges-container">
+                      <span className={`afro-badge ${getTypeColor(event.type)}`}>
+                        <span className="afro-badge-text">{event.type}</span>
+                        <div className="afro-badge-glow"></div>
                       </span>
-                    )}
-                  </div>
-                  <div className="afro-icon-container">
-                    <event.icon className="afro-card-icon" />
-                    <div className="afro-icon-orb"></div>
-                  </div>
-                </div>
-
-                {/* Titre et description */}
-                <h3 className="afro-card-title">
-                  {event.title}
-                </h3>
-                <p className="afro-card-description">
-                  {event.description}
-                </p>
-
-                {/* Détails de l'événement */}
-                <div className="afro-details-container">
-                  <div className="afro-detail-row">
-                    <div className="afro-detail-item">
-                      <Calendar className="afro-detail-icon" />
-                      <span className="afro-detail-date">{event.date}</span>
-                    </div>
-                    <div className="afro-detail-item">
-                      <Clock className="afro-detail-icon" />
-                      <span className="afro-detail-time">{event.time}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="afro-detail-row">
-                    <div className="afro-detail-item">
-                      <MapPin className="afro-detail-icon" />
-                      <span className="afro-detail-format">{event.format}</span>
-                    </div>
-                    <div className="afro-detail-item">
-                      <Users className="afro-detail-icon" />
-                      <span className="afro-detail-participants">
-                        {event.participants}/{event.maxParticipants} participants
+                      <span className={`afro-badge ${getLevelColor(event.level)}`}>
+                        <span className="afro-badge-text">{event.level}</span>
+                        <div className="afro-badge-glow"></div>
                       </span>
+                      {event.is_featured && (
+                        <span className="afro-badge-featured">
+                          <Star className="afro-featured-icon" />
+                          <span className="afro-badge-text">Featured</span>
+                          <div className="afro-featured-sparkle"></div>
+                        </span>
+                      )}
+                    </div>
+                    <div className="afro-icon-container">
+                      <EventIcon className="afro-card-icon" />
+                      <div className="afro-icon-orb"></div>
                     </div>
                   </div>
-                  
-                  <div className="afro-detail-footer">
-                    <div className="afro-instructor">
-                      <span className="afro-instructor-label">Animé par </span>
-                      <span className="afro-instructor-name">{event.instructor}</span>
-                    </div>
-                    <div className="afro-duration">
-                      <span className="afro-duration-label">Durée: </span>
-                      <span className="afro-duration-value">{event.duration}</span>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Barre de progression des inscriptions */}
-                <div className="afro-progress-container">
-                  <div className="afro-progress-labels">
-                    <span>Places disponibles</span>
-                    <span>{event.maxParticipants - event.participants} restantes</span>
+                  {/* Titre et description */}
+                  <h3 className="afro-card-title">
+                    {event.title}
+                  </h3>
+                  <p className="afro-card-description">
+                    {event.description}
+                  </p>
+
+                  {/* Détails de l'événement */}
+                  <div className="afro-details-container">
+                    <div className="afro-detail-row">
+                      <div className="afro-detail-item">
+                        <Calendar className="afro-detail-icon" />
+                        <span className="afro-detail-date">{event.event_date}</span>
+                      </div>
+                      <div className="afro-detail-item">
+                        <Clock className="afro-detail-icon" />
+                        <span className="afro-detail-time">{event.event_time}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="afro-detail-row">
+                      <div className="afro-detail-item">
+                        <MapPin className="afro-detail-icon" />
+                        <span className="afro-detail-format">{event.format}</span>
+                      </div>
+                      <div className="afro-detail-item">
+                        <Users className="afro-detail-icon" />
+                        <span className="afro-detail-participants">
+                          {event.participants}/{event.max_participants} participants
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <div className="afro-detail-footer">
+                      <div className="afro-instructor">
+                        <span className="afro-instructor-label">Animé par </span>
+                        <span className="afro-instructor-name">{event.instructor}</span>
+                      </div>
+                      <div className="afro-duration">
+                        <span className="afro-duration-label">Durée: </span>
+                        <span className="afro-duration-value">{event.duration}</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="afro-progress-bar">
-                    <div 
-                      className="afro-progress-fill"
-                      style={{ width: `${(event.participants / event.maxParticipants) * 100}%` }}
+
+                  {/* Barre de progression des inscriptions */}
+                  <div className="afro-progress-container">
+                    <div className="afro-progress-labels">
+                      <span>Places disponibles</span>
+                      <span>{event.max_participants - event.participants} restantes</span>
+                    </div>
+                    <div className="afro-progress-bar">
+                      <div 
+                        className="afro-progress-fill"
+                        style={{ width: `${(event.participants / event.max_participants) * 100}%` }}
+                      >
+                        <div className="afro-progress-shine"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Prix et CTA */}
+                  <div className="afro-card-footer">
+                    <div className="afro-price">
+                      {event.price === "Gratuit" ? (
+                        <span className="afro-price-free">
+                          <span className="afro-price-text">Gratuit</span>
+                          <div className="afro-price-glow"></div>
+                        </span>
+                      ) : event.price === "Premium" ? (
+                        <span className="afro-price-premium">
+                          <span className="afro-price-text">Inclus Premium</span>
+                          <div className="afro-price-glow"></div>
+                        </span>
+                      ) : (
+                        <span className="afro-price-paid">
+                          <span className="afro-price-text">{event.price}</span>
+                          <div className="afro-price-glow"></div>
+                        </span>
+                      )}
+                    </div>
+                    
+                    <button 
+                      className={`afro-register-btn ${event.participants >= event.max_participants ? 'afro-register-disabled' : ''}`}
+                      disabled={event.participants >= event.max_participants}
                     >
-                      <div className="afro-progress-shine"></div>
-                    </div>
+                      <span className="afro-btn-text">
+                        {event.participants >= event.max_participants ? 'Complet' : 'S\'inscrire'}
+                      </span>
+                      <div className="afro-btn-orb">
+                        <ArrowRight className="afro-register-icon" />
+                      </div>
+                      <div className="afro-btn-glow"></div>
+                    </button>
                   </div>
-                </div>
-
-                {/* Prix et CTA */}
-                <div className="afro-card-footer">
-                  <div className="afro-price">
-                    {event.price === "Gratuit" ? (
-                      <span className="afro-price-free">
-                        <span className="afro-price-text">Gratuit</span>
-                        <div className="afro-price-glow"></div>
-                      </span>
-                    ) : event.price === "Premium" ? (
-                      <span className="afro-price-premium">
-                        <span className="afro-price-text">Inclus Premium</span>
-                        <div className="afro-price-glow"></div>
-                      </span>
-                    ) : (
-                      <span className="afro-price-paid">
-                        <span className="afro-price-text">{event.price}</span>
-                        <div className="afro-price-glow"></div>
-                      </span>
-                    )}
-                  </div>
-                  
-                  <button 
-                    className={`afro-register-btn ${event.participants >= event.maxParticipants ? 'afro-register-disabled' : ''}`}
-                    disabled={event.participants >= event.maxParticipants}
-                  >
-                    <span className="afro-btn-text">
-                      {event.participants >= event.maxParticipants ? 'Complet' : 'S\'inscrire'}
-                    </span>
-                    <div className="afro-btn-orb">
-                      <ArrowRight className="afro-register-icon" />
-                    </div>
-                    <div className="afro-btn-glow"></div>
-                  </button>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
+        {events.length === 0 && (
+          <div className="afro-no-events">
+            <div className="afro-no-events-content">
+              <Calendar size={48} />
+              <h3>Aucun événement programmé</h3>
+              <p>Revenez bientôt pour découvrir nos prochains événements</p>
+            </div>
+          </div>
+        )}
 
         {/* CTA pour voir plus d'événements */}
         <div className="afro-cta-container">
@@ -357,8 +396,7 @@ const AfroEventsCalendar = () => {
       <style jsx>{`
         .afro-events-section {
           padding: 6rem 0;
-          background: 
-            linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 30%, #1a0f0a 70%, #0a0a0a 100%);
+          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 30%, #1a0f0a 70%, #0a0a0a 100%);
           min-height: 100vh;
           position: relative;
           overflow: hidden;
@@ -434,14 +472,6 @@ const AfroEventsCalendar = () => {
         }
 
         .afro-title-word-1 { animation-delay: 0s; }
-        .afro-title-word-2 { 
-          font-size: 0.8em;
-          animation-delay: 0.2s;
-        }
-        .afro-title-word-3 { 
-          animation-delay: 0.4s;
-          color: #ff6b35;
-        }
 
         @keyframes afroTitleShimmer {
           0%, 100% { background-position: -200% 0; }
@@ -1268,6 +1298,24 @@ const AfroEventsCalendar = () => {
         @keyframes afroPricePulse {
           0%, 100% { opacity: 0.2; }
           50% { opacity: 0.4; }
+        }
+
+        /* États vides */
+        .afro-no-events {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 300px;
+          text-align: center;
+        }
+
+        .afro-no-events-content {
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        .afro-no-events-content h3 {
+          margin: 1rem 0 0.5rem 0;
+          color: rgba(255, 255, 255, 0.9);
         }
 
         /* Responsive */

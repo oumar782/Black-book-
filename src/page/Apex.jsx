@@ -13,7 +13,7 @@ const Apex = () => {
   const [showModal, setShowModal] = useState(false);
 
   // URLs des APIs
-  const API_BASE = 'http://localhost:3000/api';
+  const API_BASE = 'https://backblack.vercel.app';
   const BLOG_API = `${API_BASE}/apex/`;
 
   // Données initiales enrichies (fallback si API échoue)

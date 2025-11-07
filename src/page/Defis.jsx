@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Search, Filter, X, Globe, Users, Leaf, TrendingUp, BookOpen, Heart, Zap, ArrowRight, Menu, X as CloseIcon } from 'lucide-react';
+import { ChevronDown, Search, Filter, X, Globe, Users, Leaf, TrendingUp, BookOpen, Heart, Zap, ArrowRight, Menu, X as CloseIcon, Loader } from 'lucide-react';
 import './defis.css';
 
 const DEFISPage = () => {
@@ -9,61 +9,23 @@ const DEFISPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // Données des sections
-  const sectionsData = {
-    santé: {
-      title: "Santé Publique",
-      icon: <Heart size={28} />,
-      color: "#e25822",
-      stats: "62% des maladies évitables",
-      content: "La malaria continue d'affecter des millions de personnes en Afrique, avec des conséquences particulièrement graves pour les enfants de moins de 5 ans et les femmes enceintes.",
-      fullContent: "En 2023, près de 250 millions de cas de malaria ont été recensés dans le monde, causant environ 600 000 décès. L'Afrique subsaharienne supporte plus de 90% de ce fardeau. Les programmes de prévention, incluant la distribution de moustiquaires imprégnées et les traitements préventifs, ont permis de réduire la mortalité de 45% depuis 2000, mais des défis persistent face à la résistance aux insecticides et aux médicaments."
-    },
-    education: {
-      title: "Éducation",
-      icon: <BookOpen size={28} />,
-      color: "#f9a825",
-      stats: "78% taux d'alphabétisation",
-      content: "L'accès à l'éducation de qualité reste un défi majeur, particulièrement dans les zones rurales où les infrastructures scolaires sont limitées.",
-      fullContent: "En Afrique subsaharienne, plus de 30 millions d'enfants en âge de fréquenter l'école primaire ne sont pas scolarisés. Les filles sont particulièrement désavantagées, avec des taux d'abandon scolaire plus élevés après la puberté. Les investissements dans la formation des enseignants et les technologies éducatives pourraient transformer radicalement ces statistiques."
-    },
-    environnement: {
-      title: "Environnement",
-      icon: <Leaf size={28} />,
-      color: "#2e7d32",
-      stats: "+1.2°C réchauffement",
-      content: "Le changement climatique affecte disproportionnellement le continent africain, avec des sécheresses prolongées et des phénomènes météorologiques extrêmes.",
-      fullContent: "L'Afrique, bien que responsable de moins de 4% des émissions mondiales de gaz à effet de serre, subit de plein fouet les conséquences du réchauffement climatique. La désertification progresse de 5 à 8% par décennie dans certaines régions, menaçant les moyens de subsistance de millions d'agriculteurs. Les solutions basées sur la nature et les énergies renouvelables représentent des opportunités majeures de développement durable."
-    },
-    economie: {
-      title: "Économie",
-      icon: <TrendingUp size={28} />,
-      color: "#9c27b0",
-      stats: "35% sous le seuil de pauvreté",
-      content: "Malgré une croissance économique prometteuse, les inégalités persistent et l'accès aux opportunités économiques reste limité pour de nombreux jeunes.",
-      fullContent: "Le continent africain affiche certaines des croissances économiques les plus rapides au monde, mais cette prospérité n'est pas équitablement répartie. Plus de 400 millions d'Africains vivent avec moins de 1,90 dollar par jour. L'économie informelle représente environ 85% de l'emploi total, limitant l'accès à la protection sociale et à la stabilité financière."
-    },
-    culture: {
-      title: "Culture & Patrimoine",
-      icon: <Globe size={28} />,
-      color: "#2196f3",
-      stats: "2000+ langues menacées",
-      content: "La richesse culturelle et linguistique du continent fait face à des pressions de globalisation, nécessitant des efforts de préservation urgents.",
-      fullContent: "L'Afrique abrite une diversité culturelle extraordinaire avec plus de 3 000 groupes ethniques distincts et environ 2 000 langues. Cependant, près de 20% de ces langues sont considérées comme menacées. La préservation du patrimoine immatériel, incluant les traditions orales, la musique et les savoirs ancestraux, est essentielle pour maintenir cette richesse culturelle."
-    },
-    innovation: {
-      title: "Innovation Technologique",
-      icon: <Zap size={28} />,
-      color: "#ff9800",
-      stats: "447 tech hubs actifs",
-      content: "L'écosystème tech africain connaît une croissance exponentielle, avec des solutions locales répondant aux défis continentaux.",
-      fullContent: "L'Afrique compte désormais plus de 700 hubs d'innovation et incubateurs, favorisant l'émergence de solutions technologiques adaptées aux contextes locaux. Le mobile money a révolutionné l'inclusion financière, avec des plateformes comme M-Pesa permettant à des millions de personnes d'accéder à des services bancaires. Les secteurs de la santé numérique, de l'agritech et de l'edtech connaissent une croissance remarquable."
-    }
+  const [defisData, setDefisData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Icônes pour chaque section
+  const sectionIcons = {
+    sante: <Heart size={28} />,
+    education: <BookOpen size={28} />,
+    environnement: <Leaf size={28} />,
+    economie: <TrendingUp size={28} />,
+    culture: <Globe size={28} />,
+    innovation: <Zap size={28} />
   };
 
   const categories = [
     { id: 'tous', name: 'Tous les domaines', icon: <Globe size={16} /> },
-    { id: 'santé', name: 'Santé', icon: <Heart size={16} /> },
+    { id: 'sante', name: 'Santé', icon: <Heart size={16} /> },
     { id: 'education', name: 'Éducation', icon: <BookOpen size={16} /> },
     { id: 'environnement', name: 'Environnement', icon: <Leaf size={16} /> },
     { id: 'economie', name: 'Économie', icon: <TrendingUp size={16} /> },
@@ -102,16 +64,57 @@ const DEFISPage = () => {
     }
   ];
 
+  // 🔌 Récupérer les données depuis l'API
+  useEffect(() => {
+    const fetchDefis = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('https://backblack.vercel.app/api/defis/');
+        
+        if (!response.ok) {
+          throw new Error(`Erreur HTTP: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        
+        if (result.success) {
+          setDefisData(result.data);
+        } else {
+          throw new Error(result.error || 'Erreur lors du chargement des données');
+        }
+      } catch (err) {
+        console.error('Erreur API:', err);
+        setError(err.message);
+        // Données de secours en cas d'erreur
+        setDefisData([
+          {
+            id: 1,
+            section_key: 'sante',
+            title: 'Santé Publique',
+            color: '#e25822',
+            stats: '62% des maladies évitables',
+            content: 'La malaria continue daffecter des millions de personnes en Afrique...',
+            full_content: 'En 2023, près de 250 millions de cas de malaria ont été recensés...'
+          }
+        ]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDefis();
+  }, []);
+
   // Filtrer les sections selon la recherche et la catégorie
-  const filteredSections = Object.entries(sectionsData).filter(([key, section]) => {
+  const filteredSections = defisData.filter(section => {
     const matchesSearch = section.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                          section.content.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === 'tous' || key === selectedCategory;
+    const matchesCategory = selectedCategory === 'tous' || section.section_key === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
-  const openArticleModal = (articleKey) => {
-    setSelectedArticle(articleKey);
+  const openArticleModal = (section) => {
+    setSelectedArticle(section);
     setIsModalOpen(true);
   };
 
@@ -140,6 +143,32 @@ const DEFISPage = () => {
     };
   }, [isModalOpen]);
 
+  // Afficher le loader pendant le chargement
+  if (loading) {
+    return (
+      <div className="defis-app">
+        <div className="defis-loading">
+          <Loader size={48} className="defis-spinner" />
+          <p>Chargement des défis...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Afficher l'erreur si nécessaire
+  if (error && defisData.length === 0) {
+    return (
+      <div className="defis-app">
+        <div className="defis-error">
+          <p>Erreur: {error}</p>
+          <button onClick={() => window.location.reload()}>
+            Réessayer
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="defis-app">
       {/* Hero Section */}
@@ -163,8 +192,8 @@ const DEFISPage = () => {
             
             <div className="defis-hero-stats">
               <div className="defis-stat">
-                <div className="defis-stat-number">15+</div>
-                <div className="defis-stat-label">Pays Engagés</div>
+                <div className="defis-stat-number">{defisData.length}+</div>
+                <div className="defis-stat-label">Domaines d'Action</div>
               </div>
               <div className="defis-stat">
                 <div className="defis-stat-number">127K</div>
@@ -314,14 +343,14 @@ const DEFISPage = () => {
           {/* Grille des sections */}
           {filteredSections.length > 0 ? (
             <div className="defis-sections-grid">
-              {filteredSections.map(([key, section]) => (
-                <div key={key} className="defis-content-section">
+              {filteredSections.map((section) => (
+                <div key={section.id} className="defis-content-section">
                   <div className="defis-section-header-card">
                     <div 
                       className="defis-section-icon"
                       style={{ background: section.color }}
                     >
-                      {section.icon}
+                      {sectionIcons[section.section_key] || <Globe size={28} />}
                     </div>
                     <div className="defis-section-title-content">
                       <h3 className="defis-section-title">{section.title}</h3>
@@ -333,7 +362,7 @@ const DEFISPage = () => {
                     <p className="defis-section-text">{section.content}</p>
                     <button 
                       className="defis-section-link"
-                      onClick={() => openArticleModal(key)}
+                      onClick={() => openArticleModal(section)}
                     >
                       En savoir plus
                       <ArrowRight size={16} />
@@ -419,14 +448,14 @@ const DEFISPage = () => {
                 <div className="defis-article-meta">
                   <div 
                     className="defis-article-category"
-                    style={{ background: sectionsData[selectedArticle].color }}
+                    style={{ background: selectedArticle.color }}
                   >
-                    {sectionsData[selectedArticle].title}
+                    {selectedArticle.title}
                   </div>
                   <div className="defis-article-info">
                     <div className="defis-info-item">
                       <TrendingUp size={16} />
-                      {sectionsData[selectedArticle].stats}
+                      {selectedArticle.stats}
                     </div>
                     <div className="defis-info-item">
                       <Users size={16} />
@@ -435,13 +464,13 @@ const DEFISPage = () => {
                   </div>
                 </div>
                 
-                <h2 className="defis-article-title">{sectionsData[selectedArticle].title}</h2>
-                <div className="defis-article-stats">{sectionsData[selectedArticle].stats}</div>
+                <h2 className="defis-article-title">{selectedArticle.title}</h2>
+                <div className="defis-article-stats">{selectedArticle.stats}</div>
               </div>
               
               <div className="defis-article-content">
                 <p className="defis-article-paragraph">
-                  {sectionsData[selectedArticle].fullContent}
+                  {selectedArticle.full_content}
                 </p>
                 
                 <p className="defis-article-paragraph">

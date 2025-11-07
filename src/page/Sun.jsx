@@ -21,7 +21,7 @@ const SoleilPage = () => {
   const carouselRef = useRef(null);
 
   // URLs des APIs
-  const API_BASE = 'http://localhost:5000/api';
+  const API_BASE = 'https://backblack.vercel.app/api';
   const PRAYERS_API = `${API_BASE}/priere`;
   const PARTICIPATIONS_API = `${API_BASE}/participation/`;
 

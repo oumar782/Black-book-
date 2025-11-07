@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ChevronDown, 
   Users, 
@@ -17,17 +17,27 @@ import {
   Youtube,
   Mail,
   MapPin,
-  Phone
+  Phone,
+  Loader
 } from 'lucide-react';
 
 // Import de l'image depuis le projet
-import heroImage from '../assets/cultural-pattern.webp'; // Chemin vers votre image
-import './lada.css'
+import heroImage from '../assets/cultural-pattern.webp';
+import './lada.css';
+
 const AfroInterface = () => {
   const [activeTab, setActiveTab] = useState('principes');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const [articles, setArticles] = useState([]);
+  const [sectionsContenu, setSectionsContenu] = useState([]);
+  const [loading, setLoading] = useState({
+    articles: true,
+    sections: true
+  });
+  const [error, setError] = useState(null);
 
+  // Données statiques pour les principes (ne viennent pas de l'API)
   const principles = [
     {
       title: "Respect Mutuel",
@@ -67,32 +77,105 @@ const AfroInterface = () => {
     }
   ];
 
-  const articles = [
-    {
-      id: 1,
-      title: "L'art de la palabre africaine",
-      excerpt: "Découvrez comment nos ancêtres utilisaient l'arbre à palabre pour résoudre les conflits et prendre des décisions importantes pour la communauté.",
-      category: "Tradition",
-      readTime: "5 min",
-      date: "15 Mars 2024"
-    },
-    {
-      id: 2,
-      title: "Les valeurs qui unissent notre peuple",
-      excerpt: "Exploration des principes fondamentaux qui ont permis à nos communautés de traverser les siècles avec résilience et dignité.",
-      category: "Valeurs",
-      readTime: "7 min",
-      date: "12 Mars 2024"
-    },
-    {
-      id: 3,
-      title: "L'éducation traditionnelle sous l'arbre à palabre",
-      excerpt: "Comment les anciens transmettaient leur sagesse aux jeunes générations dans un cadre naturel et sacré.",
-      category: "Éducation",
-      readTime: "6 min",
-      date: "10 Mars 2024"
+  // Icônes pour les sections
+  const sectionIcons = {
+    respect_entraide: <Heart size={28} />,
+    unite_diversite: <Globe size={28} />,
+    transmission_savoir: <Clock size={28} />
+  };
+
+  // 🔌 Récupérer les articles depuis l'API
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const response = await fetch('https://backblack.vercel.app/api/lada');
+        const result = await response.json();
+        
+        if (result.success) {
+          setArticles(result.data);
+        } else {
+          throw new Error(result.error);
+        }
+      } catch (err) {
+        console.error('Erreur chargement articles:', err);
+        setError(err.message);
+      } finally {
+        setLoading(prev => ({ ...prev, articles: false }));
+      }
+    };
+
+    fetchArticles();
+  }, []);
+
+  // 🔌 Récupérer les sections contenu depuis l'API
+  useEffect(() => {
+    const fetchSectionsContenu = async () => {
+      try {
+        const response = await fetch('https://backblack.vercel.app/api/principe');
+        const result = await response.json();
+        
+        if (result.success) {
+          setSectionsContenu(result.data);
+        } else {
+          throw new Error(result.error);
+        }
+      } catch (err) {
+        console.error('Erreur chargement sections:', err);
+        setError(err.message);
+      } finally {
+        setLoading(prev => ({ ...prev, sections: false }));
+      }
+    };
+
+    fetchSectionsContenu();
+  }, []);
+
+  // Fonction pour formater le contenu des sections
+  const formatSectionContent = (contentText) => {
+    return contentText.split('\n\n').map((paragraph, index) => (
+      <p key={index} className="section-text">
+        {paragraph}
+      </p>
+    ));
+  };
+
+  // Fonction pour récupérer le contenu complet d'un article
+  const fetchArticleContent = async (articleId) => {
+    try {
+      const response = await fetch(`https://backblack.vercel.app/api/lada/id/${articleId}`);
+      const result = await response.json();
+      
+      if (result.success) {
+        return result.data;
+      }
+    } catch (err) {
+      console.error('Erreur chargement contenu article:', err);
     }
-  ];
+    return null;
+  };
+
+  // Gestionnaire pour ouvrir le modal d'article
+  const handleOpenArticle = async (article) => {
+    // Si l'article n'a pas de contenu complet, on le récupère
+    if (!article.content) {
+      const articleWithContent = await fetchArticleContent(article.id);
+      setSelectedArticle(articleWithContent || article);
+    } else {
+      setSelectedArticle(article);
+    }
+  };
+
+  // Afficher le loader pendant le chargement
+  if (loading.articles && loading.sections) {
+    return (
+      <div className="afro-interface">
+        <div className="loading-container">
+          <Loader size={48} className="spinner" />
+          <p>Chargement de la sagesse ancestrale...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="afro-interface">
@@ -127,7 +210,7 @@ const AfroInterface = () => {
           
           <div className="hero-stats">
             <div className="stat">
-              <div className="stat-number">7</div>
+              <div className="stat-number">{principles.length}</div>
               <div className="stat-label">Principes Fondamentaux</div>
             </div>
             <div className="stat">
@@ -151,7 +234,7 @@ const AfroInterface = () => {
         </div>
       </section>
 
-      {/* Principles Section */}
+      {/* Principles Section - Données statiques */}
       <section id="principes" className="features-section">
         <div className="container">
           <div className="section-header">
@@ -162,23 +245,23 @@ const AfroInterface = () => {
           </div>
           
           <div className="features-grid">
-            {principles.map((principle, index) => (
+            {principles.map((principe, index) => (
               <div key={index} className="feature-card">
                 <div 
                   className="feature-icon"
-                  style={{ background: principle.color }}
+                  style={{ background: principe.color }}
                 >
-                  {principle.icon}
+                  {principe.icon}
                 </div>
-                <h3 className="feature-title">{principle.title}</h3>
-                <p className="feature-description">{principle.description}</p>
+                <h3 className="feature-title">{principe.title}</h3>
+                <p className="feature-description">{principe.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Main Content */}
+      {/* Main Content - Sections depuis l'API */}
       <section className="main">
         <div className="container">
           <div className="tabs-container">
@@ -207,88 +290,39 @@ const AfroInterface = () => {
             </div>
           </div>
           
-          <div className="sections-grid">
-            <div className="content-section">
-              <div className="section-header-card">
-                <div className="section-icon">
-                  <Heart size={28} />
-                </div>
-                <div className="section-title-content">
-                  <h3 className="section-title">Respect et Entraide</h3>
-                  <div className="section-stats">Pilier Fondamental</div>
-                </div>
-              </div>
-              <div className="section-content">
-                <p className="section-text">
-                  Le respect mutuel est la colonne vertébrale de notre communauté. 
-                  Nos anciens nous ont enseigné que chaque individu a sa place et 
-                  sa valeur dans le cercle communautaire.
-                </p>
-                <p className="section-text">
-                  L'entraide n'est pas une option mais un devoir sacré. Quand un 
-                  membre de la communauté souffre, c'est toute la communauté qui 
-                  ressent cette douleur et se mobilise.
-                </p>
-                <button className="section-link">
-                  Lire la suite
-                  <ArrowRight size={16} />
-                </button>
-              </div>
+          {loading.sections ? (
+            <div className="loading-section">
+              <Loader size={32} className="spinner" />
+              <p>Chargement du contenu...</p>
             </div>
-            
-            <div className="content-section">
-              <div className="section-header-card">
-                <div className="section-icon">
-                  <Globe size={28} />
-                </div>
-                <div className="section-title-content">
-                  <h3 className="section-title">Unité dans la Diversité</h3>
-                  <div className="section-stats">Force Collective</div>
-                </div>
-              </div>
-              <div className="section-content">
-                <p className="section-text">
-                  Nos différences sont notre richesse. Chaque ethnie, chaque culture 
-                  apporte sa couleur unique à la tapisserie magnifique de notre héritage commun.
-                </p>
-                <p className="section-text">
-                  L'arbre à palabre symbolise cette unité : différentes branches, 
-                  un même tronc, des racines communes qui nous relient à la terre mère.
-                </p>
-                <button className="section-link">
-                  Explorer nos racines
-                  <ArrowRight size={16} />
-                </button>
-              </div>
+          ) : error ? (
+            <div className="error-section">
+              <p>Erreur: {error}</p>
             </div>
-            
-            <div className="content-section">
-              <div className="section-header-card">
-                <div className="section-icon">
-                  <Clock size={28} />
+          ) : (
+            <div className="sections-grid">
+              {sectionsContenu.map((section) => (
+                <div key={section.id} className="content-section">
+                  <div className="section-header-card">
+                    <div className="section-icon">
+                      {sectionIcons[section.section_key] || <BookOpen size={28} />}
+                    </div>
+                    <div className="section-title-content">
+                      <h3 className="section-title">{section.title}</h3>
+                      <div className="section-stats">{section.subtitle}</div>
+                    </div>
+                  </div>
+                  <div className="section-content">
+                    {formatSectionContent(section.content_text)}
+                    <button className="section-link">
+                      Lire la suite
+                      <ArrowRight size={16} />
+                    </button>
+                  </div>
                 </div>
-                <div className="section-title-content">
-                  <h3 className="section-title">Transmission du Savoir</h3>
-                  <div className="section-stats">Héritage Éternel</div>
-                </div>
-              </div>
-              <div className="section-content">
-                <p className="section-text">
-                  La connaissance se transmet de bouche à oreille, de cœur à cœur, 
-                  sous l'ombre bienveillante de l'arbre sacré. Les anciens sont les 
-                  bibliothèques vivantes de notre peuple.
-                </p>
-                <p className="section-text">
-                  Chaque conte, chaque proverbe, chaque chanson porte en elle la 
-                  sagesse accumulée de générations qui ont marché avant nous.
-                </p>
-                <button className="section-link">
-                  Découvrir les contes
-                  <ArrowRight size={16} />
-                </button>
-              </div>
+              ))}
             </div>
-          </div>
+          )}
         </div>
       </section>
 
@@ -306,7 +340,7 @@ const AfroInterface = () => {
         </div>
       </section>
 
-      {/* Articles Section */}
+      {/* Articles Section - Depuis l'API */}
       <section className="features-section">
         <div className="container">
           <div className="section-header">
@@ -316,29 +350,38 @@ const AfroInterface = () => {
             </p>
           </div>
           
-          <div className="features-grid">
-            {articles.map(article => (
-              <div key={article.id} className="feature-card">
-                <div className="article-meta">
-                  <span className="article-category">{article.category}</span>
-                  <span className="article-info">{article.readTime} • {article.date}</span>
+          {loading.articles ? (
+            <div className="loading-section">
+              <Loader size={32} className="spinner" />
+              <p>Chargement des articles...</p>
+            </div>
+          ) : error ? (
+            <div className="error-section">
+              <p>Erreur: {error}</p>
+            </div>
+          ) : (
+            <div className="features-grid">
+              {articles.map(article => (
+                <div key={article.id} className="feature-card">
+                  <div className="article-meta">
+                    <span className="article-category">{article.category}</span>
+                    <span className="article-info">{article.read_time} • {article.publish_date}</span>
+                  </div>
+                  <h3 className="feature-title">{article.title}</h3>
+                  <p className="feature-description">{article.excerpt}</p>
+                  <button 
+                    className="section-link"
+                    onClick={() => handleOpenArticle(article)}
+                  >
+                    Lire l'article
+                    <ArrowRight size={16} />
+                  </button>
                 </div>
-                <h3 className="feature-title">{article.title}</h3>
-                <p className="feature-description">{article.excerpt}</p>
-                <button 
-                  className="section-link"
-                  onClick={() => setSelectedArticle(article)}
-                >
-                  Lire l'article
-                  <ArrowRight size={16} />
-                </button>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
-
-     
 
       {/* Article Modal */}
       {selectedArticle && (
@@ -358,8 +401,8 @@ const AfroInterface = () => {
                 <div className="article-meta">
                   <span className="article-category">{selectedArticle.category}</span>
                   <div className="article-info">
-                    <span className="info-item">{selectedArticle.readTime}</span>
-                    <span className="info-item">{selectedArticle.date}</span>
+                    <span className="info-item">{selectedArticle.read_time}</span>
+                    <span className="info-item">{selectedArticle.publish_date}</span>
                   </div>
                 </div>
                 <h2 className="article-title">{selectedArticle.title}</h2>
@@ -370,18 +413,21 @@ const AfroInterface = () => {
                 <p className="article-paragraph">
                   {selectedArticle.excerpt}
                 </p>
+                {selectedArticle.content && (
+                  <div>
+                    {selectedArticle.content.split('\n').map((paragraph, index) => (
+                      <p key={index} className="article-paragraph">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                )}
                 <p className="article-paragraph">
                   Sous l'ombre bienveillante de l'arbre à palabre, nos ancêtres se réunissaient 
                   pour partager leur sagesse, résoudre les conflits et prendre des décisions 
                   importantes pour la communauté. Ces moments sacrés étaient plus que de simples 
                   réunions ; c'étaient des occasions d'apprentissage, de transmission et de 
                   renforcement des liens communautaires.
-                </p>
-                <p className="article-paragraph">
-                  Chaque parole prononcée sous l'arbre sacré portait le poids de la tradition 
-                  et la lumière de la sagesse accumulée. Les anciens, gardiens de la connaissance, 
-                  partageaient leurs expériences tandis que les plus jeunes écoutaient avec 
-                  respect, s'imprégnant des enseignements qui guideraient leurs vies.
                 </p>
               </div>
               
