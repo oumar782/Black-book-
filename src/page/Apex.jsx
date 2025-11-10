@@ -11,10 +11,11 @@ const Apex = () => {
   const [loading, setLoading] = useState(true);
   const [selectedPost, setSelectedPost] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [error, setError] = useState(null);
 
   // URLs des APIs
-  const API_BASE = 'https://backblack.vercel.app';
-  const BLOG_API = `${API_BASE}/apex/`;
+  const API_BASE = 'https://backblack.vercel.app/api';
+  const BLOG_API = `${API_BASE}/apex`;
 
   // Données initiales enrichies (fallback si API échoue)
   const defaultSections = [
@@ -24,11 +25,12 @@ const Apex = () => {
       content: "Les découvertes archéologiques en Afrique ont révélé les plus anciens vestiges humains, démontrant que l'évolution complète de l'homme moderne s'est déroulée sur le continent africain. De Lucy en Éthiopie aux sites de Sterkfontein en Afrique du Sud, l'Afrique regorge de sites préhistoriques qui retracent l'histoire de l'humanité sur plusieurs millions d'années.\n\nLes recherches génétiques confirment que tous les humains modernes partagent des ancêtres communs originaires d'Afrique. L'ADN mitochondrial de l'Ève mitochondriale remonte à 200 000 ans en Afrique, établissant notre origine commune.\n\nCette réalité scientifique fondamentale nous rappelle notre unité et notre histoire partagée en tant qu'espèce humaine.",
       icon: 'Globe',
       stats: "7M d'années d'histoire",
-      color: "var(--color-primary)",
+      color: "#e53e3e",
       category: "archéologie",
       author_name: "Dr. Sarah Mensah",
       read_time: 8,
-      published_at: "2024-01-15T10:30:00.000Z"
+      published_at: "2024-01-15T10:30:00.000Z",
+      is_published: true
     },
     {
       id: 2,
@@ -36,11 +38,12 @@ const Apex = () => {
       content: "Découverte en 1974 en Éthiopie, Lucy (Australopithecus afarensis) représente l'un des fossiles les plus complets jamais trouvés. Âgée de 3,2 millions d'années, elle démontre la bipédie précoce de nos ancêtres et constitue une pièce maîtresse dans la compréhension de l'évolution humaine.\n\nLes analyses ont montré que Lucy mesurait environ 1,10 mètre et pesait 27 kg. Sa structure osseuse indique qu'elle était bipède, mais conservait encore une aptitude à grimper aux arbres.\n\nCette découverte a confirmé que la bipédie est apparue avant le développement important du cerveau chez les hominidés, révolutionnant notre compréhension de l'évolution humaine.",
       icon: 'Users',
       stats: "3.2M d'années",
-      color: "var(--color-secondary)",
+      color: "#3182ce",
       category: "fossiles",
       author_name: "Prof. Jean Koffi",
       read_time: 6,
-      published_at: "2024-01-14T14:20:00.000Z"
+      published_at: "2024-01-14T14:20:00.000Z",
+      is_published: true
     },
     {
       id: 3,
@@ -48,11 +51,12 @@ const Apex = () => {
       content: "L'Égypte antique, le Royaume du Mali, l'Empire du Ghana, le Grand Zimbabwe... L'Afrique a vu naître certaines des civilisations les plus avancées de l'histoire humaine, avec des réalisations architecturales, scientifiques et culturelles remarquables.\n\nLes pyramides de Gizeh, construites il y a plus de 4500 ans, témoignent d'une maîtrise technique exceptionnelle. Le Royaume du Mali, sous l'empereur Mansa Moussa, était l'un des plus riches et puissants de son époque.\n\nCes civilisations ont développé des systèmes d'écriture, des connaissances astronomiques avancées et des réseaux commerciaux sophistiqués bien avant les contacts avec d'autres continents.",
       icon: 'History',
       stats: "10 000 ans d'histoire",
-      color: "var(--color-accent)",
+      color: "#38a169",
       category: "civilisations",
       author_name: "Dr. Amina Diallo",
       read_time: 10,
-      published_at: "2024-01-13T09:15:00.000Z"
+      published_at: "2024-01-13T09:15:00.000Z",
+      is_published: true
     },
     {
       id: 4,
@@ -60,11 +64,12 @@ const Apex = () => {
       content: "Les recherches en génétique confirment que toute l'humanité moderne partage des ancêtres communs originaires d'Afrique. L'ADN mitochondrial de l'Ève mitochondriale remonte à 200 000 ans en Afrique, établissant notre origine commune.\n\nLes analyses génétiques montrent que la diversité génétique est la plus élevée en Afrique, ce qui soutient la théorie de l'origine africaine de l'humanité. Chaque population humaine hors d'Afrique ne représente qu'un sous-ensemble de la diversité génétique africaine.\n\nCes découvertes ont des implications importantes pour comprendre les migrations humaines à travers le monde et notre unité fondamentale en tant qu'espèce.",
       icon: 'Dna',
       stats: "99.9% ADN commun",
-      color: "var(--color-primary)",
+      color: "#805ad5",
       category: "génétique",
       author_name: "Dr. Kwame Nkrumah",
       read_time: 7,
-      published_at: "2024-01-12T16:45:00.000Z"
+      published_at: "2024-01-12T16:45:00.000Z",
+      is_published: true
     }
   ];
 
@@ -91,13 +96,34 @@ const Apex = () => {
   const fetchBlogPosts = async () => {
     try {
       setLoading(true);
-      const response = await fetch(BLOG_API);
-      if (response.ok) {
-        const data = await response.json();
-        setBlogPosts(data);
+      setError(null);
+      
+      const params = new URLSearchParams();
+      if (selectedCategory !== 'all') params.append('category', selectedCategory);
+      if (searchTerm) params.append('search', searchTerm);
+      
+      const url = `${BLOG_API}${params.toString() ? `?${params.toString()}` : ''}`;
+      
+      const response = await fetch(url);
+      
+      if (!response.ok) {
+        throw new Error(`Erreur HTTP: ${response.status}`);
       }
+      
+      const data = await response.json();
+      
+      // S'assurer que les données ont la structure attendue
+      const formattedData = data.map(post => ({
+        ...post,
+        icon: post.icon || getDefaultIcon(post.category),
+        color: post.color || getCategoryColor(post.category),
+        stats: post.stats || getDefaultStats(post.category)
+      }));
+      
+      setBlogPosts(formattedData);
     } catch (error) {
       console.error('Erreur lors du chargement des articles:', error);
+      setError('Impossible de charger les articles. Affichage des données de démonstration.');
       // Utiliser les données par défaut en cas d'erreur
       setBlogPosts(defaultSections);
     } finally {
@@ -105,22 +131,79 @@ const Apex = () => {
     }
   };
 
+  // Fonctions utilitaires pour les données par défaut
+  const getDefaultIcon = (category) => {
+    const iconMap = {
+      'archéologie': 'Globe',
+      'fossiles': 'Users',
+      'civilisations': 'History',
+      'génétique': 'Dna',
+      'savoirs': 'BookOpen',
+      'technologie': 'Zap',
+      'évolution': 'Compass'
+    };
+    return iconMap[category] || 'Star';
+  };
+
+  const getCategoryColor = (category) => {
+    const colorMap = {
+      'archéologie': '#e53e3e',
+      'fossiles': '#3182ce',
+      'civilisations': '#38a169',
+      'génétique': '#805ad5',
+      'savoirs': '#d69e2e',
+      'technologie': '#dd6b20',
+      'évolution': '#319795'
+    };
+    return colorMap[category] || '#718096';
+  };
+
+  const getDefaultStats = (category) => {
+    const statsMap = {
+      'archéologie': "7M d'années d'histoire",
+      'fossiles': "3.2M d'années",
+      'civilisations': "10 000 ans d'histoire",
+      'génétique': "99.9% ADN commun",
+      'savoirs': "Savoirs ancestraux",
+      'technologie': "Innovations majeures",
+      'évolution': "Processus évolutif"
+    };
+    return statsMap[category] || "Données historiques";
+  };
+
   // Ouvrir le modal avec l'article complet
-  const openModal = (post) => {
-    setSelectedPost(post);
+  const openModal = async (post) => {
+    try {
+      // Si l'article ne contient pas le contenu complet, on le charge depuis l'API
+      if (!post.content || post.content.length < 500) {
+        const response = await fetch(`${BLOG_API}/${post.id}`);
+        if (response.ok) {
+          const fullPost = await response.json();
+          setSelectedPost(fullPost);
+        } else {
+          setSelectedPost(post);
+        }
+      } else {
+        setSelectedPost(post);
+      }
+    } catch (error) {
+      console.error('Erreur lors du chargement de l\'article complet:', error);
+      setSelectedPost(post);
+    }
     setShowModal(true);
-    document.body.style.overflow = 'hidden'; // Empêcher le scroll
+    document.body.style.overflow = 'hidden';
   };
 
   // Fermer le modal
   const closeModal = () => {
     setShowModal(false);
     setSelectedPost(null);
-    document.body.style.overflow = 'auto'; // Rétablir le scroll
+    document.body.style.overflow = 'auto';
   };
 
   // Formater la date
   const formatDate = (dateString) => {
+    if (!dateString) return 'Date inconnue';
     return new Date(dateString).toLocaleDateString('fr-FR', {
       year: 'numeric',
       month: 'long',
@@ -128,10 +211,10 @@ const Apex = () => {
     });
   };
 
-  // Filtrer les sections
+  // Filtrer les sections (pour les données par défaut)
   const filteredSections = blogPosts.filter(section => {
     const matchesSearch = section.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                         section.content.toLowerCase().includes(searchTerm.toLowerCase());
+                         (section.content && section.content.toLowerCase().includes(searchTerm.toLowerCase()));
     const matchesCategory = selectedCategory === 'all' || section.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -164,9 +247,13 @@ const Apex = () => {
     return IconComponent ? React.createElement(IconComponent, { className: "icon" }) : React.createElement(Star, { className: "icon" });
   };
 
+  // Effet pour charger les articles
   useEffect(() => {
     fetchBlogPosts();
-    
+  }, [selectedCategory, searchTerm]);
+
+  // Effet pour le scroll
+  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
     };
@@ -272,6 +359,13 @@ const Apex = () => {
       {/* Main Content */}
       <main className="main">
         <div className="container">
+          {/* Message d'erreur */}
+          {error && (
+            <div className="error-banner">
+              <span>{error}</span>
+            </div>
+          )}
+
           {/* Filtre Section */}
           <div className="filter-section">
             <div className="filter-container">
@@ -374,7 +468,7 @@ const Apex = () => {
               </div>
             ) : filteredSections.length > 0 ? (
               filteredSections.map((section, index) => (
-                <section key={section.id} className="content-section" data-aos="fade-up" data-aos-delay={index * 100}>
+                <section key={section.id || index} className="content-section" data-aos="fade-up" data-aos-delay={index * 100}>
                   <div className="section-header-card">
                     <div className="section-icon" style={{ color: section.color }}>
                       {getIconComponent(section.icon)}
@@ -387,7 +481,9 @@ const Apex = () => {
                   </div>
                   <div className="section-content">
                     <p className="section-text">
-                      {section.content.split('\n')[0].substring(0, 200)}...
+                      {section.content ? 
+                        section.content.split('\n')[0].substring(0, 200) + '...' : 
+                        'Contenu non disponible'}
                     </p>
                     <button 
                       className="section-link"
@@ -450,7 +546,7 @@ const Apex = () => {
                     </span>
                     <span className="info-item">
                       <Calendar size={16} />
-                      {selectedPost.published_at ? formatDate(selectedPost.published_at) : 'Date inconnue'}
+                      {formatDate(selectedPost.published_at)}
                     </span>
                     <span className="info-item">
                       <Clock size={16} />
@@ -464,11 +560,17 @@ const Apex = () => {
               </div>
 
               <div className="article-content">
-                {selectedPost.content.split('\n').map((paragraph, index) => (
-                  <p key={index} className="article-paragraph">
-                    {paragraph}
-                  </p>
-                ))}
+                {selectedPost.content ? (
+                  selectedPost.content.split('\n').map((paragraph, index) => (
+                    paragraph.trim() && (
+                      <p key={index} className="article-paragraph">
+                        {paragraph}
+                      </p>
+                    )
+                  ))
+                ) : (
+                  <p className="article-paragraph">Contenu non disponible.</p>
+                )}
               </div>
 
               <div className="article-footer">
