@@ -20,8 +20,8 @@ const HeaderPremium = () => {
       href: '/a-propos', 
       current: false,
       submenu: [
-        { name: 'Mot du Promoteur', href: '/mot-du-promoteur' },
-        { name: 'Notre Mission', href: '/a-propos' }
+        { name: 'Mot du Promoteur', href: '/Mot-du-promotteur' },
+        { name: 'Notre Mission', href: '/À-propos' }
       ]
     },
     { name: 'The Apex', href: '/apex', current: false },
