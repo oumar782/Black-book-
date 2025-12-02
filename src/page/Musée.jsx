@@ -2145,11 +2145,11 @@ const MuséePersonnalités = () => {
             </button>
             <button className={`mp-tab ${activeTab === 'scientifique' ? 'mp-active' : ''}`} onClick={() => setActiveTab('scientifique')}>
               <Award size={18} />
-              Sciences & Technologies
+              Scientifique
             </button>
             <button className={`mp-tab ${activeTab === 'non_scientifique' ? 'mp-active' : ''}`} onClick={() => setActiveTab('non_scientifique')}>
               <Users size={18} />
-              Arts, Culture & Société
+              Non-scientifique
             </button>
           </div>
         </div>
