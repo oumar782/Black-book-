@@ -2193,7 +2193,7 @@ const MuséePersonnalités = () => {
                 </div>
                 <div className="mp-filter-row">
                   <div className="mp-filter-group">
-                    <label>Catégorie principale</label>
+                    <label>Domaine</label>
                     <select 
                       value={selectedCategory} 
                       onChange={(e) => {
@@ -2212,7 +2212,7 @@ const MuséePersonnalités = () => {
                   </div>
                   {selectedCategory && (
                     <div className="mp-filter-group">
-                      <label>Sous-catégorie</label>
+                      <label>Sous-domaine</label>
                       <select 
                         value={selectedSubCategory} 
                         onChange={(e) => {

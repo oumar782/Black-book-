@@ -429,9 +429,10 @@
   transform: rotate(180deg);
 }
 
+/* RÉORGANISATION DES FILTRES AVANCÉS */
 .mp-advanced-filters {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
   padding: 2rem;
   background: rgba(255, 255, 255, 0.02);
@@ -439,11 +440,49 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* Première ligne : Catégorie et Sous-catégorie sur la même ligne */
+.mp-filter-line-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: end;
+}
+
+/* Deuxième ligne : Discipline et Spécialité sur la même ligne */
+.mp-filter-line-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: end;
+}
+
+/* Troisième ligne : Prix, Période et Année sur la même ligne */
+.mp-filter-line-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  align-items: end;
+}
+
+/* Quatrième ligne : Intervalles de temps sur la même ligne */
+.mp-filter-line-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: end;
+}
+
+.mp-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .mp-filter-group label {
-  display: block;
-  margin-bottom: 0.5rem;
   color: var(--mp-color-gray);
   font-weight: 500;
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 /* Styles pour les champs d'intervalle de temps */
@@ -492,7 +531,6 @@
   background: rgba(226, 88, 34, 0.1);
   border-radius: var(--mp-border-radius);
   border-left: 3px solid var(--mp-color-primary);
-  grid-column: 1 / -1;
   margin-top: 0.5rem;
 }
 
@@ -676,6 +714,13 @@
   color: var(--mp-color-primary);
   font-weight: 600;
   padding: 8px;
+}
+
+/* Afficher les Prix sous Discipline */
+.mp-awards-wrapper {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Contenu principal */
@@ -1568,8 +1613,12 @@
     grid-template-columns: 1fr;
   }
   
-  .mp-filter-row {
+  .mp-filter-line-1,
+  .mp-filter-line-2,
+  .mp-filter-line-3,
+  .mp-filter-line-4 {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
 
