@@ -25,15 +25,12 @@ const HeaderPremium = () => {
       ]
     },
     { name: 'The Apex', href: '/apex', current: false },
-    { name: 'Ressources', href: '/nos-ressources', current: false },
     { name: 'Événements', href: '/evenements', current: false },
     { name: 'Défis', href: '/defis', current: false },
     { name: 'The Sun', href: '/the-sun', current: false },
-    { name: 'Boutique', href: '/boutique', current: false },
     { name: 'Musée', href: '/Musée', current: false },
     { name: 'Tourisme', href: '/tourisme', current: false },
     { name: 'Lada', href: '/lada', current: false },
-    { name: 'Maps et Stats', href: '/maps-stats', current: false },
     { name: 'Caméléon', href: '/cameleon', current: false },
     { name: 'Fracture', href: '/fracture', current: false },
     { name: 'Contact', href: '/contact', current: false }
@@ -919,14 +916,7 @@ const HeaderPremium = () => {
           </nav>
 
           {/* Desktop Auth Buttons */}
-          <div className="header-premium-auth-buttons">
-            <a href="/connexion" className="header-premium-auth-btn header-premium-login-btn">
-              Connexion
-            </a>
-            <a href="/inscription" className="header-premium-auth-btn header-premium-signup-btn">
-              S'inscrire
-            </a>
-          </div>
+          
 
           {/* Mobile Menu Toggle */}
           <button
@@ -946,22 +936,7 @@ const HeaderPremium = () => {
           <div className="header-premium-mobile-menu animate-slideIn">
             <nav className="header-premium-mobile-nav">
               {/* Mobile Auth Buttons */}
-              <div className="header-premium-mobile-auth">
-                <a 
-                  href="/connexion" 
-                  className="header-premium-mobile-auth-btn header-premium-mobile-login"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Connexion
-                </a>
-                <a 
-                  href="/inscription" 
-                  className="header-premium-mobile-auth-btn header-premium-mobile-signup"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  S'inscrire
-                </a>
-              </div>
+          
 
               {/* Main Navigation Section */}
               <div className="header-premium-mobile-section">
