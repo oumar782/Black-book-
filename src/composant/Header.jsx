@@ -31,7 +31,7 @@ const HeaderPremium = () => {
     { name: 'Musée', href: '/Musée', current: false },
     { name: 'Tourisme', href: '/tourisme', current: false },
     { name: 'Lada', href: '/lada', current: false },
-    { name: 'Caméléon', href: '/cameleon', current: false },
+    { name: 'Caméléon', href: '/Caméléon', current: false },
     { name: 'Fracture', href: '/fracture', current: false },
     { name: 'Contact', href: '/contact', current: false }
   ];
