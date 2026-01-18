@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Search, Filter, X, Globe, Users, Leaf, TrendingUp, BookOpen, Heart, Zap, ArrowRight, Menu, X as CloseIcon, Loader } from 'lucide-react';
+import { ChevronDown, Search, Filter, X, Globe, Users, Leaf, TrendingUp, BookOpen, Heart, Zap, ArrowRight, Loader, Calendar, Target, Shield, Lightbulb, Sparkles, Star, Award, TargetIcon, BarChart3 } from 'lucide-react';
 import './defis.css';
 
 const DEFISPage = () => {
   const [activeTab, setActiveTab] = useState('tous');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('tous');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [defisData, setDefisData] = useState([]);
@@ -15,12 +14,12 @@ const DEFISPage = () => {
 
   // Icônes pour chaque section
   const sectionIcons = {
-    sante: <Heart size={28} />,
-    education: <BookOpen size={28} />,
-    environnement: <Leaf size={28} />,
-    economie: <TrendingUp size={28} />,
-    culture: <Globe size={28} />,
-    innovation: <Zap size={28} />
+    sante: <Heart size={28} className="defis-section-icon-svg" />,
+    education: <BookOpen size={28} className="defis-section-icon-svg" />,
+    environnement: <Leaf size={28} className="defis-section-icon-svg" />,
+    economie: <TrendingUp size={28} className="defis-section-icon-svg" />,
+    culture: <Globe size={28} className="defis-section-icon-svg" />,
+    innovation: <Zap size={28} className="defis-section-icon-svg" />
   };
 
   const categories = [
@@ -33,38 +32,74 @@ const DEFISPage = () => {
     { id: 'innovation', name: 'Innovation', icon: <Zap size={16} /> }
   ];
 
-  const timelineData = [
-    { year: "2023", event: "Sommet sur le Climat Africain", location: "Nairobi, Kenya" },
-    { year: "2022", event: "Initiative Santé pour Tous", location: "Dakar, Sénégal" },
-    { year: "2021", event: "Plan d'Éducation Digitale", location: "Accra, Ghana" },
-    { year: "2020", event: "Protocole de Préservation Culturelle", location: "Addis-Abeba, Éthiopie" },
-    { year: "2019", event: "Alliance pour l'Innovation", location: "Kigali, Rwanda" }
+  // Données des réalisations (remplace la timeline)
+  const achievements = [
+    {
+      year: "2023",
+      title: "Sommet sur le Climat Africain",
+      icon: <Leaf size={24} />,
+      description: "Engagement de 100K jeunes pour des initiatives vertes",
+      stats: "+45% d'impact",
+      color: "#10b981"
+    },
+    {
+      year: "2022",
+      title: "Initiative Santé pour Tous",
+      icon: <Heart size={24} />,
+      description: "Formation de 5000 agents de santé communautaires",
+      stats: "127K bénéficiaires",
+      color: "#ef4444"
+    },
+    {
+      year: "2021",
+      title: "Plan d'Éducation Digitale",
+      icon: <BookOpen size={24} />,
+      description: "Accès à l'éducation numérique pour 50K étudiants",
+      stats: "92% de réussite",
+      color: "#3b82f6"
+    },
+    {
+      year: "2020",
+      title: "Protocole Culturel Panafricain",
+      icon: <Globe size={24} />,
+      description: "Préservation de 200 traditions culturelles menacées",
+      stats: "42 pays impliqués",
+      color: "#8b5cf6"
+    },
+    {
+      year: "2019",
+      title: "Alliance pour l'Innovation",
+      icon: <Zap size={24} />,
+      description: "Incubation de 150 startups technologiques africaines",
+      stats: "$2.5M levés",
+      color: "#f59e0b"
+    }
   ];
 
   const features = [
     {
-      icon: <Users size={32} />,
-      title: "Engagement Communautaire",
-      description: "Mobiliser les jeunes autour des enjeux qui affectent directement leurs communautés et leur avenir."
+      icon: <Target size={32} />,
+      title: "Impact Ciblé",
+      description: "Des solutions spécifiques aux défis les plus pressants de notre génération"
     },
     {
-      icon: <Globe size={32} />,
-      title: "Perspective Globale",
-      description: "Analyser les défis dans leur contexte mondial tout en proposant des solutions locales adaptées."
+      icon: <Shield size={32} />,
+      title: "Résilience Collective",
+      description: "Renforcement des capacités communautaires pour un développement durable"
     },
     {
-      icon: <TrendingUp size={32} />,
-      title: "Impact Mesurable",
-      description: "Suivre et évaluer l'impact de nos actions à travers des indicateurs clairs et transparents."
+      icon: <Lightbulb size={32} />,
+      title: "Innovation Sociale",
+      description: "Approches créatives mêlant tradition et modernité"
     },
     {
-      icon: <Leaf size={32} />,
-      title: "Durabilité Environnementale",
-      description: "Intégrer la protection de l'environnement dans toutes nos initiatives de développement."
+      icon: <Sparkles size={32} />,
+      title: "Transformation",
+      description: "Changement systémique à travers l'éducation et la mobilisation"
     }
   ];
 
-  // 🔌 Récupérer les données depuis l'API
+  // Récupérer les données depuis l'API
   useEffect(() => {
     const fetchDefis = async () => {
       try {
@@ -105,7 +140,7 @@ const DEFISPage = () => {
     fetchDefis();
   }, []);
 
-  // Filtrer les sections selon la recherche et la catégorie
+  // Filtrer les sections
   const filteredSections = defisData.filter(section => {
     const matchesSearch = section.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                          section.content.toLowerCase().includes(searchQuery.toLowerCase());
@@ -143,25 +178,32 @@ const DEFISPage = () => {
     };
   }, [isModalOpen]);
 
-  // Afficher le loader pendant le chargement
   if (loading) {
     return (
-      <div className="defis-app">
-        <div className="defis-loading">
-          <Loader size={48} className="defis-spinner" />
-          <p>Chargement des défis...</p>
+      <div className="defis-page-wrapper">
+        <div className="defis-loading-state">
+          <div className="defis-loader-animation">
+            <Loader size={48} className="defis-spinner-icon" />
+            <div className="defis-loader-particles">
+              {[...Array(12)].map((_, i) => (
+                <div key={i} className="defis-loader-particle" style={{ '--i': i }}></div>
+              ))}
+            </div>
+          </div>
+          <p className="defis-loading-text">Chargement des défis...</p>
         </div>
       </div>
     );
   }
 
-  // Afficher l'erreur si nécessaire
   if (error && defisData.length === 0) {
     return (
-      <div className="defis-app">
-        <div className="defis-error">
-          <p>Erreur: {error}</p>
-          <button onClick={() => window.location.reload()}>
+      <div className="defis-page-wrapper">
+        <div className="defis-error-state">
+          <div className="defis-error-icon">⚠️</div>
+          <h3 className="defis-error-title">Erreur de chargement</h3>
+          <p className="defis-error-message">{error}</p>
+          <button className="defis-retry-button" onClick={() => window.location.reload()}>
             Réessayer
           </button>
         </div>
@@ -170,71 +212,141 @@ const DEFISPage = () => {
   }
 
   return (
-    <div className="defis-app">
+    <div className="defis-page-wrapper">
       {/* Hero Section */}
-      <section className="defis-hero">
-        <div className="defis-hero-background">
-          <div className="defis-hero-gradient"></div>
-          <div className="defis-hero-pattern"></div>
-        </div>
-        
-        <div className="defis-container">
-          <div className="defis-hero-content">
-            <h1 className="defis-hero-title">
-              Réveiller la <span className="defis-hero-highlight">Conscience</span> Collective
-            </h1>
-            
-            <p className="defis-hero-subtitle">
-              D.É.F.I.S. est une plateforme dédiée à la mobilisation des jeunes autour des enjeux critiques 
-              qui façonnent l'avenir de l'Afrique et de notre planète. Notre héritage est une terre fertile 
-              qui attend d'être cultivée par les générations montantes.
-            </p>
-            
-            <div className="defis-hero-stats">
-              <div className="defis-stat">
-                <div className="defis-stat-number">{defisData.length}+</div>
-                <div className="defis-stat-label">Domaines d'Action</div>
-              </div>
-              <div className="defis-stat">
-                <div className="defis-stat-number">127K</div>
-                <div className="defis-stat-label">Jeunes Mobilisés</div>
-              </div>
-              <div className="defis-stat">
-                <div className="defis-stat-number">42</div>
-                <div className="defis-stat-label">Projets Actifs</div>
-              </div>
-            </div>
-            
-            <button className="defis-cta-button">
-              Rejoindre le Mouvement
-              <ArrowRight size={20} />
-            </button>
+      <section className="defis-hero-section">
+        <div className="defis-hero-background-effect">
+          <div className="defis-hero-gradient-overlay"></div>
+          <div className="defis-hero-orbits">
+            <div className="defis-orbit defis-orbit-1"></div>
+            <div className="defis-orbit defis-orbit-2"></div>
+            <div className="defis-orbit defis-orbit-3"></div>
+          </div>
+          <div className="defis-hero-particles">
+            {[...Array(20)].map((_, i) => (
+              <div key={i} className="defis-hero-particle"></div>
+            ))}
           </div>
         </div>
         
-        <div className="defis-scroll-indicator">
-          <ChevronDown size={24} />
+        <div className="defis-hero-container">
+          <div className="defis-hero-content-wrapper">
+            <div className="defis-hero-badge">
+              <Sparkles size={16} />
+              <span>Initiative Panafricaine</span>
+            </div>
+            
+            <h1 className="defis-hero-main-title">
+              <span className="defis-hero-title-line">Réveiller la</span>
+              <span className="defis-hero-title-highlight">
+                Conscience <Star size={32} className="defis-title-star" />
+              </span>
+              <span className="defis-hero-title-line">Collective</span>
+            </h1>
+            
+            <p className="defis-hero-description">
+              D.É.F.I.S. mobilise la jeunesse africaine autour des enjeux déterminants 
+              pour l'avenir du continent. Notre mission : transformer les défis en 
+              opportunités de croissance et d'innovation.
+            </p>
+            
+            <div className="defis-hero-stats-grid">
+              <div className="defis-hero-stat-item">
+                <div className="defis-stat-value">{defisData.length}+</div>
+                <div className="defis-stat-label">Domaines d'Action</div>
+              </div>
+              <div className="defis-hero-stat-item">
+                <div className="defis-stat-value">127K</div>
+                <div className="defis-stat-label">Jeunes Engagés</div>
+              </div>
+              <div className="defis-hero-stat-item">
+                <div className="defis-stat-value">42</div>
+                <div className="defis-stat-label">Projets Actifs</div>
+              </div>
+              <div className="defis-hero-stat-item">
+                <div className="defis-stat-value">89%</div>
+                <div className="defis-stat-label">Impact Mesurable</div>
+              </div>
+            </div>
+            
+            <div className="defis-hero-actions">
+              <button className="defis-primary-action-button">
+                Rejoindre le Mouvement
+                <ArrowRight size={20} className="defis-button-icon" />
+              </button>
+              <button className="defis-secondary-action-button">
+                <BookOpen size={20} />
+                Voir le Manifeste
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div className="defis-scroll-indicator-wrapper">
+          <ChevronDown size={24} className="defis-scroll-icon" />
         </div>
       </section>
 
       {/* Features Section */}
       <section className="defis-features-section" id="mission">
-        <div className="defis-container">
-          <div className="defis-section-header">
-            <h2 className="defis-section-heading">Notre Approche</h2>
-            <p className="defis-section-subtitle">
-              Une méthodologie holistique pour adresser les défis complexes de notre temps
+        <div className="defis-features-container">
+          <div className="defis-section-header-wrapper">
+            <h2 className="defis-section-main-heading">Notre Approche</h2>
+            <p className="defis-section-subtitle-text">
+              Une méthodologie intégrée pour adresser les défis complexes avec agilité et impact
             </p>
           </div>
           
-          <div className="defis-features-grid">
+          <div className="defis-features-grid-wrapper">
             {features.map((feature, index) => (
-              <div key={index} className="defis-feature-card">
-                <div className="defis-feature-icon">
+              <div key={index} className="defis-feature-card-item">
+                <div className="defis-feature-icon-wrapper" style={{ '--delay': index * 0.1 + 's' }}>
                   {feature.icon}
+                  <div className="defis-feature-icon-glow"></div>
                 </div>
-                <h3 className="defis-feature-title">{feature.title}</h3>
-                <p className="defis-feature-description">{feature.description}</p>
+                <h3 className="defis-feature-card-title">{feature.title}</h3>
+                <p className="defis-feature-card-description">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Achievements Section (remplace timeline) */}
+      <section className="defis-achievements-section">
+        <div className="defis-achievements-container">
+          <div className="defis-section-header-wrapper">
+            <h2 className="defis-section-main-heading">Nos Réalisations</h2>
+            <p className="defis-section-subtitle-text">
+              Des résultats concrets qui témoignent de notre impact transformateur
+            </p>
+          </div>
+          
+          <div className="defis-achievements-grid">
+            {achievements.map((achievement, index) => (
+              <div key={index} className="defis-achievement-card">
+                <div className="defis-achievement-header">
+                  <div className="defis-achievement-year" style={{ color: achievement.color }}>
+                    {achievement.year}
+                  </div>
+                  <div className="defis-achievement-icon" style={{ backgroundColor: achievement.color + '20' }}>
+                    {achievement.icon}
+                  </div>
+                </div>
+                <h3 className="defis-achievement-title">{achievement.title}</h3>
+                <p className="defis-achievement-description">{achievement.description}</p>
+                <div className="defis-achievement-stats" style={{ color: achievement.color }}>
+                  {achievement.stats}
+                </div>
+                <div className="defis-achievement-progress">
+                  <div 
+                    className="defis-achievement-progress-bar" 
+                    style={{ 
+                      backgroundColor: achievement.color,
+                      animationDelay: index * 0.2 + 's'
+                    }}
+                  ></div>
+                </div>
               </div>
             ))}
           </div>
@@ -242,44 +354,44 @@ const DEFISPage = () => {
       </section>
 
       {/* Main Content - Domaines d'Intervention */}
-      <section className="defis-main" id="domaines">
-        <div className="defis-container">
-          <div className="defis-tabs-container">
-            <div className="defis-tabs">
+      <section className="defis-main-content-section" id="domaines">
+        <div className="defis-main-container">
+          <div className="defis-tabs-wrapper">
+            <div className="defis-tabs-container">
               {categories.map(category => (
                 <button
                   key={category.id}
-                  className={`defis-tab ${activeTab === category.id ? 'defis-tab-active' : ''}`}
+                  className={`defis-tab-button ${activeTab === category.id ? 'defis-tab-active' : ''}`}
                   onClick={() => {
                     setActiveTab(category.id);
                     setSelectedCategory(category.id);
                   }}
                 >
-                  {category.icon}
-                  {category.name}
+                  <span className="defis-tab-icon">{category.icon}</span>
+                  <span className="defis-tab-text">{category.name}</span>
                 </button>
               ))}
             </div>
           </div>
 
           {/* Filtres */}
-          <div className="defis-filter-section">
-            <div className="defis-filter-container">
-              <div className="defis-search-box">
-                <Search className="defis-search-icon" size={20} />
+          <div className="defis-filter-section-wrapper">
+            <div className="defis-filter-controls">
+              <div className="defis-search-wrapper">
+                <Search className="defis-search-input-icon" size={20} />
                 <input
                   type="text"
-                  className="defis-search-input"
-                  placeholder="Rechercher un domaine d'intervention..."
+                  className="defis-search-input-field"
+                  placeholder="Rechercher un défi..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
               
-              <div className="defis-category-filter">
-                <Filter className="defis-filter-icon" size={20} />
+              <div className="defis-category-select-wrapper">
+                <Filter className="defis-filter-select-icon" size={20} />
                 <select 
-                  className="defis-category-select"
+                  className="defis-category-select-field"
                   value={selectedCategory}
                   onChange={(e) => {
                     setSelectedCategory(e.target.value);
@@ -296,23 +408,31 @@ const DEFISPage = () => {
             </div>
             
             {/* Indicateurs de filtre */}
-            <div className="defis-filter-indicators">
+            <div className="defis-filter-indicators-wrapper">
               {searchQuery && (
-                <div className="defis-filter-tag">
-                  Recherche: "{searchQuery}"
-                  <button onClick={() => setSearchQuery('')}>
+                <div className="defis-filter-tag-item">
+                  <span className="defis-filter-tag-text">"{searchQuery}"</span>
+                  <button 
+                    className="defis-filter-tag-close"
+                    onClick={() => setSearchQuery('')}
+                  >
                     <X size={14} />
                   </button>
                 </div>
               )}
               
               {selectedCategory !== 'tous' && (
-                <div className="defis-filter-tag">
-                  Catégorie: {categories.find(c => c.id === selectedCategory)?.name}
-                  <button onClick={() => {
-                    setSelectedCategory('tous');
-                    setActiveTab('tous');
-                  }}>
+                <div className="defis-filter-tag-item">
+                  <span className="defis-filter-tag-text">
+                    {categories.find(c => c.id === selectedCategory)?.name}
+                  </span>
+                  <button 
+                    className="defis-filter-tag-close"
+                    onClick={() => {
+                      setSelectedCategory('tous');
+                      setActiveTab('tous');
+                    }}
+                  >
                     <X size={14} />
                   </button>
                 </div>
@@ -320,62 +440,85 @@ const DEFISPage = () => {
               
               {(searchQuery || selectedCategory !== 'tous') && (
                 <button 
-                  className="defis-clear-filters"
+                  className="defis-clear-filters-button"
                   onClick={() => {
                     setSearchQuery('');
                     setSelectedCategory('tous');
                     setActiveTab('tous');
                   }}
                 >
-                  Effacer tous les filtres
+                  Effacer les filtres
                 </button>
               )}
             </div>
             
             {/* Résultats du filtre */}
-            <div className="defis-filter-results">
-              <p className="defis-results-count">
-                {filteredSections.length} domaine{filteredSections.length !== 1 ? 's' : ''} trouvé{filteredSections.length !== 1 ? 's' : ''}
+            <div className="defis-results-info">
+              <p className="defis-results-count-text">
+                {filteredSections.length} défi{filteredSections.length !== 1 ? 's' : ''} correspondant{filteredSections.length !== 1 ? 's' : ''}
               </p>
             </div>
           </div>
 
           {/* Grille des sections */}
           {filteredSections.length > 0 ? (
-            <div className="defis-sections-grid">
-              {filteredSections.map((section) => (
-                <div key={section.id} className="defis-content-section">
-                  <div className="defis-section-header-card">
+            <div className="defis-sections-grid-wrapper">
+              {filteredSections.map((section, index) => (
+                <div 
+                  key={section.id} 
+                  className="defis-section-card"
+                  style={{ animationDelay: index * 0.1 + 's' }}
+                >
+                  <div className="defis-section-card-header">
                     <div 
-                      className="defis-section-icon"
-                      style={{ background: section.color }}
+                      className="defis-section-card-icon"
+                      style={{ background: `linear-gradient(135deg, ${section.color}, ${section.color}80)` }}
                     >
                       {sectionIcons[section.section_key] || <Globe size={28} />}
                     </div>
-                    <div className="defis-section-title-content">
-                      <h3 className="defis-section-title">{section.title}</h3>
-                      <div className="defis-section-stats">{section.stats}</div>
+                    <div className="defis-section-card-title-wrapper">
+                      <h3 className="defis-section-card-title">{section.title}</h3>
+                      <div className="defis-section-card-stats">{section.stats}</div>
                     </div>
                   </div>
                   
-                  <div className="defis-section-content">
-                    <p className="defis-section-text">{section.content}</p>
+                  <div className="defis-section-card-content">
+                    <p className="defis-section-card-text">{section.content}</p>
                     <button 
-                      className="defis-section-link"
+                      className="defis-section-card-button"
                       onClick={() => openArticleModal(section)}
                     >
-                      En savoir plus
-                      <ArrowRight size={16} />
+                      Explorer le défi
+                      <ArrowRight size={16} className="defis-card-button-icon" />
                     </button>
+                  </div>
+                  
+                  <div className="defis-section-card-footer">
+                    <div className="defis-progress-indicator">
+                      <div className="defis-progress-bar">
+                        <div 
+                          className="defis-progress-fill" 
+                          style={{ 
+                            width: '75%',
+                            background: section.color 
+                          }}
+                        ></div>
+                      </div>
+                      <span className="defis-progress-text">Impact en cours</span>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="defis-no-results">
-              <p>Aucun domaine ne correspond à votre recherche.</p>
+            <div className="defis-no-results-wrapper">
+              <div className="defis-no-results-icon">🔍</div>
+              <h3 className="defis-no-results-title">Aucun résultat trouvé</h3>
+              <p className="defis-no-results-message">
+                Aucun domaine ne correspond à votre recherche. Essayez d'autres termes.
+              </p>
               <button 
-                className="defis-reset-filters-btn"
+                className="defis-reset-filters-button"
                 onClick={() => {
                   setSearchQuery('');
                   setSelectedCategory('tous');
@@ -389,46 +532,27 @@ const DEFISPage = () => {
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="defis-timeline-section" id="historique">
-        <div className="defis-container">
-          <div className="defis-section-header">
-            <h2 className="defis-section-heading">Notre Parcours</h2>
-            <p className="defis-section-subtitle">
-              Les étapes marquantes de notre engagement pour le développement durable
-            </p>
-          </div>
-          
-          <div className="defis-timeline">
-            {timelineData.map((item, index) => (
-              <div key={index} className="defis-timeline-item">
-                <div className="defis-timeline-marker">
-                  <div style={{ fontSize: '0.8rem', fontWeight: 'bold' }}>
-                    {item.year}
-                  </div>
-                </div>
-                <div className="defis-timeline-content">
-                  <div className="defis-timeline-year">{item.year}</div>
-                  <h3 className="defis-timeline-event">{item.event}</h3>
-                  <div className="defis-timeline-location">{item.location}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Quote Section */}
-      <section className="defis-quote-section">
-        <div className="defis-container">
-          <div className="defis-quote-content">
-            <div className="defis-quote-icon">❝</div>
-            <blockquote className="defis-quote">
+      <section className="defis-quote-section-wrapper">
+        <div className="defis-quote-container">
+          <div className="defis-quote-content-wrapper">
+            <div className="defis-quote-decoration">
+              <div className="defis-quote-line defis-quote-line-left"></div>
+              <div className="defis-quote-mark">❝</div>
+              <div className="defis-quote-line defis-quote-line-right"></div>
+            </div>
+            
+            <blockquote className="defis-quote-text">
               L'héritage de nos ancêtres n'est pas un fardeau à porter, mais une terre à labourer. 
               Chaque génération a la responsabilité de faire fructifier ce qui lui a été transmis 
               et de préparer le terrain pour celles qui suivront.
             </blockquote>
-            <div className="defis-quote-author">— Philosophie D.É.F.I.S.</div>
+            
+            <div className="defis-quote-author-wrapper">
+              <div className="defis-quote-author-line"></div>
+              <div className="defis-quote-author">— Philosophie D.É.F.I.S.</div>
+              <div className="defis-quote-author-line"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -436,64 +560,71 @@ const DEFISPage = () => {
       {/* Modal d'article */}
       {isModalOpen && selectedArticle && (
         <div className="defis-modal-overlay" onClick={closeArticleModal}>
-          <div className="defis-article-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="defis-modal-header">
-              <button className="defis-modal-close" onClick={closeArticleModal}>
+          <div className="defis-article-modal-container" onClick={(e) => e.stopPropagation()}>
+            <div className="defis-modal-header-wrapper">
+              <button className="defis-modal-close-button" onClick={closeArticleModal}>
                 <X size={24} />
               </button>
             </div>
             
-            <div className="defis-modal-content">
-              <div className="defis-article-header">
-                <div className="defis-article-meta">
+            <div className="defis-modal-content-wrapper">
+              <div className="defis-article-modal-header">
+                <div className="defis-article-modal-meta">
                   <div 
-                    className="defis-article-category"
-                    style={{ background: selectedArticle.color }}
+                    className="defis-article-modal-category"
+                    style={{ 
+                      background: `linear-gradient(135deg, ${selectedArticle.color}, ${selectedArticle.color}80)` 
+                    }}
                   >
                     {selectedArticle.title}
                   </div>
-                  <div className="defis-article-info">
-                    <div className="defis-info-item">
-                      <TrendingUp size={16} />
-                      {selectedArticle.stats}
+                  <div className="defis-article-modal-info">
+                    <div className="defis-modal-info-item">
+                      <BarChart3 size={16} />
+                      <span>{selectedArticle.stats}</span>
                     </div>
-                    <div className="defis-info-item">
+                    <div className="defis-modal-info-item">
                       <Users size={16} />
-                      Impact Communautaire
+                      <span>Impact Communautaire</span>
                     </div>
                   </div>
                 </div>
                 
-                <h2 className="defis-article-title">{selectedArticle.title}</h2>
-                <div className="defis-article-stats">{selectedArticle.stats}</div>
+                <h2 className="defis-article-modal-title">{selectedArticle.title}</h2>
+                <div className="defis-article-modal-stats">{selectedArticle.stats}</div>
               </div>
               
-              <div className="defis-article-content">
-                <p className="defis-article-paragraph">
+              <div className="defis-article-modal-content">
+                <p className="defis-article-modal-paragraph">
                   {selectedArticle.full_content}
                 </p>
                 
-                <p className="defis-article-paragraph">
+                <p className="defis-article-modal-paragraph">
                   Notre approche combine recherche approfondie, mobilisation communautaire et plaidoyer 
                   politique pour créer un impact durable. Nous travaillons main dans la main avec les 
                   leaders locaux, les institutions académiques et les organisations de la société civile 
                   pour développer des solutions adaptées aux contextes spécifiques.
                 </p>
                 
-                <p className="defis-article-paragraph">
-                  L'engagement des jeunes est au cœur de notre méthodologie. Nous croyons fermement que 
-                  la prochaine génération détient les clés pour résoudre les défis les plus pressants 
-                  de notre temps, en s'appuyant à la fois sur la sagesse ancestrale et l'innovation moderne.
-                </p>
+                <div className="defis-modal-highlight-box">
+                  <TargetIcon size={24} className="defis-highlight-icon" />
+                  <div className="defis-highlight-content">
+                    <h4 className="defis-highlight-title">Objectif Stratégique</h4>
+                    <p className="defis-highlight-text">
+                      Réduire de 40% l'incidence de ce défi d'ici 2025 à travers des interventions 
+                      ciblées et des partenariats stratégiques.
+                    </p>
+                  </div>
+                </div>
               </div>
               
-              <div className="defis-article-footer">
-                <div className="defis-article-actions">
-                  <button className="defis-action-btn defis-action-btn-secondary">
+              <div className="defis-article-modal-footer">
+                <div className="defis-modal-actions">
+                  <button className="defis-modal-action-button defis-modal-action-secondary">
                     <BookOpen size={16} />
                     Télécharger le rapport
                   </button>
-                  <button className="defis-action-btn defis-action-btn-primary">
+                  <button className="defis-modal-action-button defis-modal-action-primary">
                     <Users size={16} />
                     Rejoindre l'initiative
                   </button>

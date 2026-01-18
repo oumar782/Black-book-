@@ -1,281 +1,309 @@
-import { useState, useEffect, useRef } from 'react';
-import { Users, Zap, Crown, Check, Star, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Compass, Map, Globe, Star, ArrowRight, Users, Shield, Crown, MapPin, Sparkles } from 'lucide-react';
 import './sous.css';
 
-const SouscriptionPremium = () => {
-  const [isAnnual, setIsAnnual] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  const plans = [
+const SouscriptionTourisme = () => {
+  const experiences = [
     {
-      name: "Explorateur",
-      price: "Gratuit",
-      annualPrice: "Gratuit",
-      priceDetail: "Pour toujours",
-      annualPriceDetail: "Pour toujours",
-      description: "Parfait pour découvrir notre univers",
-      popular: false,
-      color: "#8B7355",
-      features: [
-        "Accès à 50+ ressources gratuites",
-        "Newsletter mensuelle",
-        "Communauté Discord",
-        "Événements publics",
-        "Support par email"
-      ]
+      name: "Voyage Découverte",
+      icon: <Compass size={28} />,
+      color: "#FF9E2C",
+      tagline: "Pour ton premier pas africain",
+      highlights: [
+        "Itinéraires guidés",
+        "Accompagnement local",
+        "Expériences authentiques",
+        "Communauté voyageurs"
+      ],
+      bestFor: "Premier voyage en Afrique",
+      link: "/passerelle?type=decouverte"
     },
     {
-      name: "Passionné",
-      price: "19€",
-      annualPrice: "15€",
-      priceDetail: "par mois",
-      annualPriceDetail: "par mois",
-      description: "L'essentiel pour approfondir tes connaissances",
-      popular: true,
+      name: "Voyage Culturel",
+      icon: <Map size={28} />,
       color: "#D4AF37",
-      features: [
-        "Tout du plan Explorateur",
-        "Accès complet à la bibliothèque",
-        "Nouveaux contenus en priorité",
-        "Ateliers en ligne mensuels",
-        "Certificats de participation",
-        "Support prioritaire"
-      ]
+      tagline: "Pour une immersion profonde",
+      popular: true,
+      highlights: [
+        "Rencontres avec communautés",
+        "Ateliers traditionnels",
+        "Guides historiens",
+        "Expériences exclusives"
+      ],
+      bestFor: "Immersion culturelle totale",
+      link: "/passerelle?type=culturel"
     },
     {
-      name: "Ambassadeur",
-      price: "49€",
-      annualPrice: "39€",
-      priceDetail: "par mois",
-      annualPriceDetail: "par mois",
-      description: "Pour les leaders et créateurs de contenu",
-      popular: false,
-      color: "#C19A6B",
-      features: [
-        "Tout du plan Passionné",
-        "Accès aux masterclasses exclusives",
-        "Sessions 1-on-1 avec les experts",
-        "Réseau privé d'ambassadeurs",
-        "Opportunités de collaboration",
-        "Badge ambassadeur vérifié",
-        "Support VIP 24/7"
-      ]
+      name: "Voyage Prestige",
+      icon: <Crown size={28} />,
+      color: "#8B7355",
+      tagline: "Pour une expérience sur mesure",
+      highlights: [
+        "Conciergerie 24/7",
+        "Accès VIP",
+        "Logements exclusifs",
+        "Services personnalisés"
+      ],
+      bestFor: "Voyageurs exigeants",
+      link: "/passerelle?type=prestige"
     }
+  ];
+
+  const stats = [
+    { number: "200+", label: "Destinations", icon: <MapPin size={20} /> },
+    { number: "50+", label: "Guides locaux", icon: <Users size={20} /> },
+    { number: "98%", label: "Satisfaction", icon: <Star size={20} /> },
+    { number: "24/7", label: "Support", icon: <Shield size={20} /> }
   ];
 
   const testimonials = [
     {
-      name: "Amara Diallo",
-      role: "Étudiante en Histoire",
-      comment: "Une ressource inestimable pour mes études. Le contenu est riche et accessible.",
-      rating: 5,
-      avatar: "AD"
+      name: "Aïcha Touré",
+      origin: "Paris, France",
+      destination: "Sénégal & Mali",
+      comment: "Un voyage qui a transformé ma vision de l'Afrique. Chaque rencontre était authentique, chaque expérience riche en émotions.",
+      duration: "3 semaines",
+      avatar: "AT"
     },
     {
-      name: "Marcus Johnson", 
-      role: "Entrepreneur",
-      comment: "Les masterclasses m'ont donné une nouvelle perspective sur le leadership africain.",
-      rating: 5,
-      avatar: "MJ"
+      name: "Kwame Johnson",
+      origin: "New York, USA",
+      destination: "Ghana & Côte d'Ivoire",
+      comment: "Enfin un tourisme qui respecte nos cultures et célèbre nos héritages. Une reconnexion puissante avec mes racines.",
+      duration: "2 semaines",
+      avatar: "KJ"
     }
   ];
 
-  const getPlanIcon = (planName) => {
-    switch (planName) {
-      case "Explorateur":
-        return <Users size={32} />;
-      case "Passionné":
-        return <Zap size={32} />;
-      case "Ambassadeur":
-        return <Crown size={32} />;
-      default:
-        return <Star size={32} />;
-    }
-  };
-
   return (
-    <section ref={sectionRef} className="souscription-premium-section">
-      <div className="souscription-premium-container">
-        {/* En-tête */}
-        <div className={`souscription-header ${isVisible ? 'animate-fade-in-up' : ''}`}>
+    <section className="souscription-tourisme-section">
+      <div className="souscription-tourisme-container">
+        
+        {/* Header élégant */}
+        <div className="souscription-header">
           <div className="souscription-badge">
-            Abonnements Premium
+            <Sparkles size={16} />
+            <span>Tourisme Authentique</span>
           </div>
-          <h2 className="souscription-title">
-            Choisis ton <span className="souscription-title-gradient">Parcours</span>
-          </h2>
-          <p className="souscription-description">
-            Accède à des ressources premium, participe à des événements exclusifs 
-            et connecte-toi avec une communauté passionnée.
-          </p>
           
-          {/* Toggle annuel/mensuel */}
-          <div className="souscription-toggle">
-            <div className="souscription-toggle-container">
-              <button 
-                className={`souscription-toggle-option ${!isAnnual ? 'active' : ''}`}
-                onClick={() => setIsAnnual(false)}
-              >
-                Mensuel
-              </button>
-              <button 
-                className={`souscription-toggle-option ${isAnnual ? 'active' : ''}`}
-                onClick={() => setIsAnnual(true)}
-              >
-                Annuel <span className="souscription-discount-badge">-20%</span>
-              </button>
-              <div className={`souscription-toggle-slider ${isAnnual ? 'annual' : ''}`}></div>
-            </div>
-          </div>
-        </div>
+          <h1 className="souscription-title">
+            Voyage autrement. <span className="souscription-title-gradient">Reconnecte-toi.</span>
+          </h1>
+          
+          <p className="souscription-description">
+            Nous créons des expériences de voyage qui célèbrent l'Afrique et sa diaspora. 
+            Loin des circuits touristiques, découvre des destinations authentiques, 
+            rencontre des communautés inspirantes et revis ton héritage.
+          </p>
 
-        {/* Grille des plans */}
-        <div className="souscription-plans-grid">
-          {plans.map((plan, index) => (
-            <div
-              key={plan.name}
-              className={`souscription-plan-card ${plan.popular ? 'souscription-popular' : ''} ${isVisible ? 'animate-fade-in-up' : ''}`}
-              style={{ 
-                animationDelay: `${index * 0.15}s`,
-                '--souscription-plan-color': plan.color
-              }}
-            >
-              {/* Badge populaire */}
-              {plan.popular && (
-                <div className="souscription-popular-badge">
-                  <div className="souscription-badge-content">
-                    <Star size={14} />
-                    Plus populaire
-                  </div>
-                  <div className="souscription-badge-tail"></div>
+          {/* Stats rapides */}
+          <div className="souscription-stats">
+            {stats.map((stat, index) => (
+              <div key={index} className="souscription-stat-item">
+                <div className="stat-icon">
+                  {stat.icon}
                 </div>
-              )}
-
-              {/* Icône et titre */}
-              <div className="souscription-plan-header">
-                <div className={`souscription-plan-icon ${plan.popular ? 'souscription-popular-icon' : ''}`}>
-                  {getPlanIcon(plan.name)}
-                  <div className="souscription-icon-glow"></div>
-                </div>
-                <h3 className="souscription-plan-name">{plan.name}</h3>
-                <p className="souscription-plan-description">{plan.description}</p>
-              </div>
-
-              {/* Prix */}
-              <div className="souscription-plan-pricing">
-                <div className="souscription-price-container">
-                  <span className="souscription-price-amount">
-                    {isAnnual ? plan.annualPrice : plan.price}
-                  </span>
-                  <span className="souscription-price-detail">
-                    {isAnnual ? plan.annualPriceDetail : plan.priceDetail}
-                  </span>
-                </div>
-                {isAnnual && plan.price !== "Gratuit" && (
-                  <div className="souscription-annual-savings">
-                    Économisez {Math.round((1 - parseInt(plan.annualPrice) / parseInt(plan.price)) * 100)}%
-                  </div>
-                )}
-              </div>
-
-              {/* Features */}
-              <div className="souscription-plan-features">
-                {plan.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="souscription-feature-item">
-                    <div className="souscription-feature-check">
-                      <Check size={14} />
-                    </div>
-                    <span className="souscription-feature-text">{feature}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA */}
-              <button className={`souscription-plan-button ${plan.popular ? 'souscription-popular-button' : ''}`}>
-                {plan.name === 'Explorateur' ? 'Commencer gratuitement' : 'Choisir ce plan'}
-                <ArrowRight size={18} className="souscription-button-arrow" />
-              </button>
-
-              {/* Effets visuels */}
-              <div className="souscription-card-glow"></div>
-              <div className="souscription-card-shine"></div>
-            </div>
-          ))}
-        </div>
-
-        {/* Témoignages */}
-        <div className={`souscription-testimonials-section ${isVisible ? 'animate-fade-in-up' : ''}`}>
-          <h3 className="souscription-testimonials-title">Ils nous font confiance</h3>
-          <div className="souscription-testimonials-grid">
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={index}
-                className="souscription-testimonial-card"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <div className="souscription-rating-stars">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <div key={i} className="souscription-star">
-                      <Star size={16} fill="currentColor" />
-                    </div>
-                  ))}
-                </div>
-                <p className="souscription-testimonial-comment">"{testimonial.comment}"</p>
-                <div className="souscription-testimonial-author">
-                  <div className="souscription-author-avatar">
-                    {testimonial.avatar}
-                  </div>
-                  <div className="souscription-author-info">
-                    <div className="souscription-author-name">{testimonial.name}</div>
-                    <div className="souscription-author-role">{testimonial.role}</div>
-                  </div>
+                <div className="stat-content">
+                  <div className="stat-number">{stat.number}</div>
+                  <div className="stat-label">{stat.label}</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* FAQ rapide */}
-        <div className={`souscription-section-cta ${isVisible ? 'animate-fade-in-up' : ''}`}>
-          <p className="souscription-cta-text">
-            Des questions ? Nous avons les réponses.
-          </p>
-          <button className="souscription-faq-button">
-            Consulter la FAQ
-          </button>
+        {/* Grille des expériences */}
+        <div className="souscription-experiences-grid">
+          {experiences.map((experience) => (
+            <div
+              key={experience.name}
+              className={`souscription-experience-card ${experience.popular ? 'souscription-popular' : ''}`}
+            >
+              {/* Badge populaire */}
+              {experience.popular && (
+                <div className="souscription-popular-badge">
+                  <Star size={12} />
+                  <span>Plus choisi</span>
+                </div>
+              )}
+
+              {/* Icone et titre */}
+              <div className="souscription-experience-header">
+                <div 
+                  className="souscription-experience-icon" 
+                  style={{ 
+                    backgroundColor: `${experience.color}20`, 
+                    color: experience.color 
+                  }}
+                >
+                  {experience.icon}
+                </div>
+                <h3 className="souscription-experience-name">{experience.name}</h3>
+                <p className="souscription-experience-tagline">{experience.tagline}</p>
+                <div className="souscription-experience-bestfor">
+                  <Compass size={14} />
+                  <span>Idéal pour : {experience.bestFor}</span>
+                </div>
+              </div>
+
+              {/* Points forts */}
+              <div className="souscription-experience-highlights">
+                {experience.highlights.map((highlight, index) => (
+                  <div key={index} className="souscription-highlight-item">
+                    <div 
+                      className="souscription-highlight-dot" 
+                      style={{ backgroundColor: experience.color }}
+                    ></div>
+                    <span className="souscription-highlight-text">{highlight}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA avec lien */}
+              <Link 
+                to={experience.link}
+                className={`souscription-experience-button ${experience.popular ? 'souscription-popular-button' : ''}`}
+              >
+                Explorer cette expérience
+                <ArrowRight size={18} className="souscription-button-arrow" />
+              </Link>
+            </div>
+          ))}
+        </div>
+
+        {/* Témoignages inspirants */}
+        <div className="souscription-testimonials-section">
+          <div className="souscription-testimonials-header">
+            <div className="testimonials-title-content">
+              <h3 className="souscription-testimonials-title">
+                <Globe size={24} />
+                Histoires de voyage
+              </h3>
+              <p className="souscription-testimonials-subtitle">
+                Découvre comment nos voyageurs ont vécu leur reconnexion
+              </p>
+            </div>
+            <div className="souscription-global-rating">
+              <div className="global-rating-stars">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={20} fill="#FFD700" color="#FFD700" />
+                ))}
+              </div>
+              <div className="global-rating-text">4.9/5 • 500+ voyages réussis</div>
+            </div>
+          </div>
+
+          <div className="souscription-testimonials-grid">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="souscription-testimonial-card">
+                <div className="souscription-testimonial-quote">"</div>
+                
+                <p className="souscription-testimonial-comment">{testimonial.comment}</p>
+                
+                <div className="souscription-testimonial-author">
+                  <div className="souscription-author-avatar">
+                    {testimonial.avatar}
+                  </div>
+                  <div className="souscription-author-info">
+                    <div className="souscription-author-name">{testimonial.name}</div>
+                    <div className="souscription-author-details">
+                      <span>{testimonial.origin}</span>
+                      <span className="detail-separator">•</span>
+                      <span>{testimonial.destination}</span>
+                      <span className="detail-separator">•</span>
+                      <span>{testimonial.duration}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="souscription-testimonial-journey">
+                  <div className="journey-icon">
+                    <Compass size={16} />
+                  </div>
+                  <span>Voyage {testimonial.destination}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA final avec liens */}
+        <div className="souscription-cta-section">
+          <div className="souscription-cta-content">
+            <div className="souscription-cta-icon">
+              <Sparkles size={40} />
+            </div>
+            
+            <div className="souscription-cta-text">
+              <h3>Prêt pour ton voyage transformateur ?</h3>
+              <p>
+                Rejoins notre communauté de voyageurs curieux et découvre l'Afrique comme tu ne l'as jamais vue. 
+                Des paysages à couper le souffle, des cultures vibrantes et des rencontres inoubliables t'attendent.
+              </p>
+            </div>
+            
+            <div className="souscription-cta-buttons">
+              <Link 
+                to="/passerelle" 
+                className="souscription-cta-button primary"
+              >
+                <Compass size={20} />
+                <span>Planifier mon voyage</span>
+                <ArrowRight size={18} />
+              </Link>
+              
+              <Link 
+                to="/contact" 
+                className="souscription-cta-button secondary"
+              >
+                <Users size={20} />
+                <span>Rencontrer notre communauté</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Garanties */}
+          <div className="souscription-guarantees">
+            <div className="guarantee-item">
+              <div>
+                <Shield size={20} />
+              </div>
+              <div>
+                <div className="guarantee-title">Garantie Authenticité</div>
+                <div className="guarantee-desc">Expériences 100% locales et vérifiées</div>
+              </div>
+            </div>
+            <div className="guarantee-item">
+              <div>
+                <Map size={20} />
+              </div>
+              <div>
+                <div className="guarantee-title">Support 360°</div>
+                <div className="guarantee-desc">Accompagnement avant, pendant et après</div>
+              </div>
+            </div>
+            <div className="guarantee-item">
+              <div>
+                <Star size={20} />
+              </div>
+              <div>
+                <div className="guarantee-title">Expertise Culturelle</div>
+                <div className="guarantee-desc">Des guides passionnés par leur patrimoine</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Éléments décoratifs */}
       <div className="souscription-decorative-elements">
-        <div className="souscription-floating-orb souscription-orb-1"></div>
-        <div className="souscription-floating-orb souscription-orb-2"></div>
-        <div className="souscription-floating-orb souscription-orb-3"></div>
+        <div className="souscription-floating-element element-1"></div>
+        <div className="souscription-floating-element element-2"></div>
+        <div className="souscription-floating-element element-3"></div>
       </div>
     </section>
   );
 };
 
-export default SouscriptionPremium;
+export default SouscriptionTourisme;

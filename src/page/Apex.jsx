@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Globe, History, Users, MapPin, Award, BookOpen, ArrowRight, ChevronDown, Star, Zap, Brain, Heart, Compass, Dna, Mountain, Search, Filter, X, Clock, User, Calendar } from 'lucide-react';
+import { Globe, History, Users, MapPin, Award, BookOpen, ArrowRight, ChevronDown, Star, Zap, Brain, Heart, Compass, Dna, Mountain, Search, Filter, X, Clock, User, Calendar, Sparkles, Target, Shield, Telescope } from 'lucide-react';
 import './apex.css';
 
-const Apex = () => {
+const ApexHeritage = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState('decouvertes');
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,7 +17,7 @@ const Apex = () => {
   const API_BASE = 'https://backblack.vercel.app/api';
   const BLOG_API = `${API_BASE}/apex`;
 
-  // Données initiales enrichies (fallback si API échoue)
+  // Données initiales enrichies
   const defaultSections = [
     {
       id: 1,
@@ -73,26 +73,67 @@ const Apex = () => {
     }
   ];
 
-  const timelineData = [
-    { year: "7M", event: "Apparition des premiers hominidés", location: "Tchad", icon: 'Users' },
-    { year: "3.2M", event: "Lucy (Australopithecus afarensis)", location: "Éthiopie", icon: 'Star' },
-    { year: "2.5M", event: "Premiers outils en pierre", location: "Tanzanie", icon: 'Zap' },
-    { year: "1.8M", event: "Homo erectus en Afrique", location: "Kenya", icon: 'Compass' },
-    { year: "300K", event: "Homo sapiens archaïque", location: "Maroc", icon: 'Brain' },
-    { year: "100K", event: "Homo sapiens moderne", location: "Afrique de l'Est", icon: 'Heart' }
+  // Nouvelle timeline stylée
+  const heritageJourney = [
+    { 
+      period: "7M années", 
+      title: "Origines Préhistoriques", 
+      description: "Premiers hominidés en Afrique centrale",
+      icon: 'Users',
+      color: "#e53e3e",
+      discoveries: ["Toumaï au Tchad", "Premiers outils lithiques"]
+    },
+    { 
+      period: "3.2M années", 
+      title: "Lucy & la Bipédie", 
+      description: "Australopithecus afarensis en Éthiopie",
+      icon: 'Compass',
+      color: "#3182ce",
+      discoveries: ["Squelette complet", "Preuve de bipédie"]
+    },
+    { 
+      period: "2.5M années", 
+      title: "Âge de Pierre", 
+      description: "Fabrication d'outils systématique",
+      icon: 'Zap',
+      color: "#38a169",
+      discoveries: ["Outils Oldowayen", "Technologie lithique"]
+    },
+    { 
+      period: "1.8M années", 
+      title: "Homo Erectus", 
+      description: "Migration hors d'Afrique",
+      icon: 'Globe',
+      color: "#805ad5",
+      discoveries: ["Feu maîtrisé", "Migration mondiale"]
+    },
+    { 
+      period: "300K années", 
+      title: "Sapiens Archaïque", 
+      description: "Homo sapiens à Jebel Irhoud",
+      icon: 'Brain',
+      color: "#d69e2e",
+      discoveries: ["Plus anciens sapiens", "Innovations culturelles"]
+    },
+    { 
+      period: "100K années", 
+      title: "Humanité Moderne", 
+      description: "Expansion mondiale depuis l'Afrique",
+      icon: 'Heart',
+      color: "#319795",
+      discoveries: ["Art rupestre", "Langages complexes"]
+    }
   ];
 
   const features = [
     { icon: 'Brain', title: "Intelligence", description: "Développement cognitif précoce" },
-    { icon: 'Heart', title: "Adaptabilité", description: "Résilience aux divers climats" },
-    { icon: 'Users', title: "Socialité", description: "Structures sociales complexes" },
-    { icon: 'Zap', title: "Innovation", description: "Technologies avancées" }
+    { icon: 'Shield', title: "Résilience", description: "Adaptation aux climats extrêmes" },
+    { icon: 'Target', title: "Innovation", description: "Technologies révolutionnaires" },
+    { icon: 'Sparkles', title: "Créativité", description: "Premières expressions artistiques" }
   ];
 
-  // Catégories uniques pour le filtre
   const categories = ['all', 'archéologie', 'fossiles', 'civilisations', 'génétique', 'savoirs', 'technologie', 'évolution'];
 
-  // Charger les articles depuis l'API
   const fetchBlogPosts = async () => {
     try {
       setLoading(true);
@@ -112,7 +153,6 @@ const Apex = () => {
       
       const data = await response.json();
       
-      // S'assurer que les données ont la structure attendue
       const formattedData = data.map(post => ({
         ...post,
         icon: post.icon || getDefaultIcon(post.category),
@@ -124,14 +164,12 @@ const Apex = () => {
     } catch (error) {
       console.error('Erreur lors du chargement des articles:', error);
       setError('Impossible de charger les articles. Affichage des données de démonstration.');
-      // Utiliser les données par défaut en cas d'erreur
       setBlogPosts(defaultSections);
     } finally {
       setLoading(false);
     }
   };
 
-  // Fonctions utilitaires pour les données par défaut
   const getDefaultIcon = (category) => {
     const iconMap = {
       'archéologie': 'Globe',
@@ -171,10 +209,8 @@ const Apex = () => {
     return statsMap[category] || "Données historiques";
   };
 
-  // Ouvrir le modal avec l'article complet
   const openModal = async (post) => {
     try {
-      // Si l'article ne contient pas le contenu complet, on le charge depuis l'API
       if (!post.content || post.content.length < 500) {
         const response = await fetch(`${BLOG_API}/${post.id}`);
         if (response.ok) {
@@ -194,14 +230,12 @@ const Apex = () => {
     document.body.style.overflow = 'hidden';
   };
 
-  // Fermer le modal
   const closeModal = () => {
     setShowModal(false);
     setSelectedPost(null);
     document.body.style.overflow = 'auto';
   };
 
-  // Formater la date
   const formatDate = (dateString) => {
     if (!dateString) return 'Date inconnue';
     return new Date(dateString).toLocaleDateString('fr-FR', {
@@ -211,7 +245,6 @@ const Apex = () => {
     });
   };
 
-  // Filtrer les sections (pour les données par défaut)
   const filteredSections = blogPosts.filter(section => {
     const matchesSearch = section.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                          (section.content && section.content.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -219,7 +252,6 @@ const Apex = () => {
     return matchesSearch && matchesCategory;
   });
 
-  // Mapper les noms d'icônes aux composants React
   const iconComponents = {
     Globe,
     History,
@@ -239,20 +271,22 @@ const Apex = () => {
     X,
     Clock,
     User,
-    Calendar
+    Calendar,
+    Sparkles,
+    Target,
+    Shield,
+    Telescope
   };
 
   const getIconComponent = (iconName) => {
     const IconComponent = iconComponents[iconName];
-    return IconComponent ? React.createElement(IconComponent, { className: "icon" }) : React.createElement(Star, { className: "icon" });
+    return IconComponent ? React.createElement(IconComponent, { className: "apex-icon" }) : React.createElement(Star, { className: "apex-icon" });
   };
 
-  // Effet pour charger les articles
   useEffect(() => {
     fetchBlogPosts();
   }, [selectedCategory, searchTerm]);
 
-  // Effet pour le scroll
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
@@ -263,92 +297,116 @@ const Apex = () => {
   }, []);
 
   return (
-    <div className="app">
-      {/* Header */}
-    
-
+    <div className="apex-app">
       {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-background">
-          <div className="hero-gradient"></div>
-          <div className="hero-pattern"></div>
+      <section className="apex-hero">
+        <div className="apex-hero-background">
+          <div className="apex-hero-gradient"></div>
+          <div className="apex-hero-pattern"></div>
           <img 
-            src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+            src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
             alt="Carte de l'Afrique historique"
-            className="hero-image"
+            className="apex-hero-image"
           />
         </div>
-        <div className="container">
-          <div className="hero-content">
-            
-            <h1 className="hero-title">
-              L'Afrique est le <span className="hero-highlight">Berceau de l'Humanité</span>
+        <div className="apex-container">
+          <div className="apex-hero-content">
+            <div className="apex-hero-badge">
+              <Sparkles size={18} />
+              <span>Notre Origine Commune</span>
+            </div>
+            <h1 className="apex-hero-title">
+              L'Afrique est le <span className="apex-hero-highlight">Berceau de l'Humanité</span>
             </h1>
-            <p className="hero-subtitle">
-              Découvrez les preuves scientifiques incontestables qui établissent l'Afrique comme origine unique de l'humanité moderne et le théâtre de son évolution complète
+            <p className="apex-hero-subtitle">
+              Découvrez les preuves scientifiques qui établissent l'Afrique comme origine unique de l'humanité moderne et le théâtre de son évolution complète
             </p>
-            <div className="hero-stats">
-              <div className="stat">
-                <div className="stat-number">7M</div>
-                <div className="stat-label">Années d'histoire</div>
+            <div className="apex-hero-stats">
+              <div className="apex-stat">
+                <div className="apex-stat-number">7M</div>
+                <div className="apex-stat-label">Années d'histoire</div>
               </div>
-              <div className="stat">
-                <div className="stat-number">200+</div>
-                <div className="stat-label">Sites archéologiques</div>
+              <div className="apex-stat">
+                <div className="apex-stat-number">200+</div>
+                <div className="apex-stat-label">Sites archéologiques</div>
               </div>
-              <div className="stat">
-                <div className="stat-number">54</div>
-                <div className="stat-label">Pays témoins</div>
+              <div className="apex-stat">
+                <div className="apex-stat-number">54</div>
+                <div className="apex-stat-label">Pays témoins</div>
               </div>
             </div>
-            <button className="cta-button">
-              Explorer l'Héritage 
+            <button className="apex-cta-button">
+              Explorer l'Héritage <ArrowRight size={20} />
             </button>
           </div>
         </div>
-        <div className="scroll-indicator">
+        <div className="apex-scroll-indicator">
           <ChevronDown size={24} />
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="features-section">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-heading">Les Piliers de l'Évolution Humaine</h2>
-            <p className="section-subtitle">Découvrez les fondements qui ont façonné l'humanité moderne</p>
+      <section className="apex-features-section">
+        <div className="apex-container">
+          <div className="apex-section-header">
+            <h2 className="apex-section-heading">Les Piliers de l'Évolution Humaine</h2>
+            <p className="apex-section-subtitle">Découvrez les fondements qui ont façonné l'humanité moderne</p>
           </div>
-          <div className="features-grid">
+          <div className="apex-features-grid">
             {features.map((feature, index) => (
-              <div key={index} className="feature-card" data-aos="fade-up" data-aos-delay={index * 100}>
-                <div className="feature-icon">
-                  {getIconComponent(feature.icon)}
+              <div key={index} className="apex-feature-card">
+                <div className="apex-feature-icon-wrapper">
+                  <div className="apex-feature-icon-glow" style={{ backgroundColor: feature.color + '20' }}></div>
+                  <div className="apex-feature-icon">
+                    {getIconComponent(feature.icon)}
+                  </div>
                 </div>
-                <h3 className="feature-title">{feature.title}</h3>
-                <p className="feature-description">{feature.description}</p>
+                <h3 className="apex-feature-title">{feature.title}</h3>
+                <p className="apex-feature-description">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="timeline-section">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-heading">Chronologie de l'Évolution Humaine</h2>
-            <p className="section-subtitle">Un voyage à travers les âges qui a façonné notre espèce</p>
+      {/* Nouvelle Timeline Section */}
+      <section className="apex-journey-section">
+        <div className="apex-container">
+          <div className="apex-section-header">
+            <h2 className="apex-section-heading">Le Voyage de l'Humanité</h2>
+            <p className="apex-section-subtitle">Chronologie de notre évolution depuis l'Afrique</p>
           </div>
-          <div className="timeline">
-            {timelineData.map((item, index) => (
-              <div key={index} className="timeline-item" data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}>
-                <div className="timeline-marker">
-                  {getIconComponent(item.icon)}
+          
+          <div className="apex-journey-timeline">
+            {heritageJourney.map((item, index) => (
+              <div key={index} className="apex-journey-item">
+                <div className="apex-journey-timeline-line">
+                  <div className="apex-journey-dot" style={{ backgroundColor: item.color }}>
+                    <div className="apex-journey-dot-inner">
+                      {getIconComponent(item.icon)}
+                    </div>
+                  </div>
                 </div>
-                <div className="timeline-content">
-                  <div className="timeline-year">{item.year}</div>
-                  <div className="timeline-event">{item.event}</div>
-                  <div className="timeline-location">{item.location}</div>
+                
+                <div className="apex-journey-content">
+                  <div className="apex-journey-period" style={{ color: item.color }}>
+                    {item.period}
+                  </div>
+                  <h3 className="apex-journey-title">{item.title}</h3>
+                  <p className="apex-journey-description">{item.description}</p>
+                  
+                  <div className="apex-journey-discoveries">
+                    {item.discoveries.map((discovery, dIndex) => (
+                      <span key={dIndex} className="apex-discovery-tag">
+                        {discovery}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <div className="apex-journey-connector">
+                    <div className="apex-connector-line"></div>
+                    <div className="apex-connector-arrow"></div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -357,35 +415,34 @@ const Apex = () => {
       </section>
 
       {/* Main Content */}
-      <main className="main">
-        <div className="container">
-          {/* Message d'erreur */}
+      <main className="apex-main">
+        <div className="apex-container">
           {error && (
-            <div className="error-banner">
+            <div className="apex-error-banner">
               <span>{error}</span>
             </div>
           )}
 
           {/* Filtre Section */}
-          <div className="filter-section">
-            <div className="filter-container">
-              <div className="search-box">
-                <Search size={20} className="search-icon" />
+          <div className="apex-filter-section">
+            <div className="apex-filter-container">
+              <div className="apex-search-box">
+                <Search size={20} className="apex-search-icon" />
                 <input
                   type="text"
                   placeholder="Rechercher une découverte..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="search-input"
+                  className="apex-search-input"
                 />
               </div>
               
-              <div className="category-filter">
-                <Filter size={18} className="filter-icon" />
+              <div className="apex-category-filter">
+                <Filter size={18} className="apex-filter-icon" />
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="category-select"
+                  className="apex-category-select"
                 >
                   {categories.map(category => (
                     <option key={category} value={category}>
@@ -395,110 +452,89 @@ const Apex = () => {
                   ))}
                 </select>
               </div>
-
-              {/* Indicateurs de filtre */}
-              {(searchTerm || selectedCategory !== 'all') && (
-                <div className="filter-indicators">
-                  {searchTerm && (
-                    <span className="filter-tag">
-                      Recherche: "{searchTerm}"
-                      <button onClick={() => setSearchTerm('')}>×</button>
-                    </span>
-                  )}
-                  {selectedCategory !== 'all' && (
-                    <span className="filter-tag">
-                      Catégorie: {selectedCategory}
-                      <button onClick={() => setSelectedCategory('all')}>×</button>
-                    </span>
-                  )}
-                  <button 
-                    className="clear-filters"
-                    onClick={() => {
-                      setSearchTerm('');
-                      setSelectedCategory('all');
-                    }}
-                  >
-                    Tout effacer
-                  </button>
-                </div>
-              )}
             </div>
           </div>
 
-          {/* Résultats du filtre */}
-          <div className="filter-results">
-            <p className="results-count">
-              {loading ? 'Chargement...' : `${filteredSections.length} résultat${filteredSections.length !== 1 ? 's' : ''} trouvé${filteredSections.length !== 1 ? 's' : ''}`}
-            </p>
-          </div>
-
           {/* Tabs Navigation */}
-          <div className="tabs-container">
-            <div className="tabs">
+          <div className="apex-tabs-container">
+            <div className="apex-tabs">
               <button 
-                className={`tab ${activeTab === 'decouvertes' ? 'active' : ''}`}
+                className={`apex-tab ${activeTab === 'decouvertes' ? 'apex-tab-active' : ''}`}
                 onClick={() => setActiveTab('decouvertes')}
               >
                 <MapPin size={18} />
                 Découvertes
               </button>
               <button 
-                className={`tab ${activeTab === 'civilisations' ? 'active' : ''}`}
+                className={`apex-tab ${activeTab === 'civilisations' ? 'apex-tab-active' : ''}`}
                 onClick={() => setActiveTab('civilisations')}
               >
                 <History size={18} />
                 Civilisations
               </button>
               <button 
-                className={`tab ${activeTab === 'science' ? 'active' : ''}`}
+                className={`apex-tab ${activeTab === 'science' ? 'apex-tab-active' : ''}`}
                 onClick={() => setActiveTab('science')}
               >
-                <Award size={18} />
+                <Telescope size={18} />
                 Science
               </button>
             </div>
           </div>
 
-          {/* Sections Grid */}
-          <div className="sections-grid">
+          {/* Articles Grid */}
+          <div className="apex-articles-grid">
             {loading ? (
-              <div className="loading-state">
-                <div className="spinner"></div>
+              <div className="apex-loading-state">
+                <div className="apex-spinner"></div>
                 <p>Chargement des articles...</p>
               </div>
             ) : filteredSections.length > 0 ? (
               filteredSections.map((section, index) => (
-                <section key={section.id || index} className="content-section" data-aos="fade-up" data-aos-delay={index * 100}>
-                  <div className="section-header-card">
-                    <div className="section-icon" style={{ color: section.color }}>
+                <article key={section.id || index} className="apex-article-card">
+                  <div className="apex-article-header">
+                    <div className="apex-article-icon" style={{ color: section.color }}>
+                      <div className="apex-article-icon-bg" style={{ backgroundColor: section.color + '20' }}></div>
                       {getIconComponent(section.icon)}
                     </div>
-                    <div className="section-title-content">
-                      <h2 className="section-titles">{section.title}</h2>
-                      <div className="section-stats">{section.stats}</div>
-                      <span className="section-category">{section.category}</span>
+                    <div className="apex-article-title-content">
+                      <div className="apex-article-category">{section.category}</div>
+                      <h2 className="apex-article-title">{section.title}</h2>
+                      <div className="apex-article-stats">{section.stats}</div>
                     </div>
                   </div>
-                  <div className="section-content">
-                    <p className="section-text">
+                  <div className="apex-article-content">
+                    <p className="apex-article-excerpt">
                       {section.content ? 
-                        section.content.split('\n')[0].substring(0, 200) + '...' : 
+                        section.content.split('\n')[0].substring(0, 180) + '...' : 
                         'Contenu non disponible'}
                     </p>
-                    <button 
-                      className="section-link"
-                      onClick={() => openModal(section)}
-                    >
-                      Lire la suite <ArrowRight size={16} />
-                    </button>
+                    <div className="apex-article-footer">
+                      <div className="apex-article-meta">
+                        <span className="apex-meta-item">
+                          <User size={14} />
+                          {section.author_name || 'Auteur inconnu'}
+                        </span>
+                        <span className="apex-meta-item">
+                          <Clock size={14} />
+                          {section.read_time || 5} min
+                        </span>
+                      </div>
+                      <button 
+                        className="apex-read-more"
+                        onClick={() => openModal(section)}
+                      >
+                        Lire la suite <ArrowRight size={16} />
+                      </button>
+                    </div>
                   </div>
-                </section>
+                </article>
               ))
             ) : (
-              <div className="no-results">
+              <div className="apex-no-results">
                 <p>Aucun résultat trouvé pour votre recherche.</p>
                 <button 
-                  className="reset-filters-btn"
+                  className="apex-reset-filters-btn"
                   onClick={() => {
                     setSearchTerm('');
                     setSelectedCategory('all');
@@ -513,72 +549,72 @@ const Apex = () => {
       </main>
 
       {/* Quote Section */}
-      <section className="quote-section">
-        <div className="container">
-          <div className="quote-content" data-aos="zoom-in">
-            <div className="quote-icon">❝</div>
-            <blockquote className="quote">
+      <section className="apex-quote-section">
+        <div className="apex-container">
+          <div className="apex-quote-content">
+            <div className="apex-quote-icon">❝</div>
+            <blockquote className="apex-quote">
               "L'Afrique n'est pas seulement le berceau de l'humanité, elle est la source de notre histoire commune et le fondement de notre avenir partagé. Chaque être humain porte en lui l'héritage génétique et culturel de ce continent ancestral."
             </blockquote>
-            <div className="quote-author">- Commission du Patrimoine Africain</div>
+            <div className="apex-quote-author">- Commission du Patrimoine Africain</div>
           </div>
         </div>
       </section>
 
       {/* Modal de lecture complète */}
       {showModal && selectedPost && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="article-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-header">
-              <button className="modal-close" onClick={closeModal}>
+        <div className="apex-modal-overlay" onClick={closeModal}>
+          <div className="apex-article-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="apex-modal-header">
+              <button className="apex-modal-close" onClick={closeModal}>
                 <X size={24} />
               </button>
             </div>
 
-            <div className="modal-content">
-              <div className="article-header">
-                <div className="article-meta">
-                  <span className="article-category">{selectedPost.category}</span>
-                  <div className="article-info">
-                    <span className="info-item">
+            <div className="apex-modal-content">
+              <div className="apex-modal-article-header">
+                <div className="apex-modal-article-meta">
+                  <span className="apex-modal-article-category">{selectedPost.category}</span>
+                  <div className="apex-modal-article-info">
+                    <span className="apex-modal-info-item">
                       <User size={16} />
                       {selectedPost.author_name || 'Auteur inconnu'}
                     </span>
-                    <span className="info-item">
+                    <span className="apex-modal-info-item">
                       <Calendar size={16} />
                       {formatDate(selectedPost.published_at)}
                     </span>
-                    <span className="info-item">
+                    <span className="apex-modal-info-item">
                       <Clock size={16} />
                       {selectedPost.read_time || 5} min de lecture
                     </span>
                   </div>
                 </div>
                 
-                <h1 className="article-title">{selectedPost.title}</h1>
-                <div className="article-stats">{selectedPost.stats}</div>
+                <h1 className="apex-modal-article-title">{selectedPost.title}</h1>
+                <div className="apex-modal-article-stats">{selectedPost.stats}</div>
               </div>
 
-              <div className="article-content">
+              <div className="apex-modal-article-content">
                 {selectedPost.content ? (
                   selectedPost.content.split('\n').map((paragraph, index) => (
                     paragraph.trim() && (
-                      <p key={index} className="article-paragraph">
+                      <p key={index} className="apex-modal-article-paragraph">
                         {paragraph}
                       </p>
                     )
                   ))
                 ) : (
-                  <p className="article-paragraph">Contenu non disponible.</p>
+                  <p className="apex-modal-article-paragraph">Contenu non disponible.</p>
                 )}
               </div>
 
-              <div className="article-footer">
-                <div className="article-actions">
-                  <button className="action-btn primary" onClick={closeModal}>
+              <div className="apex-modal-article-footer">
+                <div className="apex-modal-article-actions">
+                  <button className="apex-modal-action-btn apex-modal-primary" onClick={closeModal}>
                     Fermer
                   </button>
-                  <button className="action-btn secondary">
+                  <button className="apex-modal-action-btn apex-modal-secondary">
                     Partager
                   </button>
                 </div>
@@ -591,4 +627,4 @@ const Apex = () => {
   );
 };
 
-export default Apex;
+export default ApexHeritage;

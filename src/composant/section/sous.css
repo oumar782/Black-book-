@@ -1,567 +1,599 @@
-/* Variables CSS uniques - Palette orange/dorée */
-:root {
-  --souscription-deep-brown: #000000;
-  --souscription-dark-brown: #000000;
-  --souscription-medium-brown: #000000;
-  --souscription-light-brown: #000000;
-  --souscription-gold: #e25822;
-  --souscription-light-gold: #f9a825;
-  --souscription-foreground: #FFFFFF;
-  --souscription-muted: rgba(255, 255, 255, 0.7);
-  --souscription-border: rgba(226, 88, 34, 0.2);
-  --souscription-card: rgba(0, 0, 0, 0.6);
-  --souscription-glow: 0 0 30px rgba(226, 88, 34, 0.3);
-  --souscription-luxury-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  --souscription-smooth-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --souscription-bounce-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+/* Styles de base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #fff;
 }
 
 /* Section principale */
-.souscription-premium-section {
+.souscription-tourisme-section {
   position: relative;
-  padding: 6rem 0;
-  background: #000000;
-  overflow: hidden;
+  padding: 80px 0;
+  background: linear-gradient(180deg, #0A0A0A 0%, #141414 100%);
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-.souscription-premium-container {
+.souscription-tourisme-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 20px;
   position: relative;
   z-index: 2;
 }
 
-/* En-tête de section */
+/* Header */
 .souscription-header {
   text-align: center;
-  margin-bottom: 4rem;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.souscription-header.animate-fade-in-up {
-  animation: souscription-fadeInUp 0.8s ease-out forwards;
+  margin-bottom: 60px;
 }
 
 .souscription-badge {
-  display: inline-block;
-  padding: 0.5rem 1.5rem;
-  background: rgba(226, 88, 34, 0.1);
-  color: var(--souscription-gold);
-  border: 1px solid rgba(226, 88, 34, 0.3);
-  border-radius: 2rem;
-  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #E25822; /* Couleur gold originale */
+  border: 1.5px solid rgba(226, 88, 34, 0.3); /* Couleur gold originale */
+  border-radius: 50px;
+  font-size: 14px;
   font-weight: 600;
-  margin-bottom: 1.5rem;
-  backdrop-filter: blur(10px);
-  letter-spacing: 0.5px;
-  color: white;
+  margin-bottom: 30px;
 }
 
 .souscription-title {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: 48px;
   font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 20px;
   line-height: 1.1;
-  color: var(--souscription-foreground);
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
 }
 
 .souscription-title-gradient {
-  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
+  background: linear-gradient(135deg, #E25822, #F9A825); /* Dégradé gold original */
   -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  position: relative;
-  text-shadow: 0 4px 20px rgba(226, 88, 34, 0.3);
+  -webkit-text-fill-color: transparent;
 }
 
 .souscription-description {
-  font-size: 1.25rem;
-  color: white;
-  max-width: 600px;
-  margin: 0 auto 3rem;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 800px;
+  margin: 0 auto 40px;
   line-height: 1.6;
+  padding: 0 20px;
 }
 
-/* Toggle de prix */
-.souscription-toggle {
+/* Stats */
+.souscription-stats {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 50px;
 }
 
-.souscription-toggle-container {
-  position: relative;
-  display: inline-flex;
-  background: var(--souscription-card);
-  border-radius: 0.75rem;
-  padding: 0.25rem;
-  border: 1px solid var(--souscription-border);
-  backdrop-filter: blur(10px);
-  color: white;
-}
-
-.souscription-toggle-option {
-  position: relative;
-  padding: 0.75rem 1.5rem;
-  background: transparent;
-  border: none;
-  color: var(--souscription-muted);
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--souscription-smooth-transition);
-  z-index: 2;
-  border-radius: 0.5rem;
+.souscription-stat-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 15px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(226, 88, 34, 0.2); /* Couleur gold */
+  min-width: 180px;
+  transition: transform 0.3s ease;
 }
 
-.souscription-toggle-option.active {
-  color: var(--souscription-foreground);
+.souscription-stat-item:hover {
+  transform: translateY(-3px);
+  border-color: #E25822;
 }
 
-.souscription-discount-badge {
-  background: linear-gradient(135deg, #10b981, #34d399);
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #E25822, #F9A825); /* Dégradé gold */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  padding: 0.125rem 0.5rem;
-  border-radius: 1rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
 }
 
-.souscription-toggle-slider {
-  position: absolute;
-  top: 0.25rem;
-  left: 0.25rem;
-  width: calc(50% - 0.25rem);
-  height: calc(100% - 0.5rem);
-  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
-  border-radius: 0.5rem;
-  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  box-shadow: 0 4px 14px rgba(226, 88, 34, 0.4);
+.stat-content {
+  display: flex;
+  flex-direction: column;
 }
 
-.souscription-toggle-slider.annual {
-  transform: translateX(100%);
+.stat-number {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #E25822, #F9A825);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
 }
 
-/* Grille des plans */
-.souscription-plans-grid {
+.stat-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* Grille des expériences */
+.souscription-experiences-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-bottom: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
 }
 
-.souscription-plan-card {
+.souscription-experience-card {
+  background: rgba(20, 20, 20, 0.8);
+  border: 1.5px solid rgba(226, 88, 34, 0.3); /* Couleur gold */
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.4s ease;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
   position: relative;
-  background: var(--souscription-card);
-  border: 1px solid var(--souscription-border);
-  border-radius: 1.5rem;
-  padding: 2rem;
-  transition: var(--souscription-smooth-transition);
   overflow: hidden;
-  opacity: 0;
-  transform: translateY(30px);
-  backdrop-filter: blur(10px);
 }
 
-.souscription-plan-card.animate-fade-in-up {
-  animation: souscription-fadeInUp 0.6s ease-out forwards;
-}
-
-.souscription-plan-card:hover {
+.souscription-experience-card:hover {
   transform: translateY(-8px);
-  border-color: var(--souscription-plan-color);
-  box-shadow: var(--souscription-luxury-shadow);
+  border-color: #FF9E2C;
+  box-shadow: 0 20px 40px rgba(226, 88, 34, 0.2);
 }
 
-.souscription-plan-card.souscription-popular {
-  border-color: var(--souscription-gold);
-  transform: scale(1.05);
-  box-shadow: var(--souscription-glow);
-}
-
-.souscription-plan-card.souscription-popular:hover {
-  transform: scale(1.05) translateY(-8px);
+.souscription-experience-card.souscription-popular {
+  border-color: #E25822;
+  box-shadow: 0 0 40px rgba(226, 88, 34, 0.3);
 }
 
 /* Badge populaire */
 .souscription-popular-badge {
   position: absolute;
-  top: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-  color: #FFFFFF;
-}
-
-.souscription-badge-content {
-  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
-  color: #FFFFFF;
-  padding: 0.5rem 1.5rem;
-  border-radius: 0 0 1rem 1rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  white-space: nowrap;
-  box-shadow: 0 4px 14px rgba(226, 88, 34, 0.4);
+  top: 20px;
+  right: 20px;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #E25822, #F9A825);
+  color: white;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 3;
 }
 
-.souscription-badge-tail {
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 4px solid var(--souscription-light-gold);
-}
-
-/* En-tête du plan */
-.souscription-plan-header {
+/* En-tête expérience */
+.souscription-experience-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 30px;
+  flex-shrink: 0;
 }
 
-.souscription-plan-icon {
-  position: relative;
-  width: 5rem;
-  height: 5rem;
-  margin: 0 auto 1rem;
-  border-radius: 1.25rem;
-  background: rgba(226, 88, 34, 0.1);
+.souscription-experience-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--souscription-smooth-transition);
-  color: var(--souscription-gold);
+  transition: transform 0.3s ease;
 }
 
-.souscription-plan-card:hover .souscription-plan-icon {
-  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
-  color: white;
-  transform: scale(1.1) rotate(5deg);
+.souscription-experience-card:hover .souscription-experience-icon {
+  transform: scale(1.1);
 }
 
-.souscription-popular-icon {
-  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
-  color: white;
-}
-
-.souscription-icon-glow {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
-  border-radius: 1.25rem;
-  opacity: 0.3;
-  filter: blur(10px);
-  transition: var(--souscription-smooth-transition);
-}
-
-.souscription-plan-name {
-  font-size: 1.75rem;
+.souscription-experience-name {
+  font-size: 24px;
   font-weight: 700;
-  color: var(--souscription-foreground);
-  margin-bottom: 0.5rem;
+  color: #FFFFFF;
+  margin-bottom: 10px;
 }
 
-.souscription-plan-description {
-  color: var(--souscription-muted);
-  font-size: 0.875rem;
+.souscription-experience-tagline {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.5;
 }
 
-/* Prix du plan */
-.souscription-plan-pricing {
-  text-align: center;
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--souscription-border);
+.souscription-experience-bestfor {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(226, 88, 34, 0.2);
+  border-radius: 50px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.souscription-price-container {
-  margin-bottom: 0.5rem;
+/* Points forts */
+.souscription-experience-highlights {
+  flex-grow: 1;
+  margin-bottom: 30px;
 }
 
-.souscription-price-amount {
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--souscription-foreground);
-  line-height: 1;
-  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.souscription-price-detail {
-  display: block;
-  color: var(--souscription-muted);
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-}
-
-.souscription-annual-savings {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(52, 211, 153, 0.2));
-  color: #10b981;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  display: inline-block;
-  border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-/* Features du plan */
-.souscription-plan-features {
-  margin-bottom: 2rem;
-}
-
-.souscription-feature-item {
+.souscription-highlight-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 12px;
+  margin-bottom: 15px;
 }
 
-.souscription-feature-check {
-  width: 1.25rem;
-  height: 1.25rem;
-  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
+.souscription-highlight-dot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-shrink: 0;
-  margin-top: 0.125rem;
-  color: white;
-  box-shadow: 0 2px 8px rgba(226, 88, 34, 0.3);
+  margin-top: 8px;
+  background: #FF9E2C; /* Orange vif */
 }
 
-.souscription-feature-text {
-  color: var(--souscription-muted);
-  font-size: 0.875rem;
-  line-height: 1.4;
+.souscription-highlight-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  line-height: 1.5;
 }
 
-/* Bouton du plan */
-.souscription-plan-button {
+/* Bouton expérience */
+.souscription-experience-button {
   width: 100%;
-  padding: 1rem 2rem;
-  background: rgba(226, 88, 34, 0.1);
-  color: white;
-  border: 1px solid rgba(226, 88, 34, 0.3);
-  border-radius: 0.75rem;
+  padding: 16px 24px;
+  border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: var(--souscription-smooth-transition);
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  position: relative;
-  overflow: hidden;
+  gap: 10px;
+  border: none;
+  font-size: 16px;
+  text-decoration: none;
+  background: rgba(226, 88, 34, 0.1);
+  color: #E25822;
+  border: 2px solid #E25822;
 }
 
-.souscription-plan-button:hover {
-  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
+.souscription-experience-button:hover {
+  background: #E25822;
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(226, 88, 34, 0.4);
-  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(226, 88, 34, 0.3);
 }
 
 .souscription-popular-button {
-  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
-  color: #FFFFFF;
-  border-color: transparent;
-  box-shadow: 0 4px 14px rgba(226, 88, 34, 0.4);
+  background: linear-gradient(135deg, #E25822, #F9A825);
+  color: white;
+  border: none;
 }
 
 .souscription-popular-button:hover {
-  box-shadow: var(--souscription-glow), 0 8px 30px rgba(226, 88, 34, 0.6);
+  background: linear-gradient(135deg, #D44A1A, #F9A825);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(226, 88, 34, 0.4);
 }
 
 .souscription-button-arrow {
   transition: transform 0.3s ease;
 }
 
-.souscription-plan-button:hover .souscription-button-arrow {
-  transform: translateX(4px);
-}
-
-/* Effets visuels des cartes */
-.souscription-card-glow {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
-  opacity: 0;
-  border-radius: 1.5rem;
-  filter: blur(20px);
-  transition: opacity 0.3s ease;
-  z-index: -1;
-}
-
-.souscription-plan-card:hover .souscription-card-glow {
-  opacity: 0.1;
-}
-
-.souscription-card-shine {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transform: rotate(45deg);
-  transition: transform 0.6s ease;
-  z-index: -1;
-}
-
-.souscription-plan-card:hover .souscription-card-shine {
-  transform: rotate(45deg) translate(50%, 50%);
+.souscription-experience-button:hover .souscription-button-arrow {
+  transform: translateX(5px);
 }
 
 /* Section témoignages */
 .souscription-testimonials-section {
-  background: var(--souscription-card);
-  border-radius: 1.5rem;
-  padding: 3rem;
-  margin-bottom: 3rem;
-  opacity: 0;
-  transform: translateY(30px);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--souscription-border);
+  background: rgba(20, 20, 20, 0.8);
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 40px;
+  border: 1.5px solid rgba(226, 88, 34, 0.3);
 }
 
-.souscription-testimonials-section.animate-fade-in-up {
-  animation: souscription-fadeInUp 0.8s ease-out 0.4s forwards;
+.souscription-testimonials-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.testimonials-title-content {
+  flex: 1;
+  min-width: 300px;
 }
 
 .souscription-testimonials-title {
-  font-size: 1.75rem;
-  font-weight: 600;
-  text-align: center;
-  color: var(--souscription-foreground);
-  margin-bottom: 2rem;
+  font-size: 28px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.souscription-testimonials-subtitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+.souscription-global-rating {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(226, 88, 34, 0.2);
+  border-radius: 16px;
+}
+
+.global-rating-stars {
+  display: flex;
+  gap: 4px;
+}
+
+.global-rating-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
 }
 
 .souscription-testimonials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 30px;
 }
 
 .souscription-testimonial-card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 1rem;
-  padding: 2rem;
-  border: 1px solid var(--souscription-border);
-  transition: var(--souscription-smooth-transition);
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.souscription-testimonials-section.animate-fade-in-up .souscription-testimonial-card {
-  animation: souscription-fadeInUp 0.6s ease-out forwards;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 30px;
+  border: 1px solid rgba(226, 88, 34, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .souscription-testimonial-card:hover {
   transform: translateY(-5px);
-  border-color: var(--souscription-gold);
+  border-color: #E25822;
 }
 
-.souscription-rating-stars {
-  display: flex;
-  gap: 0.25rem;
-  margin-bottom: 1rem;
-}
-
-.souscription-star {
-  color: var(--souscription-gold);
-  filter: drop-shadow(0 0 4px rgba(226, 88, 34, 0.6));
+.souscription-testimonial-quote {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 48px;
+  color: #E25822;
+  opacity: 0.2;
+  font-family: serif;
+  line-height: 1;
 }
 
 .souscription-testimonial-comment {
-  color: white;
-  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin-bottom: 25px;
+  font-style: italic;
 }
 
 .souscription-testimonial-author {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
 .souscription-author-avatar {
-  width: 3rem;
-  height: 3rem;
-  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #E25822, #F9A825);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
   color: white;
-  box-shadow: 0 4px 12px rgba(226, 88, 34, 0.3);
+  font-size: 16px;
+}
+
+.souscription-author-info {
+  flex: 1;
 }
 
 .souscription-author-name {
+  font-size: 16px;
   font-weight: 600;
-  color: var(--souscription-foreground);
+  color: #FFFFFF;
+  margin-bottom: 4px;
 }
 
-.souscription-author-role {
-  font-size: 0.875rem;
-  color: var(--souscription-muted);
+.souscription-author-details {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-/* CTA de section */
-.souscription-section-cta {
+.detail-separator {
+  opacity: 0.5;
+}
+
+.souscription-testimonial-journey {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(226, 88, 34, 0.2);
+  border-radius: 50px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.journey-icon {
+  color: #E25822;
+}
+
+/* CTA Section */
+.souscription-cta-section {
+  background: rgba(20, 20, 20, 0.8);
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 40px;
+  border: 1.5px solid rgba(226, 88, 34, 0.3);
+}
+
+.souscription-cta-content {
   text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
+  margin-bottom: 40px;
 }
 
-.souscription-section-cta.animate-fade-in-up {
-  animation: souscription-fadeInUp 0.8s ease-out 0.6s forwards;
-}
-
-.souscription-cta-text {
-  color: var(--souscription-muted);
-  margin-bottom: 1.5rem;
-  font-size: 1.125rem;
-}
-
-.souscription-faq-button {
-  padding: 0.75rem 2rem;
-  background: transparent;
+.souscription-cta-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 25px;
+  background: linear-gradient(135deg, #E25822, #F9A825);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  border: 1px solid rgba(226, 88, 34, 0.3);
-  border-radius: 0.75rem;
+}
+
+.souscription-cta-text h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 15px;
+}
+
+.souscription-cta-text p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.souscription-cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.souscription-cta-button {
+  padding: 16px 32px;
+  border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: var(--souscription-smooth-transition);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  text-decoration: none;
+  justify-content: center;
+  min-width: 250px;
+  border: none;
 }
 
-.souscription-faq-button:hover {
+.souscription-cta-button.primary {
+  background: linear-gradient(135deg, #E25822, #F9A825);
+  color: white;
+}
+
+.souscription-cta-button.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(226, 88, 34, 0.3);
+}
+
+.souscription-cta-button.secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1.5px solid #E25822;
+}
+
+.souscription-cta-button.secondary:hover {
   background: rgba(226, 88, 34, 0.1);
   transform: translateY(-2px);
-  border-color: rgba(226, 88, 34, 0.5);
+}
+
+/* Garanties */
+.souscription-guarantees {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(226, 88, 34, 0.2);
+}
+
+.guarantee-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(226, 88, 34, 0.2);
+  transition: all 0.3s ease;
+}
+
+.guarantee-item:hover {
+  transform: translateY(-2px);
+  border-color: #E25822;
+}
+
+.guarantee-item > div:first-child {
+  width: 40px;
+  height: 40px;
+  background: rgba(226, 88, 34, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E25822;
+}
+
+.guarantee-title {
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+
+.guarantee-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
 }
 
 /* Éléments décoratifs */
@@ -572,131 +604,146 @@
   z-index: 1;
 }
 
-.souscription-floating-orb {
+.souscription-floating-element {
   position: absolute;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--souscription-gold), var(--souscription-light-gold));
-  opacity: 0.05;
-  filter: blur(40px);
-  animation: souscription-float 8s ease-in-out infinite;
+  background: rgba(226, 88, 34, 0.1);
+  filter: blur(20px);
 }
 
-.souscription-orb-1 {
-  width: 200px;
-  height: 200px;
+.element-1 {
+  width: 300px;
+  height: 300px;
   top: 10%;
   left: 5%;
-  animation-delay: 0s;
+  opacity: 0.3;
 }
 
-.souscription-orb-2 {
-  width: 150px;
-  height: 150px;
+.element-2 {
+  width: 200px;
+  height: 200px;
   top: 60%;
   right: 10%;
-  animation-delay: 2s;
+  opacity: 0.2;
 }
 
-.souscription-orb-3 {
-  width: 100px;
-  height: 100px;
+.element-3 {
+  width: 150px;
+  height: 150px;
   bottom: 20%;
   left: 15%;
-  animation-delay: 4s;
-}
-
-/* Animations */
-@keyframes souscription-fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes souscription-float {
-  0%, 100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-20px) scale(1.1);
-  }
+  opacity: 0.2;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .souscription-premium-container {
-    padding: 0 1rem;
+@media (max-width: 1024px) {
+  .souscription-tourisme-container {
+    padding: 0 20px;
   }
   
-  .souscription-plans-grid {
+  .souscription-experiences-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .souscription-testimonials-header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .souscription-tourisme-section {
+    padding: 60px 0;
+  }
+  
+  .souscription-title {
+    font-size: 36px;
+  }
+  
+  .souscription-description {
+    font-size: 16px;
+    padding: 0 15px;
+  }
+  
+  .souscription-stats {
+    gap: 20px;
+  }
+  
+  .souscription-stat-item {
+    min-width: 140px;
+    padding: 15px;
+  }
+  
+  .souscription-experiences-grid {
     grid-template-columns: 1fr;
   }
   
-  .souscription-plan-card.souscription-popular {
-    transform: scale(1);
+  .souscription-testimonials-section,
+  .souscription-cta-section {
+    padding: 30px;
   }
   
-  .souscription-plan-card.souscription-popular:hover {
-    transform: scale(1) translateY(-8px);
+  .souscription-cta-buttons {
+    flex-direction: column;
+    align-items: center;
   }
   
-  .souscription-testimonials-section {
-    padding: 2rem;
+  .souscription-cta-button {
+    width: 100%;
+    max-width: 300px;
   }
   
-  .souscription-testimonials-grid {
+  .souscription-guarantees {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
-  .souscription-premium-section {
-    padding: 4rem 0;
+  .souscription-tourisme-section {
+    padding: 40px 0;
   }
   
-  .souscription-toggle-container {
-    flex-direction: column;
-    width: 100%;
-    max-width: 200px;
+  .souscription-badge {
+    padding: 8px 16px;
+    font-size: 12px;
   }
   
-  .souscription-toggle-slider {
-    display: none;
+  .souscription-title {
+    font-size: 28px;
   }
   
-  .souscription-plan-card {
-    padding: 1.5rem;
+  .souscription-description {
+    font-size: 14px;
   }
   
-  .souscription-price-amount {
-    font-size: 2.5rem;
+  .souscription-stats {
+    gap: 15px;
   }
-}
-
-/* Effets de lumière supplémentaires */
-.souscription-premium-glow {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(226, 88, 34, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(50px);
-  animation: souscription-glowPulse 6s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: 1;
-}
-
-@keyframes souscription-glowPulse {
-  0% {
-    opacity: 0.3;
-    transform: scale(1);
+  
+  .souscription-stat-item {
+    min-width: 100%;
   }
-  100% {
-    opacity: 0.6;
-    transform: scale(1.1);
+  
+  .souscription-experience-card {
+    padding: 20px;
+    min-height: 400px;
+  }
+  
+  .souscription-testimonials-section,
+  .souscription-cta-section {
+    padding: 20px;
+  }
+  
+  .souscription-testimonial-card {
+    padding: 20px;
+  }
+  
+  .souscription-cta-text h3 {
+    font-size: 24px;
+  }
+  
+  .souscription-cta-text p {
+    font-size: 14px;
   }
 }

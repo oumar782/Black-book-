@@ -41,6 +41,172 @@ const HeaderPremium = () => {
       <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&display=swap');
         
+        /* Variables de style du défis - UNIQUEMENT les couleurs et gradients */
+        :root {
+          --defis-color-primary: #e25822;
+          --defis-color-secondary: #f9a825;
+          --defis-gradient-primary: linear-gradient(135deg, var(--defis-color-primary) 0%, var(--defis-color-secondary) 100%);
+          --defis-gradient-card: linear-gradient(135deg, rgba(226, 88, 34, 0.1) 0%, rgba(249, 168, 37, 0.05) 100%);
+          --defis-shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+          --defis-shadow-md: 0 8px 30px rgba(0, 0, 0, 0.2);
+          --defis-shadow-lg: 0 20px 60px rgba(226, 88, 34, 0.2);
+          --defis-border-radius: 12px;
+          --defis-border-radius-lg: 20px;
+        }
+
+        /* Style typographique UNIQUEMENT - comme dans defis.css */
+        .header-premium {
+          font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          line-height: 1.7;
+          font-weight: 400;
+        }
+
+        /* Logo Styles - Style typographique UNIQUEMENT */
+        .header-premium-logo-text {
+          font-family: 'Inter', sans-serif;
+          font-weight: bold;
+          line-height: 1.1;
+          color: #ffffff;
+        }
+
+        .header-premium-logo-text span:first-child {
+          color: #e0e0e0;
+          font-weight: 700;
+        }
+
+        .header-premium-logo-text span:last-child {
+          background: var(--defis-gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          font-weight: 900;
+        }
+
+        /* Navigation - Style typographique UNIQUEMENT */
+        .header-premium-nav-desktop {
+          font-family: 'Inter', sans-serif;
+        }
+
+        .header-premium-nav-link,
+        .header-premium-dropdown-toggle,
+        .header-premium-apropos-toggle {
+          font-family: 'Inter', sans-serif;
+          font-weight: 500;
+          color: #a0a0a0;
+        }
+
+        .header-premium-nav-link:hover,
+        .header-premium-nav-link.active {
+          color: #ffffff;
+        }
+
+        .header-premium-nav-link::before {
+          background: var(--defis-gradient-primary);
+        }
+
+        /* Dropdown Menu - Style typographique UNIQUEMENT */
+        .header-premium-dropdown-menu,
+        .header-premium-apropos-menu {
+          font-family: 'Inter', sans-serif;
+        }
+
+        .header-premium-dropdown-link,
+        .header-premium-apropos-link {
+          font-family: 'Inter', sans-serif;
+          color: #a0a0a0;
+        }
+
+        .header-premium-dropdown-link:hover,
+        .header-premium-apropos-link:hover {
+          color: #ffffff;
+        }
+
+        .header-premium-apropos-link::before {
+          background: var(--defis-color-primary);
+        }
+
+        /* Auth Buttons - Style typographique UNIQUEMENT */
+        .header-premium-auth-buttons {
+          font-family: 'Inter', sans-serif;
+        }
+
+        .header-premium-auth-btn {
+          font-family: 'Inter', sans-serif;
+          font-weight: 600;
+        }
+
+        .header-premium-login-btn {
+          color: #a0a0a0;
+        }
+
+        .header-premium-login-btn:hover {
+          color: #ffffff;
+        }
+
+        .header-premium-signup-btn {
+          background: var(--defis-gradient-primary);
+          color: #ffffff;
+        }
+
+        /* Mobile Menu - Style typographique UNIQUEMENT */
+        .header-premium-mobile-menu {
+          font-family: 'Inter', sans-serif;
+        }
+
+        .header-premium-mobile-menu-item {
+          font-family: 'Inter', sans-serif;
+          font-weight: 500;
+          color: #a0a0a0;
+        }
+
+        .header-premium-mobile-menu-item:hover,
+        .header-premium-mobile-menu-item.active {
+          color: #ffffff;
+        }
+
+        .header-premium-mobile-submenu-item {
+          font-family: 'Inter', sans-serif;
+          color: #a0a0a0;
+        }
+
+        .header-premium-mobile-submenu-item:hover {
+          color: #ffffff;
+        }
+
+        .header-premium-mobile-submenu-item::before {
+          color: var(--defis-color-primary);
+        }
+
+        .header-premium-mobile-section-title {
+          font-family: 'Inter', sans-serif;
+          font-weight: 600;
+          color: var(--defis-color-primary);
+        }
+
+        .header-premium-mobile-auth-btn {
+          font-family: 'Inter', sans-serif;
+          font-weight: 600;
+        }
+
+        .header-premium-mobile-login {
+          color: #a0a0a0;
+        }
+
+        .header-premium-mobile-login:hover {
+          color: #ffffff;
+        }
+
+        .header-premium-mobile-signup {
+          background: var(--defis-gradient-primary);
+          color: #ffffff;
+        }
+
+        .header-premium-mobile-footer-text {
+          font-family: 'Inter', sans-serif;
+          color: #888888;
+        }
+
+        /* Tout le reste de votre CSS existant reste inchangé */
         .header-premium {
           position: fixed;
           top: 0;
@@ -55,7 +221,6 @@ const HeaderPremium = () => {
             ? '0 8px 32px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.02) inset'
             : '0 4px 20px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.02) inset'
           };
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-nav-container {
@@ -69,7 +234,6 @@ const HeaderPremium = () => {
           transition: height 0.4s ease;
         }
 
-        /* Logo Styles */
         .header-premium-logo-container {
           display: flex;
           align-items: center;
@@ -125,34 +289,16 @@ const HeaderPremium = () => {
         }
 
         .header-premium-logo-text {
-          font-family: 'League Spartan', sans-serif;
           font-size: ${isScrolled ? '1.3rem' : '1.5rem'};
-          color: white;
           display: flex;
           align-items: center;
           letter-spacing: -0.5px;
           transition: font-size 0.4s ease;
           white-space: nowrap;
-          font-weight: 800;
-          line-height: 1.1;
-          letter-spacing: -0.02em;
-        }
-
-        .header-premium-logo-text span:first-child {
-          color: #e0e0e0;
-          opacity: 0.9;
-          font-weight: bold;
-          line-height: 1.1;
-          letter-spacing: -0.02em;
         }
 
         .header-premium-logo-text span:last-child {
-          background: linear-gradient(135deg, rgb(243, 108, 6) 0%, rgb(243, 108, 6) 50%, #f9a825 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          font-weight: 900;
-          text-shadow: 0 2px 4px rgba(255, 107, 53, 0.2);
+          text-shadow: 0 2px 4px rgba(226, 88, 34, 0.2);
         }
 
         /* Desktop Navigation */
@@ -162,27 +308,22 @@ const HeaderPremium = () => {
           gap: 8px;
           flex-wrap: wrap;
           justify-content: center;
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-nav-link {
           position: relative;
           padding: 12px 16px;
           font-size: 0.9rem;
-          font-weight: 500;
-          color: #bbb;
           text-decoration: none;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           letter-spacing: 0.2px;
           border-radius: 10px;
           white-space: nowrap;
           flex-shrink: 0;
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-nav-link:hover,
         .header-premium-nav-link.active {
-          color: white;
           background: rgba(255, 107, 53, 0.1);
           transform: translateY(-1px);
         }
@@ -195,10 +336,9 @@ const HeaderPremium = () => {
           transform: translateX(-50%);
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, rgb(243, 108, 6), rgb(243, 108, 6), #ff6b35);
           border-radius: 2px;
           transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 0 10px rgba(255, 107, 53, 0.4);
+          box-shadow: 0 0 10px rgba(226, 88, 34, 0.4);
         }
 
         .header-premium-nav-link:hover::before,
@@ -217,19 +357,15 @@ const HeaderPremium = () => {
           gap: 6px;
           padding: 12px 16px;
           font-size: 0.9rem;
-          font-weight: 500;
-          color: #bbb;
           background: none;
           border: none;
           cursor: pointer;
           transition: all 0.3s ease;
           border-radius: 10px;
           white-space: nowrap;
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-dropdown-toggle:hover {
-          color: white;
           background: rgba(255, 107, 53, 0.1);
         }
 
@@ -250,7 +386,6 @@ const HeaderPremium = () => {
           transform: translateY(-10px);
           transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
           z-index: 1001;
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-nav-dropdown:hover .header-premium-dropdown-menu {
@@ -263,16 +398,13 @@ const HeaderPremium = () => {
           display: block;
           padding: 12px 16px;
           font-size: 0.9rem;
-          color: #ccc;
           text-decoration: none;
           border-radius: 8px;
           transition: all 0.3s ease;
           margin-bottom: 4px;
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-dropdown-link:hover {
-          color: white;
           background: rgba(255, 107, 53, 0.15);
           transform: translateX(4px);
         }
@@ -288,19 +420,15 @@ const HeaderPremium = () => {
           gap: 6px;
           padding: 12px 16px;
           font-size: 0.9rem;
-          font-weight: 500;
-          color: #bbb;
           background: none;
           border: none;
           cursor: pointer;
           transition: all 0.3s ease;
           border-radius: 10px;
           white-space: nowrap;
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-apropos-toggle:hover {
-          color: white;
           background: rgba(255, 107, 53, 0.1);
         }
 
@@ -321,7 +449,6 @@ const HeaderPremium = () => {
           transform: translateY(-10px);
           transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
           z-index: 1001;
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-apropos-dropdown:hover .header-premium-apropos-menu {
@@ -334,16 +461,13 @@ const HeaderPremium = () => {
           display: block;
           padding: 12px 16px;
           font-size: 0.9rem;
-          color: #ccc;
           text-decoration: none;
           border-radius: 8px;
           transition: all 0.3s ease;
           margin-bottom: 4px;
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-apropos-link:hover {
-          color: white;
           background: rgba(255, 107, 53, 0.15);
           transform: translateX(4px);
         }
@@ -353,7 +477,6 @@ const HeaderPremium = () => {
           display: inline-block;
           width: 4px;
           height: 4px;
-          background: #ff6b35;
           border-radius: 50%;
           margin-right: 8px;
           vertical-align: middle;
@@ -365,44 +488,36 @@ const HeaderPremium = () => {
           align-items: center;
           gap: 12px;
           margin-left: 24px;
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-auth-btn {
           padding: 10px 20px;
           font-size: 0.9rem;
-          font-weight: 600;
           border-radius: 10px;
           transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
           text-decoration: none;
           white-space: nowrap;
           border: none;
           cursor: pointer;
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-login-btn {
           background: transparent;
-          color: #bbb;
           border: 1px solid rgba(255, 107, 53, 0.4);
         }
 
         .header-premium-login-btn:hover {
           background: rgba(255, 107, 53, 0.1);
-          color: white;
           border-color: rgba(255, 107, 53, 0.6);
           transform: translateY(-1px);
         }
 
         .header-premium-signup-btn {
-          background: linear-gradient(135deg, rgb(243, 108, 6), #ff6b35);
-          color: white;
           border: 1px solid rgba(255, 107, 53, 0.8);
           box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
         }
 
         .header-premium-signup-btn:hover {
-          background: linear-gradient(135deg, #e25822, rgb(243, 108, 6));
           transform: translateY(-2px);
           box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
         }
@@ -466,7 +581,6 @@ const HeaderPremium = () => {
           z-index: 999;
           animation: slideIn 0.3s ease-out forwards;
           min-height: calc(100vh - ${isScrolled ? '70px' : '80px'});
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-mobile-nav {
@@ -480,7 +594,6 @@ const HeaderPremium = () => {
           display: block;
           padding: 18px 20px;
           font-size: 1.1rem;
-          color: #ccc;
           text-decoration: none;
           border-radius: 12px;
           transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -488,12 +601,10 @@ const HeaderPremium = () => {
           background: rgba(255, 255, 255, 0.02);
           text-align: left;
           width: 100%;
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-mobile-menu-item:hover,
         .header-premium-mobile-menu-item.active {
-          color: white;
           background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(255, 142, 83, 0.1));
           border-color: rgba(255, 107, 53, 0.3);
           transform: translateX(8px);
@@ -513,24 +624,20 @@ const HeaderPremium = () => {
           display: block;
           padding: 14px 20px;
           font-size: 1rem;
-          color: #aaa;
           text-decoration: none;
           border-radius: 10px;
           transition: all 0.3s ease;
           margin-bottom: 4px;
           background: rgba(255, 255, 255, 0.01);
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-mobile-submenu-item:hover {
-          color: white;
           background: rgba(255, 107, 53, 0.1);
           transform: translateX(4px);
         }
 
         .header-premium-mobile-submenu-item::before {
           content: '›';
-          color: #ff6b35;
           margin-right: 8px;
           font-weight: bold;
         }
@@ -547,37 +654,30 @@ const HeaderPremium = () => {
           flex: 1;
           padding: 16px 20px;
           font-size: 1rem;
-          font-weight: 600;
           border-radius: 12px;
           transition: all 0.3s ease;
           text-decoration: none;
           text-align: center;
           border: none;
           cursor: pointer;
-          font-family: 'League Spartan', sans-serif;
         }
 
         .header-premium-mobile-login {
           background: transparent;
-          color: #bbb;
           border: 1px solid rgba(255, 107, 53, 0.4);
         }
 
         .header-premium-mobile-login:hover {
           background: rgba(255, 107, 53, 0.1);
-          color: white;
           border-color: rgba(255, 107, 53, 0.6);
         }
 
         .header-premium-mobile-signup {
-          background: linear-gradient(135deg, rgb(243, 108, 6), #ff6b35);
-          color: white;
           border: 1px solid rgba(255, 107, 53, 0.8);
           box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
         }
 
         .header-premium-mobile-signup:hover {
-          background: linear-gradient(135deg, #e25822, rgb(243, 108, 6));
           box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
         }
 
@@ -588,8 +688,6 @@ const HeaderPremium = () => {
 
         .header-premium-mobile-section-title {
           font-size: 0.9rem;
-          font-weight: 600;
-          color: #ff6b35;
           text-transform: uppercase;
           letter-spacing: 1px;
           margin-bottom: 16px;
@@ -597,7 +695,6 @@ const HeaderPremium = () => {
           opacity: 0.8;
           border-left: 3px solid #ff6b35;
           padding-left: 16px;
-          font-family: 'League Spartan', sans-serif;
         }
 
         /* Enhanced Scroll for Mobile Menu */
@@ -629,9 +726,7 @@ const HeaderPremium = () => {
 
         .header-premium-mobile-footer-text {
           font-size: 0.8rem;
-          color: #888;
           opacity: 0.7;
-          font-family: 'League Spartan', sans-serif;
         }
 
         /* Nouvelles Animations Appliquées */
@@ -842,8 +937,8 @@ const HeaderPremium = () => {
               <img src={logo} alt="The Black Book" className="header-premium-logo-img" />
             </div>
             <div className="header-premium-logo-text">
-              <span>AFRO</span>&nbsp;
-              <span>BLACK BOOK</span>
+              <span>Afro</span>&nbsp;
+              <span>Black Book</span>
             </div>
           </a>
 
@@ -916,7 +1011,14 @@ const HeaderPremium = () => {
           </nav>
 
           {/* Desktop Auth Buttons */}
-          
+          <div className="header-premium-auth-buttons">
+            <button className="header-premium-auth-btn header-premium-login-btn">
+              Connexion
+            </button>
+            <button className="header-premium-auth-btn header-premium-signup-btn">
+              S'inscrire
+            </button>
+          </div>
 
           {/* Mobile Menu Toggle */}
           <button
@@ -936,7 +1038,14 @@ const HeaderPremium = () => {
           <div className="header-premium-mobile-menu animate-slideIn">
             <nav className="header-premium-mobile-nav">
               {/* Mobile Auth Buttons */}
-          
+              <div className="header-premium-mobile-auth">
+                <button className="header-premium-mobile-auth-btn header-premium-mobile-login">
+                  Connexion
+                </button>
+                <button className="header-premium-mobile-auth-btn header-premium-mobile-signup">
+                  S'inscrire
+                </button>
+              </div>
 
               {/* Main Navigation Section */}
               <div className="header-premium-mobile-section">

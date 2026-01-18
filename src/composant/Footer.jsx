@@ -1,4 +1,6 @@
-import { Mail, Instagram, Twitter, Youtube, Facebook, ArrowRight, Shield } from 'lucide-react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Mail, Instagram, Twitter, Youtube, Facebook, ArrowRight, Shield, MapPin, Phone, Globe, Heart } from 'lucide-react';
 import logo from '../assets/black.webp';
 
 const Footer = () => {
@@ -6,19 +8,28 @@ const Footer = () => {
     platform: {
       title: "Plateforme",
       links: [
-        { name: "Ressources", href: "/resources" },
-        { name: "Événements", href: "/events" },
-        { name: "Boutique", href: "/shop" },
-        { name: "Blog", href: "/blog" },
+        { name: "The Apex", href: "/apex" },
+        { name: "Événements", href: "/evenements" },
+        { name: "Défis", href: "/defis" },
+        { name: "The Sun", href: "/the-sun" },
       ]
     },
-    community: {
-      title: "Communauté", 
+    exploration: {
+      title: "Exploration", 
       links: [
-        { name: "À propos", href: "/about" },
-        { name: "Ambassadeurs", href: "/ambassadors" },
-        { name: "Partenaires", href: "/partners" },
-        { name: "Témoignages", href: "/testimonials" },
+        { name: "Musée", href: "/Musée" },
+        { name: "Tourisme", href: "/tourisme" },
+        { name: "Lada", href: "/lada" },
+        { name: "Caméléon", href: "/cameleon" },
+      ]
+    },
+    company: {
+      title: "Entreprise",
+      links: [
+        { name: "Mot du Promoteur", href: "/Mot-du-promotteur" },
+        { name: "Notre Mission", href: "/À-propos" },
+        { name: "Équipe", href: "/equipe" },
+        { name: "Carrières", href: "/carrieres" },
       ]
     },
     support: {
@@ -27,32 +38,43 @@ const Footer = () => {
         { name: "Centre d'aide", href: "/help" },
         { name: "Contact", href: "/contact" },
         { name: "FAQ", href: "/faq" },
-        { name: "Status", href: "/status" },
-      ]
-    },
-    legal: {
-      title: "Légal",
-      links: [
-        { name: "Politique de confidentialité", href: "/privacy" },
-        { name: "Conditions d'utilisation", href: "/terms" },
-        { name: "Mentions légales", href: "/legal" },
-        { name: "Cookies", href: "/cookies" },
+        { name: "Politique", href: "/privacy" },
       ]
     }
   };
 
   const socialLinks = [
-    { name: 'Instagram', icon: Instagram, href: '#' },
-    { name: 'Twitter', icon: Twitter, href: '#' },
-    { name: 'YouTube', icon: Youtube, href: '#' },
-    { name: 'Facebook', icon: Facebook, href: '#' },
+    { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/theblackbook' },
+    { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/theblackbook' },
+    { name: 'YouTube', icon: Youtube, href: 'https://youtube.com/theblackbook' },
+    { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/theblackbook' },
+  ];
+
+  const contactInfo = [
+    { icon: MapPin, text: "Dakar, Sénégal", href: "#", external: false },
+    { icon: Phone, text: "+221 33 800 0000", href: "tel:+221338000000", external: true },
+    { icon: Mail, text: "contact@theblackbook.com", href: "mailto:contact@theblackbook.com", external: true },
+    { icon: Globe, text: "www.theblackbook.com", href: "https://theblackbook.com", external: true },
   ];
 
   return (
-    <footer className="afro-footer">
+    <>
       <style jsx>{`
-        .afro-footer {
-          background: #000000;
+        /* Styles de base */
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          color: #fff;
+        }
+
+        /* Footer Premium */
+        .footer-premium {
+          background: linear-gradient(180deg, #0A0A0A 0%, #141414 100%);
           border-top: 1px solid rgba(226, 88, 34, 0.3);
           width: 100%;
           margin: 0;
@@ -61,317 +83,266 @@ const Footer = () => {
           overflow: hidden;
         }
 
-        /* Effets de particules */
-        .afro-footer-particles {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          pointer-events: none;
-        }
-
-        .afro-footer-particle {
-          position: absolute;
-          width: 3px;
-          height: 3px;
-          background: linear-gradient(135deg, #e25822, #f9a825);
-          border-radius: 50%;
-          animation: afroFooterFloat linear infinite;
-          opacity: 0.4;
-        }
-
-        @keyframes afroFooterFloat {
-          0% {
-            transform: translateY(100vh) rotate(0deg);
-            opacity: 0;
-          }
-          10% {
-            opacity: 0.4;
-          }
-          90% {
-            opacity: 0.4;
-          }
-          100% {
-            transform: translateY(-100px) rotate(360deg);
-            opacity: 0;
-          }
-        }
-
-        .afro-footer-border {
-          border-bottom: 1px solid rgba(226, 88, 34, 0.2);
-          width: 100%;
-        }
-
-        .afro-footer-container {
-          width: 100%;
-          max-width: 100%;
-          margin: 0;
-          padding: 0;
+        .footer-premium-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
           position: relative;
           z-index: 2;
         }
 
-        .afro-footer-content {
-          max-width: 1400px;
-          margin: 0 auto;
-          padding: 0 1rem;
-          width: 100%;
-          box-sizing: border-box;
-        }
-
-        @media (min-width: 1024px) {
-          .afro-footer-content {
-            padding: 0 2rem;
-          }
-        }
-
-        /* Newsletter Section Premium */
-        .afro-newsletter-section {
-          padding: 4rem 0;
+        /* Newsletter Section */
+        .footer-premium-newsletter {
+          padding: 80px 0;
           width: 100%;
           position: relative;
         }
 
-        .afro-newsletter-grid {
+        .footer-premium-newsletter-grid {
           display: grid;
-          gap: 2rem;
+          gap: 48px;
           align-items: center;
         }
 
         @media (min-width: 1024px) {
-          .afro-newsletter-grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+          .footer-premium-newsletter-grid {
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
           }
         }
 
-        .afro-newsletter-content {
+        .footer-premium-newsletter-content {
           position: relative;
         }
 
-        .afro-newsletter-badge {
+        .footer-premium-newsletter-badge {
           display: inline-flex;
           align-items: center;
-          gap: 0.5rem;
-          background: linear-gradient(135deg, rgba(226, 88, 34, 0.2), rgba(249, 168, 37, 0.1));
-          border: 1px solid rgba(226, 88, 34, 0.3);
-          padding: 0.5rem 1.25rem;
+          gap: 10px;
+          background: rgba(226, 88, 34, 0.1);
+          border: 1.5px solid rgba(226, 88, 34, 0.3);
+          padding: 10px 24px;
           border-radius: 50px;
-          margin-bottom: 1.5rem;
+          margin-bottom: 28px;
           backdrop-filter: blur(10px);
+          transition: all 0.3s ease;
         }
 
-        .afro-newsletter-badge-icon {
-          width: 1rem;
-          height: 1rem;
-          color: #e25822;
+        .footer-premium-newsletter-badge:hover {
+          background: rgba(226, 88, 34, 0.15);
+          transform: translateY(-2px);
         }
 
-        .afro-newsletter-badge span {
+        .footer-premium-newsletter-badge span {
           color: #e25822;
           font-weight: 600;
-          font-size: 0.875rem;
+          font-size: 14px;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
         }
 
-        .afro-newsletter-title {
-          font-family: 'Inter', sans-serif;
-          font-weight: 700;
-          font-size: clamp(1.75rem, 4vw, 2.5rem);
+        .footer-premium-newsletter-title {
+          font-weight: 800;
+          font-size: 42px;
           color: #f5f5f5;
-          margin-bottom: 1rem;
-          line-height: 1.2;
+          margin-bottom: 20px;
+          line-height: 1.1;
         }
 
-        .afro-gradient-marron {
-          background: linear-gradient(135deg, #e25822 0%, #f9a825 100%);
+        .footer-premium-gradient {
+          background: linear-gradient(135deg, #E25822, #F9A825);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          background-clip: text;
         }
 
-        .afro-newsletter-text {
-          color: #a3a3a3;
-          font-size: clamp(1rem, 2vw, 1.125rem);
+        .footer-premium-newsletter-text {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 18px;
           line-height: 1.6;
           max-width: 500px;
-          margin-bottom: 2rem;
+          margin-bottom: 36px;
+          font-weight: 400;
         }
 
-        .afro-newsletter-form-container {
+        .footer-premium-form-container {
           position: relative;
           max-width: 500px;
         }
 
-        .afro-newsletter-form {
+        .footer-premium-form {
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: 16px;
           width: 100%;
         }
 
         @media (min-width: 640px) {
-          .afro-newsletter-form {
+          .footer-premium-form {
             flex-direction: row;
           }
         }
 
-        .afro-newsletter-input-wrapper {
+        .footer-premium-input-wrapper {
           position: relative;
           flex: 1;
         }
 
-        .afro-newsletter-input {
+        .footer-premium-input {
           width: 100%;
           background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(226, 88, 34, 0.3);
+          border: 1.5px solid rgba(226, 88, 34, 0.3);
           color: #f5f5f5;
-          padding: 1rem 1.5rem;
+          padding: 16px 24px;
           border-radius: 12px;
-          font-size: 1rem;
+          font-size: 16px;
           transition: all 0.3s ease;
           backdrop-filter: blur(10px);
+          font-weight: 500;
         }
 
-        .afro-newsletter-input::placeholder {
+        .footer-premium-input::placeholder {
           color: #737373;
+          font-weight: 400;
         }
 
-        .afro-newsletter-input:focus {
+        .footer-premium-input:focus {
           outline: none;
-          border-color: #e25822;
+          border-color: #E25822;
           box-shadow: 0 0 0 3px rgba(226, 88, 34, 0.1);
           background: rgba(226, 88, 34, 0.05);
         }
 
-        .afro-newsletter-underline {
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          width: 0;
-          height: 2px;
-          background: linear-gradient(90deg, #e25822, #f9a825);
-          transition: all 0.3s ease;
-          transform: translateX(-50%);
-        }
-
-        .afro-newsletter-input:focus ~ .afro-newsletter-underline {
-          width: 100%;
-        }
-
-        .afro-newsletter-button {
-          background: linear-gradient(135deg, #e25822, #f9a825);
+        .footer-premium-button {
+          background: linear-gradient(135deg, #E25822, #F9A825);
           color: white;
           border: none;
-          padding: 1rem 2rem;
+          padding: 16px 32px;
           border-radius: 12px;
           font-weight: 600;
           cursor: pointer;
           display: flex;
           align-items: center;
-          gap: 0.5rem;
-          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          gap: 12px;
+          transition: all 0.3s ease;
           box-shadow: 0 4px 20px rgba(226, 88, 34, 0.3);
           position: relative;
           overflow: hidden;
           white-space: nowrap;
+          font-size: 16px;
+          letter-spacing: 0.5px;
         }
 
-        .afro-newsletter-button::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-          transition: left 0.6s ease;
-        }
-
-        .afro-newsletter-button:hover::before {
-          left: 100%;
-        }
-
-        .afro-newsletter-button:hover {
+        .footer-premium-button:hover {
           transform: translateY(-2px);
           box-shadow: 0 8px 30px rgba(226, 88, 34, 0.5);
+          background: linear-gradient(135deg, #D44A1A, #F9A825);
         }
 
-        .afro-newsletter-disclaimer {
-          font-size: 0.75rem;
-          color: #737373;
+        .footer-premium-button-arrow {
+          transition: transform 0.3s ease;
+        }
+
+        .footer-premium-button:hover .footer-premium-button-arrow {
+          transform: translateX(4px);
+        }
+
+        .footer-premium-disclaimer {
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.6);
           max-width: 500px;
-          margin-top: 1rem;
+          margin-top: 16px;
           display: flex;
           align-items: center;
-          gap: 0.5rem;
+          gap: 10px;
+          font-weight: 400;
         }
 
-        .afro-newsletter-visual {
+        .footer-premium-visual {
           position: relative;
           display: flex;
           justify-content: center;
           align-items: center;
         }
 
-        .afro-newsletter-orb {
-          width: 200px;
-          height: 200px;
-          background: radial-gradient(circle, rgba(226, 88, 34, 0.2), transparent);
+        .footer-premium-orb {
+          width: 280px;
+          height: 280px;
+          background: radial-gradient(circle, rgba(226, 88, 34, 0.1), transparent);
           border: 2px solid rgba(226, 88, 34, 0.3);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          animation: afroNewsletterOrbGlow 3s ease-in-out infinite;
+          animation: footerPremiumOrbGlow 3s ease-in-out infinite;
+          position: relative;
         }
 
-        @keyframes afroNewsletterOrbGlow {
+        @keyframes footerPremiumOrbGlow {
           0%, 100% { 
-            box-shadow: 0 0 30px rgba(226, 88, 34, 0.3); 
+            box-shadow: 0 0 40px rgba(226, 88, 34, 0.3); 
           }
           50% { 
-            box-shadow: 0 0 50px rgba(226, 88, 34, 0.5); 
+            box-shadow: 0 0 60px rgba(226, 88, 34, 0.5); 
           }
         }
 
-        .afro-newsletter-icon {
-          width: 3rem;
-          height: 3rem;
-          color: #e25822;
+        .footer-premium-orb::before {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          border-radius: 50%;
+          background: linear-gradient(45deg, transparent, rgba(226, 88, 34, 0.2), transparent);
+          animation: footerPremiumRotate 20s linear infinite;
+          z-index: -1;
+        }
+
+        @keyframes footerPremiumRotate {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .footer-premium-icon {
+          width: 60px;
+          height: 60px;
+          color: #E25822;
         }
 
         /* Main Footer Content */
-        .afro-main-footer {
-          padding: 4rem 0;
+        .footer-premium-main {
+          padding: 80px 0;
           width: 100%;
         }
 
-        .afro-footer-grid {
+        .footer-premium-grid {
           display: grid;
-          gap: 3rem;
+          gap: 48px;
         }
 
         @media (min-width: 1024px) {
-          .afro-footer-grid {
-            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-            gap: 4rem;
+          .footer-premium-grid {
+            grid-template-columns: 1.5fr repeat(4, 1fr);
+            gap: 64px;
           }
         }
 
-        .afro-brand-section {
+        .footer-premium-brand {
           display: flex;
           flex-direction: column;
-          gap: 2rem;
+          gap: 28px;
         }
 
-        .afro-brand-logo {
+        .footer-premium-logo-container {
           display: flex;
           align-items: center;
-          gap: 1rem;
+          gap: 16px;
+          cursor: pointer;
+          text-decoration: none;
         }
 
-        .afro-logo-wrapper {
+        .footer-premium-logo-wrapper {
           position: relative;
           width: 60px;
           height: 60px;
@@ -380,206 +351,252 @@ const Footer = () => {
           justify-content: center;
         }
 
-        .afro-logo-background {
+        .footer-premium-logo-background {
           position: absolute;
           top: 0;
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, #e25822 0%, #f9a825 100%);
-          border-radius: 16px;
-          opacity: 0.8;
-          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 4px 20px rgba(226, 88, 34, 0.3);
+          background: linear-gradient(135deg, #E25822, #F9A825);
+          border-radius: 14px;
+          opacity: 0;
+          transition: all 0.4s ease;
+          box-shadow: 0 0 0 1px rgba(226, 88, 34, 0.1), 0 4px 20px rgba(226, 88, 34, 0.2);
         }
 
-        .afro-logo-img {
+        .footer-premium-logo-img {
           width: 50px;
           height: 50px;
-          border-radius: 12px;
-          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          border-radius: 10px;
+          transition: all 0.4s ease;
           position: relative;
           z-index: 2;
           filter: brightness(1.1) drop-shadow(0 2px 8px rgba(226, 88, 34, 0.3));
           object-fit: cover;
         }
 
-        .afro-brand-logo:hover .afro-logo-background {
+        .footer-premium-logo-container:hover .footer-premium-logo-background {
           opacity: 1;
-          transform: scale(1.05) rotate(5deg);
+          transform: scale(1.1) rotate(5deg);
         }
 
-        .afro-brand-logo:hover .afro-logo-img {
+        .footer-premium-logo-container:hover .footer-premium-logo-img {
           transform: scale(1.05) rotate(-5deg);
         }
 
-        .afro-logo-text {
-          font-family: 'Playfair Display', serif;
+        .footer-premium-logo-text {
           font-weight: 800;
-          font-size: clamp(1.5rem, 3vw, 1.75rem);
+          font-size: 24px;
           color: white;
           display: flex;
           align-items: center;
           letter-spacing: -0.5px;
-          flex-wrap: wrap;
+          line-height: 1.1;
+       white-space: nowrap; /* Ajouté pour éviter le retour à la ligne */
+
         }
 
-        .afro-logo-text-main {
+        .footer-premium-logo-text-main {
           color: #e0e0e0;
           opacity: 0.9;
           font-weight: 700;
         }
 
-        .afro-brand-description {
-          color: #a3a3a3;
+        .footer-premium-logo-gradient {
+          background: linear-gradient(135deg, #E25822, #F9A825);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-weight: 900;
+            white-space: nowrap; /* Ajouté pour éviter le retour à la ligne */
+        }
+
+        .footer-premium-description {
+          color: rgba(255, 255, 255, 0.7);
           line-height: 1.6;
-          font-size: clamp(0.95rem, 2vw, 1.05rem);
+          font-size: 16px;
           max-width: 400px;
+          font-weight: 400;
         }
 
-        .afro-social-links {
+        /* Contact Info */
+        .footer-premium-contact {
           display: flex;
-          gap: 0.75rem;
-          flex-wrap: wrap;
+          flex-direction: column;
+          gap: 16px;
+          margin: 24px 0;
         }
 
-        .afro-social-link {
-          width: 3rem;
-          height: 3rem;
+        .footer-premium-contact-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          color: rgba(255, 255, 255, 0.7);
+          text-decoration: none;
+          transition: all 0.3s ease;
+          font-size: 15px;
+          font-weight: 400;
+        }
+
+        .footer-premium-contact-item:hover {
+          color: #E25822;
+          transform: translateX(5px);
+        }
+
+        .footer-premium-contact-icon {
+          width: 18px;
+          height: 18px;
+          color: #E25822;
+        }
+
+        /* Social Links */
+        .footer-premium-social {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+          margin-top: 20px;
+        }
+
+        .footer-premium-social-link {
+          width: 48px;
+          height: 48px;
           background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(226, 88, 34, 0.2);
+          border: 1.5px solid rgba(226, 88, 34, 0.2);
           border-radius: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          transition: all 0.3s ease;
           backdrop-filter: blur(10px);
         }
 
-        .afro-social-link:hover {
+        .footer-premium-social-link:hover {
           background: rgba(226, 88, 34, 0.1);
           border-color: rgba(226, 88, 34, 0.4);
-          transform: translateY(-2px);
+          transform: translateY(-3px);
           box-shadow: 0 8px 20px rgba(226, 88, 34, 0.2);
         }
 
-        .afro-social-icon {
-          width: 1.25rem;
-          height: 1.25rem;
-          color: #a3a3a3;
+        .footer-premium-social-icon {
+          width: 20px;
+          height: 20px;
+          color: rgba(255, 255, 255, 0.7);
           transition: all 0.3s ease;
         }
 
-        .afro-social-link:hover .afro-social-icon {
-          color: #e25822;
+        .footer-premium-social-link:hover .footer-premium-social-icon {
+          color: #E25822;
           transform: scale(1.1);
         }
 
-        .afro-links-section h4 {
-          font-family: 'Inter', sans-serif;
-          font-weight: 600;
+        /* Links Sections */
+        .footer-premium-links-section h4 {
+          font-weight: 700;
           color: #f5f5f5;
-          margin-bottom: 1.5rem;
-          font-size: 1.125rem;
+          margin-bottom: 24px;
+          font-size: 18px;
+          letter-spacing: 0.5px;
         }
 
-        .afro-links-list {
+        .footer-premium-links-list {
           list-style: none;
           padding: 0;
           margin: 0;
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: 16px;
         }
 
-        .afro-links-list a {
-          color: #a3a3a3;
+        .footer-premium-links-list a {
+          color: rgba(255, 255, 255, 0.7);
           text-decoration: none;
-          font-size: 0.95rem;
+          font-size: 15px;
           transition: all 0.3s ease;
-          padding: 0.5rem 0;
+          padding: 8px 0;
           position: relative;
           display: inline-block;
+          font-weight: 400;
         }
 
-        .afro-links-list a::before {
+        .footer-premium-links-list a::before {
           content: '';
           position: absolute;
           bottom: 0;
           left: 0;
           width: 0;
-          height: 1px;
-          background: linear-gradient(90deg, #e25822, #f9a825);
+          height: 2px;
+          background: linear-gradient(90deg, #E25822, #F9A825);
           transition: width 0.3s ease;
         }
 
-        .afro-links-list a:hover {
-          color: #e25822;
-          transform: translateX(5px);
+        .footer-premium-links-list a:hover {
+          color: #E25822;
+          transform: translateX(8px);
         }
 
-        .afro-links-list a:hover::before {
-          width: 20px;
+        .footer-premium-links-list a:hover::before {
+          width: 24px;
         }
 
         /* Bottom Bar */
-        .afro-bottom-bar {
+        .footer-premium-bottom {
           border-top: 1px solid rgba(226, 88, 34, 0.2);
-          padding: 2rem 0;
+          padding: 40px 0;
           width: 100%;
         }
 
-        .afro-bottom-content {
+        .footer-premium-bottom-content {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           align-items: center;
-          gap: 1.5rem;
+          gap: 24px;
           text-align: center;
         }
 
         @media (min-width: 768px) {
-          .afro-bottom-content {
+          .footer-premium-bottom-content {
             flex-direction: row;
             text-align: left;
             gap: 0;
           }
         }
 
-        .afro-copyright {
-          color: #a3a3a3;
-          font-size: 0.875rem;
+        .footer-premium-copyright {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 14px;
+          font-weight: 400;
         }
 
-        .afro-bottom-right {
+        .footer-premium-bottom-right {
           display: flex;
           align-items: center;
-          gap: 1.5rem;
+          gap: 24px;
           flex-wrap: wrap;
           justify-content: center;
         }
 
-        .afro-status {
+        .footer-premium-status {
           display: flex;
           align-items: center;
-          gap: 0.5rem;
-          color: #e25822;
-          font-size: 0.875rem;
+          gap: 10px;
+          color: #E25822;
+          font-size: 14px;
           background: rgba(226, 88, 34, 0.1);
-          padding: 0.5rem 1rem;
-          border-radius: 20px;
+          padding: 10px 20px;
+          border-radius: 25px;
           border: 1px solid rgba(226, 88, 34, 0.2);
+          font-weight: 500;
         }
 
-        .afro-status-dot {
-          width: 0.5rem;
-          height: 0.5rem;
+        .footer-premium-status-dot {
+          width: 8px;
+          height: 8px;
           background-color: #22c55e;
           border-radius: 50%;
-          animation: afroPulse 2s infinite;
+          animation: footerPremiumPulse 2s infinite;
         }
 
-        @keyframes afroPulse {
+        @keyframes footerPremiumPulse {
           0%, 100% {
             opacity: 1;
             transform: scale(1);
@@ -590,20 +607,21 @@ const Footer = () => {
           }
         }
 
-        .afro-made-with-love {
-          color: #a3a3a3;
-          font-size: 0.875rem;
+        .footer-premium-made-with {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 14px;
           display: flex;
           align-items: center;
-          gap: 0.5rem;
+          gap: 8px;
+          font-weight: 400;
         }
 
-        .afro-heart {
-          color: #e25822;
-          animation: afroHeartbeat 1.5s ease-in-out infinite;
+        .footer-premium-heart {
+          color: #E25822;
+          animation: footerPremiumHeartbeat 1.5s ease-in-out infinite;
         }
 
-        @keyframes afroHeartbeat {
+        @keyframes footerPremiumHeartbeat {
           0%, 100% {
             transform: scale(1);
           }
@@ -612,171 +630,274 @@ const Footer = () => {
           }
         }
 
-        /* Responsive optimisations */
+        /* Legal Links */
+        .footer-premium-legal {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin-top: 16px;
+        }
+
+        @media (min-width: 768px) {
+          .footer-premium-legal {
+            margin-top: 0;
+            justify-content: flex-end;
+          }
+        }
+
+        .footer-premium-legal-link {
+          color: rgba(255, 255, 255, 0.6);
+          text-decoration: none;
+          font-size: 14px;
+          transition: all 0.3s ease;
+          font-weight: 400;
+        }
+
+        .footer-premium-legal-link:hover {
+          color: #E25822;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+          .footer-premium-container {
+            padding: 0 20px;
+          }
+          
+          .footer-premium-newsletter {
+            padding: 60px 0;
+          }
+          
+          .footer-premium-newsletter-title {
+            font-size: 36px;
+          }
+          
+          .footer-premium-main {
+            padding: 60px 0;
+          }
+          
+          .footer-premium-grid {
+            gap: 40px;
+          }
+        }
+
         @media (max-width: 768px) {
-          .afro-newsletter-section {
-            padding: 3rem 0;
+          .footer-premium-newsletter {
+            padding: 40px 0;
           }
           
-          .afro-main-footer {
-            padding: 3rem 0;
+          .footer-premium-newsletter-title {
+            font-size: 32px;
           }
           
-          .afro-footer-grid {
-            gap: 2rem;
+          .footer-premium-newsletter-text {
+            font-size: 16px;
+            margin-bottom: 28px;
           }
           
-          .afro-brand-logo {
-            flex-direction: column;
-            text-align: center;
-            gap: 1rem;
+          .footer-premium-newsletter-grid {
+            gap: 40px;
           }
           
-          .afro-logo-text {
-            justify-content: center;
+          .footer-premium-main {
+            padding: 40px 0;
           }
           
-          .afro-social-links {
-            justify-content: center;
+          .footer-premium-orb {
+            width: 220px;
+            height: 220px;
+          }
+          
+          .footer-premium-icon {
+            width: 48px;
+            height: 48px;
+          }
+          
+          .footer-premium-bottom {
+            padding: 32px 0;
+          }
+          
+          .footer-premium-bottom-content {
+            gap: 20px;
           }
         }
 
         @media (max-width: 480px) {
-          .afro-footer-content {
-            padding: 0 0.75rem;
+          .footer-premium-container {
+            padding: 0 16px;
           }
           
-          .afro-newsletter-title {
-            font-size: 1.5rem;
+          .footer-premium-newsletter {
+            padding: 32px 0;
           }
           
-          .afro-newsletter-text {
-            font-size: 0.95rem;
+          .footer-premium-newsletter-title {
+            font-size: 28px;
           }
           
-          .afro-newsletter-button {
-            padding: 0.875rem 1.5rem;
+          .footer-premium-newsletter-text {
+            font-size: 15px;
+            margin-bottom: 24px;
           }
           
-          .afro-bottom-right {
+          .footer-premium-newsletter-badge {
+            padding: 8px 20px;
+            margin-bottom: 20px;
+          }
+          
+          .footer-premium-form {
             flex-direction: column;
-            gap: 1rem;
           }
-        }
-
-        /* Support tactile */
-        @media (hover: none) {
-          .afro-newsletter-button:hover,
-          .afro-social-link:hover,
-          .afro-brand-logo:hover .afro-logo-background,
-          .afro-brand-logo:hover .afro-logo-img,
-          .afro-links-list a:hover {
-            transform: none;
+          
+          .footer-premium-button {
+            padding: 14px 24px;
+            justify-content: center;
+          }
+          
+          .footer-premium-logo-container {
+            flex-direction: column;
+            text-align: center;
+            gap: 12px;
+          }
+          
+          .footer-premium-logo-text {
+            justify-content: center;
+          }
+          
+          .footer-premium-description {
+            text-align: center;
+          }
+          
+          .footer-premium-contact {
+            align-items: center;
+          }
+          
+          .footer-premium-social {
+            justify-content: center;
+          }
+          
+          .footer-premium-links-section {
+            text-align: center;
+          }
+          
+          .footer-premium-links-list a:hover {
+            transform: translateX(0);
+          }
+          
+          .footer-premium-bottom-right {
+            flex-direction: column;
+            gap: 16px;
+          }
+          
+          .footer-premium-legal {
+            justify-content: center;
           }
         }
       `}</style>
 
-      {/* Effets de particules */}
-      <div className="afro-footer-particles">
-        {[...Array(15)].map((_, i) => (
-          <div key={i} className="afro-footer-particle" style={{
-            left: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 15}s`,
-            animationDuration: `${12 + Math.random() * 8}s`
-          }} />
-        ))}
-      </div>
-
-      {/* Newsletter Section */}
-      <div className="afro-footer-border">
-        <div className="afro-footer-container">
-          <div className="afro-footer-content">
-            <div className="afro-newsletter-section">
-              <div className="afro-newsletter-grid">
-                <div className="afro-newsletter-content">
-                  <div className="afro-newsletter-badge">
-                    <Mail className="afro-newsletter-badge-icon" />
-                    <span>Restez informé</span>
-                  </div>
-                  
-                  <h2 className="afro-newsletter-title">
-                    Rejoignez notre <span className="afro-gradient-marron">communauté</span>
-                  </h2>
-                  
-                  <p className="afro-newsletter-text">
-                    Recevez les dernières actualités, événements exclusifs et ressources 
-                    premium directement dans votre boîte mail.
-                  </p>
-
-                  <div className="afro-newsletter-form-container">
-                    <form className="afro-newsletter-form">
-                      <div className="afro-newsletter-input-wrapper">
-                        <input
-                          type="email"
-                          placeholder="Votre adresse email"
-                          className="afro-newsletter-input"
-                          required
-                        />
-                        <div className="afro-newsletter-underline"></div>
-                      </div>
-                      <button type="submit" className="afro-newsletter-button">
-                        <span>S'abonner</span>
-                        <ArrowRight size={18} />
-                      </button>
-                    </form>
-                    
-                    <p className="afro-newsletter-disclaimer">
-                      <Shield size={14} />
-                      Nous respectons votre vie privée. Désabonnez-vous à tout moment.
-                    </p>
-                  </div>
+      <footer className="footer-premium">
+        <div className="footer-premium-container">
+          {/* Newsletter Section */}
+          <div className="footer-premium-newsletter">
+            <div className="footer-premium-newsletter-grid">
+              <div className="footer-premium-newsletter-content">
+                <div className="footer-premium-newsletter-badge">
+                  <Mail size={16} />
+                  <span>Restez informé</span>
                 </div>
+                
+                <h2 className="footer-premium-newsletter-title">
+                  Rejoignez notre <span className="footer-premium-gradient">communauté</span>
+                </h2>
+                
+                <p className="footer-premium-newsletter-text">
+                  Recevez les dernières actualités, événements exclusifs et ressources 
+                  premium directement dans votre boîte mail. Soyez les premiers informés.
+                </p>
 
-                <div className="afro-newsletter-visual">
-                  <div className="afro-newsletter-orb">
-                    <Mail className="afro-newsletter-icon" />
-                  </div>
+                <div className="footer-premium-form-container">
+                  <form className="footer-premium-form">
+                   
+                   
+                  </form>
+                  
+                  <p className="footer-premium-disclaimer">
+                    <Shield size={14} />
+                    Nous respectons votre vie privée. Désabonnez-vous à tout moment.
+                  </p>
+                </div>
+              </div>
+
+              <div className="footer-premium-visual">
+                <div className="footer-premium-orb">
+                  <Mail size={40} className="footer-premium-icon" />
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Main Footer Content */}
-      <div className="afro-footer-container">
-        <div className="afro-footer-content">
-          <div className="afro-main-footer">
-            <div className="afro-footer-grid">
+          {/* Main Footer Content */}
+          <div className="footer-premium-main">
+            <div className="footer-premium-grid">
               {/* Brand Section */}
-              <div className="afro-brand-section">
-                <div className="afro-brand-logo">
-                  <div className="afro-logo-wrapper">
-                    <div className="afro-logo-background"></div>
-                    <img src={logo} alt="THE BLACK BOOK" className="afro-logo-img" />
+              <div className="footer-premium-brand">
+                <Link to="/" className="footer-premium-logo-container">
+                  <div className="footer-premium-logo-wrapper">
+                    <div className="footer-premium-logo-background"></div>
+                    <img src={logo} alt="THE BLACK BOOK" className="footer-premium-logo-img" />
                   </div>
-                  <div className="afro-logo-text">
-                    <span className="afro-logo-text-main">AFRO</span>{' '}
-                    <span className="afro-gradient-marron">BLACK BOOK</span>
+                  <div className="footer-premium-logo-text">
+                    <span className="footer-premium-logo-text-main">Afro</span>
+                    <span className="footer-premium-logo-gradient">Black Book</span>
                   </div>
-                </div>
+                </Link>
                 
-                <p className="afro-brand-description">
+                <p className="footer-premium-description">
                   Plateforme éducative et culturelle dédiée à la valorisation 
                   de l'héritage africain et de sa diaspora. Ensemble, 
                   construisons un avenir ancré dans nos racines.
                 </p>
 
+                {/* Contact Info */}
+                <div className="footer-premium-contact">
+                  {contactInfo.map((item, index) => (
+                    item.external ? (
+                      <a
+                        key={index}
+                        href={item.href}
+                        className="footer-premium-contact-item"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <item.icon size={18} className="footer-premium-contact-icon" />
+                        <span>{item.text}</span>
+                      </a>
+                    ) : (
+                      <Link
+                        key={index}
+                        to={item.href}
+                        className="footer-premium-contact-item"
+                      >
+                        <item.icon size={18} className="footer-premium-contact-icon" />
+                        <span>{item.text}</span>
+                      </Link>
+                    )
+                  ))}
+                </div>
+
                 {/* Social Links */}
-                <div className="afro-social-links">
+                <div className="footer-premium-social">
                   {socialLinks.map((social) => (
                     <a
                       key={social.name}
                       href={social.href}
-                      className="afro-social-link"
+                      className="footer-premium-social-link"
                       aria-label={social.name}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <social.icon className="afro-social-icon" />
+                      <social.icon size={20} className="footer-premium-social-icon" />
                     </a>
                   ))}
                 </div>
@@ -784,14 +905,14 @@ const Footer = () => {
 
               {/* Links Sections */}
               {Object.entries(footerLinks).map(([key, section]) => (
-                <div key={key} className="afro-links-section">
+                <div key={key} className="footer-premium-links-section">
                   <h4>{section.title}</h4>
-                  <ul className="afro-links-list">
+                  <ul className="footer-premium-links-list">
                     {section.links.map((link) => (
                       <li key={link.name}>
-                        <a href={link.href}>
+                        <Link to={link.href}>
                           {link.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -799,34 +920,44 @@ const Footer = () => {
               ))}
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="afro-footer-border">
-        <div className="afro-footer-container">
-          <div className="afro-footer-content">
-            <div className="afro-bottom-bar">
-              <div className="afro-bottom-content">
-                <div className="afro-copyright">
-                  © 2025 THE BLACK BOOK. Tous droits réservés.
+          {/* Bottom Bar */}
+          <div className="footer-premium-bottom">
+            <div className="footer-premium-bottom-content">
+              <div className="footer-premium-copyright">
+                © {new Date().getFullYear()} AFRO BLACK BOOK. Tous droits réservés.
+              </div>
+              
+              <div className="footer-premium-bottom-right">
+                <div className="footer-premium-made-with">
+                  Fait avec <Heart size={14} className="footer-premium-heart" /> pour la diaspora africaine
                 </div>
-                
-                <div className="afro-bottom-right">
-                  <span className="afro-made-with-love">
-                    Fait avec <span className="afro-heart">❤</span> pour la diaspora africaine
-                  </span>
-                  <div className="afro-status">
-                    <div className="afro-status-dot"></div>
-                    <span>Tous les systèmes opérationnels</span>
-                  </div>
+                <div className="footer-premium-status">
+                  <div className="footer-premium-status-dot"></div>
+                  <span>Tous les systèmes opérationnels</span>
                 </div>
               </div>
             </div>
+
+            {/* Legal Links */}
+            <div className="footer-premium-legal">
+              <Link to="/privacy" className="footer-premium-legal-link">
+                Politique de confidentialité
+              </Link>
+              <Link to="/terms" className="footer-premium-legal-link">
+                Conditions d'utilisation
+              </Link>
+              <Link to="/cookies" className="footer-premium-legal-link">
+                Cookies
+              </Link>
+              <Link to="/legal" className="footer-premium-legal-link">
+                Mentions légales
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 };
 

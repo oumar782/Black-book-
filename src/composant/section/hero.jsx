@@ -12,9 +12,9 @@ const HeroPremium = () => {
   const deletingSpeedRef = useRef(100);
   
   const texts = [
-    "à ton héritage",
-    "à tes racines",
-    "à ta culture"
+    "à tes valeurs ancestrales",
+    "à ta sagesse traditionnelle",
+    "à tes héritages culturels"
   ];
 
   useEffect(() => {
@@ -44,9 +44,9 @@ const HeroPremium = () => {
   }, [currentIndex, isDeleting, loopNum, texts]);
 
   const stats = [
-    { label: 'Ressources disponibles', value: '500+' },
-    { label: 'Membres actifs', value: '2K+' },
-    { label: 'Certificats délivrés', value: '150+' },
+    { label: 'Sagesses documentées', value: '500+' },
+    { label: 'Savants référencés', value: '200+' },
+    { label: 'Destinations afro', value: '50+' },
   ];
 
   return (
@@ -74,21 +74,28 @@ const HeroPremium = () => {
               </h1>
               
               <p className="hero-premium-description">
-                Découvre une bibliothèque de ressources premium, participe à des événements inspirants 
-                et connecte-toi avec une communauté passionnée par la culture africaine.
+                Explore les valeurs fondamentales de l'Afrique, découvre la sagesse de nos ancêtres 
+                et les principes qui ont guidé nos civilisations, avant de plonger dans les réalisations 
+                exceptionnelles de nos savants et la richesse de notre patrimoine touristique.
               </p>
             </div>
 
-            <div className="hero-premium-actions">
-              <button className="hero-premium-btn hero-premium-btn-primary">
-                Découvrir les ressources
-                <span className="hero-premium-btn-arrow">→</span>
-              </button>
-              
-              <button className="hero-premium-btn hero-premium-btn-secondary">
-                Regarder la démo
-              </button>
-            </div>
+          <div className="hero-premium-actions">
+  <button 
+    className="hero-premium-btn hero-premium-btn-primary"
+    onClick={() => window.location.href = '/À-propos'}
+  >
+    Explorer nos valeurs
+    <span className="hero-premium-btn-arrow">→</span>
+  </button>
+  
+  <button 
+    className="hero-premium-btn hero-premium-btn-secondary"
+    onClick={() => window.location.href = '/contact'}
+  >
+  Nous contacter
+  </button>
+</div>
 
             <div className="hero-premium-stats">
               {stats.map((stat, index) => (

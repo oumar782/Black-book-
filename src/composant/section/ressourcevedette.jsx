@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import booksImage from '../../assets/books-collection.webp';
+import cultureImage from '../../assets/black.webp';
 import './vedette.css';
 
 const VedettePremium = () => {
@@ -31,51 +31,58 @@ const VedettePremium = () => {
   const resources = [
     {
       id: 1,
-      title: "Histoire de l'Afrique Moderne",
-      description: "Un guide complet sur l'évolution politique et sociale du continent africain au XXe siècle.",
-      type: "Ebook Premium",
+      title: "Cheikh Anta Diop",
+      description: "Le père de l'afrocentricité et ses contributions à la renaissance culturelle africaine.",
+      type: "Savant Historien",
       rating: 4.9,
       downloads: "2.1K",
-      price: "Gratuit",
       category: "Histoire",
       featured: true,
       color: "#8B7355"
     },
     {
       id: 2,
-      title: "Traditions Orales & Contes",
-      description: "Collection de récits traditionnels transmis de génération en génération.",
-      type: "Audiobook",
+      title: "Proverbes Africains",
+      description: "La sagesse millénaire des ancêtres à travers les proverbes traditionnels.",
+      type: "Sagesse Ancestrale",
       rating: 4.8,
       downloads: "1.8K",
-      price: "Premium",
       category: "Culture",
       featured: false,
       color: "#7D5A3A"
     },
     {
       id: 3,
-      title: "Leadership Africain Contemporain",
-      description: "Portraits de leaders inspirants qui façonnent l'avenir du continent.",
-      type: "Guide Interactif",
+      title: "Thomas Sankara",
+      description: "Le leadership révolutionnaire et la vision panafricaine du président burkinabé.",
+      type: "Leader Visionnaire",
       rating: 4.9,
       downloads: "950",
-      price: "9.99€",
       category: "Leadership",
       featured: true,
       color: "#5C4033"
     },
     {
-      id: 4,
-      title: "Art & Symbolisme Africain",
-      description: "Exploration visuelle des codes artistiques et leur signification culturelle.",
-      type: "Collection Visuelle",
-      rating: 4.7,
-      downloads: "1.5K",
-      price: "Premium",
-      category: "Art",
+      id: 5,
+      title: "L'Économie du Cacao",
+      description: "La chaîne de valeur du cacao en Afrique de l'Ouest et ses enjeux économiques.",
+      type: "Étude Économique",
+      rating: 4.6,
+      downloads: "1.2K",
+      category: "Économie",
       featured: false,
-      color: "#A9927D"
+      color: "#6B8E23"
+    },
+    {
+      id: 6,
+      title: "Mansa Musa",
+      description: "L'empire du Mali et son souverain, l'homme le plus riche de l'histoire.",
+      type: "Figure Historique",
+      rating: 4.8,
+      downloads: "1.4K",
+      category: "Histoire",
+      featured: false,
+      color: "#DAA520"
     }
   ];
 
@@ -91,14 +98,14 @@ const VedettePremium = () => {
         {/* En-tête de section */}
         <div className={`vedette-premium-header ${isVisible ? 'animate-fade-in-up' : ''}`}>
           <div className="vedette-premium-badge">
-            Ressources Premium
+            Savoirs & Réalisations
           </div>
           <h2 className="vedette-premium-title">
-            Bibliothèque de <span className="vedette-premium-title-gradient">Connaissances</span>
+            Découvre nos <span className="vedette-premium-title-gradient">Figures Emblématiques</span>
           </h2>
           <p className="vedette-premium-description">
-            Accède à une collection soigneusement sélectionnée d'ebooks, guides, 
-            audiobooks et ressources interactives sur la culture africaine.
+            Explore la vie et les contributions des grands savants, penseurs et leaders africains 
+            qui ont façonné l'histoire et continuent d'inspirer les générations.
           </p>
         </div>
 
@@ -121,18 +128,18 @@ const VedettePremium = () => {
           <div className="vedette-premium-image-container">
             <div className="vedette-premium-image-wrapper">
               <img
-                src={booksImage}
-                alt="Collection de livres sur la culture africaine"
+                src={cultureImage}
+                alt="Symboles et représentations de la culture africaine"
                 className="vedette-premium-image"
               />
               <div className="vedette-premium-image-overlay"></div>
               <div className="vedette-premium-image-content">
-                <h3 className="vedette-premium-image-title">Collection Patrimoine Africain</h3>
+                <h3 className="vedette-premium-image-title">Panorama du Patrimoine Africain</h3>
                 <p className="vedette-premium-image-subtitle">
-                  Plus de 500 ressources documentées et vérifiées par nos experts
+                  Plus de 200 figures emblématiques documentées par nos chercheurs
                 </p>
                 <button className="vedette-premium-image-button">
-                  Découvrir 
+                  Explorer le patrimoine
                   <span className="vedette-premium-button-arrow">→</span>
                 </button>
               </div>
@@ -140,29 +147,28 @@ const VedettePremium = () => {
           </div>
 
           <div className="vedette-premium-text">
-            <h3 className="vedette-premium-text-title">Une bibliothèque qui grandit avec toi</h3>
+            <h3 className="vedette-premium-text-title">Une plateforme qui célèbre l'excellence africaine</h3>
             <p className="vedette-premium-text-description">
-              Chaque mois, nous enrichissons notre collection avec de nouveaux contenus 
-              créés par des experts, académiciens et acteurs culturels reconnus. 
-              De l'histoire ancienne aux enjeux contemporains, trouve les ressources 
-              qui nourrissent ta soif de connaissance.
+              Nous mettons en lumière les contributions exceptionnelles des penseurs, scientifiques, 
+              artistes et leaders africains. Des civilisations anciennes aux innovations contemporaines, 
+              découvre les parcours inspirants qui ont marqué l'histoire du continent.
             </p>
             <div className="vedette-premium-features-grid">
               <div className="vedette-premium-feature-item">
                 <div className="vedette-premium-feature-dot"></div>
-                <span>Contenu vérifié</span>
+                <span>Biographies détaillées</span>
               </div>
               <div className="vedette-premium-feature-item">
                 <div className="vedette-premium-feature-dot"></div>
-                <span>Mise à jour mensuelle</span>
+                <span>Analyses historiques</span>
               </div>
               <div className="vedette-premium-feature-item">
                 <div className="vedette-premium-feature-dot"></div>
-                <span>Formats multiples</span>
+                <span>Documentations vérifiées</span>
               </div>
               <div className="vedette-premium-feature-item">
                 <div className="vedette-premium-feature-dot"></div>
-                <span>Accès offline</span>
+                <span>Contenu multimédia</span>
               </div>
             </div>
           </div>
@@ -198,31 +204,20 @@ const VedettePremium = () => {
               {/* Métadonnées */}
               <div className="vedette-premium-resource-meta">
                 <div className="vedette-premium-meta-item">
+                  <div className="vedette-premium-type-badge">
+                    {resource.type}
+                  </div>
+                </div>
+                <div className="vedette-premium-meta-item">
                   <div className="vedette-premium-rating">
                     <span className="vedette-premium-rating-star">★</span>
                     <span>{resource.rating}</span>
                   </div>
                 </div>
-                <div className="vedette-premium-meta-item">
-                  <div className="vedette-premium-downloads">
-                    <span className="vedette-premium-download-icon">↓</span>
-                    <span>{resource.downloads}</span>
-                  </div>
-                </div>
               </div>
 
-              {/* Prix et CTA */}
-              <div className="vedette-premium-card-footer">
-                <span className={`vedette-premium-resource-price ${
-                  resource.price === "Gratuit" ? "free" : 
-                  resource.price === "Premium" ? "premium" : "paid"
-                }`}>
-                  {resource.price}
-                </span>
-                <button className="vedette-premium-resource-button">
-                  <span className="vedette-premium-button-arrow">→</span>
-                </button>
-              </div>
+              {/* CTA */}
+             
 
               {/* Effet de hover */}
               <div className="vedette-premium-card-hover-effect"></div>
@@ -232,8 +227,11 @@ const VedettePremium = () => {
 
         {/* CTA pour voir toutes les ressources */}
         <div className={`vedette-premium-section-cta ${isVisible ? 'animate-fade-in-up' : ''}`}>
-          <button className="vedette-premium-cta-button">
-            Voir toutes les ressources
+          <button 
+            className="vedette-premium-cta-button"
+            onClick={() => window.location.href = '/savants'}
+          >
+            Voir toutes les figures emblématiques
             <span className="vedette-premium-button-arrow">→</span>
           </button>
         </div>
